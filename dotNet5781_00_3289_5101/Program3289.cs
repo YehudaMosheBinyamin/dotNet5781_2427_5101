@@ -10,6 +10,8 @@ namespace dotNet5781_00_3289_5101
     {
         static void Main(string[] args)
         {
+
+            Console.WriteLine("Hello wworld");
             Welcome3289();
             Welcome5101();
             Console.ReadKey();
