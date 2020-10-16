@@ -12,14 +12,14 @@ namespace dotNet5781_00_3289_5101
         {
             Console.WriteLine("Good morning");
             Console.WriteLine("new shoose");
-            Welcome3289();
+            Welcome2427();
             Welcome5101();
             Console.ReadKey();
         }
 
 
         static partial void Welcome5101();
-        private static void Welcome3289()
+        private static void Welcome2427()
         {
             Console.WriteLine("Enter your name: ");
             string readName = Console.ReadLine();
