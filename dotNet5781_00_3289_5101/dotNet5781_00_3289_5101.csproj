@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C1BEE0B5-6CE1-4E73-819F-0FA33CAC45BC}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>dotNet5781_00_2427_5101</RootNamespace>
-    <AssemblyName>dotNet5781_00_2427_5101</AssemblyName>
+    <RootNamespace>dotNet5781_00_3289_5101</RootNamespace>
+    <AssemblyName>dotNet5781_00_3289_5101</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
