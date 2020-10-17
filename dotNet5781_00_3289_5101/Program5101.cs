@@ -11,6 +11,7 @@ namespace dotNet5781_00_3289_5101
         static partial void Welcome5101()
         {
             Console.WriteLine("I an also here");
+            
         }
     }
 }
