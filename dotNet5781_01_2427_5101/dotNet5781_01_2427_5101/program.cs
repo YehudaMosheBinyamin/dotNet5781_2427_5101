@@ -6,14 +6,22 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_01_2427_5101
 {
+
+
+    enum choice
+    {
+        EXIT,ADD,TRAVEL,TREATMENT,SHOW
+    }
     class program
     {
+
+
+
+
         static void Main(string[] arg)
         {
 
-            DateTime date = new DateTime(2005, 11, 12, 9, 0, 0);
-            Console.WriteLine(date);
-            Console.ReadLine();
+            
 
 
         }
