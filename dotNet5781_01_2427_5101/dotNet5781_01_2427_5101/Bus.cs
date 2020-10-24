@@ -10,9 +10,9 @@ namespace dotNet5781_01_2427_5101
     {
         //data members:
         private int licenceNumber; // מספר רישוי
-        private bool isDengerous; // האם מסוכן
+        private bool isDangerous; // האם מסוכן
         private DateTime start; // תאריך תחילת שרות
-        private DateTime lastTreat; // תאריך טיפול אחרון
+        private DateTime lastTreated; // תאריך טיפול אחרון
         private int allKmTrav; // קילומטרג
         private int kmSinsTreat; // קמ מאז טיפול אחרון
         private int isFull; // האם המיכל מלא בדלק
