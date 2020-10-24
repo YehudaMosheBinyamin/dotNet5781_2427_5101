@@ -26,7 +26,7 @@ namespace dotNet5781_01_2427_5101
             {
                 if (value < 0) // אם שלילי אז מקבל חריגה
                 {
-                    throw "Licence Number not corecct! - Negative number not basible.";
+                    throw "Licence Number not corecct! - Negative number not possible.";
                 }
                 DateTime reform = new DateTime(2018, 0, 0, 0, 0, 0); // תאריך כניסת הרפורמה על לוחות הרישוי
                 if (start < reform) // אם לפני הרפורמה אז
@@ -109,7 +109,7 @@ namespace dotNet5781_01_2427_5101
                 {
                     throw "Not passible! - Negative number is not exepteble."
                 }
-                if ( value > 1600) // אי אפשר לעבור יותר מ1,600 קמ בלי תדלוק
+                if ( value > 1200) // אי אפשר לעבור יותר מ1,200 קמ בלי תדלוק
                 {
                     throw "Not passible! - the way is too long."
                 }
@@ -123,7 +123,6 @@ namespace dotNet5781_01_2427_5101
         {
             licenceNumber = _licenceNumber;
             start = new DateTime(_start);
-            isDengerous = false;
             lastTreat = new DateTime(_start);
             allKmTrav = 0;
             kmSinsTreat = 0;
