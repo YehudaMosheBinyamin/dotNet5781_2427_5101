@@ -13,16 +13,12 @@ namespace dotNet5781_01_2427_5101
         EXIT,ADD,TRAVEL,TREATMENT,SHOW
     }
     class program
-    {
-
-
-
-
+    {treatment
+        }
         static void Main(string[] arg)
-        {
-
-            
-
+        {int choice;
+         Console.WriteLine("For add a bus enter 1 to travel-2 for treatment-3 for show -4 for exit-0");
+         choice=Console.ReadLine();
 
         }
 
