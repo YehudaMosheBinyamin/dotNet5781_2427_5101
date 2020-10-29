@@ -4,76 +4,53 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace dotNet5781_01_2427_5101
 {
     class Bus
     {
         //data members:
-        private int licenceNumber; // מספר רישוי
-        private bool isDangerous; // האם מסוכן
+        private readonly string  licenseNumber; // מספר רישוי
+        private readonly bool  isDangerous; // האם מסוכן
         private DateTime start; // תאריך תחילת שרות
         private DateTime lastTreated; // תאריך טיפול אחרון
         private int allKmTrav; // קילומטרז
         private int kmSinceTreated; // קמ מאז טיפול אחרון
         private int kmPossible; // כמה קמ אפשר לנסוע כעת כתלות במצב הדלק
-        static DateTime currentDate = new DateTime.now; // משתנה זה מצין את היום הנוכחי
+        static DateTime currentDate; // משתנה זה מצין את היום הנוכחי
         //-------------------------------------------
         // set/get for  all...
-        public int LicenceNumber
-        {
-            get { return licenceNumber; }
-            set
-            {
-                if (value < 0) // אם שלילי אז מקבל חריגה
-                {
-                    throw "Licence Number not correct! - Negative number not possible.";
-                }
-                DateTime reform = new DateTime(2018, 0, 0, 0, 0, 0); // תאריך כניסת הרפורמה על לוחות הרישוי
-                if (start < reform) // אם לפני הרפורמה אז
-                {
-                    if (value > 9999999) // אם יש יותר מ7 ספרות אז מקבל חריגה
-                    {
-                        throw "Too many digits!";
-                    }
-                    licenceNumber = value;
-                }
-                else // אם אחרי הרפורמה אז 
-                {
-                    if (value > 99999999) // אם יותר מ8 ספרות מקבל חריגה
-                    {
-                        throw "Too many digits!";
-                    }
-                    licenceNumber = value;
-                }
-            }
-        }
+        public string LicenseNumber
+
+        { get { return licenseNumber; } }
+      
         public bool IsDangerous
         {
-            get 
+            get
             { // אם עברה שנה או ש האוטובוס נסע יותר מ20,000 קמ אז מסוכן 
-                DateTime oneYear = new DateTime(1, 0, 0, 0, 0, 0);
-                if ((kmSinceTreat >= 20000) || (lastTreat - today > oneYear))
+                //DateTime oneYear = new DateTime(1, 0, 0, 0, 0, 0);
+                if ((kmSinceTreated >= 20000) || (lastTreated-(DateTime.Now)).TotalDays >365)
                 {
                     return true;
                 }
                 return false; // אחרת לא מסוכן
-            }   
+            }
         }
         public DateTime Start
         {
             get { return start; }
             set { start = value; }
         }
-        public DateTime LastTreat
+        public DateTime LastTreated
         {
-            get { return lastTreat; }
+            get { return lastTreated; }
             set
             {
                 if (value < start) // לא אפשרי שטיפול יהיה לפני שנקנה
                 {
-                    throw "Not possible! - the bus didn't exist yet.";
+                    throw new Exception("Not possible! - the bus didn't exist yet.");
                 }
-                lastTreat = value;
+                lastTreated = value;
             }
         }
         public int AllKmTrav
@@ -83,21 +60,21 @@ namespace dotNet5781_01_2427_5101
             {
                 if (value < allKmTrav) // אי אפשר להוריד ערך מהקילומטראג
                 {
-                    throw "Not possible! - Negative number is not acceptable."
+                    throw new Exception("Not possible! - Negative number is not acceptable.");
                 }
                 allKmTrav = value;
             }
         }
-        public int KmSinceTreat
+        public int KmSinceTreated
         {
-            get {return kmSinceTreat;}
+            get { return kmSinceTreated; }
             set
             {
                 if (value < 0) // אי אפשר שיהיה ערך קטן מ0 בקילומטראג
                 {
-                    throw "Not possible! - Negative number is not acceptable."
+                    throw new Exception("Not possible! - Negative number is not acceptable.");
                 }
-                kmSinsTreat = value;
+                kmSinceTreated = value;
             }
         }
         public int KmPossible
@@ -105,65 +82,108 @@ namespace dotNet5781_01_2427_5101
             get { return kmPossible; }
             set
             {
-               if (value < 0) 
+                if (value < 0)
                 {
-                    throw "Not possible! - Negative number is not acceptable."
-                }
-                if ( value > 1200) // אי אפשר לעבור יותר מ1,200 קמ בלי תדלוק
+                    throw new Exception("Not possible! - Negative number is not acceptable.");
+                 }
+                if (value > 1200) // אי אפשר לעבור יותר מ1,200 קמ בלי תדלוק
                 {
-                    throw "Not possible! - the way is too long."
+                    throw new Exception("Not possible! - the way is too long.");
                 }
-               kmPossible = value;
+                kmPossible = value;
             }
-               
+
         }
         //----------------------------------------
         //constructor:
-        public Bus(int _licenceNumber, DateTime _start)
+        public Bus(string _licenseNumber, DateTime _start)
         {
-            licenceNumber = _licenceNumber;
-            start = new DateTime(_start);
-            lastTreat = new DateTime(_start);
-            allKmTrav = 0;
-            kmSinceTreat = 0;
-            kmPossible=0; 
-        }
-        //----------------------------------------
-        // פונקציות בסיסיות של האוטובוס: תדלוק ,טיפול,נסיע  
-        void drive(int km)
-        {
-            if (IsDangerous) // אם האוטובוס במצב לא תקין אז אי אפשר לבצעה נסיע
+            for(int i = 0; i < _licenseNumber.Length; i++)
             {
-                throw "The Bus is in a dangerous state and isn't available."
+                if (_licenseNumber[i] > '9' || _licenseNumber[i] < '0') 
+                {
+                    throw new Exception("License number must be a number");
+                }
+
             }
-            allKmTrav += km;
-            kmSinceTreat += km;
-            //isFull += km;
-            kmPossible -= km;
-        }
-        void treatment() // בטיפול מקבלים גם דלק
-        {
-            lastTreat = DateTime.now;
-            kmSinceTreat = 0;
+                DateTime reform = new DateTime(2018, 1, 1, 0, 0, 0); // תאריך כניסת הרפורמה על לוחות הרישוי
+                if (_start < reform) // אם לפני הרפורמה אז
+                {
+                    if (_licenseNumber.Length!=7) // אם יש יותר מ7 ספרות אז מקבל חריגה
+                    {
+                        throw new Exception("Must be 7 digits long!");
+                    }
+                    this.licenseNumber = _licenseNumber;
+                }
+                else // אם אחרי הרפורמה אז 
+                {
+                    if (_licenseNumber.Length!=8) // אם יותר מ8 ספרות מקבל חריגה
+                    {
+                        throw new Exception("Must be 8 digits long!");
+                    }
+                    this.licenseNumber = _licenseNumber;
+                }
+            start = _start;
+            lastTreated = _start;
+            allKmTrav = 0;
+            kmSinceTreated = 0;
             kmPossible = 0;
         }
-        void refueling()
+        //----------------------------------------
+        // פונקציות בסיסיות של האוטובוס: תדלוק ,טיפול,נסיעה  
+        public  void drive(int km)
         {
-            KmPossible(1200);
+            if (IsDangerous) // האם האוטובוס במצב לא תקין אז אי אפשר לבצעה נסיע
+            {
+                throw new Exception("The Bus is in a dangerous state and isn't available.");
+            }
+            allKmTrav += km;
+            kmSinceTreated += km;
+            kmPossible -= km;
+        }
+        public void treatment() // בטיפול מקבלים גם דלק
+        {
+            lastTreated = DateTime.Now;
+            kmSinceTreated = 0;
+            kmPossible = 0;
+        }
+        public void refueling()
+        {
+            KmPossible=1200;
         }
 
         public override string ToString()
         {
-            return base.ToString();
-        }
+            {
+                if (licenseNumber.Length == 7)
+                {
+                    string beginning = licenseNumber.Substring(0, 2);
+                    string middle = licenseNumber.Substring(2, 3);
+                    string end = licenseNumber.Substring(5, 2);
+                    return string.Format("{0}-{1}-{2}", beginning, middle, end);
+                }
+                else
+                {
+                    string beginning = licenseNumber.Substring(0, 3);
+                    string middle = licenseNumber.Substring(3, 2);
+                    string end = licenseNumber.Substring(5, 3);
+                    return string.Format("{0}-{1}-{2}", beginning, middle, end);
 
+
+                }
+            }
+        }
         public override bool Equals(object obj)
         {
             return base.Equals(obj);
         }
 
-       
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
         //------------------------------------------
+
     }
 }
 
