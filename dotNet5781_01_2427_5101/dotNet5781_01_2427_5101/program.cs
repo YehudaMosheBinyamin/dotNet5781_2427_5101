@@ -14,19 +14,13 @@ namespace dotNet5781_01_2427_5101
     }
     class program
     {
-
-
-
-
         static void Main(string[] arg)
         {
-
+            
             
 
 
         }
-
-
 
     }
 }
