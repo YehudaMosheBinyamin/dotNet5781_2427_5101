@@ -6,5 +6,12 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_2427_5101
 {
-    
+    class Passenger
+    {
+
+    }
+    class BusLine
+    {
+
+    }
 }

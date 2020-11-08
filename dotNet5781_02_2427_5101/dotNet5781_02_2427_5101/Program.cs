@@ -4,122 +4,133 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dntemp2
+namespace dotNet5781_02_2427_5101
 {
-    using dotNet5781_02_2427_5101;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
-    namespace dotNet5781_02_2427_5101
+    class Program
     {
-        class BusStop
+        public static void Main(string[] str)
         {
-            static List<int> busKeyList;
-            int busStationKey;
-            double latitude;
-            double longtitude;
-            public int BusStationKey
+            int numOfBuses = 10;
+            int numOfStasions = 50;
+            List<BusStop> busStops;
+            List<BusLine> busLines;
+            //---------------------
+            for (int i = 0; i < numOfStasions; i++)
             {
-                get { return busStationKey; }
+                BusStop tempStasion = new BusStop();
+                busStops.Add(tempStasion);
             }
-            public double Latitude { get { return latitude; } }
-            public double Longtitude { get { return longtitude; } }
-            
-
-            public override string ToString()
+            for (int i = 0; i < numOfBuses; i++)
             {
-                return String.Format("Bus station code: {0}, {1} °N {2} °E ", BusStationKey, Latitude, Longtitude);
+                BusLine tempBus = new BusLine();
+                busLines.Add(tempBus);
             }
-
-            public class BusLineStop : BusStop
+            //---------------------
+            menuChoice myMenuChoice;
+            busOrStasion myBusOrStasion;
+            do
             {
-                int distanceFromPrevious;
-                int timeFromPrevious;
-                public BusLine()
+                myMenuChoice = GetMenuChoice();
+                switch (myMenuChoice)
                 {
-                    Random r = new Random();
-                    distanceFromPrevious = r.Next(1, 101);
-
+                    case menuChoice.ADD:
+                        myBusOrStasion = GetBusOrStasion();
+                        if (myBusOrStasion == busOrStasion.BUS) { addBus(busLines); }
+                        if (myBusOrStasion == busOrStasion.STASION) { addStasion(busStops); }
+                        break;
+                    case menuChoice.DELETE:
+                        myBusOrStasion = GetBusOrStasion();
+                        if (myBusOrStasion == busOrStasion.BUS) { deleteBus(busLines); ; }
+                        if (myBusOrStasion == busOrStasion.STASION) { deleteStasion(busStops); }
+                        break;
+                    case menuChoice.SEARCH:
+                        myBusOrStasion = GetBusOrStasion();
+                        if (myBusOrStasion == busOrStasion.BUS) { searchBus(busLines); }
+                        if (myBusOrStasion == busOrStasion.STASION) { searchStasion(busStops); }
+                        break;
+                    case menuChoice.SHOW:
+                        myBusOrStasion = GetBusOrStasion();
+                        if (myBusOrStasion == busOrStasion.BUS) { showBus(busLines); }
+                        if (myBusOrStasion == busOrStasion.STASION) { showStasion(busStops); }
+                        break;
+                    default:
+                        break;
                 }
-            }
-            public enum Area { General, North, South, Center, Jerusalem };
-            public class BusLine : IComparable
+            } while (myMenuChoice != 0) ;     
+        }
+
+        private static void showStasion(List<BusStop> busStops)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void showBus(List<BusLine> busLines)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void searchStasion(List<BusStop> busStops)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void searchBus(List<BusLine> busLines)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void deleteStasion(List<BusStop> busStops)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void deleteBus(List<BusLine> busLines)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void addStasion(List<BusStop> busStops)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void addBus(List<BusLine> busLines)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+        //--------------------------------------------
+        public static menuChoice GetMenuChoice()
+        {
+            int myMenuChoice;
+            bool isCorect;
+            do
             {
-                Area operatingArea;
-                public Area OperatingArea { get { return operatingArea; } }
-                public int BusNumber => BusNumber;
-                BusStop firstStation;
-                public BusStop FirstStation { get { return firstStation; } }
-                BusStop lastStation;
-                public BusStop LastStation { get { return lastStation; } }
-                public List<BusStop> listStations = new List<BusStop>();
-                public List<BusStop> ListStations { get { return listStations; } }
-                public override string ToString()
-                {
-                    return String.Format("Bus number: {0} Area: {1} Stations: {2}", BusNumber, OperatingArea, ListStations);
-                }
-                public bool inList(BusStop busStop)
-                {
-                    if (listStations.Contains(busStop))
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }
-                public void RemoveBusStop(BusStop bs)
-                {
-                    if (inList(bs)) { listStations.Remove(bs); }
-                }
-                public void AddBusStop(BusStop bs, int index)
-                {
-                    if (inList(bs)) { listStations.Insert(index, bs); }
-                }
-                public float distance(BusStop bs1, BusStop bs2)
-                {
-                    float distance = 0f;
-                    if (listStations.Contains(bs1) && listStations.Contains(bs2))
-                    {
-                        int firstBSIndex = listStations.IndexOf(bs1) + 1;
-                        int secondBSIndex = listStations.IndexOf(bs2);
-                        foreach (BusStop bs in listStations)
-                        {
-                            if (firstBSIndex <= listStations.IndexOf(bs) && listStations.IndexOf(bs) <= secondBSIndex)
-                            {
-
-                            }
-                        }
-                    }
-                    //bus line from two bus stops
-                    BusLine makeLine(BusStop stop1, BusStop stop2)
-                    {
-                        BusLine newLine = new BusLine() { firstStation = stop1, lastStation = stop2 };
-                        return newLine;
-                    }
-                    public int CompareTo(object obj)
-                    {
-                        throw new NotImplementedException();
-                    }
-                }
-
-                public int CompareTo(object obj)
-                {
-                    throw new NotImplementedException();
-                }
-            }
-            class Program
+                Console.WriteLine("Type your choice:");
+                Console.WriteLine("0 - Exit program.");
+                Console.WriteLine("1 - Add a bus or stasion.");
+                Console.WriteLine("2 - Delete a bus or stasion.");
+                Console.WriteLine("3 - Search a bus or stasion.");
+                Console.WriteLine("4 - Show informationabut a bus or stasion.");
+                isCorect = int.TryParse(Console.ReadLine(), out myMenuChoice);
+            } while (!isCorect || myMenuChoice < 0 || myMenuChoice > 5);
+            return (menuChoice)myMenuChoice;
+        }
+        public static busOrStasion GetBusOrStasion()
+        {
+            int myBusOrStasion;
+            bool isCorect;
+            do
             {
-                static void Main(string[] args)
-                {
-
-                }
-            }
+                Console.WriteLine("Type your choice:");
+                Console.WriteLine("0 - Bus.");
+                Console.WriteLine("1 - Stasion.");
+                isCorect = int.TryParse(Console.ReadLine(), out myBusOrStasion);
+            } while (!isCorect || myBusOrStasion < 0 || myBusOrStasion > 1);
+            return (busOrStasion)myBusOrStasion;
         }
     }
-}  
     
+}
