@@ -26,24 +26,29 @@ namespace dotNet5781_02_2427_5101
         }
         public void removeBusLine(BusLine bl)
         {
-            
+            bool found = false;
             BusLineStop blFirstBusStop = bl.FirstStation;
             BusLineStop blLastBusStop = bl.LastStation;
             if (busList.Contains(bl))
             {
-                 busList.Remove(bl);
-            }
-            bl.FirstStation=blLastBusStop;
-            bl.LastStation = blFirstBusStop;
-            if (busList.Contains(bl))
-            {
+                found = true;
                 busList.Remove(bl);
+            }
+            if (found == true)
+            {
+                bl.FirstStation = blLastBusStop;
+                bl.LastStation = blFirstBusStop;
+                if (busList.Contains(bl))
+                {
+                    busList.Remove(bl);
+                }
+            }
         }
         public List<BusLine> busesStopStation(int busStopCode)
         {   List<BusLine> stationBusLines = new List<BusLine>();
             foreach (BusLine busl in busList)
             {
-                busl.ListStations.IndexOf()
+                busl.ListStations.Find()
             }
         }
         public BusLine this[int busLineNumber]
