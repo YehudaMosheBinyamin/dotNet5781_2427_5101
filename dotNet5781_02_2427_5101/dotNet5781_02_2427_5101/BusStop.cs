@@ -23,8 +23,8 @@ namespace dotNet5781_02_2427_5101
             double randomLongtitude = 34.3 + rand.NextDouble() % (35.5 - 34.3);
             longtitude = randomLongtitude;
         }
-        private static List<int> busKeyList;
-            List<int> BusKeyList { get { return busKeyList; } set { busKeyList = value; } }
+            public static List<int> busKeyList;
+            public static List<int> BusKeyList { get { return busKeyList; } set { busKeyList = value; } }
             int busStationKey;
             double latitude;
             double longtitude;
@@ -34,7 +34,6 @@ namespace dotNet5781_02_2427_5101
             }
             public double Latitude { get { return latitude; } }
             public double Longtitude { get { return longtitude; } }
-
 
             public override string ToString()
             {

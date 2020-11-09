@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 namespace dotNet5781_02_2427_5101
 {
     public class BusLineStop : BusStop
-    {
-        int distanceFromPrevious;
+    {   int distanceFromPrevious;
         public int DistanceFromPrevious { get { return distanceFromPrevious; } }
         int timeFromPrevious;
         public int TimeFromPrevious { get { return timeFromPrevious; } }
@@ -16,6 +15,7 @@ namespace dotNet5781_02_2427_5101
         {
             Random r = new Random();
             distanceFromPrevious = r.Next(1, 101);
+            timeFromPrevious = r.Next(1, 60);
 
         }
     }

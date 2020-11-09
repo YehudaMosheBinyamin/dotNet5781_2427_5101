@@ -11,10 +11,10 @@ namespace dotNet5781_02_2427_5101
         Area operatingArea;
         public Area OperatingArea { get { return operatingArea; } }
         public int BusNumber => BusNumber;
-        BusLineStop firstStation;
-        public BusLineStop FirstStation { get { return firstStation; } }
-        BusLineStop lastStation;
-        public BusLineStop LastStation { get { return lastStation; } }
+        public BusLineStop firstStation;
+        public BusLineStop FirstStation { get { return firstStation; } set { firstStation = value; } }
+        public BusLineStop lastStation;
+        public BusLineStop LastStation { get { return lastStation; }set { LastStation = value; } }
         public List<BusLineStop> listStations = new List<BusLineStop>();
         public List<BusLineStop> ListStations { get { return listStations; } }
         public override string ToString()
@@ -60,7 +60,7 @@ namespace dotNet5781_02_2427_5101
             return distance;
         }
             //bus line from two bus stops
-        BusLine makeLine(BusLineStop stop1, BusLineStop stop2)
+         public  BusLine makeLine(BusLineStop stop1, BusLineStop stop2)
          {
                 BusLine newLine = new BusLine() { firstStation = stop1, lastStation = stop2 };
                 return newLine;
