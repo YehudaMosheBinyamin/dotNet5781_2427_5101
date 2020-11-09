@@ -48,8 +48,13 @@ namespace dotNet5781_02_2427_5101
         {   List<BusLine> stationBusLines = new List<BusLine>();
             foreach (BusLine busl in busList)
             {
-                busl.ListStations.Find()
+                foreach(BusLineStop bls in  busl.ListStations)
+                {
+                    if (bls.BusStationKey == busStopCode)
+                        stationBusLines.Add(busl);
+                }
             }
+            return stationBusLines;
         }
         public BusLine this[int busLineNumber]
         {
