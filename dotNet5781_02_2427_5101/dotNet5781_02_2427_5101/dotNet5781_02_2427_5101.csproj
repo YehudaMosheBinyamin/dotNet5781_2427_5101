@@ -48,6 +48,8 @@
     <Compile Include="BusLineCollection.cs" />
     <Compile Include="BusLineStop.cs" />
     <Compile Include="BusStop.cs" />
+    <Compile Include="NoLineAtStopException.cs" />
+    <Compile Include="NoLineException.cs" />
     <Compile Include="Passenger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace dotNet5781_02_2427_5101
-{
+{//2
     public class BusLineStop : BusStop
     {   int distanceFromPrevious;
         public int DistanceFromPrevious { get { return distanceFromPrevious; } }
@@ -16,7 +16,6 @@ namespace dotNet5781_02_2427_5101
             Random r = new Random();
             distanceFromPrevious = r.Next(1, 101);
             timeFromPrevious = r.Next(1, 60);
-
         }
     }
 }
