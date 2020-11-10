@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_2427_5101
 {
-    public enum menuChoice
+    public enum MenuChoice
     {
         EXIT, ADD, DELETE, SEARCH, SHOW
-    }
-    public enum busOrStasion
-    {
-        BUS,STASION
     }
 }

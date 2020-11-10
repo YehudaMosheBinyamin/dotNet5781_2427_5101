@@ -11,7 +11,7 @@ namespace dotNet5781_02_2427_5101
     public class BusLineCollection : IEnumerable
     {
         private List<BusLine> busList;//list that contains bus lines
-        List<BusLine> BusList { get { return busList; }  }
+        public List<BusLine> BusList { get { return busList; }set { busList = value; }  }
         IEnumerator IEnumerable.GetEnumerator()
         {
             return new MyEnumerator(this);

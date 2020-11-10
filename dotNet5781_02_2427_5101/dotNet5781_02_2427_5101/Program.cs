@@ -11,107 +11,89 @@ namespace dotNet5781_02_2427_5101
         public static void Main(string[] str)
         {
             int numOfBuses = 10;
-            int numOfStasions = 50;
-            List<BusStop> busStops;
-            List<BusLine> busLines;
-            //---------------------
-            for (int i = 0; i < numOfStasions; i++)
+            int numOfStations = 40;
+            List<BusLineStop> busStops = new List<BusLineStop>();
+            List<BusLine> busLines = new List<BusLine>();
+            //---------------------                                                                                                                                           
+            for (int i = 0; i < numOfStations; i++)
             {
-                BusStop tempStasion = new BusStop();
-                busStops.Add(tempStasion);
+                BusLineStop tempStation = new BusLineStop();
+                busStops.Add(tempStation);
             }
             for (int i = 0; i < numOfBuses; i++)
             {
                 BusLine tempBus = new BusLine();
                 busLines.Add(tempBus);
             }
+            BusLineCollection busLineCollection = new BusLineCollection();
+            busLineCollection.BusList = busLines;
+            bool ans;
             //---------------------
-            menuChoice myMenuChoice;
-            busOrStasion myBusOrStasion;
+            MenuChoice myMenuChoice;
+            int busOrStation;//will receive 0 for bus 1 for station
             do
             {
-                myMenuChoice = GetMenuChoice();
+                Console.WriteLine("Enter one of the following:");
+                foreach (MenuChoice MenuChoice in (MenuChoice[])Enum.GetValues(typeof(MenuChoice)))
+                {
+                    Console.WriteLine(MenuChoice);
+                }
+
+                ans = MenuChoice.TryParse(Console.ReadLine(), out myMenuChoice);
                 switch (myMenuChoice)
                 {
-                    case menuChoice.ADD:
-                        myBusOrStasion = GetBusOrStasion();
-                        if (myBusOrStasion == busOrStasion.BUS) { addBus(busLines); }
-                        if (myBusOrStasion == busOrStasion.STASION) { addStasion(busStops); }
+                    case MenuChoice.ADD:
+                        Console.WriteLine("Enter 0 for bus 1 for station");
+                        busOrStation = Convert.ToInt32(Console.ReadLine());
+                        if (busOrStation == 0) { busLineCollection.addBusLine(); }
+                        if (busOrStation == 1) { addStation(busStops); }
                         break;
-                    case menuChoice.DELETE:
-                        myBusOrStasion = GetBusOrStasion();
-                        if (myBusOrStasion == busOrStasion.BUS) { deleteBus(busLines); ; }
-                        if (myBusOrStasion == busOrStasion.STASION) { deleteStasion(busStops); }
+                    case MenuChoice.DELETE:
+                        Console.WriteLine("Enter 0 for bus 1 for station");
+                        busOrStation = Convert.ToInt32(Console.ReadLine());
+
+                        if (busOrStation == 0)
+                        {
+                            Console.WriteLine("Enter line for removal from list");
+                            int lineForDeletion = Convert.ToInt32(Console.ReadLine());
+
+                            busLineCollection.removeBusLine(busLineCollection[lineForDeletion]);
+                        }
+                        if (busOrStation == 1)
+                        {
+                            Console.WriteLine("Enter line o be edited");
+                            int lineToBeEdited = Convert.ToInt32(Console.ReadLine());
+                            Console.WriteLine("Enter station for removal from bus list");
+                            int stationForDeletion = Convert.ToInt32(Console.ReadLine());
+                            busLineCollection[lineToBeEdited].RemoveBusStop(busLineCollection[lineToBeEdited].ListStations[stationForDeletion]);
+                        }
                         break;
-                    case menuChoice.SEARCH:
-                        myBusOrStasion = GetBusOrStasion();
-                        if (myBusOrStasion == busOrStasion.BUS) { searchBus(busLines); }
-                        if (myBusOrStasion == busOrStasion.STASION) { searchStasion(busStops); }
+                    case MenuChoice.SEARCH:
+                        myBusOrStation = GetBusOrStation();
+                        if (myBusOrStation == busOrStasion.BUS) { searchBus(busLines); }
+                        if (myBusOrStation == busOrStasion.STASION) { searchStasion(busStops); }
                         break;
-                    case menuChoice.SHOW:
-                        myBusOrStasion = GetBusOrStasion();
-                        if (myBusOrStasion == busOrStasion.BUS) { showBus(busLines); }
-                        if (myBusOrStasion == busOrStasion.STASION) { showStasion(busStops); }
+                    case MenuChoice.SHOW:
+                        myBusOrStation = GetBusOrStation();
+                        if (myBusOrStation == busOrStasion.BUS) { showBus(busLines); }
+                        if (myBusOrStation == busOrStasion.STASION) { showStasion(busStops); }
                         break;
                     default:
                         break;
                 }
-            } while (myMenuChoice != 0) ;     
+            } while (myMenuChoice != 0);
         }
-
-        private static void showStasion(List<BusStop> busStops)
+        //bus line from two bus stops
+        BusLine makeLine(BusLineStop stop1, BusLineStop stop2)
+        {
+            BusLine newLine = new BusLine(stop1, stop2);
+            return newLine;
+        }
+        public int CompareTo(object obj)
         {
             throw new NotImplementedException();
         }
 
-        private static void showBus(List<BusLine> busLines)
-        {
-            throw new NotImplementedException();
-        }
-
-        private static void searchStasion(List<BusStop> busStops)
-        {
-            throw new NotImplementedException();
-        }
-
-        private static void searchBus(List<BusLine> busLines)
-        {
-            throw new NotImplementedException();
-        }
-
-        private static void deleteStasion(List<BusStop> busStops)
-        {
-            throw new NotImplementedException();
-        }
-
-                            }
-                        }
-                    }
-                    //bus line from two bus stops
-                    BusLine makeLine(BusStop stop1, BusStop stop2)
-                    {
-                        BusLine newLine = new BusLine() { firstStation = stop1, lastStation = stop2 };
-                        return newLine;
-                    }
-                    public int CompareTo(object obj)
-                    {
-                        throw new NotImplementedException();
-                    }
-                }
-
-                public int CompareTo(object obj)
-                {
-                    throw new NotImplementedException();
-                }
-            }
-            class Program
-            {
-                static void Main(string[] args)
-                {
-
-                }
-            }
-        }
     }
-}  
+} 
     

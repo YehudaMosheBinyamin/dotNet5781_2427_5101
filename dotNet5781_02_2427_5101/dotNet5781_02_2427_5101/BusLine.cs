@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace dotNet5781_02_2427_5101
 {
     public class BusLine : IComparable
-    {  public  BusLine(BusLineStop firstStation,BusLineStop lastStation)
+    { public BusLine(BusLineStop firstStation, BusLineStop lastStation)
         {
             Array values = Enum.GetValues(typeof(Area));
             Random random = new Random();
@@ -21,7 +21,7 @@ namespace dotNet5781_02_2427_5101
         public BusLineStop firstStation;
         public BusLineStop FirstStation { get { return firstStation; } set { firstStation = value; } }
         public BusLineStop lastStation;
-        public BusLineStop LastStation { get { return lastStation; }set { LastStation = value; } }
+        public BusLineStop LastStation { get { return lastStation; } set { LastStation = value; } }
         private List<BusLineStop> listStations;
         public List<BusLineStop> ListStations { get { return listStations; } set { listStations = value; } }
         //3.1
@@ -60,7 +60,15 @@ namespace dotNet5781_02_2427_5101
                 return false;
             }
         }
-       
+        public BusLineStop this[int key]
+        {
+            get
+            {
+                foreach (BusLineStop bls in listStations) { if (bls.BusStationKey == key) { return bls; } }
+
+                throw new Exception("number doesn't exist");
+            }
+        }
         //distance between two stops 3.4
         public float distance(BusLineStop bs1, BusLineStop bs2)
         {
