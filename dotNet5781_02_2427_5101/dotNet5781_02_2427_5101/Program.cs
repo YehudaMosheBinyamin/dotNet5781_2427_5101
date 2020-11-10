@@ -22,7 +22,9 @@ namespace dotNet5781_02_2427_5101
             }
             for (int i = 0; i < numOfBuses; i++)
             {
-                BusLine tempBus = new BusLine();
+                BusLineStop bls1 = new BusLineStop();
+                BusLineStop bls2 = new BusLineStop();
+                BusLine tempBus = new BusLine(bls1,bls2);
                 busLines.Add(tempBus);
             }
             BusLineCollection busLineCollection = new BusLineCollection();
@@ -42,12 +44,12 @@ namespace dotNet5781_02_2427_5101
                 ans = MenuChoice.TryParse(Console.ReadLine(), out myMenuChoice);
                 switch (myMenuChoice)
                 {
-                    case MenuChoice.ADD:
-                        Console.WriteLine("Enter 0 for bus 1 for station");
-                        busOrStation = Convert.ToInt32(Console.ReadLine());
-                        if (busOrStation == 0) { busLineCollection.addBusLine(); }
-                        if (busOrStation == 1) { addStation(busStops); }
-                        break;
+                    //case MenuChoice.ADD:
+                        //Console.WriteLine("Enter 0 for bus 1 for station");
+                       // busOrStation = Convert.ToInt32(Console.ReadLine());
+                       // if (busOrStation == 0) { busLineCollection.addBusLine(); }
+                       // if (busOrStation == 1) { addStation(busStops); }
+                       // break;
                     case MenuChoice.DELETE:
                         Console.WriteLine("Enter 0 for bus 1 for station");
                         busOrStation = Convert.ToInt32(Console.ReadLine());
@@ -68,18 +70,18 @@ namespace dotNet5781_02_2427_5101
                             busLineCollection[lineToBeEdited].RemoveBusStop(busLineCollection[lineToBeEdited].ListStations[stationForDeletion]);
                         }
                         break;
-                    case MenuChoice.SEARCH:
-                        myBusOrStation = GetBusOrStation();
-                        if (myBusOrStation == busOrStasion.BUS) { searchBus(busLines); }
-                        if (myBusOrStation == busOrStasion.STASION) { searchStasion(busStops); }
-                        break;
-                    case MenuChoice.SHOW:
-                        myBusOrStation = GetBusOrStation();
-                        if (myBusOrStation == busOrStasion.BUS) { showBus(busLines); }
-                        if (myBusOrStation == busOrStasion.STASION) { showStasion(busStops); }
-                        break;
-                    default:
-                        break;
+                    //case MenuChoice.SEARCH:
+                       // myBusOrStation = GetBusOrStation();
+                       // if (myBusOrStation == busOrStasion.BUS) { searchBus(busLines); }
+                       // if (myBusOrStation == busOrStasion.STASION) { searchStasion(busStops); }
+                        //break;
+                   // case MenuChoice.SHOW:
+                      //  myBusOrStation = GetBusOrStation();
+                      //  if (myBusOrStation == busOrStasion.BUS) { showBus(busLines); }
+                       // if (myBusOrStation == busOrStasion.STASION) { showStasion(busStops); }
+                       // break;
+                    //default:
+                      //  break;
                 }
             } while (myMenuChoice != 0);
         }
