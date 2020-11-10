@@ -84,53 +84,34 @@ namespace dotNet5781_02_2427_5101
             throw new NotImplementedException();
         }
 
-        private static void deleteBus(List<BusLine> busLines)
-        {
-            throw new NotImplementedException();
-        }
+                            }
+                        }
+                    }
+                    //bus line from two bus stops
+                    BusLine makeLine(BusStop stop1, BusStop stop2)
+                    {
+                        BusLine newLine = new BusLine() { firstStation = stop1, lastStation = stop2 };
+                        return newLine;
+                    }
+                    public int CompareTo(object obj)
+                    {
+                        throw new NotImplementedException();
+                    }
+                }
 
-        private static void addStasion(List<BusStop> busStops)
-        {
-            throw new NotImplementedException();
-        }
-
-        private static void addBus(List<BusLine> busLines)
-        {
-            throw new NotImplementedException();
-        }
-
-
-
-        //--------------------------------------------
-        public static menuChoice GetMenuChoice()
-        {
-            int myMenuChoice;
-            bool isCorect;
-            do
+                public int CompareTo(object obj)
+                {
+                    throw new NotImplementedException();
+                }
+            }
+            class Program
             {
-                Console.WriteLine("Type your choice:");
-                Console.WriteLine("0 - Exit program.");
-                Console.WriteLine("1 - Add a bus or stasion.");
-                Console.WriteLine("2 - Delete a bus or stasion.");
-                Console.WriteLine("3 - Search a bus or stasion.");
-                Console.WriteLine("4 - Show informationabut a bus or stasion.");
-                isCorect = int.TryParse(Console.ReadLine(), out myMenuChoice);
-            } while (!isCorect || myMenuChoice < 0 || myMenuChoice > 5);
-            return (menuChoice)myMenuChoice;
-        }
-        public static busOrStasion GetBusOrStasion()
-        {
-            int myBusOrStasion;
-            bool isCorect;
-            do
-            {
-                Console.WriteLine("Type your choice:");
-                Console.WriteLine("0 - Bus.");
-                Console.WriteLine("1 - Stasion.");
-                isCorect = int.TryParse(Console.ReadLine(), out myBusOrStasion);
-            } while (!isCorect || myBusOrStasion < 0 || myBusOrStasion > 1);
-            return (busOrStasion)myBusOrStasion;
+                static void Main(string[] args)
+                {
+
+                }
+            }
         }
     }
+}  
     
-}

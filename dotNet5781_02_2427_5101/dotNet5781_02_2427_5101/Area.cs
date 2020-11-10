@@ -6,11 +6,5 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_2427_5101
 {
-    class Passenger
-    {
-            BusStop currentBusStop;
-            BusLine bs1=new BusLine();
-            BusLine bs2 = new BusLine();
-    }
+  public enum Area { General, North, South, Center, Jerusalem };
 }
-
