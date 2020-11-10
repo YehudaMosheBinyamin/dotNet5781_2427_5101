@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace dotNet5781_02_2427_5101
-{
+{//1Class to represent a bus stop
     public class BusStop
-    {
+    {//constructor
         public BusStop()
         {
             Random rand = new Random();
@@ -23,18 +23,17 @@ namespace dotNet5781_02_2427_5101
             double randomLongtitude = 34.3 + rand.NextDouble() % (35.5 - 34.3);
             longtitude = randomLongtitude;
         }
-        private static List<int> busKeyList;
-            List<int> BusKeyList { get { return busKeyList; } set { busKeyList = value; } }
-            int busStationKey;
-            double latitude;
-            double longtitude;
+            public static List<int> busKeyList;//list of busKeyList
+            public static List<int> BusKeyList { get { return busKeyList; } }
+            int busStationKey;//code of bus station
             public int BusStationKey
             {
                 get { return busStationKey; }
             }
+            double latitude;
             public double Latitude { get { return latitude; } }
+            double longtitude;
             public double Longtitude { get { return longtitude; } }
-
 
             public override string ToString()
             {
