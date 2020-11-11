@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 
 namespace dotNet5781_02_2427_5101
 {
     public class BusLineCollection : IEnumerable
     {
-        private List<BusLine> busList;//list that contains bus lines
+        private List<BusLine> busList=new List<BusLine>();//list that contains bus lines
         public List<BusLine> BusList { get { return busList; }set { busList = value; }  }
         IEnumerator IEnumerable.GetEnumerator()
         {
@@ -24,7 +20,7 @@ namespace dotNet5781_02_2427_5101
            {
                    BusList.Append(bl);
            }
-    }
+        }
         
         //4.2 remove bus line from busList
         public void removeBusLine(BusLine bl)
@@ -58,14 +54,13 @@ namespace dotNet5781_02_2427_5101
                         stationBusLines.Add(busl);
                 }
             }
-            if (stationBusLines.Count > 0)
-            {
-                return stationBusLines;
-            }
-            else
-            {
-                throw new NoLineAtStopException("EXCEPTION:NO BUS LINES GO PAST THIS STATION");
-            }
+
+                if (stationBusLines.Count > 0)
+                {
+                    return stationBusLines;
+                }
+
+               throw new NoLineAtStopException("NOLINESATSTOPEXCEPTION:No lines go past this bus station" );
         }
         //4.3 returnes busList after it is sorted from shortest lines to longest lines
         public List<BusLine> sortListLines()

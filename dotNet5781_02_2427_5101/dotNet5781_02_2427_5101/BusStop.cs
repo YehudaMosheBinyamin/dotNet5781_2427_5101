@@ -23,7 +23,7 @@ namespace dotNet5781_02_2427_5101
             double randomLongtitude = 34.3 + rand.NextDouble() % (35.5 - 34.3);
             longtitude = randomLongtitude;
         }
-            public static List<int> busKeyList;//list of busKeyList
+            public static List<int> busKeyList=new List<int>();//list of busKeyList
             public static List<int> BusKeyList { get { return busKeyList; } }
             int busStationKey;//code of bus station
             public int BusStationKey

@@ -5,12 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace dotNet5781_02_2427_5101
-{
+{   [Serializable]
     public class NoLineAtStopException:Exception
     {
      public NoLineAtStopException()
         {
-
         }
     public NoLineAtStopException(string message) : base(message)
         {

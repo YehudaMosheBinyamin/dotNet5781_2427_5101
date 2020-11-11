@@ -1,17 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace dotNet5781_02_2427_5101
 {
-    public class NoLineException:Exception
+    [Serializable]
+    internal class NoLineException : Exception
     {
-        public NoLineException() {
+        public NoLineException()
+        {
         }
-        public NoLineException(string expMessage):
-            base(expMessage) 
+
+        public NoLineException(string message) : base(message)
+        {
+        }
+
+        public NoLineException(string message, Exception innerException) : base(message, innerException)
+        {
+        }
+
+        protected NoLineException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
     }

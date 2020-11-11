@@ -7,17 +7,21 @@ using System.Threading.Tasks;
 namespace dotNet5781_02_2427_5101
 {
     public class BusLine : IComparable
-    { public BusLine(BusLineStop firstStation, BusLineStop lastStation)
-        {
+    {
+        public BusLine(List<BusLineStop> bls)
+        {   
             Array values = Enum.GetValues(typeof(Area));
             Random random = new Random();
             Area operatingArea = (Area)values.GetValue(random.Next(values.Length));
-            this.firstStation = firstStation;
-            this.lastStation = lastStation;
+            busNumber=random.Next(1, 1000);
+            this.firstStation = bls[0];
+            this.lastStation = bls[bls.Count - 1];
         }
         public Area operatingArea;
         public Area OperatingArea { get { return operatingArea; } set { operatingArea = value; } }
-        public int BusNumber => BusNumber;
+        internal int busNumber;
+        public int BusNumber { get { return busNumber; }} 
+
         public BusLineStop firstStation;
         public BusLineStop FirstStation { get { return firstStation; } set { firstStation = value; } }
         public BusLineStop lastStation;
@@ -90,7 +94,7 @@ namespace dotNet5781_02_2427_5101
             return distance;
         }
         //3.5 time difference between two stop
-        public int timeDifference (BusLineStop bls1, BusLineStop bls2)
+        public int timeDifference(BusLineStop bls1, BusLineStop bls2)
         {
             int time = 0;
             if (listStations.Contains(bls1) && listStations.Contains(bls2))
@@ -110,14 +114,17 @@ namespace dotNet5781_02_2427_5101
 
             return time;
         }
-            //create bus line from two bus stops 3.6
-         public  BusLine makeLine(BusLineStop stop1, BusLineStop stop2)
-         {
-                BusLine newLine = new BusLine(stop1,stop2);
-                return newLine;
-         }
+        //create bus line from two bus stops 3.6
+        public BusLine makeLine(BusLineStop stop1, BusLineStop stop2)
+        {
+            List<BusLineStop> bls = new List<BusLineStop>();
+            bls.Add(stop1);
+            bls.Add(stop2);
+            BusLine newLine = new BusLine(bls);
+            return newLine;
+        }
         //for sort method,sorting based on quicker overall trip length 
-            public int CompareTo(object obj)
+        public int CompareTo(object obj)
         {
             BusLine otherBusLine = obj as BusLine;
             if (otherBusLine != null)
@@ -137,8 +144,8 @@ namespace dotNet5781_02_2427_5101
                     return -1;
                 }
             }
-            throw new Exception("EXCEPTION");
+            throw new BusLineDoesNotExistException("BUSLINEDOESNTEXISTEXCEPTION:This bus line doesn't exist");
 
-         }
+        }
     }
 }
