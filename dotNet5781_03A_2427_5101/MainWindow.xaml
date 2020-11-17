@@ -5,8 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5781_03A_2427_5101"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="MainWindow" Height="640" Width="800">
+    <Grid Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="400*"/>
+        </Grid.RowDefinitions>
+        <Grid Name="UpGrid" HorizontalAlignment="Stretch" Height="auto" Grid.Row="0" 
+          VerticalAlignment="Stretch" Width="auto">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ComboBox Name="cbBusLines" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Grid.Column="1">
+            </ComboBox>
+            <TextBox Name="tbArea" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="3" 
+                     Text="{Binding Path=Area}" Background="#FF78EC66"></TextBox>
+            <Label Content="Bus Line Number:" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Grid.Column="0" >
+            </Label>
+        </Grid>
+        <Label Content="Area" HorizontalAlignment="Left" Margin="48,22,0,0" VerticalAlignment="Top"/>
+        <ListBox Name="lbBusLineStatiions" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top"   Width="100" ItemSource="{Binding}"></ListBox>
     </Grid>
+  
+
+    
 </Window>
