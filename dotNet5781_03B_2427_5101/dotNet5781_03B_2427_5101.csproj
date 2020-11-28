@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{25C01C5B-87FD-4FC4-B08B-8F81A169CA45}</ProjectGuid>
+    <ProjectGuid>{5AB675B1-5BBF-45C1-8FBD-92E187E0A3E0}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>dotNet5781_03B_2427_5101</RootNamespace>
     <AssemblyName>dotNet5781_03B_2427_5101</AssemblyName>
@@ -55,6 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Program.cs" />
+    <Compile Include="Status.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,6 +65,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Bus.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

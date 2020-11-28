@@ -7,6 +7,27 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid Name="MainGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="400*"/>
+            </Grid.RowDefinitions>
+            <Grid Name="UpGrid" HorizontalAlignment="Stretch" Height="auto" Grid.Row="0"
+      VerticalAlignment="Stretch" Width="auto">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ComboBox Name="cbBuses" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Stretch" VerticalContentAlignment="Center" Grid.Column="0" ItemsSource="{Binding}" SelectionChanged="cbBusLines_SelectionChanged" FontSize="20" BorderBrush="Black" >
+                </ComboBox>
+                <TextBox Name="tbArea" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="3"
+               Text="{Binding Path=OperatingArea}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FF0DF9D9" FontSize="20" BorderBrush="Black" BorderThickness="1"></TextBox>
+                <Label Content="Area:" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="2" FontSize="20" FontFamily="Arial" BorderBrush="Black" BorderThickness="1">
+                </Label>
+                <Button Content="Add Bus" Grid.Column="1" HorizontalAlignment="Left" Height="45" Margin="0,2,0,0" VerticalAlignment="Top" Width="198"/>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
