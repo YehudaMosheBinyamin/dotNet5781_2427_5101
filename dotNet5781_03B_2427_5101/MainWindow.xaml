@@ -6,28 +6,12 @@
         xmlns:local="clr-namespace:dotNet5781_03B_2427_5101"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Grid Name="MainGrid">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50*"/>
-                <RowDefinition Height="400*"/>
-            </Grid.RowDefinitions>
-            <Grid Name="UpGrid" HorizontalAlignment="Stretch" Height="auto" Grid.Row="0"
-      VerticalAlignment="Stretch" Width="auto">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <ComboBox Name="cbBuses" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Stretch" VerticalContentAlignment="Center" Grid.Column="0" ItemsSource="{Binding}" SelectionChanged="cbBusLines_SelectionChanged" FontSize="20" BorderBrush="Black" >
-                </ComboBox>
-                <TextBox Name="tbArea" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="3"
-               Text="{Binding Path=OperatingArea}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FF0DF9D9" FontSize="20" BorderBrush="Black" BorderThickness="1"></TextBox>
-                <Label Content="Area:" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="2" FontSize="20" FontFamily="Arial" BorderBrush="Black" BorderThickness="1">
-                </Label>
-                <Button Content="Add Bus" Grid.Column="1" HorizontalAlignment="Left" Height="45" Margin="0,2,0,0" VerticalAlignment="Top" Width="198"/>
-            </Grid>
-        </Grid>
+    <Grid Name="myGrid">
+        <ListBox Name="lbBuses"  HorizontalAlignment="Left"  ItemsSource="{Binding}" Height="311" Margin="50,48,0,0" VerticalAlignment="Top" Width="357"  SelectionChanged="lbBuses_SelectionChanged"/>
+        <Button Name="bAdd" Content="Add Bus" HorizontalAlignment="Left" Height="30" Margin="323,379,0,0" VerticalAlignment="Top" Width="84" Click="Button_Click"/>
+        <Button Name="bTravel" Content="TRAVEL"   HorizontalAlignment="Left" Height="39" Margin="418,88,0,0" VerticalAlignment="Top" Width="90" Click="Button_Click_1"/>
+        <Button Content="About" HorizontalAlignment="Left" Margin="418,142,0,0" VerticalAlignment="Top" Width="90" Height="36" Click="Button_Click_2"/>
+        <Button Content="Refuel" HorizontalAlignment="Left" Margin="418,193,0,0" VerticalAlignment="Top" Width="90" Height="29" Click="Button_Click_3"/>
     </Grid>
 </Window>
+

@@ -18,7 +18,7 @@ namespace dotNet5781_01_2427_5101
         private int kmSinceTreated; // קמ מאז טיפול אחרון
         private int kmPossible; // כמה קמ אפשר לנסוע כעת כתלות במצב הדלק
         static DateTime currentDate; // משתנה זה מצין את היום הנוכחי
-        //-------------------------------------------
+        //------------------------------------------- 
         // set/get for  all...
         public string LicenseNumber
 
@@ -46,10 +46,7 @@ namespace dotNet5781_01_2427_5101
             get { return lastTreated; }
             set
             {
-                if (value < start) // לא אפשרי שטיפול יהיה לפני שנקנה
-                {
-                    throw new Exception("Not possible! - the bus didn't exist yet.");
-                }
+              
                 lastTreated = value;
             }
         }
@@ -110,10 +107,10 @@ namespace dotNet5781_01_2427_5101
                 if (_start < reform) // אם לפני הרפורמה אז
                 {
                     if (_licenseNumber.Length!=7) // אם יש יותר מ7 ספרות אז מקבל חריגה
-                    {
+                    {   
                         throw new Exception("Must be 7 digits long!");
                     }
-                    this.licenseNumber = _licenseNumber;
+                    licenseNumber = _licenseNumber;
                 }
                 else // אם אחרי הרפורמה אז 
                 {
