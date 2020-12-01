@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid Name="myGrid">
-        <ListBox Name="lbBuses"  HorizontalAlignment="Left"  ItemsSource="{Binding}" Height="311" Margin="50,48,0,0" VerticalAlignment="Top" Width="357"  SelectionChanged="lbBuses_SelectionChanged"/>
+        <ListBox Name="lbBuses" IsEnabled="{Binding}" HorizontalAlignment="Left"  ItemsSource="{Binding}" Height="311" Margin="50,48,0,0" VerticalAlignment="Top" Width="357"   SelectionChanged="lbBuses_SelectionChanged"/>
         <Button Name="bAdd" Content="Add Bus" HorizontalAlignment="Left" Height="30" Margin="323,379,0,0" VerticalAlignment="Top" Width="84" Click="Button_Click"/>
         <Button Name="bTravel" Content="TRAVEL"   HorizontalAlignment="Left" Height="39" Margin="418,88,0,0" VerticalAlignment="Top" Width="90" Click="Button_Click_1"/>
         <Button Content="About" HorizontalAlignment="Left" Margin="418,142,0,0" VerticalAlignment="Top" Width="90" Height="36" Click="Button_Click_2"/>

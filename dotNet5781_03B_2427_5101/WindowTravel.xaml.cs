@@ -12,7 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using System.Windows.Threading;
+using System.Threading;
 namespace dotNet5781_03B_2427_5101
 {
     /// <summary>
@@ -20,11 +21,37 @@ namespace dotNet5781_03B_2427_5101
     /// </summary>
     public partial class WindowTravel : Window
     {
+        Thread travelThread;
         private Bus currentBus;
         public WindowTravel(Bus bus)
         {
             currentBus = bus;
             InitializeComponent();
+        }
+
+     
+        private void travelDispatch(int km)
+        {
+            if (!CheckAccess())
+            {
+                Action<int> d = travelDispatch;
+                Dispatcher.BeginInvoke(d, km);
+            }
+            else
+            {
+                currentBus.KmPossible -= Convert.ToInt32(tbDistance.Text);
+                currentBus.KmSinceTreated += Convert.ToInt32(tbDistance.Text);
+                MessageBox.Show("Finished Journey");
+                this.Close();
+                
+            }
+        }
+
+        private void travel(float timeJourney)
+        {
+            Thread.Sleep(6000*Convert.ToInt32(timeJourney));
+            //travelDispatch(Convert.ToInt32(tbDistance.Text));
+            travelDispatch(100);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -48,10 +75,15 @@ namespace dotNet5781_03B_2427_5101
             }
             else
             {
-                currentBus.KmPossible -= distance;
-                currentBus.KmSinceTreated += distance;
-                this.Close();
+                Random random = new Random(DateTime.Now.Millisecond);
+                int speed = random.Next(20, 50);
+                float time = float.Parse(tbDistance.Text) / speed;
+                travelThread = new Thread(()=> travel(time));
+                travelThread.Start();
+               
             }
         }
+
+        
     }
 }

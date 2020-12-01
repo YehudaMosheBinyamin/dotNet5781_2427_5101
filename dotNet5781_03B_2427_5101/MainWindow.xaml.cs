@@ -65,6 +65,7 @@ namespace dotNet5781_03B_2427_5101
             activeBusList[9].KmPossible = 1;
             lbBuses.ItemsSource= activeBusList;
             lbBuses.SelectedIndex = 0;
+            lbBuses.IsEnabled = true;
             continueRefilling = true;
         }
 
@@ -85,8 +86,7 @@ namespace dotNet5781_03B_2427_5101
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            selectedBus = lbBuses.SelectedValue as Bus;
+        {   selectedBus = lbBuses.SelectedValue as Bus;
             WindowBusDetails windowBusDetails = new WindowBusDetails(selectedBus);
             windowBusDetails.Show();
         }
@@ -101,26 +101,23 @@ namespace dotNet5781_03B_2427_5101
             {
                 selectedBus.KmPossible = 1200;
                 lbBuses.Items.Refresh();
+                lbBuses.IsEnabled = true;
                 MessageBox.Show("Refilled");
             }
         }
-        private void waitRefill()
-        {
-            Thread.Sleep(12000);
-        }
-        //after refill is complete
+        
+        
         private void RefillUpdate()
-        {
+        {   
+            Thread.Sleep(12000);
             kmDispatch(1200);
         }
-    
+
         private void Button_Click_3(object sender, RoutedEventArgs e)
-        {   
+        {
+            lbBuses.IsEnabled = false;
             selectedBus = lbBuses.SelectedValue as Bus;
-            refillThread = new Thread(waitRefill);
-            refillThread.Start();
             refillUpdateThread = new Thread(RefillUpdate);
-            refillUpdateThread.Start();
-            refillUpdateThread.Join();  
+            refillUpdateThread.Start(); 
         }
     } }
