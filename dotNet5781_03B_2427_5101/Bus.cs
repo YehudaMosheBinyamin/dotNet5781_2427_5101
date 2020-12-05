@@ -14,7 +14,7 @@ namespace dotNet5781_01_2427_5101
         Status state;
         public Status State { get { return state; } set { state= value; } }
         private readonly string  licenseNumber; // מספר רישוי
-        private readonly bool  isDangerous; // האם מסוכן
+        private  bool  isDangerous; // האם מסוכן
         private DateTime start; // תאריך תחילת שרות
         private DateTime lastTreated; // תאריך טיפול אחרון
         private int allKmTrav; // קילומטרז

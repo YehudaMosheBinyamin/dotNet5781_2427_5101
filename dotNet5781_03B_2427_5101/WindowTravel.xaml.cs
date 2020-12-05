@@ -47,6 +47,7 @@ namespace dotNet5781_03B_2427_5101
                 currentBus.KmPossible -= Convert.ToInt32(tbDistance.Text);
                 currentBus.KmSinceTreated += Convert.ToInt32(tbDistance.Text);
                 currentBus.State = Status.Ready;
+                bSend.IsEnabled = true;
                 MessageBox.Show("Finished Journey");
                 this.Close();
                 
@@ -61,7 +62,7 @@ namespace dotNet5781_03B_2427_5101
             travelDispatch(100);
         }
         //on bTravel the bus travels the distance requested by operator.In case of impossible request an appropriate warning is sent to operator
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_ClickSend(object sender, RoutedEventArgs e)
         {   int possibleDistance = currentBus.KmPossible;
             int distance= Convert.ToInt32(tbDistance.Text);
             int limitBeforeTreatment = 20000;
@@ -78,12 +79,13 @@ namespace dotNet5781_03B_2427_5101
                     this.Close();
                 }
                 else
-                {   
+                {
+                    bSend.IsEnabled = false;
                     currentBus.State = Status.Transit;
                     Random random = new Random(DateTime.Now.Millisecond);
                     int speed = random.Next(20, 50);
                     float time = float.Parse(tbDistance.Text) / speed;
-                    string notification = String.Format("The journey has started.Estimated Time of arrival: {0}", time);
+                    string notification = String.Format("The journey has started.Estimated Hours until arrival: {0} ", time);
                     MessageBox.Show(notification);
                     travelThread = new Thread(() => travel(time));
                     travelThread.Start();

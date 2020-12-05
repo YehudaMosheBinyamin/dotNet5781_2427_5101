@@ -17,10 +17,10 @@
                     <ColumnDefinition Width="90"/>
                     <ColumnDefinition Width="90"/>
                 </Grid.ColumnDefinitions>
-
-                <TextBlock Text="{Binding}" Grid.Column="0" Width="90" Grid.Row="0" />
-                <Button DataContext="{Binding}" Grid.Column="1" Grid.Row="0" Name="bTravel" Content="TRAVEL"   HorizontalAlignment="Left" Height="39"  VerticalAlignment="Bottom" Width="90" Click="Button_Click_1"/>
-                <Button DataContext="{Binding}" Grid.Column="2" Grid.Row="0" Content="Refuel" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="90" Height="29" Click="Button_Click_3"/>
+                <TextBlock Name="tbLicense" HorizontalAlignment="Left" Text="{Binding}" Grid.Column="0" Width="90" Grid.Row="0" >
+                </TextBlock>
+                <Button  DataContext="{Binding}"  Grid.Column="1" Grid.Row="0" Name="bTravel" Content="TRAVEL"   HorizontalAlignment="Center" Height="39"  VerticalAlignment="Bottom" Width="90" Click="Button_Click_1"/>
+                <Button Name="bRefuel"  DataContext="{Binding}" Grid.Column="2" Grid.Row="0" Content="Refuel" HorizontalAlignment="Right"  VerticalAlignment="Top" Width="90" Height="29" Click="Button_Click_3"/>
             </Grid>
         </DataTemplate>
     </Window.Resources>

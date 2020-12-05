@@ -33,7 +33,7 @@
         <TextBlock Grid.Row="4" Grid.Column="1" Name="tbLastTreated" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="{Binding Path=LastTreated}" VerticalAlignment="Center"/>
         <Label  Grid.Row="5" Grid.Column="0" Content="Km possible:" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="79" Margin="0,0,317,0"/>
         <TextBlock Grid.Row="5" Grid.Column="1" Name="tbKmPossible" HorizontalAlignment="Left"  TextWrapping="Wrap"  Text="{Binding Path=KmPossible}" VerticalAlignment="Center" />
-        <Button Name="btTreat"  Content="Treat" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Right" Margin="0,0,15,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btTreat_Click" Width="80"></Button>
-        <Button Name="btRefuel" Content="Refuel" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="15,0,0,0" VerticalContentAlignment="Center" Click="btRefuel_Click" Width="80"></Button>
+        <Button Name="btTreat"  IsEnabled="{Binding}" Content="Treat" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Right" Margin="0,0,15,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btTreat_Click" Width="80"></Button>
+        <Button Name="btRefuel" IsEnabled="{Binding}" Content="Refuel" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="15,0,0,0" VerticalContentAlignment="Center" Click="btRefuel_Click" Width="80"></Button>
     </Grid>
 </Window>

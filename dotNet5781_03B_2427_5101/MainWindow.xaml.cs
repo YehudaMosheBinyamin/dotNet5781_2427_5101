@@ -157,7 +157,7 @@ namespace dotNet5781_03B_2427_5101
             Status stateNow = selectedBus.State;
             if (stateNow == Status.Ready&&selectedBus.KmPossible<1200)
             {
-                MessageBox.Show("refilling...");
+                //MessageBox.Show("refilling...");
                 selectedBus.State = Status.Refilling;
                 refillUpdateThread = new Thread(RefillUpdate);
                 refillUpdateThread.Start();

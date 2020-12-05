@@ -9,9 +9,7 @@
     <Grid Name="myGrid">
         <Label Content="Distance" HorizontalAlignment="Left" Height="36" Margin="87,54,0,0" VerticalAlignment="Top" Width="100"/>
         <TextBox Name="tbDistance" HorizontalAlignment="Left" Height="36" Margin="187,54,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="116"/>
-        <Button Content="Send" HorizontalAlignment="Left" Margin="348,305,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <ProgressBar Name="pTravel" Minimum="0" Maximum="100"  HorizontalAlignment="Left" Height="16" Margin="566,309,0,0" VerticalAlignment="Top" Width="191"/>
-        <Label Content="Sending:" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="486,305,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.524,1.246" Height="32" Width="75"/>
+        <Button Name="bSend" Content="Send" HorizontalAlignment="Left" Margin="348,305,0,0" VerticalAlignment="Top" Width="75" IsEnabled="{Binding}" Click="Button_ClickSend"/>
 
     </Grid>
 </Window>

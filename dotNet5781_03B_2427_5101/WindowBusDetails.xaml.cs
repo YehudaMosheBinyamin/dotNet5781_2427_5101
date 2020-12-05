@@ -36,6 +36,8 @@ namespace dotNet5781_03B_2427_5101
             Status stateNow = selectedBus.State;
             if ((stateNow == Status.Ready)&&(!(selectedBus.IsDangerous)))
             {
+                btTreat.IsEnabled = false;
+                MessageBox.Show("Treatment started.24 Hours to finish");
                 selectedBus.State = Status.Treatment;
                 treatmentThread = new Thread(TreatmentUpdate);
                 treatmentThread.Start();
@@ -63,6 +65,7 @@ namespace dotNet5781_03B_2427_5101
                 tbKmPossible.Text = currentBus.KmPossible.ToString();
                 tbKmLastTreated.Text = currentBus.KmSinceTreated.ToString();
                 MessageBox.Show("Treatment Complete");
+                btTreat.IsEnabled = true;
             }
         }
         //function that makes process of treatment 24 hours long(simulated) and sends to process to dispatcher to end it
@@ -78,7 +81,8 @@ namespace dotNet5781_03B_2427_5101
             Status stateNow = selectedBus.State;
             if ((stateNow == Status.Ready )&&(selectedBus.KmPossible<1200)&&(!(selectedBus.IsDangerous)))
             {
-                MessageBox.Show("Refilling");
+                btRefuel.IsEnabled = false;
+                MessageBox.Show("Refuel started.2 Hours to finish");
                 selectedBus.State = Status.Refilling;
                 refillUpdateThread = new Thread(RefillUpdate);
                 refillUpdateThread.Start();
@@ -107,6 +111,7 @@ namespace dotNet5781_03B_2427_5101
                 currentBus.State = Status.Ready;
                 tbKmPossible.Text = currentBus.KmPossible.ToString();
                 MessageBox.Show("Refilled");
+                btRefuel.IsEnabled = true;
             }
         }
 
