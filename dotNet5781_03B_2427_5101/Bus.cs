@@ -9,7 +9,10 @@ namespace dotNet5781_01_2427_5101
 {
     public class Bus
     {
+
         //data members:
+        Status state;
+        public Status State { get { return state; } set { state= value; } }
         private readonly string  licenseNumber; // מספר רישוי
         private readonly bool  isDangerous; // האם מסוכן
         private DateTime start; // תאריך תחילת שרות
@@ -91,6 +94,9 @@ namespace dotNet5781_01_2427_5101
             }
 
         }
+
+   
+
         //----------------------------------------
         //constructor:
         public Bus(string _licenseNumber, DateTime _start)
@@ -125,6 +131,7 @@ namespace dotNet5781_01_2427_5101
             allKmTrav = 0;
             kmSinceTreated = 0;
             kmPossible = 0;
+            state = Status.Ready;
         }
         //----------------------------------------
         // פונקציות בסיסיות של האוטובוס: תדלוק ,טיפול,נסיעה  
@@ -181,6 +188,10 @@ namespace dotNet5781_01_2427_5101
         }
         //------------------------------------------
 
+    }
+    public enum Status
+    {
+        Ready, Transit, Refilling, Treatment
     }
 }
 

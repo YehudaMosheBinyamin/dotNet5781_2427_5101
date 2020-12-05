@@ -8,10 +8,10 @@
         Title="WindowAddBus" Height="450" Width="800">
     <Grid>
         <TextBox Name="tbLicense" HorizontalAlignment="Left" Height="33" Margin="105,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  Width="98"/>
-        <Label Content="License Number" HorizontalAlignment="Left" Height="33" Margin="0,51,0,0" VerticalAlignment="Top" Width="105"/>
-        <Label Content="Start Date" HorizontalAlignment="Left" Height="33" Margin="222,51,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="License Number:" HorizontalAlignment="Left" Height="33" Margin="0,51,0,0" VerticalAlignment="Top" Width="105"/>
+        <Label Content="Start Date:" HorizontalAlignment="Left" Height="33" Margin="222,51,0,0" VerticalAlignment="Top" Width="120"/>
         <DatePicker Name="dpStart" DisplayDateStart="01.01.2011"
-             DisplayDateEnd="12.30.2099" Margin="347,52,411,343">
+             Text="Type here or choose from calendar:" DisplayDateEnd="12.30.2099" Margin="286,52,319,335">
         </DatePicker>
         
         <Button Name="bAdd" Content="ADD" HorizontalAlignment="Left" Height="40" Margin="568,353,0,0" VerticalAlignment="Top" Width="127" Click="Button_Click"/>

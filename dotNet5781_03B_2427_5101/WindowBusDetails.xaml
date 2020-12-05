@@ -20,20 +20,20 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Label Grid.Row="0" Grid.Column="0" Content="License Number:" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" />
-        <TextBlock Grid.Row="0" Grid.Column="1" Name="tbLicense" Text="{Binding Path=LicenseNumber}" HorizontalAlignment="Stretch" Height="38"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="95"/>
-        <Label Grid.Row="1" Grid.Column="0" Content="Start Date"  HorizontalAlignment="Stretch"   VerticalAlignment="Stretch"  />
-        <TextBlock Grid.Row="1" Grid.Column="1" Name="tbStart" Text="{Binding Path=Start}" HorizontalAlignment="Stretch"  TextWrapping="Wrap"  VerticalAlignment="Stretch" />
-        <Label Grid.Row="2" Grid.Column="0" Content="Kilometrage:" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"  />
+        <Label Grid.Row="0" Grid.Column="0" Content="License Number:" HorizontalAlignment="Left"  VerticalAlignment="Center" />
+        <TextBlock Grid.Row="0" Grid.Column="1" Name="tbLicense" Text="{Binding Path=LicenseNumber}" HorizontalAlignment="Left" Height="38"  TextWrapping="Wrap" VerticalAlignment="Center" Width="95"/>
+        <Label Grid.Row="1" Grid.Column="0" Content="Start Date"  HorizontalAlignment="Left"   VerticalAlignment="Center"  />
+        <TextBlock Grid.Row="1" Grid.Column="1" Name="tbStart" Text="{Binding Path=Start}" HorizontalAlignment="Left"  TextWrapping="Wrap"  VerticalAlignment="Center" />
+        <Label Grid.Row="2" Grid.Column="0" Content="Kilometrage:" HorizontalAlignment="Left"  VerticalAlignment="Center"  />
 
-        <TextBlock Grid.Row="2" Grid.Column="1" Name="tbKilometrage" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Text="{Binding Path=AllKmTrav}" VerticalAlignment="Stretch" />
-        <Label Grid.Row="3" Grid.Column="0" Content="Km since treated:" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"/>
-        <TextBlock Grid.Row="3" Grid.Column="1" Name="tbKmLastTreated" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Text="{Binding Path=KmSinceTreated}" VerticalAlignment="Stretch"/>
-        <Label  Grid.Row="4" Grid.Column="0" Content="Last Treated:" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Width="79" Margin="0,0,317,0"/>
-        <TextBlock Grid.Row="4" Grid.Column="1" Name="tbLastTreated" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Text="{Binding Path=LastTreated}" VerticalAlignment="Stretch"/>
-        <Label  Grid.Row="5" Grid.Column="0" Content="Km possible:" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Width="79" Margin="0,0,317,0"/>
-        <TextBlock Grid.Row="5" Grid.Column="1" Name="tbKmPossible" HorizontalAlignment="Stretch"  TextWrapping="Wrap"  Text="{Binding Path=KmPossible}" VerticalAlignment="Stretch" />
-        <Button Name="btTreat" Content="Send to treatment" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btTreat_Click"></Button>
-        <Button Name="btRefuel" Content="Refuel" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btRefuel_Click"></Button>
+        <TextBlock Grid.Row="2" Grid.Column="1" Name="tbKilometrage" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="{Binding Path=AllKmTrav}" VerticalAlignment="Center" />
+        <Label Grid.Row="3" Grid.Column="0" Content="Km since treated:" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="3" Grid.Column="1" Name="tbKmLastTreated" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="{Binding Path=KmSinceTreated}" VerticalAlignment="Center"/>
+        <Label  Grid.Row="4" Grid.Column="0" Content="Last Treated:" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="79" Margin="0,0,317,0"/>
+        <TextBlock Grid.Row="4" Grid.Column="1" Name="tbLastTreated" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="{Binding Path=LastTreated}" VerticalAlignment="Center"/>
+        <Label  Grid.Row="5" Grid.Column="0" Content="Km possible:" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="79" Margin="0,0,317,0"/>
+        <TextBlock Grid.Row="5" Grid.Column="1" Name="tbKmPossible" HorizontalAlignment="Left"  TextWrapping="Wrap"  Text="{Binding Path=KmPossible}" VerticalAlignment="Center" />
+        <Button Name="btTreat"  Content="Treat" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Right" Margin="0,0,15,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btTreat_Click" Width="80"></Button>
+        <Button Name="btRefuel" Content="Refuel" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="15,0,0,0" VerticalContentAlignment="Center" Click="btRefuel_Click" Width="80"></Button>
     </Grid>
 </Window>

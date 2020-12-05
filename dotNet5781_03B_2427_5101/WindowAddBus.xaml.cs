@@ -21,18 +21,42 @@ namespace dotNet5781_03B_2427_5101
     public partial class WindowAddBus : Window
     {
         private ObservableCollection<Bus> bl;
-        public Bus newBus;
+        public Bus newBus;//bus to be added
         public WindowAddBus(ObservableCollection<Bus> busList)
         {
             bl = busList;
             InitializeComponent();
         }
-
+        //on trigger of bAdd-button for addition add a new bus with details given by operator
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-             newBus = new Bus(tbLicense.Text,dpStart.DisplayDate);
-            bl.Add(newBus);
-            this.Close();
+            DateTime reform = new DateTime(2018, 1, 1, 0, 0, 0);
+            DateTime dateChosen = dpStart.DisplayDate;
+            String licenseNumber = tbLicense.Text;
+            bool formatOk = true;//if bus has compatible start date and license number length so it's possible to add bus to list
+            if (dateChosen < reform)
+            {
+                if (licenseNumber.Length != 7)
+                {
+                    formatOk = false;
+                    MessageBox.Show("License Numbers of buses for dates before 1/1/2018 must be 7 digits long", "Wrong License Length", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                
+            }
+            if (dateChosen >= reform)
+            {
+                if (licenseNumber.Length != 8)
+                {
+                    formatOk = false;
+                    MessageBox.Show("License Numbers of buses for dates after 1/1/2018 must be 8 digits long", "Wrong License Length", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            if (formatOk == true)
+            {
+                newBus = new Bus(tbLicense.Text, dpStart.DisplayDate);
+                bl.Add(newBus);
+                this.Close();
+            }
         }
     }
 }
