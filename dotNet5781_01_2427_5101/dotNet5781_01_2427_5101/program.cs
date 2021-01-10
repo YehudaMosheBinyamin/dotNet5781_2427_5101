@@ -119,7 +119,7 @@ namespace dotNet5781_01_2427_5101
                         }
                     case Choice.SHOW:
                         {
-                            if (busList == null) { throw new Exception("Cannot search in null list"); }
+                            if (busList.Count==0) { throw new Exception("Cannot search in empty list"); }
                             Console.WriteLine("List of buses and their kilometrage since their last treatment");
                             foreach (Bus bus in busList)
                             {

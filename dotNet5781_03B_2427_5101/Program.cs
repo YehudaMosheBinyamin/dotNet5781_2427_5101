@@ -89,7 +89,10 @@ namespace dotNet5781_01_2427_5101
                             licensePlate = Console.ReadLine();
                             Console.WriteLine("Insert 0 to refill, any other number  to maintain");
                             string refillOrMaintain = Console.ReadLine();
-                            if (busList == null) { throw new Exception("Cannot search in null list"); }
+                            if (busList == null) 
+                            {
+                                throw new Exception("Cannot search in null list");
+                            }
                             foreach (Bus bus in busList)
                             {
                                 if (bus.LicenseNumber == licensePlate)

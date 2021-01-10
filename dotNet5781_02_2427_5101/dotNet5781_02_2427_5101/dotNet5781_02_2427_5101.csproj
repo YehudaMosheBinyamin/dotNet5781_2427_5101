@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlreadyInException.cs" />
     <Compile Include="Area.cs" />
     <Compile Include="BusLine.cs" />
     <Compile Include="BusLineCollection.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="Enums.cs" />
     <Compile Include="NoLineAtStopException.cs" />
     <Compile Include="NoLineException.cs" />
+    <Compile Include="NotInListException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
