@@ -23,31 +23,34 @@ namespace PlGui
     {
         IBL bl;
         private BO.Line currentDisplayBusLine;
-        ObservableCollection<BO.Line> linesCollection;
+        IEnumerable<BO.Line> linesCollection;
+
+        //from stackoverflow
+       // public  ObservableCollection<T> Convert<T>(IEnumerable<T> original)
+        //{
+        //    return new ObservableCollection<T>(original);
+       // }
         public LinesWindow()
         { bl = BlFactory.GetBl("1");
             InitializeComponent();
-            linesCollection = (ObservableCollection<BO.Line>)bl.GetAllLines();
+            linesCollection = bl.GetAllLines();
             cbBusLines.ItemsSource = linesCollection;
             cbBusLines.DisplayMemberPath = "Code";
             cbBusLines.SelectedIndex = 0;
-            //tbArea.Text = busLineColl;
-            //tbArea.DisplayMemberPath = "Operating Area";
-
+ 
         }
 
-        public void ShowBusLine(int lineId)
+        public void ShowBusLine(BO.Line boLine)
         {
-            //[busNumber].First()
-
-            BO.Line line=bl.GetLine(lineId);
-            currentDisplayBusLine = line;
+            
+            currentDisplayBusLine = boLine;
             UpGrid.DataContext = currentDisplayBusLine;
-            lbBusLineStations.DataContext = bl.GetAllLineStationsByLine(line.Id);
+            lbBusLineStations.DataContext = currentDisplayBusLine.stationsInLine;
+            
         }
         private void cbBusLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ShowBusLine((cbBusLines.SelectedValue as BO.Line).Id);
+            ShowBusLine((cbBusLines.SelectedValue as BO.Line));
         }
 
         private void Button_Click3(object sender, RoutedEventArgs e)

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+
 namespace DalAPI
 {
         /// <summary>
@@ -91,7 +92,7 @@ namespace DalAPI
             }
         }
 }
- /**   public static class DLFactory
+/** public static class DLFactory
     {
         public static IDL GetDL(string typeOfObj="A")
         {
@@ -100,7 +101,7 @@ namespace DalAPI
                 case "A":
                     return new DLObject(); //class AObject : IMyInterface;
                 case "B":
-                    return new DLbject(); //class AObject : IMyInterface; 
+                    return new DLObject(); //class AObject : IMyInterface; 
                 default:
                     return null;
             }

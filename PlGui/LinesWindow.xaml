@@ -22,7 +22,7 @@
             <ComboBox Name="cbBusLines" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Stretch" VerticalContentAlignment="Center" Grid.Column="1" ItemsSource="{Binding}" SelectionChanged="cbBusLines_SelectionChanged" FontSize="20" BorderBrush="Black" >
             </ComboBox>
             <TextBox Name="tbArea" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="3"
-               Text="{Binding Path=OperatingArea}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FF0DF9D9" FontSize="20" BorderBrush="Black" BorderThickness="1"></TextBox>
+               Text="{Binding Path=Area}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FF0DF9D9" FontSize="20" BorderBrush="Black" BorderThickness="1"></TextBox>
             <Label Content="Bus Line Number:" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Grid.Column="0" FontSize="20" FontFamily="Arial" BorderBrush="Black" BorderThickness="1" ></Label>
             <Label Content="Area:" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="2" FontSize="20" FontFamily="Arial" BorderBrush="Black" BorderThickness="1">
             </Label>

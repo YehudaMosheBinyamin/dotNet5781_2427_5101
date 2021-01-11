@@ -10,27 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BlApi;
+
 namespace PlGui
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for StationsWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class StationsWindow : Window
     {
-        IBL bl;
-        public MainWindow()
+        public StationsWindow()
         {
             InitializeComponent();
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            ManagerWindow managerWindow = new ManagerWindow();
-            managerWindow.Show();
         }
     }
 }

@@ -9,7 +9,7 @@ namespace DalAPI
     /**
      <summary>
      Class for processing config.xml file and getting from there
-     information which is relevant for initialization of DalApi<br/>
+     information which is relevant for initialization of DalAPI<br/>
      The file has to include in the 1st level:<br/>
      <list type="bullet">
         <item><b>&lt;dal&gt;</b> element with the name of the entry in the packages' list</item>
@@ -74,7 +74,7 @@ namespace DalAPI
     }
 
     /// <summary>
-    /// Represents errors during DalApi initialization
+    /// Represents errors during DalAPI initialization
     /// </summary>
     [Serializable]
     public class DLConfigException : Exception

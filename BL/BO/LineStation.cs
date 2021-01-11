@@ -12,5 +12,9 @@ namespace BO
         //public TimeSpan TimeFromPreviousStation { get; set; }-possible to receive same information from AdjacentStations
         //public double distanceFromPrevious { get; set; }--//
         public bool InService { get; set; }
+        public override string ToString()
+        {
+            return String.Format("WHOOOOOO");
+        }
     }
 }

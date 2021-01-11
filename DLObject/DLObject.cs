@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 
-namespace DalAPI
+namespace DL
 {
      sealed class DLObject:IDL
     {
@@ -267,7 +267,8 @@ namespace DalAPI
         }
         public IEnumerable<LineStation> GetAllLineStationsByLine(int lineId)
         {
-            return from lineStation in DS.DataSource.lineStationsList where lineStation.LineId==lineId && lineStation.InService == true select lineStation;
+            // return from lineStation in DS.DataSource.lineStationsList where lineStation.LineId==lineId && lineStation.InService == true select lineStation;
+            return from lineStation in DS.DataSource.lineStationsList  select lineStation;
         }
         public void UpdateLineStation(int lineId, int stationCode,int newStationCode, Action<LineStation,int> update)
         {

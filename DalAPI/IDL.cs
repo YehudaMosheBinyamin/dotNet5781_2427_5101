@@ -67,7 +67,7 @@ namespace DalAPI
         bool InLineStations(int station1, int station2);
         #endregion
         #region User
-        bool CheckUser(string userName, string password);
+        //bool CheckUser(string userName, string password);
         #endregion
     }
 }

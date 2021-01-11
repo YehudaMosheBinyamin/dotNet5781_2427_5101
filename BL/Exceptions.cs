@@ -122,4 +122,6 @@ namespace BO
             userName = ((DO.NoUserFoundException)ex).UserName;
         }
     }
+    #endregion
+
 }

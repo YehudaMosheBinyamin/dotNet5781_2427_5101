@@ -77,8 +77,7 @@ namespace dotNet5781_03A_2427_5101
             cbBusLines.ItemsSource = busLineColl;
             cbBusLines.DisplayMemberPath = "BusNumber";
             cbBusLines.SelectedIndex = 0;
-            //tbArea.Text = busLineColl;
-            //tbArea.DisplayMemberPath = "Operating Area";
+
 
         }
 

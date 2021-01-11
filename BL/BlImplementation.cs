@@ -206,11 +206,12 @@ namespace BL
             BO.Line boLine = new BO.Line();
             boLine.Code = doLine.Code;
             boLine.Id = doLine.Id;
+            boLine.Area = (Areas)doLine.Area;
             IDL dl = DLFactory.GetDL();
-            IEnumerable<BO.LineStation> lineStations = from lineStation in dl.GetAllLineStations() orderby lineStation.LineStationIndex where lineStation.Station == boLine.Id select LineStationDoBoAdapter(lineStation);
-            IEnumerable<BO.LineTrip> lineTrips = from lineTrip in dl.GetAllLineTrips() where lineTrip.LineId == doLine.Id select LineTripDoBoAdapter(lineTrip);
+            IEnumerable<BO.LineStation> lineStations = from lineStation in GetAllLineStationsByLine(doLine.Id) orderby lineStation.LineStationIndex  select lineStation;
+            //IEnumerable<BO.LineTrip> lineTrips = from lineTrip in dl.GetAllLineTrips() where lineTrip.LineId == doLine.Id select LineTripDoBoAdapter(lineTrip);
             boLine.stationsInLine = lineStations;
-            boLine.lineExits = lineTrips;
+            //boLine.lineExits = lineTrips;
             return boLine;
         }
         DO.Line LineBoDoAdapter(BO.Line boLine)
@@ -294,7 +295,7 @@ namespace BL
         public IEnumerable<BO.Line> GetAllLines()
         {
             IDL dl = DLFactory.GetDL();
-            return from line in dl.GetAllLines() select LineDoBoAdapter(line);
+            return from line in dl.GetAllLines() select  LineDoBoAdapter(line) ;
         }
         /// <summary>
         /// Get all lines that go by station,for Station Window
