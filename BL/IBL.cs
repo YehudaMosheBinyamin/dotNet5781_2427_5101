@@ -38,7 +38,7 @@ namespace BlApi
         #endregion
         #region Station
         //void AddStation(Station station);
-        //IEnumerable<Station> GetAllStations();
+        IEnumerable<Station> GetAllStations();
         //IEnumerable<Station> GetAllStationsBy(Predicate<Station> filter);
         //Station GetStation(int code);
         //void DeleteStation(int code);
@@ -54,6 +54,8 @@ namespace BlApi
         #region AdjacentStations
         //bool AdjacentStationsExists(int station1, int station2);
         IEnumerable<BO.AdjacentStations> GetAllAdjacentStations();
+        IEnumerable<BO.AdjacentStations> GetAllAdjacentsStationsInLine(Line line);
+        //IEnumerable<BO.AdjacentStations> GetAllAdjacentStationsOfLine(int )
         #endregion
     }
 }

@@ -6,11 +6,17 @@
         xmlns:local="clr-namespace:PlGui"
         mc:Ignorable="d"
         Title="Bus Lines Explorer" Height="640" Width="800">
-    <Grid Name="MainGrid">
+    <Grid Name="MainGrid" Margin="0,0,2,-21">
         <Grid.RowDefinitions>
             <RowDefinition Height="50*"/>
             <RowDefinition Height="400*"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*">
+            </ColumnDefinition>
+
+        </Grid.ColumnDefinitions>
         <Grid Name="UpGrid" HorizontalAlignment="Stretch" Height="auto" Grid.Row="0"
       VerticalAlignment="Stretch" Width="auto">
             <Grid.ColumnDefinitions>
@@ -27,9 +33,11 @@
             <Label Content="Area:" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="2" FontSize="20" FontFamily="Arial" BorderBrush="Black" BorderThickness="1">
             </Label>
         </Grid>
-        <ListBox Name="lbBusLineStations" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center"  Height="150" Width="436" ItemsSource="{Binding}" Margin="166,138,190,253" Background="#FF52F116" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="DarkBlue" BorderThickness="3" ></ListBox>
+        <ListBox Name="lbBusLineStations" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Grid.Column="0"  Height="392" Width="395" ItemsSource="{Binding}" Margin="0,48,0,120" Background="#FF52F116" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="DarkBlue" BorderThickness="3" />
         <Button Content="Add Line" HorizontalAlignment="Left" Margin="665,455,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="Button_Click3"/>
         <Button Content="Edit line" HorizontalAlignment="Left" Margin="539,455,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
         <Button Content="Delete line" HorizontalAlignment="Left" Margin="441,455,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
+        <ListBox Grid.Column="1" Name="lbAdjacentStations" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="392" Margin="28,48,0,0" Grid.Row="1" VerticalAlignment="Top" Width="339"/>
+        <Label Content="Adjacent Stations" Grid.Column="1" HorizontalAlignment="Left" Margin="144,0,0,512" Grid.Row="1" VerticalAlignment="Bottom" Width="142" Height="43" FontSize="16"/>
     </Grid>
 </Window>

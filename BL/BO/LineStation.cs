@@ -14,7 +14,7 @@ namespace BO
         public bool InService { get; set; }
         public override string ToString()
         {
-            return String.Format("WHOOOOOO");
+            return String.Format($"Station: {Station} LineStationIndex: {LineStationIndex} PrevStation:{PrevStation} NextStation: {NextStation}");
         }
     }
 }

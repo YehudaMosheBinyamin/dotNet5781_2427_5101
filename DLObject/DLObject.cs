@@ -38,7 +38,7 @@ namespace DL
         }
         public IEnumerable<Station> GetAllStations()
         {
-            return from station in DS.DataSource.stationsList where station.InService==true select station.Clone();
+            return from station in DS.DataSource.stationsList select station.Clone();
         }
        //
         public void UpdateStation(Line line,Action<Line> action)
@@ -267,8 +267,8 @@ namespace DL
         }
         public IEnumerable<LineStation> GetAllLineStationsByLine(int lineId)
         {
-            // return from lineStation in DS.DataSource.lineStationsList where lineStation.LineId==lineId && lineStation.InService == true select lineStation;
-            return from lineStation in DS.DataSource.lineStationsList  select lineStation;
+             return from lineStation in DS.DataSource.lineStationsList where lineStation.LineId==lineId select lineStation;
+            //return from lineStation in DS.DataSource.lineStationsList  select lineStation;
         }
         public void UpdateLineStation(int lineId, int stationCode,int newStationCode, Action<LineStation,int> update)
         {

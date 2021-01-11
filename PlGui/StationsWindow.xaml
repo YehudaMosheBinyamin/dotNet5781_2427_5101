@@ -7,6 +7,21 @@
         mc:Ignorable="d"
         Title="StationsWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" VerticalAlignment="Top" Width="772"/>
+
+        <ListBox Name="lbStations" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="343" Margin="49,24,0,0" VerticalAlignment="Top" PreviewMouseDoubleClick="lbStations_PreviewMouseDoubleClick" Width="363" RenderTransformOrigin="0.5,0.5" >
+            <ListBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.074"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ListBox.RenderTransform>
+        </ListBox>
+        <Label Content="Stations" HorizontalAlignment="Left" Margin="195,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.47,1.104" Width="48"/>
+        <ListBox Name="lbAdjacentStations" HorizontalAlignment="Left" ItemsSource="{Binding}" Height="140" Margin="459,25,0,0" VerticalAlignment="Top" Width="312"/>
+        <Label Content="Adjacent Stations" HorizontalAlignment="Left" Margin="574,-1,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.491,1.173"/>
+
     </Grid>
 </Window>

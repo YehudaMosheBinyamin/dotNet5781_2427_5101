@@ -23,5 +23,17 @@ namespace PlGui
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            LinesWindow linesWindow = new LinesWindow();
+            linesWindow.Show();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            StationsWindow stationsWindow = new StationsWindow();
+            stationsWindow.Show();
+        }
     }
 }

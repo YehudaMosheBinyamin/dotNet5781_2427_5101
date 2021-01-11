@@ -23,6 +23,7 @@ namespace PlGui
     {
         IBL bl;
         private BO.Line currentDisplayBusLine;
+        IEnumerable<BO.AdjacentStations> adjacentStationsInLine;
         IEnumerable<BO.Line> linesCollection;
 
         //from stackoverflow
@@ -37,7 +38,7 @@ namespace PlGui
             cbBusLines.ItemsSource = linesCollection;
             cbBusLines.DisplayMemberPath = "Code";
             cbBusLines.SelectedIndex = 0;
- 
+            
         }
 
         public void ShowBusLine(BO.Line boLine)
@@ -45,7 +46,8 @@ namespace PlGui
             
             currentDisplayBusLine = boLine;
             UpGrid.DataContext = currentDisplayBusLine;
-            lbBusLineStations.DataContext = currentDisplayBusLine.stationsInLine;
+            lbBusLineStations.DataContext = bl.GetAllLineStationsByLine(currentDisplayBusLine.Id);
+            lbAdjacentStations.DataContext = bl.GetAllAdjacentsStationsInLine(boLine);
             
         }
         private void cbBusLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
