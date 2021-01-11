@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using DO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 
 namespace DalAPI
 {
@@ -214,7 +215,7 @@ namespace DalAPI
         }
         #endregion
         #region LineStation
-        bool InLineStations(int lineId, int stationCode)
+        public bool InLineStations(int lineId, int stationCode)
         {
             int id = lineId;
             int code = stationCode; 
@@ -293,6 +294,18 @@ namespace DalAPI
                 throw new NoLineStationFoundException(lineId,stationCode, $"The line with id: {lineId} doesn't exist ");
             }
         }
+        public void DeleteLineStations(int lineId)
+        {
+            foreach (LineStation ls in DS.DataSource.lineStationsList)
+            {
+                if (ls.LineId == lineId)
+                {
+                    ls.InService = false;
+                }
+            }
+        }
+
+
         #endregion
         #region User
         public void AddUser(User user)
@@ -300,6 +313,8 @@ namespace DalAPI
             User tempUser = DataSource.usersList.Find(p => p.UserName == user.UserName);
             if (tempUser != null && tempUser.InService == false)
             {
+                //var md5 = new MD5CryptoServiceProvider();
+                //var md5data = md5.ComputeHash(user.Password);
                 DataSource.usersList.Add(tempUser);
 
             }
@@ -465,6 +480,10 @@ namespace DalAPI
                 throw new NoLineTripExistsException(id, lineId, $"The line trip with lineId {id} and lineId {lineId} cannot be deleted since it does not exist in the system ");
             }
             lineTrip.InService = false;
+        }
+        public void DeleteLineTrips(int lineId)
+        {
+            DS.DataSource.lineTripsList.All(x => { x.InService = false; return true; });
         }
         #endregion
     }

@@ -203,7 +203,7 @@ namespace DO
     [Serializable]
     public class NoUserFoundException : Exception
     {
-        string UserName;
+        public string UserName;
         public NoUserFoundException(string userName) : base(userName)
         {
             UserName = userName;
@@ -221,7 +221,7 @@ namespace DO
     }
     public class UserAlreadyExistsException : Exception
     {
-        string UserName;
+        public string UserName;
         public UserAlreadyExistsException(string userName) : base(userName)
         {
             UserName = userName;

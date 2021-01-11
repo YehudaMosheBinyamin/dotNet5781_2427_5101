@@ -165,6 +165,43 @@ new Line
     LastStation=500
 }
 };
+            lineStationsList = new List<LineStation>
+            {
+            new LineStation { LineId = 5, Station = 38831, LineStationIndex = 1, PrevStation = 00000, NextStation = 38832},
+            new LineStation { LineId = 5, Station = 38832, LineStationIndex = 1, PrevStation = 38831, NextStation = 38833 },
+            new LineStation { LineId = 5, Station = 38833, LineStationIndex = 2, PrevStation = 38832, NextStation = 38834 },
+            new LineStation { LineId = 5, Station = 38834, LineStationIndex = 3, PrevStation = 38833, NextStation = 38836 },
+            new LineStation { LineId = 5, Station = 38836, LineStationIndex = 4, PrevStation = 38834, NextStation = 38837 },
+            new LineStation { LineId = 5, Station = 38837, LineStationIndex = 5, PrevStation = 38836, NextStation = 38838 },
+            new LineStation { LineId = 5, Station = 38838, LineStationIndex = 6, PrevStation = 38837, NextStation = 38839 },
+            new LineStation { LineId = 5, Station = 38839, LineStationIndex = 7, PrevStation = 38838, NextStation = 38840 },
+            new LineStation { LineId = 5, Station = 38840, LineStationIndex = 8, PrevStation = 38839, NextStation = 38841 },
+            new LineStation { LineId = 5, Station = 38841, LineStationIndex = 9, PrevStation = 38840, NextStation = 38842 },
+            new LineStation { LineId = 6, Station = 38842, LineStationIndex = 0, PrevStation = 38841, NextStation = 38844 },
+            new LineStation { LineId = 6, Station = 38844, LineStationIndex = 0, PrevStation = 38842, NextStation = 38845 },
+            new LineStation { LineId = 6, Station = 38845, LineStationIndex = 0, PrevStation = 38844, NextStation = 38846 },
+            new LineStation { LineId = 6, Station = 38846, LineStationIndex = 0, PrevStation = 38845, NextStation = 38847 },
+            new LineStation { LineId = 6, Station = 38847, LineStationIndex = 0, PrevStation = 38846, NextStation = 38848 },
+            new LineStation { LineId = 6, Station = 38848, LineStationIndex = 0, PrevStation = 38847, NextStation = 38849 },
+            new LineStation { LineId = 6, Station = 38849, LineStationIndex = 0, PrevStation = 38848, NextStation = 38852 },
+            new LineStation { LineId = 6, Station = 38852, LineStationIndex = 0, PrevStation = 38849, NextStation = 38854 },
+            new LineStation { LineId = 6, Station = 38854, LineStationIndex = 0, PrevStation = 38852, NextStation = 38855 },
+            new LineStation { LineId = 6, Station = 38855, LineStationIndex = 0, PrevStation = 38854, NextStation = 38856 },
+            new LineStation { LineId = 7, Station = 38856, LineStationIndex = 0, PrevStation = 38855, NextStation = 38859 },
+            new LineStation { LineId = 7, Station = 38859, LineStationIndex = 0, PrevStation = 38856, NextStation = 38860 },
+            new LineStation { LineId = 7, Station = 38860, LineStationIndex = 0, PrevStation = 38859, NextStation = 38861 },
+            new LineStation { LineId = 7, Station = 38861, LineStationIndex = 0, PrevStation = 38860, NextStation = 38862 },
+            new LineStation { LineId = 7, Station = 38862, LineStationIndex = 0, PrevStation = 38861, NextStation = 38863 },
+            new LineStation { LineId = 7, Station = 38863, LineStationIndex = 0, PrevStation = 38862, NextStation = 38864 },
+            new LineStation { LineId = 7, Station = 38864, LineStationIndex = 0, PrevStation = 38863, NextStation = 38865 },
+            new LineStation { LineId = 7, Station = 38865, LineStationIndex = 0, PrevStation = 38864, NextStation = 38866 },
+            new LineStation { LineId = 7, Station = 38866, LineStationIndex = 0, PrevStation = 38865, NextStation = 38867 },
+            new LineStation { LineId = 7, Station = 38867, LineStationIndex = 0, PrevStation = 38866, NextStation = 38869 },
+            new LineStation { LineId = 5, Station = 38869, LineStationIndex = 0, PrevStation = 38867, NextStation = 38870 },
+            new LineStation { LineId = 5, Station = 38870, LineStationIndex = 0, PrevStation = 38869, NextStation = 38872 },
+            new LineStation { LineId = 5, Station = 38872, LineStationIndex = 0, PrevStation = 38870, NextStation = 38873 },
+            new LineStation { LineId = 5, Station = 38873, LineStationIndex = 0, PrevStation = 38872, NextStation = 38875 },
+            new LineStation { LineId = 5, Station = 38875, LineStationIndex = 0, PrevStation = 38873, NextStation = 38876 } };
 
             busesList = new List<Bus>()
 {

@@ -113,4 +113,13 @@ namespace BO
         }
     }
     #endregion
+    #region User
+  class NoUserFoundException : Exception
+    {
+        public string userName;
+        public NoUserFoundException(string msg,Exception ex) : base(msg)
+        {
+            userName = ((DO.NoUserFoundException)ex).UserName;
+        }
+    }
 }

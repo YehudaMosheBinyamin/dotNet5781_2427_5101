@@ -1,10 +1,6 @@
 ﻿
 using System;
 using System.Collections.Generic;
-using DO;
-namespace DalAPI
-{
-    /**
 using System.Reflection;
 namespace DalAPI
 {
@@ -94,8 +90,8 @@ namespace DalAPI
 
             }
         }
-}**/
-    public static class DLFactory
+}
+ /**   public static class DLFactory
     {
         public static IDL GetDL(string typeOfObj="A")
         {
@@ -110,4 +106,4 @@ namespace DalAPI
             }
         }
     }
-}
+}**/

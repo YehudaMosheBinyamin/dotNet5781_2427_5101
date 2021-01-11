@@ -44,6 +44,7 @@ namespace DalAPI
         IEnumerable<LineTrip> GetLineTripsBy(Predicate<LineTrip> predicate);
         void UpdateLineTrip(int id, int busCode, Action<LineTrip> update);
         void DeleteLineTrip(int id,int busCode);
+        void DeleteLineTrips(int lineId);
         #endregion
         #region AdjacentStations
         bool AdjacentStationsExists(int station1,int station2);
@@ -53,6 +54,7 @@ namespace DalAPI
         AdjacentStations GetAdjacentStations(int stationOneCode,int stationTwoCode);
         void UpdateAdjacentStations(int stationOneCode,int stationTwoCode,Action<AdjacentStations>update);
         void DeleteAdjacentStations(int stationOneCode,int stationTwoCode);
+        
         #endregion
         #region LineStation
         void AddLineStation(LineStation lineStation);
@@ -61,7 +63,11 @@ namespace DalAPI
         LineStation GetLineStation(int lineId,int stationCode);
         void UpdateLineStation(int lineId,int stationCode,int newStationCode,Action<LineStation,int>update);
         void DeleteLineStation(int lineId,int stationCode);
-        //bool InLineStations(int station1, int station2);
+        void DeleteLineStations(int lineId);
+        bool InLineStations(int station1, int station2);
+        #endregion
+        #region User
+        bool CheckUser(string userName, string password);
         #endregion
     }
 }

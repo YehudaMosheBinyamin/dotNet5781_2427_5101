@@ -20,6 +20,7 @@ namespace BlApi
         IEnumerable<Line> GetAllLines();
         IEnumerable<Line> GetAllLinesByStation(int stationCode);
         Line GetLine(int id);
+        void DeleteLine(int lineId);
         //void DeleteLine(int id);
         #endregion
         #region LineStation
@@ -33,6 +34,7 @@ namespace BlApi
         //void UpdateNextLineStation(int idLine, int stationCode,int newStationCode);
         //void UpdateAfterLineStation(int idLine, int stationCode, int newStationCode);
         // void DeleteLine(int idLine, int station, int prevStation, int nextStation);
+        void DeleteLineStations(int lineId);
         #endregion
         #region Station
         //void AddStation(Station station);
@@ -47,6 +49,7 @@ namespace BlApi
         //IEnumerable<User> GetAllUsersBy(Predicate<Station> filter);
         //User GetUser(string userName);
         //void DeleteUser(string userName);
+        bool CheckUserPassword(User user,bool needsAdmin=false);
         #endregion
         #region AdjacentStations
         //bool AdjacentStationsExists(int station1, int station2);

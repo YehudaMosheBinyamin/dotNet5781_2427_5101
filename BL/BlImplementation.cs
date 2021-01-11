@@ -184,7 +184,7 @@ namespace BL
             IEnumerable<Station> allStations = from station in dl.GetAllStations() select StationDoBoAdapter(station);
             return allStations;
         }
-        
+
         /** public void DeleteStation(int code)
          {
              IDL dl = DLFactory.GetDL();
@@ -223,13 +223,16 @@ namespace BL
             doLine.Area = (DO.Areas)boLine.Area;
             return doLine;
         }
-      public BO.Line GetLine(int lineId)
-        {   IDL dl = DLFactory.GetDL();
+        public BO.Line GetLine(int lineId)
+        { IDL dl = DLFactory.GetDL();
             BO.Line line = LineDoBoAdapter(dl.GetLine(lineId));
             return line;
         }
-      
-       public void AddLine(Line line)
+        /// <summary>
+        /// For addition of line to system
+        /// </summary>
+        /// <param name="line">Line of type BO from PL </param>
+        public void AddLine(Line line)
         {
             IDL dl = DLFactory.GetDL();
             try
@@ -240,11 +243,11 @@ namespace BL
             {
                 throw new BO.LineAlreadyExistsException("The line already exists and so cannot be added twice", ex);
             }
-           
+
             IEnumerable<DO.AdjacentStations> adjacentStations = from lineStation1 in line.stationsInLine
                                                                 from lineStation2 in line.stationsInLine
-                                                                where lineStation1.NextStation == lineStation2.Station &&dl.AdjacentStationsExists(lineStation1.Station,lineStation2.Station)==false
-                                                                let rDistance=Functions.randomDistance()
+                                                                where lineStation1.NextStation == lineStation2.Station && dl.AdjacentStationsExists(lineStation1.Station, lineStation2.Station) == false
+                                                                let rDistance = Functions.randomDistance()
                                                                 select new DO.AdjacentStations
                                                                 {
                                                                     Station1 = lineStation1.Station,
@@ -254,25 +257,50 @@ namespace BL
                                                                     InService = true
                                                                 };
             foreach (DO.AdjacentStations adj in adjacentStations)
-            {// bool lineStationsExists = dl.InLineStations(adj.Station1, adj.Station2);-to do
-                //if (lineStationsExists == false)
-               // {
-                    try
-                    {
-                        dl.AddAdjacentStations(adj);
-                    }
-                    catch (DO.AdjacentStationsAlreadyExistsException ex)
-                    {
-                        throw new BO.AdjacentStationsAlreadyExistsException("The line station already exists and cannot be added", ex);
-                    }
-                //}
+            { bool lineStationsExists = AdjacentStationsExists(adj.Station1, adj.Station2);
+             if (lineStationsExists == false)
+              {
+                try
+                {
+                    dl.AddAdjacentStations(adj);
+                }
+                catch (DO.AdjacentStationsAlreadyExistsException ex)
+                {
+                    throw new BO.AdjacentStationsAlreadyExistsException("The line station already exists and cannot be added", ex);
+                }
+                }
             }
         }
+        /// <summary>
+        /// For deletion of a line
+        /// </summary>
+        /// <param name="lineId">Id of line</param>
+        public void DeleteLine(int lineId)
+        {
+            IDL dl = DLFactory.GetDL();
+
+            try
+            {
+                DeleteLineStations(lineId);
+                dl.DeleteLineTrips(lineId);
+                dl.DeleteLine(lineId);
+            }
+            catch (DO.NoLineFoundException ex)
+            {
+                throw new BO.NoLineFoundException("It's impossible to delete line because it doesn't exist on the system", ex);
+            }
+        }
+    
         public IEnumerable<BO.Line> GetAllLines()
         {
             IDL dl = DLFactory.GetDL();
             return from line in dl.GetAllLines() select LineDoBoAdapter(line);
         }
+        /// <summary>
+        /// Get all lines that go by station,for Station Window
+        /// </summary>
+        /// <param name="stationCode">code of station</param>
+        /// <returns></returns>
         public IEnumerable<Line> GetAllLinesByStation(int stationCode)
         {
             IDL dl = DLFactory.GetDL();
@@ -445,18 +473,7 @@ namespace BL
                 throw new BO.LineStationNotFoundException("No line station available for update since it doesn't exist on the system", ex);
             }
         }
-        void DeleteLine(int lineId)
-        {
-            IDL dl = DLFactory.GetDL();
-            try
-            {
-                dl.DeleteLine(lineId);
-            }
-            catch (DO.NoLineFoundException ex)
-            {
-                throw new BO.NoLineFoundException("It's impossible to delete line because it doesn't exist on the system", ex);
-            }
-        }
+      
 
  
         #endregion
@@ -491,6 +508,12 @@ namespace BL
             IEnumerable<BO.LineStation> lineStationsInLine = from lineStation in dl.GetAllLineStationsByLine(lineId) select LineStationDoBoAdapter(lineStation);
             return lineStationsInLine;
         }
+        public void DeleteLineStations(int lineId)
+        {
+            IDL dl = DLFactory.GetDL();
+            dl.DeleteLineStations(lineId);
+            
+        }
         public BO.LineTrip LineTripDoBoAdapter(DO.LineTrip doLineTrip)
         {
             BO.LineTrip boLineTrip = new BO.LineTrip();
@@ -517,6 +540,50 @@ namespace BL
        public IEnumerable<BO.AdjacentStations> GetAllAdjacentStations()
         { IDL dl = DLFactory.GetDL();
             return from adjacentStation in dl.GetAllAdjacentStations() select AdjacentStationsDoBoAdapter(adjacentStation);
+        }
+        #endregion
+        #region User
+        BO.User UserDoBoAdapter(DO.User doUser)
+        {
+            BO.User boUser = new BO.User();
+            boUser.UserName = doUser.UserName;
+            boUser.Password = doUser.Password;
+            boUser.Admin = doUser.Admin; 
+            boUser.InService=doUser.InService;
+            return boUser;
+       }
+        /// <summary>
+        /// Checks user details to see 1)if user exists and  2)if password entered is correct 3)if field requires admin permissions this is checked as well
+        /// </summary>
+        /// <param name="user">User</param>
+        /// <param name="needsAdmin">Whether user needs admin permissions</param>
+        /// <returns></returns>
+        public bool CheckUserPassword(User user,bool needsAdmin=false)
+        {
+            IDL dl = DLFactory.GetDL();
+            BO.User boUser = new BO.User();
+            try
+            {
+                boUser=UserDoBoAdapter(dl.GetUser(user.UserName));
+                if (boUser.Password == user.Password)
+                {
+                    return true;
+                }
+                if (needsAdmin == true)
+                {
+                    if(boUser.Admin == needsAdmin)
+                    {
+                        return true;
+                    }
+                }
+                
+            }
+            catch(Exception ex)
+            {
+                throw new BO.NoUserFoundException("There is no user with this username", ex);
+            }
+            return false;
+            
         }
         #endregion
     }
