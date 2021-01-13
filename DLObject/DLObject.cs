@@ -49,7 +49,7 @@ namespace DL
         {
            
                 Station tempStation= DataSource.stationsList.Find(p =>p.Code==code);
-                if(tempStation!=null&&tempStation.InService==true)
+                if(tempStation!=null)
                 {
                     return tempStation.Clone();
                 }

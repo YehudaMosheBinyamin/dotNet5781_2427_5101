@@ -25,6 +25,8 @@ namespace PlGui
         private BO.Line currentDisplayBusLine;
         IEnumerable<BO.AdjacentStations> adjacentStationsInLine;
         IEnumerable<BO.Line> linesCollection;
+        public BO.LineStation selectedLineStation;
+        public BO.Station selectedStation;
 
         //from stackoverflow
        // public  ObservableCollection<T> Convert<T>(IEnumerable<T> original)
@@ -58,6 +60,14 @@ namespace PlGui
         private void Button_Click3(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void lbBusLineStations_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            selectedLineStation = lbBusLineStations.SelectedValue as BO.LineStation;
+            selectedStation = bl.GetStation(selectedLineStation.Station);
+            WindowStationDetails wsd = new WindowStationDetails(selectedStation);
+            wsd.Show();
         }
     }
     }

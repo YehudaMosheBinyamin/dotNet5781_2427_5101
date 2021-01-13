@@ -12,9 +12,10 @@ namespace BO
         public int Code { get; set;}
         public Areas Area { get; set; }
         public bool InService;
+        public string LastStationName { get; set; }
         public override string ToString()
         {
-            return String.Format($"Code: {Code} ");
+            return String.Format($"Line: {Code} To: {LastStationName}");
         }
     }
     public enum Areas { General, North, South, Center, Jerusalem };

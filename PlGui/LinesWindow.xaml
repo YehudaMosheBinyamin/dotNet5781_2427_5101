@@ -18,7 +18,7 @@
 
         </Grid.ColumnDefinitions>
         <Grid Name="UpGrid" HorizontalAlignment="Stretch" Height="auto" Grid.Row="0"
-      VerticalAlignment="Stretch" Width="auto">
+      VerticalAlignment="Stretch" Width="auto" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -33,7 +33,7 @@
             <Label Content="Area:" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="2" FontSize="20" FontFamily="Arial" BorderBrush="Black" BorderThickness="1">
             </Label>
         </Grid>
-        <ListBox Name="lbBusLineStations" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Grid.Column="0"  Height="392" Width="395" ItemsSource="{Binding}" Margin="0,48,0,120" Background="#FF52F116" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="DarkBlue" BorderThickness="3" />
+        <ListBox Name="lbBusLineStations" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Grid.Column="0"  Height="392" Width="395" ItemsSource="{Binding}" Margin="0,48,0,120" PreviewMouseDoubleClick="lbBusLineStations_PreviewMouseDoubleClick" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="DarkBlue" BorderThickness="3" />
         <Button Content="Add Line" HorizontalAlignment="Left" Margin="665,455,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="Button_Click3"/>
         <Button Content="Edit line" HorizontalAlignment="Left" Margin="539,455,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
         <Button Content="Delete line" HorizontalAlignment="Left" Margin="441,455,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>

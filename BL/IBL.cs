@@ -40,7 +40,7 @@ namespace BlApi
         //void AddStation(Station station);
         IEnumerable<Station> GetAllStations();
         //IEnumerable<Station> GetAllStationsBy(Predicate<Station> filter);
-        //Station GetStation(int code);
+        Station GetStation(int code);
         //void DeleteStation(int code);
         #endregion
         #region User
