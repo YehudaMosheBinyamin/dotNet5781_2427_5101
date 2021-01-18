@@ -59,9 +59,14 @@
     <Compile Include="ManagerWindow.xaml.cs">
       <DependentUpon>ManagerWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PO\AdjacentStations.cs" />
+    <Compile Include="PO\Line.cs" />
+    <Compile Include="PO\LineStation.cs" />
+    <Compile Include="PO\Station.cs" />
     <Compile Include="StationsWindow.xaml.cs">
       <DependentUpon>StationsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utillities.cs" />
     <Compile Include="WindowStationDetails.xaml.cs">
       <DependentUpon>WindowStationDetails.xaml</DependentUpon>
     </Compile>
@@ -129,8 +134,6 @@
       <Name>BL</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="PO\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

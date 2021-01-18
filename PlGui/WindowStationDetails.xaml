@@ -6,7 +6,36 @@
         xmlns:local="clr-namespace:PlGui"
         mc:Ignorable="d"
         Title="WindowStationDetails" Height="450" Width="800">
-    <Grid Name="myGrid" RenderTransformOrigin="0.529,0.575" Margin="0,0,0,287">
+    <Window.Resources>
+        <DataTemplate x:Key="MyDataTemplate" DataType="local.Line">
+            <Grid  Name="linesByStation">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Id" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalContentAlignment="Left"></Label>
+                <TextBlock Name="tbId" Text="{Binding Path=Id}" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label Content="Code" Grid.Row="0" Grid.Column="2" HorizontalContentAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Name="tbCode" Text="{Binding Path=Code}" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center"/>
+                <Label Content="LastStation" VerticalAlignment="Center" HorizontalContentAlignment="Center" Grid.Row="0" Grid.Column="4"/>
+                <TextBlock Name="tblastStation" Text="{Binding Path=LastStationName}" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="5" VerticalAlignment="Center"/>
+                <Button  DataContext="{Binding}"  Grid.Row="0" Grid.Column="6" Name="bDelLine" HorizontalContentAlignment="Center" Content="Remove"  VerticalAlignment="Center"  Click="bDelLine_Click"/>
+                <Button Name="bAdd" DataContext="{Binding}" Grid.Row="0" Grid.Column="7" HorizontalContentAlignment="Center" VerticalAlignment="Center" Content="Add"   Click="bAdd_Click"/>
+                <Button Content="Edit" Name="bEdit" DataContext="{Binding}" Grid.Row="0" HorizontalContentAlignment="Center" VerticalAlignment="Center" Grid.Column="8" Click="bEdit_Click" ></Button>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid Name="myGrid" RenderTransformOrigin="0.529,0.575" Margin="0,0,0,287" >
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
@@ -25,8 +54,8 @@
         <TextBlock Grid.Row="2" Grid.Column="1" Name="tbLongtitude" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="{Binding Path=Longtitude}" VerticalAlignment="Center" />
         <Label Grid.Row="3" Grid.Column="0" Content="Latitude:" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
         <TextBlock Grid.Row="3" Grid.Column="1" Name="tbLatitude" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="{Binding Path=Latitude}" VerticalAlignment="Center"/>
-        <Grid Name="gridLines" HorizontalAlignment="Left" Height="289" Margin="0,41,0,-299" Grid.Row="3" VerticalAlignment="Top" Width="791" Grid.ColumnSpan="2">
-            <ListBox Name="lbLinesBy" HorizontalAlignment="Left" Height="256" ItemsSource="{Binding}" Margin="29,10,0,0" VerticalAlignment="Top" Width="734"/>
+        <Grid Name="gridLines"  HorizontalAlignment="Left" Height="289" Margin="0,41,0,-299" Grid.Row="3" VerticalAlignment="Top" Width="791" Grid.ColumnSpan="2">
+            <ListBox Name="lbLinesBy" ItemTemplate="{DynamicResource MyDataTemplate}" HorizontalAlignment="Left" Height="256" ItemsSource="{Binding}" Margin="29,10,0,0" VerticalAlignment="Top" Width="734"/>
         </Grid>
 
 

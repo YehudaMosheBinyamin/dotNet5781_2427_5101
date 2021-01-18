@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,19 +23,51 @@ namespace PlGui
     public partial class WindowStationDetails : Window
     {
         IBL bl;
-        private BO.Station boStation;
-        private IEnumerable<BO.Line> linesByStation;
-        public WindowStationDetails(BO.Station station)
+        //private BO.Station boStation;
+        private PO.Station poStation;
+        public PO.Line lineSelected;
+        //private IEnumerable<BO.Line> linesByStation;
+        //private ObservableCollection<PO.Line> linesByStation;
+        //public  ObservableCollection<PO.LineStation> lineStationsByStation;
+        public ObservableCollection<PO.Line> linesByStation;
+        //public WindowStationDetails(BO.Station station)
+        public WindowStationDetails(PO.Station station)
         {
             bl = BlFactory.GetBl("1");
-            boStation = station;
+            //boStation = station;
+            poStation = station;
             InitializeComponent();
-            myGrid.DataContext = boStation;
-            linesByStation = bl.GetAllLinesByStation(boStation.Code);
+            //myGrid.DataContext = boStation;
+            myGrid.DataContext = poStation;
+            linesByStation = Utillities.Convert(from line in bl.GetAllLinesByStation(poStation.Code) select Utillities.LineBoPoAdapter(line));
+           // lineStationsByStation = Utillities.Convert(station.lineStationsOfStation);
             gridLines.DataContext = linesByStation;
             lbLinesBy.ItemsSource = linesByStation;
+            //gridLines.DataContext = lineStationsByStation;
+            //lbLinesBy.ItemsSource = lineStationsByStation;
             }
+        /// <summary>
+        /// For deletion of line from station
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bDelLine_Click(object sender, RoutedEventArgs e)
+        {
+            IBL bl = BlFactory.GetBl("1");
+            lineSelected=lbLinesBy.SelectedValue as PO.Line;
+            
 
         }
+
+        private void bAdd_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void bEdit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+    }
     }
 

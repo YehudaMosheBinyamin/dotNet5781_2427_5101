@@ -9,7 +9,8 @@ namespace DO
         public int Station1 {get; set;} 
         public int Station2 { get; set; }
         public float Distance{get; set;}
-        public  TimeSpan Time { get; set; }
-        public bool InService;
+        public TimeSpan Time { get; set; }
+        public bool InService { get; set; }
+        
     }
 }

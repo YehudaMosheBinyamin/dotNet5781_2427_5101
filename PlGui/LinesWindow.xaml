@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PlGui"
         mc:Ignorable="d"
         Title="Bus Lines Explorer" Height="640" Width="800">
-    <Grid Name="MainGrid" Margin="0,0,2,-21">
+    <Grid Name="MainGrid" Margin="0,0,2,-21" RenderTransformOrigin="0.553,0.502">
         <Grid.RowDefinitions>
             <RowDefinition Height="50*"/>
             <RowDefinition Height="400*"/>
@@ -33,11 +33,9 @@
             <Label Content="Area:" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="2" FontSize="20" FontFamily="Arial" BorderBrush="Black" BorderThickness="1">
             </Label>
         </Grid>
-        <ListBox Name="lbBusLineStations" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Grid.Column="0"  Height="392" Width="395" ItemsSource="{Binding}" Margin="0,48,0,120" PreviewMouseDoubleClick="lbBusLineStations_PreviewMouseDoubleClick" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="DarkBlue" BorderThickness="3" />
+        <ListBox Name="lbBusLineStations" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Grid.Column="0"  Height="392" Width="709" ItemsSource="{Binding}" Margin="0,48,81,120" PreviewMouseDoubleClick="lbBusLineStations_PreviewMouseDoubleClick" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="DarkBlue" BorderThickness="3" Grid.ColumnSpan="2" />
         <Button Content="Add Line" HorizontalAlignment="Left" Margin="665,455,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="Button_Click3"/>
         <Button Content="Edit line" HorizontalAlignment="Left" Margin="539,455,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
         <Button Content="Delete line" HorizontalAlignment="Left" Margin="441,455,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
-        <ListBox Grid.Column="1" Name="lbAdjacentStations" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="392" Margin="28,48,0,0" Grid.Row="1" VerticalAlignment="Top" Width="339"/>
-        <Label Content="Adjacent Stations" Grid.Column="1" HorizontalAlignment="Left" Margin="144,0,0,512" Grid.Row="1" VerticalAlignment="Bottom" Width="142" Height="43" FontSize="16"/>
     </Grid>
 </Window>

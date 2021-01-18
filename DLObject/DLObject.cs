@@ -267,7 +267,7 @@ namespace DL
         }
         public IEnumerable<LineStation> GetAllLineStationsByLine(int lineId)
         {
-             return from lineStation in DS.DataSource.lineStationsList where lineStation.LineId==lineId select lineStation;
+             return from lineStation in DS.DataSource.lineStationsList where lineStation.LineId==lineId orderby lineStation.LineStationIndex select  lineStation  ;
             //return from lineStation in DS.DataSource.lineStationsList  select lineStation;
         }
         public void UpdateLineStation(int lineId, int stationCode,int newStationCode, Action<LineStation,int> update)
@@ -410,7 +410,7 @@ namespace DL
 
         public AdjacentStations GetAdjacentStations(int stationOneCode, int stationTwoCode)
         {
-            return DS.DataSource.adjacentStationsList.Find(p => p.Station1 == stationOneCode && p.Station2 == stationTwoCode&&p.InService==true);
+            return DS.DataSource.adjacentStationsList.Find(p => p.Station1 == stationOneCode && p.Station2 == stationTwoCode);//&&p.InStations==true
         }
 
         public void UpdateAdjacentStations(int stationOneCode, int stationTwoCode, Action<AdjacentStations> update)

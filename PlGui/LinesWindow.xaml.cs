@@ -22,11 +22,14 @@ namespace PlGui
     public partial class LinesWindow : Window
     {
         IBL bl;
-        private BO.Line currentDisplayBusLine;
-        IEnumerable<BO.AdjacentStations> adjacentStationsInLine;
-        IEnumerable<BO.Line> linesCollection;
-        public BO.LineStation selectedLineStation;
-        public BO.Station selectedStation;
+        //private BO.Line currentDisplayBusLine;
+        private PO.Line currentDisplayBusLine;
+        //IEnumerable<BO.Line> linesCollection;
+        public ObservableCollection<PO.Line> linesCollection;
+        //public BO.LineStation selectedLineStation;
+        public PO.LineStation selectedLineStation;
+        //public BO.Station selectedStation;
+        public PO.Station selectedStation;
 
         //from stackoverflow
        // public  ObservableCollection<T> Convert<T>(IEnumerable<T> original)
@@ -36,25 +39,27 @@ namespace PlGui
         public LinesWindow()
         { bl = BlFactory.GetBl("1");
             InitializeComponent();
-            linesCollection = bl.GetAllLines();
+            linesCollection = Utillities.Convert(from line in bl.GetAllLines() select Utillities.LineBoPoAdapter(line));
             cbBusLines.ItemsSource = linesCollection;
             cbBusLines.DisplayMemberPath = "Code";
             cbBusLines.SelectedIndex = 0;
             
         }
 
-        public void ShowBusLine(BO.Line boLine)
+        //public void ShowBusLine(BO.Line boLine)
+        public void ShowBusLine(PO.Line poLine)
         {
-            
-            currentDisplayBusLine = boLine;
+
+            // currentDisplayBusLine = boLine;
+            currentDisplayBusLine = poLine;
             UpGrid.DataContext = currentDisplayBusLine;
-            lbBusLineStations.DataContext = bl.GetAllLineStationsByLine(currentDisplayBusLine.Id);
-            lbAdjacentStations.DataContext = bl.GetAllAdjacentsStationsInLine(boLine);
-            
+            lbBusLineStations.DataContext = from ls in bl.GetAllLineStationsByLine(currentDisplayBusLine.Id) select Utillities.LineStationBoPoAdapter(ls);
+   
         }
         private void cbBusLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ShowBusLine((cbBusLines.SelectedValue as BO.Line));
+            //ShowBusLine((cbBusLines.SelectedValue as BO.Line));
+            ShowBusLine((cbBusLines.SelectedValue as PO.Line));
         }
 
         private void Button_Click3(object sender, RoutedEventArgs e)
@@ -64,8 +69,9 @@ namespace PlGui
 
         private void lbBusLineStations_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            selectedLineStation = lbBusLineStations.SelectedValue as BO.LineStation;
-            selectedStation = bl.GetStation(selectedLineStation.Station);
+            //selectedLineStation = lbBusLineStations.SelectedValue as BO.LineStation;
+            selectedLineStation = lbBusLineStations.SelectedValue as PO.LineStation;
+            selectedStation = Utillities.StationBoPoAdapter(bl.GetStation(selectedLineStation.Station));
             WindowStationDetails wsd = new WindowStationDetails(selectedStation);
             wsd.Show();
         }

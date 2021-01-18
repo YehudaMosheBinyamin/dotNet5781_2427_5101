@@ -9,7 +9,11 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <OutputPath>..\bin\</OutputPath>
   </PropertyGroup>
+  <PropertyGroup>
 
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+
+  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\DalAPI\DalAPI.csproj" />
   </ItemGroup>

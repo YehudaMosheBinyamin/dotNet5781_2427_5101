@@ -12,7 +12,7 @@ namespace BO
         public bool InService;
         public override string ToString()
         {
-            return String.Format($"Station1:{Station1} Station2:{Station2} Distance:{Distance} Time:{Time}");
+            return String.Format($"Station1:{Station1} Station2:{Station2} Distance:{Distance} Time:{Time} InService{InService}");
         }
     }
 }
