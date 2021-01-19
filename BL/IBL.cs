@@ -41,7 +41,7 @@ namespace BlApi
         IEnumerable<Station> GetAllStations();
         //IEnumerable<Station> GetAllStationsBy(Predicate<Station> filter);
         Station GetStation(int code);
-        void RemoveLineFromStation(int lineId);
+        //void RemoveLineFromStation(int lineId);
         //void DeleteStation(int code);
         #endregion
         #region User

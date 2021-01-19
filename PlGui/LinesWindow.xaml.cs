@@ -62,9 +62,10 @@ namespace PlGui
             ShowBusLine((cbBusLines.SelectedValue as PO.Line));
         }
 
-        private void Button_Click3(object sender, RoutedEventArgs e)
+        private void AddLineEvent(object sender, RoutedEventArgs e)
         {
-
+            AddLineWindow addLineWindow = new AddLineWindow(linesCollection);
+            addLineWindow.Show();
         }
 
         private void lbBusLineStations_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -74,6 +75,17 @@ namespace PlGui
             selectedStation = Utillities.StationBoPoAdapter(bl.GetStation(selectedLineStation.Station));
             WindowStationDetails wsd = new WindowStationDetails(selectedStation);
             wsd.Show();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditLineEvent(object sender, RoutedEventArgs e)
+        {
+          
+            
         }
     }
     }

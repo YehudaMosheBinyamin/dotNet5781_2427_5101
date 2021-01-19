@@ -34,8 +34,8 @@
             </Label>
         </Grid>
         <ListBox Name="lbBusLineStations" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Grid.Column="0"  Height="392" Width="709" ItemsSource="{Binding}" Margin="0,48,81,120" PreviewMouseDoubleClick="lbBusLineStations_PreviewMouseDoubleClick" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="DarkBlue" BorderThickness="3" Grid.ColumnSpan="2" />
-        <Button Content="Add Line" HorizontalAlignment="Left" Margin="665,455,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="Button_Click3"/>
-        <Button Content="Edit line" HorizontalAlignment="Left" Margin="539,455,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Delete line" HorizontalAlignment="Left" Margin="441,455,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Add Line" HorizontalAlignment="Left" Margin="257,506,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="AddLineEvent" Grid.Column="1"/>
+        <Button Content="Edit line" Click="EditLineEvent" HorizontalAlignment="Left" Margin="144,506,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
+        <Button Content="Delete line" HorizontalAlignment="Left" Margin="40,506,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
     </Grid>
 </Window>

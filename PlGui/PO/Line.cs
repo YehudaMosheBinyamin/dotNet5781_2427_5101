@@ -9,9 +9,6 @@ namespace PO
 {
     public class Line
     {
-   
-      
-       
             public ObservableCollection<LineStation> stationsInLine { get; set; }
             //public IEnumerable<LineTrip> lineExits {get; set;}
             public int Id { get; set; }
