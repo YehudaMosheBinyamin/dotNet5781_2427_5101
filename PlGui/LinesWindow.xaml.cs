@@ -65,7 +65,15 @@ namespace PlGui
         private void AddLineEvent(object sender, RoutedEventArgs e)
         {
             AddLineWindow addLineWindow = new AddLineWindow(linesCollection);
-            addLineWindow.Show();
+            addLineWindow.ShowDialog();
+            //linesCollection = Utillities.Convert(from line in bl.GetAllLines() select Utillities.LineBoPoAdapter(line));
+            cbBusLines.ItemsSource = linesCollection;
+            //cbBusLines.DisplayMemberPath = "Code";
+            //cbBusLines.SelectedIndex = 0;
+            //ShowBusLine((cbBusLines.SelectedValue as PO.Line));
+            cbBusLines.Items.Refresh();
+            lbBusLineStations.Items.Refresh();
+            MessageBox.Show("HOPPA!");
         }
 
         private void lbBusLineStations_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)

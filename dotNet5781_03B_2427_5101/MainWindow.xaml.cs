@@ -69,6 +69,11 @@ namespace dotNet5781_03B_2427_5101
             lbBuses.ItemsSource= activeBusList;
             lbBuses.SelectedIndex = 0; 
         }
+        /// <summary>
+        /// For adding a bus
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
             private void Button_Click(object sender, RoutedEventArgs e)
         {
             WindowAddBus window = new WindowAddBus(activeBusList);

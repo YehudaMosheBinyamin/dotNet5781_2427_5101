@@ -22,6 +22,7 @@ namespace DalAPI
         Line GetLine(int lineId);
         void UpdateLine(int lineId,Action<Line>update);
         void DeleteLine(int lineId);
+        int GetNewLineId();
         #endregion
         #region Station
         void AddStation(Station station);

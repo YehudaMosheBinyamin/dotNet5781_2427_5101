@@ -239,15 +239,9 @@ namespace BL
         public void AddLine(Line line)
         {
             IDL dl = DLFactory.GetDL();
-            try
-            {
-                dl.AddLine(LineBoDoAdapter(line));
-            }
-            catch (DO.LineAlreadyExistsException ex)
-            {
-                throw new BO.LineAlreadyExistsException("The line already exists and so cannot be added twice", ex);
-            }
-
+            line.Id = dl.GetNewLineId();
+            dl.AddLine(LineBoDoAdapter(line));
+            AddAllLineStations(line);
             IEnumerable<DO.AdjacentStations> adjacentStations = from lineStation1 in line.stationsInLine
                                                                 from lineStation2 in line.stationsInLine
                                                                 where lineStation1.NextStation == lineStation2.Station && dl.AdjacentStationsExists(lineStation1.Station, lineStation2.Station) == false
@@ -375,7 +369,7 @@ namespace BL
             
 
         }
-        DO.LineStation LineStationBoDoAdapter(BO.LineStation boLineStation)
+        public DO.LineStation LineStationBoDoAdapter(BO.LineStation boLineStation)
         {
             DO.LineStation doLineStation = new DO.LineStation();
             doLineStation.LineId = boLineStation.LineId;
@@ -403,12 +397,16 @@ namespace BL
         }
         void AddAllLineStations(BO.Line line)
         {
+            
             IDL dl = DLFactory.GetDL();
             foreach (LineStation ls in line.stationsInLine)
             {
+                ls.LineId = line.Id;
                 try
                 {
-                    dl.AddLineStation(LineStationBoDoAdapter(ls));
+                    
+                    dl.AddLineStation
+                        (LineStationBoDoAdapter(ls));
                 }
                 catch (DO.NoLineStationFoundException ex)
                 {
@@ -612,5 +610,13 @@ namespace BL
             
         }
         #endregion
+        public float GetRandomDistance() 
+        {
+            return Functions.randomDistance();
+        }
+        public TimeSpan GetMinutesOfTravel(float distance) 
+        {
+            return Functions.MinutesOfTravel(distance);
+        }
     }
 }

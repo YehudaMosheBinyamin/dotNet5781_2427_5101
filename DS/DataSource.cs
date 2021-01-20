@@ -378,10 +378,8 @@ new LineStation{LineId=11,Station=38886, LineStationIndex=4, PrevStation=38887, 
 new LineStation{LineId=11,Station=38887, LineStationIndex=3, PrevStation=38888, NextStation=38886,InService=true},                                         
 new LineStation{LineId=11,Station=38888, LineStationIndex=2, PrevStation=38889, NextStation=38887,InService=true},                                          
 new LineStation{LineId=11,Station=38889, LineStationIndex=1, PrevStation=38890, NextStation=38888,InService=true},                                          
-new LineStation{LineId=11,Station=38890, LineStationIndex=0, PrevStation=38890, NextStation=38889,InService=true},                                  
-
-            };
-            ;
+new LineStation{LineId=11,Station=38890, LineStationIndex=0, PrevStation=38890, NextStation=38889,InService=true}                                 
+};
 
             busesList = new List<Bus>()
 {
@@ -649,7 +647,6 @@ new LineStation{LineId=11,Station=38890, LineStationIndex=0, PrevStation=38890, 
              select new AdjacentStations
              {
               LineId = lineStation.LineId,
-             
               Station1 = lineStation.Station,
               Station2 = linestation2.Station,
               Distance = rdistance,

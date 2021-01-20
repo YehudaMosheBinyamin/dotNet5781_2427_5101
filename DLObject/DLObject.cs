@@ -147,21 +147,8 @@ namespace DL
         #endregion
         #region Line
         public void AddLine(Line line)
-        {int id=line.Id;
-         Line tempLine= DataSource.linesList.Find(p =>p.Id==id);
-         if(tempLine==null)
-         {
-             DataSource.linesList.Add(tempLine);
-            
-         }
-         else if(tempLine.InService == false)
-            {
-                tempLine.InService = true;
-            }
-          else
-          {
-                throw new LineAlreadyExistsException(id,$"This line with id: {id} already exists and is active so it can't be added");
-          }
+        { 
+          DataSource.linesList.Add(line);
         }
        public IEnumerable<Line> GetAllLines()
         {
@@ -186,6 +173,10 @@ namespace DL
                 throw new NoLineFoundException(lineId,$"The line with id: {lineId} doesn't exist ");
                 }
 
+        }
+        public int GetNewLineId()
+        {
+            return Configuration.LineId;
         }
         public void UpdateLine(int lineId,Action<Line> update)
         {
@@ -227,16 +218,18 @@ namespace DL
             }
             return true;
         }
+      
         public void AddLineStation(LineStation lineStation)
         {
             int id = lineStation.LineId;
             int code = lineStation.Station;
-            LineStation tempLineStation = DataSource.lineStationsList.Find(p => p.LineId == id && p.Station==code);
+            LineStation tempLineStation = (from ls in DataSource.lineStationsList where ls.Station == code && ls.LineId == id select ls).ToList().FirstOrDefault();
             if (tempLineStation == null)
             {
-                DataSource.lineStationsList.Add(tempLineStation);
-
+                DataSource.lineStationsList.Add(lineStation);
+                
             }
+            
             else if (tempLineStation.InService == false)
             {
                 tempLineStation.InService = true;

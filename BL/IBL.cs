@@ -58,5 +58,7 @@ namespace BlApi
         IEnumerable<BO.AdjacentStations> GetAllAdjacentsStationsInLine(Line line);
         //IEnumerable<BO.AdjacentStations> GetAllAdjacentStationsOfLine(int )
         #endregion
+        float GetRandomDistance();
+        TimeSpan GetMinutesOfTravel(float distance);
     }
 }

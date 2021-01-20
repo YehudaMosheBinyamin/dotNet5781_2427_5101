@@ -32,6 +32,20 @@ namespace PlGui
             return poLineStation;
 
         }
+        public static BO.LineStation LineStationPoBoAdapter(PO.LineStation poLineStation)
+        {
+            BO.LineStation boLineStation = new BO.LineStation();
+            boLineStation.DistanceFromPreviousStation = poLineStation.DistanceFromPreviousStation;
+            boLineStation.InService = poLineStation.InService;
+            boLineStation.LineId = poLineStation.LineId;
+            boLineStation.LineStationIndex = poLineStation.LineStationIndex;
+            boLineStation.NextStation = poLineStation.NextStation;
+            boLineStation.PrevStation = poLineStation.PrevStation;
+            boLineStation.Station = poLineStation.Station;
+            boLineStation.TimeFromPreviousStation = poLineStation.TimeFromPreviousStation;
+            return boLineStation;
+
+        }
         public static ObservableCollection<T> Convert<T>(IEnumerable<T> original)
         {
             return new ObservableCollection<T>(original);
@@ -56,6 +70,19 @@ namespace PlGui
             poLine.LastStationName = boLine.LastStationName;
             poLine.stationsInLine = Convert(from ls in boLine.stationsInLine select LineStationBoPoAdapter(ls));
             return poLine;
+        }
+        public static BO.Line LinePoBoAdapter(PO.Line poLine)
+        {
+            BO.Line boLine = new BO.Line();
+            boLine.Area = (BO.Areas)poLine.Area;
+            boLine.Code = poLine.Code;
+            boLine.Id = poLine.Id;
+            boLine.InService = poLine.InService;
+            boLine.LastStationName = poLine.LastStationName;
+            boLine.stationsInLine = from ls in poLine.stationsInLine select LineStationPoBoAdapter(ls);
+            return boLine;
+
+
         }
     }
 }

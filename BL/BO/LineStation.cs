@@ -9,6 +9,8 @@ namespace BO
         public int LineStationIndex { get; set; }
         public int PrevStation { get; set; }
         public int NextStation { get; set; }
+        public string LastStationName { get; set; }
+        public string Name { get; set; }
         public TimeSpan TimeFromPreviousStation { get; set; }
         public double DistanceFromPreviousStation { get; set; }
         public bool InService { get; set; }
