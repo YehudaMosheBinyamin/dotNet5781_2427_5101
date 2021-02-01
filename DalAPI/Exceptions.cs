@@ -18,7 +18,7 @@ namespace DO
         public LineStationAlreadyExistsException(int lineId,int codeStation, string message, Exception innerException) : base(message, innerException)
         {
             LineId = lineId;
-             Station= codeStation;
+            Station= codeStation;
         }
     }
     [Serializable]

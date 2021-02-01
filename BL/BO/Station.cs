@@ -10,7 +10,7 @@ namespace BO
         public string Name { get; set; }
         public double Longtitude { get; set; }
         public double Latitude { get; set; }
-        public IEnumerable<LineStation> lineStationsOfStation { get; set; }
+        public IEnumerable<LineStation> LineStationsOfStation { get; set; }
         //public bool InService;
         public override string ToString()
         {

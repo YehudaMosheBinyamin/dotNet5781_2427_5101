@@ -21,7 +21,7 @@ namespace PO
             public bool InService { get; set; }
             public override string ToString()
             {
-                return String.Format($"Station: {Station} LineStationIndex: {LineStationIndex} NextStation: {NextStation} TimeFromPrevious:{TimeFromPreviousStation} DistanceFromPrevious{Math.Round(DistanceFromPreviousStation, 2)} ");
+                return String.Format($"Station: {Station} Name:{Name} LineStationIndex: {LineStationIndex} TimeFromPrevious:{TimeFromPreviousStation} DistanceFromPrevious{Math.Round(DistanceFromPreviousStation, 2)} ");
             }
         } 
 }

@@ -53,5 +53,10 @@ namespace PlGui
             wsd.Show();
         }
 
+        private void AddStationEvent(object sender, RoutedEventArgs e)
+        {
+            AddStationWindow addStationWindow = new AddStationWindow(poStationCollection);
+            addStationWindow.ShowDialog();
+        }
     }
 }

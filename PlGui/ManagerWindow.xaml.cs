@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,14 +20,16 @@ namespace PlGui
     /// </summary>
     public partial class ManagerWindow : Window
     {
-        public ManagerWindow()
+        ObservableCollection<PO.Line> poLineCollection;
+        public ManagerWindow(ObservableCollection<PO.Line> poLineCollection)
         {
             InitializeComponent();
+            this.poLineCollection = poLineCollection;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            LinesWindow linesWindow = new LinesWindow();
+            LinesWindow linesWindow = new LinesWindow(poLineCollection);
             linesWindow.Show();
         }
 

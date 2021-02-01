@@ -15,12 +15,9 @@ namespace dotNet5781_02_2427_5101
             List<BusStop> busStops = new List<BusStop>();
             BusLineCollection busLineCollection = new BusLineCollection();
             //---------------------                                                                                                                                           
-            for (int i = 0; i < numOfStations; i++)
-            {
-                busStops.Add(new BusLineStop());
-
-            }
+            
             List<BusLineStop> busStopsForLine = new List<BusLineStop>();
+            new BusLineStop();
             BusLineStop bls1 = new BusLineStop();
             BusLineStop bls2 = new BusLineStop();
             BusLineStop bls3 = new BusLineStop();

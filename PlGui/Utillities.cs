@@ -8,7 +8,28 @@ using PO;
 namespace PlGui
 {
     public static class Utillities
-    {
+    {   public static PO.Station StationBoPoAdapter(BO.Station boStation)
+        {
+            PO.Station poStation = new PO.Station();
+            poStation.Code = boStation.Code;
+            poStation.Latitude = boStation.Latitude;
+            poStation.LineStationsOfStation = Convert((from ls in boStation.LineStationsOfStation select LineStationBoPoAdapter(ls)).ToList());
+            poStation.Longtitude = boStation.Longtitude;
+            poStation.Name = boStation.Name;
+            return poStation;
+
+        }
+        public static BO.Station StationPoBoAdapter(PO.Station poStation)
+        {
+            BO.Station boStation = new BO.Station();
+            boStation.Code = poStation.Code;
+            boStation.Latitude = poStation.Latitude;
+            boStation.LineStationsOfStation = Convert((from ls in poStation.LineStationsOfStation select LineStationPoBoAdapter(ls)).ToList());
+            boStation.Longtitude = poStation.Longtitude;
+            boStation.Name = poStation.Name;
+            return boStation;
+
+        }
         public static PO.AdjacentStations AdjacentStationsBoPoAdapter(BO.AdjacentStations boAdjStat)
         {
             PO.AdjacentStations poAdjacentStations = new PO.AdjacentStations();
@@ -29,6 +50,8 @@ namespace PlGui
             poLineStation.PrevStation = boLineStation.PrevStation;
             poLineStation.Station = boLineStation.Station;
             poLineStation.TimeFromPreviousStation = boLineStation.TimeFromPreviousStation;
+            poLineStation.Name = boLineStation.Name;
+            poLineStation.LastStationName = boLineStation.LastStationName;
             return poLineStation;
 
         }
@@ -42,6 +65,8 @@ namespace PlGui
             boLineStation.NextStation = poLineStation.NextStation;
             boLineStation.PrevStation = poLineStation.PrevStation;
             boLineStation.Station = poLineStation.Station;
+            boLineStation.Name = poLineStation.Name;
+            boLineStation.LastStationName = poLineStation.LastStationName;
             boLineStation.TimeFromPreviousStation = poLineStation.TimeFromPreviousStation;
             return boLineStation;
 
@@ -50,16 +75,7 @@ namespace PlGui
         {
             return new ObservableCollection<T>(original);
         }
-        public static PO.Station StationBoPoAdapter(BO.Station boStation)
-        {
-            PO.Station poStation = new PO.Station();
-            poStation.Code = boStation.Code;
-            poStation.Latitude = boStation.Latitude;
-            poStation.lineStationsOfStation= Convert(from lineStation in boStation.lineStationsOfStation select LineStationBoPoAdapter(lineStation));
-            poStation.Longtitude = boStation.Longtitude;
-            poStation.Name = boStation.Name;
-            return poStation;
-        }
+
         public static PO.Line LineBoPoAdapter(BO.Line boLine)
         {
             PO.Line poLine = new PO.Line();
@@ -81,8 +97,6 @@ namespace PlGui
             boLine.LastStationName = poLine.LastStationName;
             boLine.stationsInLine = from ls in poLine.stationsInLine select LineStationPoBoAdapter(ls);
             return boLine;
-
-
         }
     }
 }

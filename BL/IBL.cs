@@ -21,6 +21,7 @@ namespace BlApi
         IEnumerable<Line> GetAllLinesByStation(int stationCode);
         Line GetLine(int id);
         void DeleteLine(int lineId);
+        void UpdateLine(int oldLineId, Line newLine);
         //void DeleteLine(int id);
         #endregion
         #region LineStation
@@ -37,7 +38,7 @@ namespace BlApi
         void DeleteLineStations(int lineId);
         #endregion
         #region Station
-        //void AddStation(Station station);
+        void AddStation(Station station);
         IEnumerable<Station> GetAllStations();
         //IEnumerable<Station> GetAllStationsBy(Predicate<Station> filter);
         Station GetStation(int code);
@@ -60,5 +61,6 @@ namespace BlApi
         #endregion
         float GetRandomDistance();
         TimeSpan GetMinutesOfTravel(float distance);
+       
     }
 }

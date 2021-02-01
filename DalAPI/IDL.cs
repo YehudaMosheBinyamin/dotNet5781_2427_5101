@@ -25,6 +25,7 @@ namespace DalAPI
         int GetNewLineId();
         #endregion
         #region Station
+        //int GetNewStationCode();
         void AddStation(Station station);
         IEnumerable<Station> GetAllStations();
         Station GetStation(int code);

@@ -9,7 +9,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
   </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\DalAPI\DalAPI.csproj" />
     <ProjectReference Include="..\DS\DS.csproj" />

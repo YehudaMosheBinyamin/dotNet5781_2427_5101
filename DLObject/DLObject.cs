@@ -19,8 +19,9 @@ namespace DL
         #endregion
         #region Station
         public void AddStation(Station station)
-        {int code=station.Code;
-         Station tempStation= DataSource.stationsList.Find(p=>p.Code==code);
+        {
+            int code=station.Code;
+            Station tempStation= DataSource.stationsList.Find(p=>p.Code==code);
             if(tempStation==null )
             {
              DataSource.stationsList.Add(station);
@@ -45,7 +46,7 @@ namespace DL
         {
             throw new NotImplementedException();
         }
-       public  Station GetStation(int code)
+       public Station GetStation(int code)
         {
            
                 Station tempStation= DataSource.stationsList.Find(p =>p.Code==code);
@@ -58,6 +59,11 @@ namespace DL
                 throw new NoStationFoundException(code,$"This station with code {code} doesn't exist ");
                 }
 
+        }
+        /**
+        public int GetNewStationCode()
+        {
+            return Configuration.StationCode;
         }
         /**public void UpdateStation(int code,string newName,Action<Station,string> update)
         {
@@ -148,7 +154,25 @@ namespace DL
         #region Line
         public void AddLine(Line line)
         { 
-          DataSource.linesList.Add(line);
+            int id = line.Id;
+            Line tempLine = (from l in DataSource.linesList where l.Id == id select l).ToList().FirstOrDefault();
+            if (tempLine == null)
+            {
+                DataSource.linesList.Add(line);
+            }
+
+            else if (tempLine.InService == false)
+            {
+                tempLine.InService = true;
+                tempLine.Area = line.Area;
+                tempLine.Code = line.Code;
+                tempLine.FirstStation = line.FirstStation;
+                tempLine.LastStation = line.LastStation;
+            }
+            else
+            {
+                throw new LineAlreadyExistsException(id, $"This line with id: {id}  already exists-Bus with code{tempLine.Code} and is active so it can't be added");
+            }
         }
        public IEnumerable<Line> GetAllLines()
         {
@@ -224,19 +248,21 @@ namespace DL
             int id = lineStation.LineId;
             int code = lineStation.Station;
             LineStation tempLineStation = (from ls in DataSource.lineStationsList where ls.Station == code && ls.LineId == id select ls).ToList().FirstOrDefault();
-            if (tempLineStation == null)
+            if (tempLineStation == null||lineStation.LineStationIndex!=tempLineStation.LineStationIndex)
             {
                 DataSource.lineStationsList.Add(lineStation);
-                
             }
             
             else if (tempLineStation.InService == false)
             {
                 tempLineStation.InService = true;
+                tempLineStation.NextStation = lineStation.NextStation;
+                tempLineStation.PrevStation = lineStation.PrevStation;
+                tempLineStation.Station = lineStation.Station;
             }
             else
             {
-                throw new LineAlreadyExistsException(id, $"This line with id: {id} already exists and is active so it can't be added");
+                throw new LineStationAlreadyExistsException(id,code, $"This line station with id: {id} code{code} already exists and is active so it can't be added");
             }
         }
 
@@ -247,7 +273,7 @@ namespace DL
 
         public LineStation GetLineStation(int lineId, int stationCode)
         {
-            LineStation tempLineStation = DataSource.lineStationsList.FirstOrDefault(p => p.LineId == lineId && p.Station == stationCode);
+            LineStation tempLineStation = DataSource.lineStationsList.FirstOrDefault(p => (p.LineId == lineId) && (p.Station == stationCode));
             if (tempLineStation != null && tempLineStation.InService == true)
             {
                 return tempLineStation.Clone();
@@ -367,7 +393,8 @@ namespace DL
         public bool AdjacentStationsExists(int station1,int station2)
         {
             AdjacentStations tempAdjStat = DataSource.adjacentStationsList.Find(p => p.Station1 == station1 && p.Station2 == station2);
-            if (tempAdjStat == null || tempAdjStat.InService == false)
+            //if (tempAdjStat == null || tempAdjStat.InService == false)
+            if(tempAdjStat==null)
             {
                 return false;
 
@@ -403,7 +430,8 @@ namespace DL
 
         public AdjacentStations GetAdjacentStations(int stationOneCode, int stationTwoCode)
         {
-            return DS.DataSource.adjacentStationsList.Find(p => p.Station1 == stationOneCode && p.Station2 == stationTwoCode);//&&p.InStations==true
+            //return (from adjacentStations in DS.DataSource.adjacentStationsList where adjacentStations.Station1 == stationOneCode && adjacentStations.Station2 == stationTwoCode select adjacentStations).FirstOrDefault();
+            return DS.DataSource.adjacentStationsList.Find(p => p.Station1 == stationOneCode && p.Station2 == stationTwoCode);
         }
 
         public void UpdateAdjacentStations(int stationOneCode, int stationTwoCode, Action<AdjacentStations> update)

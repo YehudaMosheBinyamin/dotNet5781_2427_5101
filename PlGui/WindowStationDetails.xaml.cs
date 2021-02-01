@@ -26,11 +26,7 @@ namespace PlGui
         //private BO.Station boStation;
         private PO.Station poStation;
         public PO.Line lineSelected;
-        //private IEnumerable<BO.Line> linesByStation;
-        //private ObservableCollection<PO.Line> linesByStation;
-        //public  ObservableCollection<PO.LineStation> lineStationsByStation;
         public ObservableCollection<PO.Line> linesByStation;
-        //public WindowStationDetails(BO.Station station)
         public WindowStationDetails(PO.Station station)
         {
             bl = BlFactory.GetBl("1");
@@ -40,7 +36,7 @@ namespace PlGui
             //myGrid.DataContext = boStation;
             myGrid.DataContext = poStation;
             linesByStation = Utillities.Convert(from line in bl.GetAllLinesByStation(poStation.Code) select Utillities.LineBoPoAdapter(line));
-           // lineStationsByStation = Utillities.Convert(station.lineStationsOfStation);
+           // lineStationsByStation = Utillities.Convert(station.LineStationsOfStation);
             gridLines.DataContext = linesByStation;
             lbLinesBy.ItemsSource = linesByStation;
             //gridLines.DataContext = lineStationsByStation;

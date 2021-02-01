@@ -134,6 +134,10 @@ namespace BL
             doStation.Code = bStation.Code;
             doStation.Latitude = bStation.Latitude;
             doStation.Longtitude = bStation.Longtitude;
+            foreach(LineStation ls in boStation.LineStationsOfStation)
+            {
+                dl.AddLineStation(LineStationBoDoAdapter(ls));
+            }
             doStation.Name = bStation.Name;
             return doStation;
 
@@ -147,7 +151,7 @@ namespace BL
             boStation.Latitude = doStation.Latitude;
             boStation.Longtitude = doStation.Longtitude;
             boStation.Name = doStation.Name;
-            boStation.lineStationsOfStation = from linestation in dl.GetAllLineStations() where linestation.Station == boStation.Code select LineStationDoBoAdapter(linestation);
+            boStation.LineStationsOfStation = from linestation in dl.GetAllLineStations() where linestation.Station == boStation.Code select LineStationDoBoAdapter(linestation);
             return boStation;
 
         }
@@ -213,7 +217,8 @@ namespace BL
             IEnumerable<BO.LineStation> lineStations = from lineStation in GetAllLineStationsByLine(doLine.Id) where lineStation.InService==true orderby lineStation.LineStationIndex  select lineStation;
             //IEnumerable<BO.LineTrip> lineTrips = from lineTrip in dl.GetAllLineTrips() where lineTrip.LineId == doLine.Id select LineTripDoBoAdapter(lineTrip);
             boLine.stationsInLine = lineStations;
-            boLine.LastStationName = dl.GetStation(lineStations.ToList().Last().Station).Name;
+            boLine.InService = doLine.InService;
+            boLine.LastStationName = dl.GetStation(((lineStations.ToList()).Last()).Station).Name;
             //boLine.lineExits = lineTrips;
             return boLine;
         }
@@ -225,10 +230,11 @@ namespace BL
             doLine.FirstStation = LineStationBoDoAdapter((from station in boLine.stationsInLine select station).First()).Station;
             doLine.LastStation = LineStationBoDoAdapter((from station in boLine.stationsInLine select station).Last()).Station;
             doLine.Area = (DO.Areas)boLine.Area;
+            doLine.InService = true;
             return doLine;
         }
         public BO.Line GetLine(int lineId)
-        { IDL dl = DLFactory.GetDL();
+        {   IDL dl = DLFactory.GetDL();
             BO.Line line = LineDoBoAdapter(dl.GetLine(lineId));
             return line;
         }
@@ -240,22 +246,35 @@ namespace BL
         {
             IDL dl = DLFactory.GetDL();
             line.Id = dl.GetNewLineId();
-            dl.AddLine(LineBoDoAdapter(line));
+            try
+            {
+                dl.AddLine(LineBoDoAdapter(line));
+            }
+            catch(DO.LineAlreadyExistsException ex)
+            {
+                throw new BO.LineAlreadyExistsException("Line already exists",ex);
+            }
             AddAllLineStations(line);
-            IEnumerable<DO.AdjacentStations> adjacentStations = from lineStation1 in line.stationsInLine
-                                                                from lineStation2 in line.stationsInLine
-                                                                where lineStation1.NextStation == lineStation2.Station && dl.AdjacentStationsExists(lineStation1.Station, lineStation2.Station) == false
-                                                                let rDistance = Functions.randomDistance()
-                                                                select new DO.AdjacentStations
-                                                                {
-                                                                    Station1 = lineStation1.Station,
-                                                                    Station2 = lineStation2.Station,
-                                                                    Distance = rDistance,
-                                                                    Time = Functions.MinutesOfTravel(rDistance),
-                                                                    InService = true
-                                                                };
+            List<DO.AdjacentStations> adjacentStations = (from lineStation1 in line.stationsInLine
+                                                          from lineStation2 in line.stationsInLine
+                                                          where lineStation1.NextStation == lineStation2.Station&&dl.AdjacentStationsExists(lineStation1.Station,lineStation2.Station)==false
+                                                          let rDistance = Functions.randomDistance()
+                                                          select new DO.AdjacentStations
+                                                          {   LineId= lineStation1.LineId,
+                                                              Station1 = lineStation1.Station,
+                                                              Station2 = lineStation2.Station,
+                                                              Distance = rDistance,
+                                                              Time = Functions.MinutesOfTravel(rDistance),
+                                                              InService = true
+                                                          }).ToList();
+            float distance1 = Functions.randomDistance();
+            float distance2 = Functions.randomDistance();
+
+            DO.AdjacentStations toFirst = new DO.AdjacentStations() { Station1 =00000,Station2=line.stationsInLine.First().Station, Distance = 0f, Time = new TimeSpan(0,0,0), InService = true };
+            adjacentStations.Add(toFirst);
             foreach (DO.AdjacentStations adj in adjacentStations)
-            { bool lineStationsExists = AdjacentStationsExists(adj.Station1, adj.Station2);
+            { 
+                bool lineStationsExists = AdjacentStationsExists(adj.Station1, adj.Station2);
              if (lineStationsExists == false)
               {
                 try
@@ -266,9 +285,21 @@ namespace BL
                 {
                     throw new BO.AdjacentStationsAlreadyExistsException("The line station already exists and cannot be added", ex);
                 }
-                }
+              }
             }
         }
+
+        /// <summary>
+        /// For update of line-deletion of old line and receiving new line
+        /// </summary>
+        /// <param name="oldLineId"></param>
+        /// <param name="newLine"></param>
+        public void UpdateLine(int oldLineId,Line newLine)
+        {
+                DeleteLine(oldLineId);
+                AddLine(newLine);    
+        }
+
         /// <summary>
         /// For deletion of a line
         /// </summary>
@@ -280,7 +311,7 @@ namespace BL
             try
             {
                 DeleteLineStations(lineId);
-                dl.DeleteLineTrips(lineId);
+                //dl.DeleteLineTrips(lineId);
                 dl.DeleteLine(lineId);
             }
             catch (DO.NoLineFoundException ex)
@@ -292,7 +323,7 @@ namespace BL
         public IEnumerable<BO.Line> GetAllLines()
         {
             IDL dl = DLFactory.GetDL();
-            return from line in dl.GetAllLines() select  LineDoBoAdapter(line) ;
+            return from line in dl.GetAllLines() orderby line.Code select  LineDoBoAdapter(line)   ;
         }
         /// <summary>
         /// Get all lines that go by station,for Station Window
@@ -330,7 +361,7 @@ namespace BL
             LineStation prevStation = (from linestation in line.stationsInLine where linestation.LineStationIndex == indexForInsertion - 1 select linestation).FirstOrDefault();
             LineStation nextStation = (from linestation in line.stationsInLine where linestation.LineStationIndex == indexForInsertion + 1 select linestation).FirstOrDefault();
             LineStation ls = new LineStation
-            { Station=station.Code,
+            {   Station=station.Code,
                 LineId = prevStation.LineId,
                 LineStationIndex = indexForInsertion,
                 PrevStation = prevStation.Station,
@@ -405,12 +436,11 @@ namespace BL
                 try
                 {
                     
-                    dl.AddLineStation
-                        (LineStationBoDoAdapter(ls));
+                    dl.AddLineStation(LineStationBoDoAdapter(ls));
                 }
-                catch (DO.NoLineStationFoundException ex)
+                catch (DO.LineStationAlreadyExistsException ex)
                 {
-                    throw new BO.LineStationNotFoundException("No line station exists so it cannot be deleted", ex);
+                    throw new BO.LineStationNotFoundException(" line station exists so it cannot be added again", ex);
                 }
             }
 
@@ -507,10 +537,11 @@ namespace BL
          boLineStation.Station = doLineStation.Station;
          boLineStation.LineStationIndex = doLineStation.LineStationIndex;
          boLineStation.PrevStation = doLineStation.PrevStation;
-         boLineStation.NextStation = doLineStation.NextStation;  
+         boLineStation.NextStation = doLineStation.NextStation; 
+         boLineStation.InService = doLineStation.InService; 
          boLineStation.TimeFromPreviousStation = dl.GetAdjacentStations(doLineStation.PrevStation, doLineStation.Station).Time; 
-         boLineStation.DistanceFromPreviousStation= dl.GetAdjacentStations(doLineStation.PrevStation, doLineStation.Station).Distance;//
-         boLineStation.InService = doLineStation.InService;
+         boLineStation.DistanceFromPreviousStation= dl.GetAdjacentStations(doLineStation.PrevStation, doLineStation.Station).Distance; 
+         boLineStation.Name = dl.GetStation(doLineStation.Station).Name;
          return boLineStation;
         }
         public IEnumerable<LineStation> GetAllLineStationsByLine(int lineId)
@@ -550,8 +581,13 @@ namespace BL
         }
        public IEnumerable<BO.AdjacentStations> GetAllAdjacentStations()
         { IDL dl = DLFactory.GetDL();
-            return (from adjacentStation in dl.GetAllAdjacentStations() select AdjacentStationsDoBoAdapter(adjacentStation)).Distinct();
+          return (from adjacentStation in dl.GetAllAdjacentStations() select AdjacentStationsDoBoAdapter(adjacentStation)).Distinct();
         }
+        /// <summary>
+        /// To get all adjacent stations in line
+        /// </summary>
+        /// <param name="line"></param>
+        /// <returns></returns>
         public IEnumerable<BO.AdjacentStations> GetAllAdjacentsStationsInLine(BO.Line line)
         {
             IDL dl = DLFactory.GetDL();

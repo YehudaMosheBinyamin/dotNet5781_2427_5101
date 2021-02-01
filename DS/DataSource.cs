@@ -18,8 +18,6 @@ namespace DS
         public static List<LineTrip> lineTripsList;
         public static List<Station> stationsList;
         public static List<User> usersList;
-        public static List<int> busKeyList = new List<int>();
-        public static List<int> configurationLineIdNumbers = new List<int>();
         static DataSource()
         {
             InitializeAll();
@@ -27,9 +25,6 @@ namespace DS
         static void InitializeAll()
         {
             random = new Random();
-            for (int i = 0; i < 10; i++)
-            { configurationLineIdNumbers.Add(Configuration.LineId); }
-
             stationsList = new List<Station>
             {
         new Station{Code=38831, Name="בי''ס בר לב/בן יהודה", Longtitude=34.917806, Latitude=32.183921},
@@ -105,7 +100,7 @@ namespace DS
             linesList = new List<Line>
 {new Line
 {
-    Id=1,
+    Id=Configuration.LineId,
     Code=5,
     Area=Areas.North,
     FirstStation=38831,
@@ -114,7 +109,7 @@ namespace DS
   },
 
 new Line
-{Id=2,
+{Id=Configuration.LineId,
     Code=6,
     Area=Areas.Center,
     FirstStation=38840,
@@ -122,7 +117,7 @@ new Line
     InService=true
 },
 new Line
-{Id=3,
+{Id=Configuration.LineId,
     Code=7,
     Area=Areas.Center,
     FirstStation=38856,
@@ -130,7 +125,7 @@ new Line
     InService=true
 },
 new Line
-{Id=4,
+{Id=Configuration.LineId,
     Code=8,
     Area=Areas.South,
     FirstStation=38845,
@@ -138,7 +133,7 @@ new Line
     InService=true
 },
 new Line
-{Id=5,
+{Id=Configuration.LineId,
     Code=9,
     Area=Areas.South,
     FirstStation=38860,
@@ -146,7 +141,7 @@ new Line
     InService=true
 },
 new Line
-{Id=6,
+{Id=Configuration.LineId,
     Code=10,
     Area=Areas.South,
     FirstStation=38889,
@@ -154,7 +149,7 @@ new Line
     InService=true
 },
 new Line
-{Id=7,
+{Id=Configuration.LineId,
     Code=11,
     Area=Areas.South,
     FirstStation=38870,
@@ -162,7 +157,7 @@ new Line
     InService=true
 },
 new Line
-{Id=8,
+{Id=Configuration.LineId,
     Code=12,
     Area=Areas.South,
     FirstStation=38870,
@@ -170,7 +165,7 @@ new Line
     InService=true
 },
 new Line
-{Id=9,
+{Id=Configuration.LineId,
     Code=13,
     Area=Areas.South,
     FirstStation=38886,
@@ -179,7 +174,7 @@ new Line
 },
 new Line
 {
-    Id=10,
+    Id=Configuration.LineId,
     Code=14,
     Area=Areas.South,
     FirstStation=38886,
@@ -187,7 +182,7 @@ new Line
     InService=true
 },new Line
 {
-    Id=11,
+    Id=Configuration.LineId,
     Code=15,
     Area=Areas.General,
     FirstStation=38890,
@@ -198,7 +193,7 @@ new Line
             lineStationsList = new List<LineStation>
             {
             //new LineStation{LineId=1,Station=00000,LineStationIndex=-1,PrevStation=00000,NextStation=38831},
-            new LineStation { LineId = 1, Station = 38831, LineStationIndex = -1, PrevStation = 38831, NextStation = 38831,InService=true},
+            //new LineStation { LineId = 1, Station = 38831, LineStationIndex = -1, PrevStation = 38831, NextStation = 38831,InService=true},
             new LineStation { LineId = 1, Station = 38831, LineStationIndex = 0, PrevStation = 38831, NextStation = 38832,InService=true},
             new LineStation { LineId = 1, Station = 38832, LineStationIndex = 1, PrevStation = 38831, NextStation = 38833,InService=true},
             new LineStation { LineId = 1, Station = 38833, LineStationIndex = 2, PrevStation = 38832, NextStation = 38834,InService=true},
