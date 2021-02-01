@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlGui"
         mc:Ignorable="d"
-        Title="Bus Lines Explorer" Height="640" Width="800">
+        Title="Lines" Height="640" Width="800">
     <Grid Name="MainGrid" Margin="0,0,2,-21" RenderTransformOrigin="0.553,0.502">
         <Grid.RowDefinitions>
             <RowDefinition Height="50*"/>

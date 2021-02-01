@@ -35,6 +35,8 @@ namespace PlGui
             stationsInLine = lineToBeEdited.stationsInLine;
             lbLineStations.ItemsSource = stationsInLine;
             newLine = lineEdited;
+            cbStations.SelectedIndex = 0;
+            lbLineStations.SelectedIndex = 0;
 
         }
         /// <summary>
@@ -165,25 +167,44 @@ namespace PlGui
         private void bAddStation_Click(object sender, RoutedEventArgs e)
         { PO.Station selectedStation = cbStations.SelectedItem as PO.Station;
           IBL bl= BlFactory.GetBl("1");
-            float distanceFromPrevious = bl.GetRandomDistance();
-            PO.LineStation newLineStation = new PO.LineStation()
-            {
-                LineStationIndex = lbLineStations.Items.Count,
-                NextStation = selectedStation.Code,
-                DistanceFromPreviousStation = distanceFromPrevious,
-                TimeFromPreviousStation = bl.GetMinutesOfTravel(distanceFromPrevious),
-                InService = true,
-                Station =selectedStation.Code,
-                LineId = lineToBeEdited.Id,
-                LastStationName = lineToBeEdited.LastStationName,
-                Name = selectedStation.Name
-            };
-            if (stationsInLine.Count > 1)
-            {
+            float distanceFromPrevious;
+            if (stationsInLine.Count > 0)
+            { distanceFromPrevious= bl.GetRandomDistance();
+                PO.LineStation newLineStation = new PO.LineStation()
+                {
+                    LineStationIndex = lbLineStations.Items.Count,
+                    NextStation = selectedStation.Code,
+                    PrevStation = (lbLineStations.Items[lbLineStations.Items.Count - 1] as PO.LineStation).Station,
+                    DistanceFromPreviousStation = distanceFromPrevious,
+                    TimeFromPreviousStation = bl.GetMinutesOfTravel(distanceFromPrevious),
+                    InService = true,
+                    Station = selectedStation.Code,
+                    LineId = lineToBeEdited.Id,
+                    LastStationName = lineToBeEdited.LastStationName,
+                    Name = selectedStation.Name
+                };
+
                 PO.LineStation stationBefore = lbLineStations.Items[lbLineStations.Items.Count - 1] as PO.LineStation;
                 stationBefore.NextStation = newLineStation.Station;
+                stationsInLine.Add(newLineStation);
             }
-            stationsInLine.Add(newLineStation);
+            else
+            {
+                PO.LineStation newLineStation = new PO.LineStation()
+                {
+                    LineStationIndex = lbLineStations.Items.Count,
+                    NextStation = selectedStation.Code,
+                    PrevStation = selectedStation.Code,
+                    DistanceFromPreviousStation = 0f,
+                    TimeFromPreviousStation = new TimeSpan(0, 0, 0),
+                    InService = true,
+                    Station = selectedStation.Code,
+                    LineId = lineToBeEdited.Id,
+                    LastStationName = lineToBeEdited.LastStationName,
+                    Name = selectedStation.Name
+                };
+                stationsInLine.Add(newLineStation);
+            }
             //lbLineStations.ItemsSource = listOfStations;
             lbLineStations.Items.Refresh();
         }

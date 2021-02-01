@@ -8,9 +8,9 @@
         Title="WindowEdit" Height="450" Width="800">
     <Window.Resources>
         <DataTemplate x:Key="MyDataTemplate" DataType="local.LineStation">
-            <Grid  Name="editLineStation">
+            <Grid Name="editLineStation">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="90"/>
@@ -25,7 +25,7 @@
             </Grid>
         </DataTemplate>
     </Window.Resources>
-    <Grid>
+    <Grid Height="640" Width="800">
         <ListBox Name="lbLineStations" ItemTemplate="{StaticResource MyDataTemplate}"  ItemsSource="{Binding}" HorizontalAlignment="Left" Height="367" Margin="28,26,0,0" VerticalAlignment="Top" Width="477">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">

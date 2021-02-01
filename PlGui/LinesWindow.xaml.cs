@@ -106,7 +106,7 @@ namespace PlGui
             cbBusLines.ItemsSource = linesCollection;
             cbBusLines.DisplayMemberPath = "Code";
             cbBusLines.SelectedIndex = 0;
-            MessageBox.Show("Line added successfully");
+            MessageBox.Show("Line edited successfully");
         }
         /// <summary>
         /// For deletion of line
