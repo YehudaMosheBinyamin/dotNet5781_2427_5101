@@ -61,7 +61,20 @@ namespace PlGui
                 ShowBusLine((cbBusLines.SelectedValue as PO.Line).Code);
             }
         }
-
+        private void TimeFromPrevChangedEvent(object sender, RoutedEventArgs e)
+        {
+           
+            return;
+        }
+        private void DistanceFromPrevChangedEvent(object sender, RoutedEventArgs e)
+        {
+            return;
+        }
+        /// <summary>
+        /// For addition of line
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddLineEvent(object sender, RoutedEventArgs e)
         {
             AddLineWindow addLineWindow = new AddLineWindow(linesCollection);
@@ -92,6 +105,11 @@ namespace PlGui
             WindowStationDetails wsd = new WindowStationDetails(selectedStation);
             wsd.Show();
         }
+        /// <summary>
+        /// For edit of line
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EditLineEvent(object sender, RoutedEventArgs e)
         {
             WindowEdit windowEdit = new WindowEdit(cbBusLines.SelectedValue as PO.Line);

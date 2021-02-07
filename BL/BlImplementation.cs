@@ -343,7 +343,33 @@ namespace BL
              return allLines;
             
         }
-        bool AdjacentStationsExists(int station1,int station2)
+        /// <summary>
+        /// To add new adjacent stations into the system
+        /// </summary>
+        /// <param name="station1"></param>
+        /// <param name="station2"></param>
+        /// <param name="distance"></param>
+        /// <param name="waitingTime"></param>
+        public void AddAdjacentStations(int station1, int station2, float distance, TimeSpan waitingTime)
+        {
+            IDL dl = DLFactory.GetDL();
+            BO.AdjacentStations newAdjStat = new BO.AdjacentStations()
+            {
+                Station1 = station1,
+                Station2 = station2,
+                Distance = distance,
+                InService = true,
+                Time = waitingTime
+            };
+                dl.AddAdjacentStations(AdjacentStationsBoDoAdapter(newAdjStat));
+        }
+        /// <summary>
+        /// To check if adjacent stations already in system so that the distance and time between them is already known
+        /// </summary>
+        /// <param name="station1"></param>
+        /// <param name="station2"></param>
+        /// <returns></returns>
+        public bool AdjacentStationsExists(int station1,int station2)
         {
             IDL dl = DLFactory.GetDL();
             return dl.AdjacentStationsExists(station1, station2);
@@ -579,7 +605,35 @@ namespace BL
             boAdjacentStations.Time = doAdjacentStations.Time;
             return boAdjacentStations;
         }
-       public IEnumerable<BO.AdjacentStations> GetAllAdjacentStations()
+        DO.AdjacentStations AdjacentStationsBoDoAdapter(BO.AdjacentStations boAdjacentStations)
+        {
+            DO.AdjacentStations doAdjacentStations = new DO.AdjacentStations();
+            doAdjacentStations.Distance = boAdjacentStations.Distance;
+            doAdjacentStations.InService = boAdjacentStations.InService;
+            doAdjacentStations.Station1 = boAdjacentStations.Station1;
+            doAdjacentStations.Station2 = boAdjacentStations.Station2;
+            doAdjacentStations.Time = boAdjacentStations.Time;
+            return doAdjacentStations;
+        }
+        /// <summary>
+        /// To get adjacent stations(for distance and time between two stations )
+        /// </summary>
+        /// <param name="codeOne"></param>
+        /// <param name="codeTwo"></param>
+        /// <returns></returns>
+        public BO.AdjacentStations GetAdjacentStations(int codeOne, int codeTwo)
+        {
+            IDL dl = DLFactory.GetDL();
+            try
+            {
+                return AdjacentStationsDoBoAdapter(dl.GetAdjacentStations(codeOne, codeTwo));
+            }
+            catch (DO.AdjacentStationsDoesntExistException ex)
+            {
+                throw new BO.AdjacentStationsDoesntExistException("Adjacent stations nonexistant", ex);
+            }
+        }
+        public IEnumerable<BO.AdjacentStations> GetAllAdjacentStations()
         { IDL dl = DLFactory.GetDL();
           return (from adjacentStation in dl.GetAllAdjacentStations() select AdjacentStationsDoBoAdapter(adjacentStation)).Distinct();
         }

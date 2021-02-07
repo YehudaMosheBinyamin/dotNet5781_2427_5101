@@ -38,21 +38,35 @@ namespace PlGui
         private void AddLineStation(object sender, RoutedEventArgs e)
         { IBL bl = BlFactory.GetBl("1");
             PO.Line line = cbLines.SelectedItem as PO.Line;
-            float distance = bl.GetRandomDistance();
-            PO.LineStation poLineStation = new PO.LineStation()
+            int code;
+            bool codeConverted = int.TryParse(tbCode.Text, out code);
+            if (codeConverted == false)
             {
-                LineStationIndex = line.stationsInLine.Count,
-                NextStation = 00000,
-                PrevStation = line.stationsInLine.ElementAt(line.stationsInLine.Count - 1).Station,
-                DistanceFromPreviousStation = distance,
-                TimeFromPreviousStation = bl.GetMinutesOfTravel(distance),
-                InService = true,
-                Station = int.Parse(tbCode.Text),
-                LineId = line.Id,
-                LastStationName = tbName.Text,
-                Name = tbName.Text
-            };
-            lbLineStations.Items.Add(poLineStation);
+                MessageBox.Show("Fill the code field and try again");
+                return;
+            }
+            if (tbName.Text=="")
+            {
+                MessageBox.Show("Fill the name field and try again");
+                return;
+            }  
+                float distance = bl.GetRandomDistance();
+                TimeSpan timeFromPrevious = bl.GetMinutesOfTravel(distance);
+                PO.LineStation poLineStation = new PO.LineStation()
+                {
+                    LineStationIndex = line.stationsInLine.Count,
+                    NextStation = code,
+                    PrevStation = line.stationsInLine.ElementAt(line.stationsInLine.Count - 1).Station,
+                    DistanceFromPreviousStation = distance,
+                    TimeFromPreviousStation = timeFromPrevious,
+                    InService = true,
+                    Station =code,
+                    LineId = line.Id,
+                    LastStationName = tbName.Text,
+                    Name = tbName.Text
+                };
+                lbLineStations.Items.Add(poLineStation);
+                bl.AddAdjacentStations(line.stationsInLine.ElementAt(line.stationsInLine.Count - 1).Station, code, distance, timeFromPrevious); 
         }
 
         private void AddStation(object sender, RoutedEventArgs e)

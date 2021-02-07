@@ -11,7 +11,7 @@
             <Button Content="Add Station" Click="AddStationEvent" HorizontalAlignment="Left" Height="28" Margin="309,371,0,0" VerticalAlignment="Top" Width="92"/>
         </Grid>
 
-        <ListBox Name="lbStations" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="343" Margin="49,24,0,0" VerticalAlignment="Top" PreviewMouseDoubleClick="lbStations_PreviewMouseDoubleClick" Width="363" RenderTransformOrigin="0.5,0.5" >
+        <ListBox Name="lbStations" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="343" Margin="176,33,0,0" VerticalAlignment="Top" PreviewMouseDoubleClick="lbStations_PreviewMouseDoubleClick" Width="363" RenderTransformOrigin="0.5,0.5" >
             <ListBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -21,9 +21,7 @@
                 </TransformGroup>
             </ListBox.RenderTransform>
         </ListBox>
-        <Label Content="Stations" HorizontalAlignment="Left" Margin="195,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.47,1.104" Width="48"/>
-        <ListBox Name="lbAdjacentStations" HorizontalAlignment="Left" ItemsSource="{Binding}" Height="140" Margin="459,25,0,0" VerticalAlignment="Top" Width="312"/>
-        <Label Content="Adjacent Stations" HorizontalAlignment="Left" Margin="574,-1,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.491,1.173"/>
+        <Label Content="Stations" HorizontalAlignment="Left" Margin="336,0,0,383" VerticalAlignment="Bottom" RenderTransformOrigin="0.47,1.104" Width="48"/>
 
     </Grid>
 </Window>

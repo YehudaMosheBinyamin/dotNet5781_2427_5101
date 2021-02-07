@@ -167,28 +167,50 @@ namespace PlGui
         private void bAddStation_Click(object sender, RoutedEventArgs e)
         { PO.Station selectedStation = cbStations.SelectedItem as PO.Station;
           IBL bl= BlFactory.GetBl("1");
-            float distanceFromPrevious;
-            if (stationsInLine.Count > 0)
-            { distanceFromPrevious= bl.GetRandomDistance();
+          float distanceFromPrevious=bl.GetRandomDistance();
+          PO.LineStation stationBefore = lbLineStations.Items[lbLineStations.Items.Count - 1] as PO.LineStation;
+          bool adjacentStationsExists = bl.AdjacentStationsExists(stationBefore.Station, selectedStation.Code);
+          float distance = bl.GetRandomDistance();
+          TimeSpan timeFromPrevious = bl.GetMinutesOfTravel(distance);
+          if (stationsInLine.Count > 0&&adjacentStationsExists==false)
+            {   distanceFromPrevious= bl.GetRandomDistance();
                 PO.LineStation newLineStation = new PO.LineStation()
                 {
                     LineStationIndex = lbLineStations.Items.Count,
                     NextStation = selectedStation.Code,
-                    PrevStation = (lbLineStations.Items[lbLineStations.Items.Count - 1] as PO.LineStation).Station,
+                    PrevStation = stationBefore.Station,
                     DistanceFromPreviousStation = distanceFromPrevious,
                     TimeFromPreviousStation = bl.GetMinutesOfTravel(distanceFromPrevious),
                     InService = true,
                     Station = selectedStation.Code,
                     LineId = lineToBeEdited.Id,
-                    LastStationName = lineToBeEdited.LastStationName,
+                    LastStationName = selectedStation.Name,
                     Name = selectedStation.Name
                 };
-
-                PO.LineStation stationBefore = lbLineStations.Items[lbLineStations.Items.Count - 1] as PO.LineStation;
                 stationBefore.NextStation = newLineStation.Station;
                 stationsInLine.Add(newLineStation);
+                bl.AddAdjacentStations(stationBefore.Station, selectedStation.Code, distance, timeFromPrevious);    
             }
-            else
+            else if(stationsInLine.Count > 0 && adjacentStationsExists == true)
+            {
+                PO.AdjacentStations adjStat = Utillities.AdjacentStationsBoPoAdapter(bl.GetAdjacentStations(lineToBeEdited.stationsInLine.ElementAt(lineToBeEdited.stationsInLine.Count - 1).Station, selectedStation.Code));
+                PO.LineStation poLineStation = new PO.LineStation()
+                {
+                    LineStationIndex = lineToBeEdited.stationsInLine.Count,
+                    NextStation = selectedStation.Code,
+                    PrevStation = lineToBeEdited.stationsInLine.ElementAt(lineToBeEdited.stationsInLine.Count - 1).Station,
+                    DistanceFromPreviousStation = adjStat.Distance,
+                    TimeFromPreviousStation = adjStat.Time,
+                    InService = true,
+                    Station = selectedStation.Code,
+                    LineId = lineToBeEdited.Id,
+                    LastStationName =selectedStation.Name,
+                    Name = selectedStation.Name
+                };
+                stationBefore.NextStation = poLineStation.Station;
+                stationsInLine.Add(poLineStation);
+            }
+            else//this is going to be first stop in line
             {
                 PO.LineStation newLineStation = new PO.LineStation()
                 {
@@ -205,7 +227,6 @@ namespace PlGui
                 };
                 stationsInLine.Add(newLineStation);
             }
-            //lbLineStations.ItemsSource = listOfStations;
             lbLineStations.Items.Refresh();
         }
 

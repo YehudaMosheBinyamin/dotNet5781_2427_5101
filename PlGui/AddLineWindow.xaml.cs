@@ -39,13 +39,17 @@ namespace PlGui
             cbArea.ItemsSource = areasList;
             cbArea.SelectedIndex = 0;
             lineCollection = collectionLines;
-            //lbLineStations.DataContext = cLineStation;
+
             lbLineStations.ItemsSource = lineStationsOfLine;
             cbStations.ItemsSource = Utillities.Convert((from station in bl.GetAllStations() select Utillities.StationBoPoAdapter(station)).ToList());
             cbStations.SelectedIndex = 0;
             lbLineStations.SelectedIndex = 0;
         }
-        //on click of add button to list of stations
+        /// <summary>
+        /// on click of add button to list of stations
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddStationToLine(object sender, RoutedEventArgs e)
         {
             PO.Station selectedStation = cbStations.SelectedItem as PO.Station;

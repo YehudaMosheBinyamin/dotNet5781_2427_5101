@@ -390,14 +390,18 @@ namespace DL
         }
         #endregion User
         #region AdjacentStations
+        /// <summary>
+        /// To check if adjacent stations exist in system
+        /// </summary>
+        /// <param name="station1"></param>
+        /// <param name="station2"></param>
+        /// <returns></returns>
         public bool AdjacentStationsExists(int station1,int station2)
         {
-            AdjacentStations tempAdjStat = DataSource.adjacentStationsList.Find(p => p.Station1 == station1 && p.Station2 == station2);
-            //if (tempAdjStat == null || tempAdjStat.InService == false)
-            if(tempAdjStat==null)
+            AdjacentStations tempAdjStat = DataSource.adjacentStationsList.Find(p => p.Station1 == station1 && p.Station2 == station2&&p.InService==true); 
+            if(tempAdjStat==null)//if not found any adjacentstations that fulfill the predicate
             {
                 return false;
-
             }
             return true;
         }
@@ -409,7 +413,6 @@ namespace DL
             if (tempAdjStat == null || tempAdjStat.InService == false)
             {
                 DataSource.adjacentStationsList.Add(adjacentStations);
-
             }
             else
             {

@@ -72,6 +72,17 @@ namespace BO
         }
 
     }
+    public class AdjacentStationsDoesntExistException : Exception
+    {
+        int station1;
+        int station2;
+        public AdjacentStationsDoesntExistException(string str, Exception exp) : base(str)
+        {
+            station1 = ((DO.AdjacentStationsDoesntExistException)exp).station1;
+            station2 = ((DO.AdjacentStationsDoesntExistException)exp).station2;
+        }
+
+    }
     #endregion
     #region Line
     public class LineAlreadyExistsException : Exception

@@ -54,8 +54,10 @@ namespace BlApi
         bool CheckUserPassword(User user,bool needsAdmin=false);
         #endregion
         #region AdjacentStations
-        //bool AdjacentStationsExists(int station1, int station2);
+        void AddAdjacentStations(int station1, int station2, float distance, TimeSpan waitingTime);
+        bool AdjacentStationsExists(int station1, int station2);
         IEnumerable<BO.AdjacentStations> GetAllAdjacentStations();
+        BO.AdjacentStations GetAdjacentStations(int codeOne,int codeTwo);
         IEnumerable<BO.AdjacentStations> GetAllAdjacentsStationsInLine(Line line);
         //IEnumerable<BO.AdjacentStations> GetAllAdjacentStationsOfLine(int )
         #endregion

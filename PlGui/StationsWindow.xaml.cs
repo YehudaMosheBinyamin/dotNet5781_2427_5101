@@ -41,8 +41,8 @@ namespace PlGui
             //boAdjStatList = bl.GetAllAdjacentStations();
             adjStatCollection = Utillities.Convert(from adjacentStation in bl.GetAllAdjacentStations() select Utillities.AdjacentStationsBoPoAdapter(adjacentStation));
             //lbAdjacentStations.ItemsSource = boAdjStatList;
-            lbAdjacentStations.ItemsSource = adjStatCollection;
-            lbAdjacentStations.SelectedIndex = 0;
+            //lbAdjacentStations.ItemsSource = adjStatCollection;
+            //lbAdjacentStations.SelectedIndex = 0;
         }
        
         private void lbStations_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
