@@ -33,7 +33,7 @@ namespace PlGui
         public PO.LineStation selectedLineStation;
         public PO.Station selectedStation;
         public ObservableCollection<PO.LineStation> poLineStationsOfLine;
-        public event PropertyChangedEventHandler PropertyChanged;
+        //public event PropertyChangedEventHandler PropertyChanged;
         public LinesWindow(ObservableCollection<PO.Line> collectionOfLines)
         {
             InitializeComponent();
@@ -45,6 +45,10 @@ namespace PlGui
             cbBusLines.SelectedIndex = 0;
 
         }
+        /// <summary>
+        /// To show details of line chosen in combobox
+        /// </summary>
+        /// <param name="lineNumber"></param>
         public void ShowBusLine(int lineNumber)
         {
             // currentDisplayBusLine = boLine;
@@ -53,6 +57,11 @@ namespace PlGui
             poLineStationsOfLine = Utillities.Convert((from ls in bl.GetAllLineStationsByLine(currentDisplayBusLine.Id) select Utillities.LineStationBoPoAdapter(ls)).ToList());
             lbBusLineStations.DataContext = poLineStationsOfLine;
         }
+        /// <summary>
+        /// Event on change of selection of bus
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cbBusLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if ((cbBusLines.SelectedValue as PO.Line) != null)
@@ -61,15 +70,30 @@ namespace PlGui
                 ShowBusLine((cbBusLines.SelectedValue as PO.Line).Code);
             }
         }
-        private void TimeFromPrevChangedEvent(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// For updating distance between two stations
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TimeAndDistanceFromPrevChangedEvent(object sender, RoutedEventArgs e)
         {
-           
-            return;
+            int index = cbBusLines.SelectedIndex;
+            PO.LineStation poLineStation = lbBusLineStations.SelectedValue as PO.LineStation;
+            UpdateTimeDistance updateTimeDistance = new UpdateTimeDistance(poLineStation);
+            updateTimeDistance.ShowDialog();
+            linesCollection.Clear();
+            ObservableCollection<PO.Line> temp = new ObservableCollection<PO.Line>();
+            temp = Utillities.Convert(from line in bl.GetAllLines() select Utillities.LineBoPoAdapter(line));
+            foreach (PO.Line line in temp)
+            {
+                linesCollection.Add(line);
+            }
+            cbBusLines.ItemsSource = linesCollection;
+            cbBusLines.DisplayMemberPath = "Code";
+            cbBusLines.SelectedIndex = index;
+            MessageBox.Show("Time and distance between stations changed successfully");
         }
-        private void DistanceFromPrevChangedEvent(object sender, RoutedEventArgs e)
-        {
-            return;
-        }
+
         /// <summary>
         /// For addition of line
         /// </summary>

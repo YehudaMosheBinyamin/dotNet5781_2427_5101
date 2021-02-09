@@ -54,7 +54,7 @@ namespace DalAPI
         IEnumerable<AdjacentStations> GetAllAdjacentStations();
         IEnumerable<AdjacentStations> GetAdjacentStationsBy(Predicate<AdjacentStations> predicate);
         AdjacentStations GetAdjacentStations(int stationOneCode,int stationTwoCode);
-        void UpdateAdjacentStations(int stationOneCode,int stationTwoCode,Action<AdjacentStations>update);
+        //void UpdateAdjacentStations(int stationOneCode,int stationTwoCode,Action<AdjacentStations>update);------
         void DeleteAdjacentStations(int stationOneCode,int stationTwoCode);
         
         #endregion

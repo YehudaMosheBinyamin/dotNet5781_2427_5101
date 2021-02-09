@@ -1,7 +1,7 @@
-﻿using System;
+﻿using DO;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using DO;
 using System.Linq;
 namespace DS
 {
@@ -214,7 +214,7 @@ new Line
             new LineStation { LineId = 2, Station = 38849, LineStationIndex = 6, PrevStation = 38848, NextStation = 38852,InService=true},
             new LineStation { LineId = 2, Station = 38852, LineStationIndex = 7, PrevStation = 38849, NextStation = 38854,InService=true},
             new LineStation { LineId = 2, Station = 38854, LineStationIndex = 8, PrevStation = 38852, NextStation = 38855,InService=true},
-            
+
             new LineStation { LineId = 2, Station = 38855, LineStationIndex = 9, PrevStation = 38854, NextStation = 38855,InService=true},
            // new LineStation{LineId=2,Station=00000,LineStationIndex=10,PrevStation=38855,NextStation=00000},
            // new LineStation{LineId=3,Station=00000,LineStationIndex=-1,PrevStation=00000,NextStation=38856},
@@ -324,55 +324,55 @@ new Line
             new LineStation{LineId=10,Station=38885, LineStationIndex=1, PrevStation=38886, NextStation=38884,InService=true},
             new LineStation{LineId=10,Station=38886, LineStationIndex=0, PrevStation=38886, NextStation=38885,InService=true},
             new LineStation{LineId=11,Station=38891, LineStationIndex=49, PrevStation=38831, NextStation=38891,InService=true},
-            new LineStation{LineId=11,Station=38831, LineStationIndex=48, PrevStation=38832, NextStation=38891,InService=true},                                         
-new LineStation{LineId=11,Station=38832, LineStationIndex=47, PrevStation=38833, NextStation=38831,InService=true},                                         
-new LineStation{LineId=11,Station=38833, LineStationIndex=46, PrevStation=38834, NextStation=38832,InService=true},                                         
-new LineStation{LineId=11,Station=38834, LineStationIndex=45, PrevStation=38836, NextStation=38833,InService=true},                                        
-new LineStation{LineId=11,Station=38836, LineStationIndex=44, PrevStation=38837, NextStation=38834,InService=true},                                         
-new LineStation{LineId=11,Station=38837, LineStationIndex=43, PrevStation=38838, NextStation=38836,InService=true},                                         
-new LineStation{LineId=11,Station=38838, LineStationIndex=42, PrevStation=38839, NextStation=38837,InService=true},                                         
-new LineStation{LineId=11,Station=38839, LineStationIndex=41, PrevStation=38840, NextStation=38838,InService=true},                                         
-new LineStation{LineId=11,Station=38840, LineStationIndex=40, PrevStation=38841, NextStation=38839,InService=true},                                         
-new LineStation{LineId=11,Station=38841, LineStationIndex=39, PrevStation=38842, NextStation=38840,InService=true},                                         
-new LineStation{LineId=11,Station=38842, LineStationIndex=38, PrevStation=38844, NextStation=38841,InService=true},                                         
-new LineStation{LineId=11,Station=38844, LineStationIndex=37, PrevStation=38845, NextStation=38842,InService=true},                                         
-new LineStation{LineId=11,Station=38845, LineStationIndex=36, PrevStation=38846, NextStation=38844,InService=true},                                         
-new LineStation{LineId=11,Station=38846, LineStationIndex=35, PrevStation=38847, NextStation=38845,InService=true},                                         
-new LineStation{LineId=11,Station=38847, LineStationIndex=34, PrevStation=38848, NextStation=38846,InService=true},                                         
-new LineStation{LineId=11,Station=38848, LineStationIndex=33, PrevStation=38849, NextStation=38847,InService=true},                                         
-new LineStation{LineId=11,Station=38849, LineStationIndex=32, PrevStation=38852, NextStation=38848,InService=true},                                         
-new LineStation{LineId=11,Station=38852, LineStationIndex=31, PrevStation=38854, NextStation=38849,InService=true},                                         
-new LineStation{LineId=11,Station=38854, LineStationIndex=30, PrevStation=38855, NextStation=38852,InService=true},                                         
-new LineStation{LineId=11,Station=38855, LineStationIndex=29, PrevStation=38856, NextStation=38854,InService=true},                                         
-new LineStation{LineId=11,Station=38856, LineStationIndex=28, PrevStation=38859, NextStation=38855,InService=true},                                         
-new LineStation{LineId=11,Station=38859, LineStationIndex=27, PrevStation=38860, NextStation=38856,InService=true},                                         
-new LineStation{LineId=11,Station=38860, LineStationIndex=26, PrevStation=38861, NextStation=38859,InService=true},                                        
-new LineStation{LineId=11,Station=38861, LineStationIndex=25, PrevStation=38862, NextStation=38860,InService=true},                                         
-new LineStation{LineId=11,Station=38862, LineStationIndex=24, PrevStation=38863, NextStation=38861,InService=true},                                         
-new LineStation{LineId=11,Station=38863, LineStationIndex=23, PrevStation=38864, NextStation=38862,InService=true},                                         
-new LineStation{LineId=11,Station=38864, LineStationIndex=22, PrevStation=38865, NextStation=38863,InService=true},                                         
-new LineStation{LineId=11,Station=38865, LineStationIndex=21, PrevStation=38866, NextStation=38864,InService=true},                                         
-new LineStation{LineId=11,Station=38866, LineStationIndex=20, PrevStation=38867, NextStation=38865,InService=true},                                         
-new LineStation{LineId=11,Station=38867, LineStationIndex=19, PrevStation=38869, NextStation=38866,InService=true},                                         
-new LineStation{LineId=11,Station=38869, LineStationIndex=18, PrevStation=38870, NextStation=38867,InService=true},                                         
-new LineStation{LineId=11,Station=38870, LineStationIndex=17, PrevStation=38872, NextStation=38869,InService=true},                                         
-new LineStation{LineId=11,Station=38872, LineStationIndex=16, PrevStation=38873, NextStation=38870,InService=true},                                         
-new LineStation{LineId=11,Station=38873, LineStationIndex=15, PrevStation=38875, NextStation=38872,InService=true},                                         
-new LineStation{LineId=11,Station=38875, LineStationIndex=14, PrevStation=38876, NextStation=38873,InService=true},                                         
-new LineStation{LineId=11,Station=38876, LineStationIndex=13, PrevStation=38877, NextStation=38875,InService=true},                                         
-new LineStation{LineId=11,Station=38877, LineStationIndex=12, PrevStation=38878, NextStation=38876,InService=true},                                         
-new LineStation{LineId=11,Station=38878, LineStationIndex=11, PrevStation=38879, NextStation=38877,InService=true},                                         
-new LineStation{LineId=11,Station=38879, LineStationIndex=10, PrevStation=38880, NextStation=38878,InService=true},                                         
-new LineStation{LineId=11,Station=38880, LineStationIndex=9, PrevStation=38881, NextStation=38879,InService=true},                                          
-new LineStation{LineId=11,Station=38881, LineStationIndex=8, PrevStation=38883, NextStation=38880,InService=true},                                          
-new LineStation{LineId=11,Station=38883, LineStationIndex=7, PrevStation=38884, NextStation=38881,InService=true},                                         
-new LineStation{LineId=11,Station=38884, LineStationIndex=6, PrevStation=38885, NextStation=38883,InService=true},                                          
-new LineStation{LineId=11,Station=38885, LineStationIndex=5, PrevStation=38886, NextStation=38884,InService=true},                                          
-new LineStation{LineId=11,Station=38886, LineStationIndex=4, PrevStation=38887, NextStation=38885,InService=true},                                          
-new LineStation{LineId=11,Station=38887, LineStationIndex=3, PrevStation=38888, NextStation=38886,InService=true},                                         
-new LineStation{LineId=11,Station=38888, LineStationIndex=2, PrevStation=38889, NextStation=38887,InService=true},                                          
-new LineStation{LineId=11,Station=38889, LineStationIndex=1, PrevStation=38890, NextStation=38888,InService=true},                                          
-new LineStation{LineId=11,Station=38890, LineStationIndex=0, PrevStation=38890, NextStation=38889,InService=true}                                 
+            new LineStation{LineId=11,Station=38831, LineStationIndex=48, PrevStation=38832, NextStation=38891,InService=true},
+new LineStation{LineId=11,Station=38832, LineStationIndex=47, PrevStation=38833, NextStation=38831,InService=true},
+new LineStation{LineId=11,Station=38833, LineStationIndex=46, PrevStation=38834, NextStation=38832,InService=true},
+new LineStation{LineId=11,Station=38834, LineStationIndex=45, PrevStation=38836, NextStation=38833,InService=true},
+new LineStation{LineId=11,Station=38836, LineStationIndex=44, PrevStation=38837, NextStation=38834,InService=true},
+new LineStation{LineId=11,Station=38837, LineStationIndex=43, PrevStation=38838, NextStation=38836,InService=true},
+new LineStation{LineId=11,Station=38838, LineStationIndex=42, PrevStation=38839, NextStation=38837,InService=true},
+new LineStation{LineId=11,Station=38839, LineStationIndex=41, PrevStation=38840, NextStation=38838,InService=true},
+new LineStation{LineId=11,Station=38840, LineStationIndex=40, PrevStation=38841, NextStation=38839,InService=true},
+new LineStation{LineId=11,Station=38841, LineStationIndex=39, PrevStation=38842, NextStation=38840,InService=true},
+new LineStation{LineId=11,Station=38842, LineStationIndex=38, PrevStation=38844, NextStation=38841,InService=true},
+new LineStation{LineId=11,Station=38844, LineStationIndex=37, PrevStation=38845, NextStation=38842,InService=true},
+new LineStation{LineId=11,Station=38845, LineStationIndex=36, PrevStation=38846, NextStation=38844,InService=true},
+new LineStation{LineId=11,Station=38846, LineStationIndex=35, PrevStation=38847, NextStation=38845,InService=true},
+new LineStation{LineId=11,Station=38847, LineStationIndex=34, PrevStation=38848, NextStation=38846,InService=true},
+new LineStation{LineId=11,Station=38848, LineStationIndex=33, PrevStation=38849, NextStation=38847,InService=true},
+new LineStation{LineId=11,Station=38849, LineStationIndex=32, PrevStation=38852, NextStation=38848,InService=true},
+new LineStation{LineId=11,Station=38852, LineStationIndex=31, PrevStation=38854, NextStation=38849,InService=true},
+new LineStation{LineId=11,Station=38854, LineStationIndex=30, PrevStation=38855, NextStation=38852,InService=true},
+new LineStation{LineId=11,Station=38855, LineStationIndex=29, PrevStation=38856, NextStation=38854,InService=true},
+new LineStation{LineId=11,Station=38856, LineStationIndex=28, PrevStation=38859, NextStation=38855,InService=true},
+new LineStation{LineId=11,Station=38859, LineStationIndex=27, PrevStation=38860, NextStation=38856,InService=true},
+new LineStation{LineId=11,Station=38860, LineStationIndex=26, PrevStation=38861, NextStation=38859,InService=true},
+new LineStation{LineId=11,Station=38861, LineStationIndex=25, PrevStation=38862, NextStation=38860,InService=true},
+new LineStation{LineId=11,Station=38862, LineStationIndex=24, PrevStation=38863, NextStation=38861,InService=true},
+new LineStation{LineId=11,Station=38863, LineStationIndex=23, PrevStation=38864, NextStation=38862,InService=true},
+new LineStation{LineId=11,Station=38864, LineStationIndex=22, PrevStation=38865, NextStation=38863,InService=true},
+new LineStation{LineId=11,Station=38865, LineStationIndex=21, PrevStation=38866, NextStation=38864,InService=true},
+new LineStation{LineId=11,Station=38866, LineStationIndex=20, PrevStation=38867, NextStation=38865,InService=true},
+new LineStation{LineId=11,Station=38867, LineStationIndex=19, PrevStation=38869, NextStation=38866,InService=true},
+new LineStation{LineId=11,Station=38869, LineStationIndex=18, PrevStation=38870, NextStation=38867,InService=true},
+new LineStation{LineId=11,Station=38870, LineStationIndex=17, PrevStation=38872, NextStation=38869,InService=true},
+new LineStation{LineId=11,Station=38872, LineStationIndex=16, PrevStation=38873, NextStation=38870,InService=true},
+new LineStation{LineId=11,Station=38873, LineStationIndex=15, PrevStation=38875, NextStation=38872,InService=true},
+new LineStation{LineId=11,Station=38875, LineStationIndex=14, PrevStation=38876, NextStation=38873,InService=true},
+new LineStation{LineId=11,Station=38876, LineStationIndex=13, PrevStation=38877, NextStation=38875,InService=true},
+new LineStation{LineId=11,Station=38877, LineStationIndex=12, PrevStation=38878, NextStation=38876,InService=true},
+new LineStation{LineId=11,Station=38878, LineStationIndex=11, PrevStation=38879, NextStation=38877,InService=true},
+new LineStation{LineId=11,Station=38879, LineStationIndex=10, PrevStation=38880, NextStation=38878,InService=true},
+new LineStation{LineId=11,Station=38880, LineStationIndex=9, PrevStation=38881, NextStation=38879,InService=true},
+new LineStation{LineId=11,Station=38881, LineStationIndex=8, PrevStation=38883, NextStation=38880,InService=true},
+new LineStation{LineId=11,Station=38883, LineStationIndex=7, PrevStation=38884, NextStation=38881,InService=true},
+new LineStation{LineId=11,Station=38884, LineStationIndex=6, PrevStation=38885, NextStation=38883,InService=true},
+new LineStation{LineId=11,Station=38885, LineStationIndex=5, PrevStation=38886, NextStation=38884,InService=true},
+new LineStation{LineId=11,Station=38886, LineStationIndex=4, PrevStation=38887, NextStation=38885,InService=true},
+new LineStation{LineId=11,Station=38887, LineStationIndex=3, PrevStation=38888, NextStation=38886,InService=true},
+new LineStation{LineId=11,Station=38888, LineStationIndex=2, PrevStation=38889, NextStation=38887,InService=true},
+new LineStation{LineId=11,Station=38889, LineStationIndex=1, PrevStation=38890, NextStation=38888,InService=true},
+new LineStation{LineId=11,Station=38890, LineStationIndex=0, PrevStation=38890, NextStation=38889,InService=true}
 };
 
             busesList = new List<Bus>()
@@ -617,21 +617,19 @@ new LineStation{LineId=11,Station=38890, LineStationIndex=0, PrevStation=38890, 
          KmSinceTreated=0
     }
 };
-            
+
             adjacentStationsListTheSameStops = (from linestation in lineStationsList
-                                               from linestation2 in lineStationsList
-                                               where linestation.LineId == linestation2.LineId && linestation.LineStationIndex == linestation2.LineStationIndex
-                                               select new AdjacentStations
-                                               {
-                                                   LineId = linestation.LineId,
-                                                   //LineId=1,
-                                                   Station1 = linestation.Station,
-                                                   Station2 = linestation2.Station,
-                                                   Distance = 0f,
-                                                   Time = new TimeSpan(0, 0, 0),
-                                                   InService=true
-                                                  
-                                               }).ToList();
+                                                from linestation2 in lineStationsList
+                                                where linestation.LineId == linestation2.LineId && linestation.LineStationIndex == linestation2.LineStationIndex
+                                                select new AdjacentStations
+                                                {   //LineId=linestation.LineId,
+                                                    Station1 = linestation.Station,
+                                                    Station2 = linestation2.Station,
+                                                    Distance = 0f,
+                                                    Time = new TimeSpan(0, 0, 0),
+                                                    InService = true
+
+                                                }).Distinct().ToList();
 
             adjacentStationsList =
             (from lineStation in lineStationsList
@@ -639,15 +637,14 @@ new LineStation{LineId=11,Station=38890, LineStationIndex=0, PrevStation=38890, 
              where lineStation.LineId == linestation2.LineId && linestation2.LineStationIndex == lineStation.LineStationIndex + 1 && lineStation.InService
              let rdistance = RandomDistance()
              select new AdjacentStations
-             {
-              LineId = lineStation.LineId,
-              Station1 = lineStation.Station,
-              Station2 = linestation2.Station,
-              Distance = rdistance,
-              Time = MinutesOfTravel(rdistance),
-              InService = true
-             }).ToList();
-            
+             {//LineId=lineStation.LineId,
+                 Station1 = lineStation.Station,
+                 Station2 = linestation2.Station,
+                 Distance = rdistance,
+                 Time = MinutesOfTravel(rdistance),
+                 InService = true
+             }).Distinct().ToList();
+
             adjacentStationsList.AddRange(adjacentStationsListTheSameStops);
 
 
@@ -657,13 +654,14 @@ new LineStation{LineId=11,Station=38890, LineStationIndex=0, PrevStation=38890, 
         {
             //Random random = new Random();
             int randomDistance = random.Next(100, 10000);
-            float distance = randomDistance / 1000+0.05f;
-            return distance;
-
+            //float distance = randomDistance / 1000 + 0.05f;
+            //return distance;
+            return randomDistance;
         }
         public static TimeSpan MinutesOfTravel(float distance)
         {   //t[min] = 60 * s[km] / v[km / H]
-            float distanceKm = distance;
+            //float distanceKm = distance;
+            float distanceKm = distance / 1000;
             //Random speed = new Random();
             //int randomSpeed = speed.Next(30, 70);
             int randomSpeed = random.Next(30, 70);
@@ -674,3 +672,4 @@ new LineStation{LineId=11,Station=38890, LineStationIndex=0, PrevStation=38890, 
         }
     }
 }
+

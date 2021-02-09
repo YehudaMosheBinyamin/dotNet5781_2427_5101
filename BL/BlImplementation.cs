@@ -260,7 +260,7 @@ namespace BL
                                                           where lineStation1.NextStation == lineStation2.Station&&dl.AdjacentStationsExists(lineStation1.Station,lineStation2.Station)==false
                                                           let rDistance = Functions.randomDistance()
                                                           select new DO.AdjacentStations
-                                                          {   LineId= lineStation1.LineId,
+                                                          {   //LineId= lineStation1.LineId,
                                                               Station1 = lineStation1.Station,
                                                               Station2 = lineStation2.Station,
                                                               Distance = rDistance,
@@ -373,6 +373,28 @@ namespace BL
         {
             IDL dl = DLFactory.GetDL();
             return dl.AdjacentStationsExists(station1, station2);
+        }/// <summary>
+        /// For deletion of Adjacent Stations(in case of updated time and/or distance
+        /// </summary>
+        /// <param name="station1"></param>
+        /// <param name="station2"></param>
+        public void DeleteAdjacentStations(int station1, int station2)
+        {
+            IDL dl = DLFactory.GetDL();
+            dl.DeleteAdjacentStations(station1, station2);
+        }
+        /// <summary>
+        /// Updating time and distance between two stations for all their appearances in the same order in all lines.
+        /// </summary>
+        /// <param name="station1"></param>
+        /// <param name="station2"></param>
+        /// <param name="newDistance"> </param>
+        /// <param name="newTime"></param>
+        public void UpdateAdjacentStations(int station1, int station2, float newDistance, TimeSpan newTime)
+        {
+            IDL dl = DLFactory.GetDL();
+            DeleteAdjacentStations(station1, station2);
+            AddAdjacentStations(station1, station2, newDistance, newTime);
         }
         /// <summary>
         /// function for adding new linestation to line at chosen index
@@ -557,17 +579,17 @@ namespace BL
         }
         public BO.LineStation LineStationDoBoAdapter(DO.LineStation doLineStation)
         {
-         IDL dl = DLFactory.GetDL();
+         //IDL dl = DLFactory.GetDL();
          BO.LineStation boLineStation = new LineStation();
          boLineStation.LineId = doLineStation.LineId;
          boLineStation.Station = doLineStation.Station;
          boLineStation.LineStationIndex = doLineStation.LineStationIndex;
          boLineStation.PrevStation = doLineStation.PrevStation;
          boLineStation.NextStation = doLineStation.NextStation; 
-         boLineStation.InService = doLineStation.InService; 
-         boLineStation.TimeFromPreviousStation = dl.GetAdjacentStations(doLineStation.PrevStation, doLineStation.Station).Time; 
-         boLineStation.DistanceFromPreviousStation= dl.GetAdjacentStations(doLineStation.PrevStation, doLineStation.Station).Distance; 
-         boLineStation.Name = dl.GetStation(doLineStation.Station).Name;
+         boLineStation.InService = doLineStation.InService;
+         boLineStation.TimeFromPreviousStation = GetAdjacentStations(doLineStation.PrevStation, doLineStation.Station).Time;//before was dl. 
+         boLineStation.DistanceFromPreviousStation=GetAdjacentStations(doLineStation.PrevStation, doLineStation.Station).Distance; //before was dl.
+         boLineStation.Name = GetStation(doLineStation.Station).Name;//was dl.
          return boLineStation;
         }
         public IEnumerable<LineStation> GetAllLineStationsByLine(int lineId)
@@ -609,7 +631,7 @@ namespace BL
         {
             DO.AdjacentStations doAdjacentStations = new DO.AdjacentStations();
             doAdjacentStations.Distance = boAdjacentStations.Distance;
-            doAdjacentStations.InService = boAdjacentStations.InService;
+            doAdjacentStations.InService = true;
             doAdjacentStations.Station1 = boAdjacentStations.Station1;
             doAdjacentStations.Station2 = boAdjacentStations.Station2;
             doAdjacentStations.Time = boAdjacentStations.Time;
@@ -637,6 +659,7 @@ namespace BL
         { IDL dl = DLFactory.GetDL();
           return (from adjacentStation in dl.GetAllAdjacentStations() select AdjacentStationsDoBoAdapter(adjacentStation)).Distinct();
         }
+        /**
         /// <summary>
         /// To get all adjacent stations in line
         /// </summary>
@@ -654,7 +677,7 @@ namespace BL
             
             return adjInLine;
 
-        }
+        }**/
         #endregion
         #region User
         BO.User UserDoBoAdapter(DO.User doUser)

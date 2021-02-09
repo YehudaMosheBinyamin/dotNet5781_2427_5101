@@ -6,7 +6,7 @@ namespace DO
 {
     public class AdjacentStations
     {   
-        public int LineId { get; set; }
+        //public int LineId { get; set; }
         public int Station1 {get; set;} 
         public int Station2 { get; set; }
         public float Distance{get; set;}

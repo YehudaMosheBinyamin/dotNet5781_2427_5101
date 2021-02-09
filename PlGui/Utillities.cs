@@ -37,6 +37,7 @@ namespace PlGui
             poAdjacentStations.Station1 = boAdjStat.Station1;
             poAdjacentStations.Station2 = boAdjStat.Station2;
             poAdjacentStations.Time = boAdjStat.Time;
+            poAdjacentStations.InService = boAdjStat.InService;
             return poAdjacentStations;
         }
         public static  PO.LineStation LineStationBoPoAdapter(BO.LineStation boLineStation)

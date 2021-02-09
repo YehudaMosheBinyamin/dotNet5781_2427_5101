@@ -72,6 +72,9 @@
     <Compile Include="StationsWindow.xaml.cs">
       <DependentUpon>StationsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UpdateTimeDistance.xaml.cs">
+      <DependentUpon>UpdateTimeDistance.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utillities.cs" />
     <Compile Include="WindowEdit.xaml.cs">
       <DependentUpon>WindowEdit.xaml</DependentUpon>
@@ -111,6 +114,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="StationsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpdateTimeDistance.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

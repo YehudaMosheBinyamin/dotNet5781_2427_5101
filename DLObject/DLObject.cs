@@ -405,6 +405,7 @@ namespace DL
             }
             return true;
         }
+       
         public void AddAdjacentStations(AdjacentStations adjacentStations)
         {
             int station1 = adjacentStations.Station1;
@@ -433,10 +434,10 @@ namespace DL
 
         public AdjacentStations GetAdjacentStations(int stationOneCode, int stationTwoCode)
         {
-            //return (from adjacentStations in DS.DataSource.adjacentStationsList where adjacentStations.Station1 == stationOneCode && adjacentStations.Station2 == stationTwoCode select adjacentStations).FirstOrDefault();
-            return DS.DataSource.adjacentStationsList.Find(p => p.Station1 == stationOneCode && p.Station2 == stationTwoCode);
+            return DS.DataSource.adjacentStationsList.Find(p => p.Station1 == stationOneCode && p.Station2 == stationTwoCode&&p.InService==true);
         }
 
+        /**
         public void UpdateAdjacentStations(int stationOneCode, int stationTwoCode, Action<AdjacentStations> update)
         {
             AdjacentStations adjStationsToUpdate= DS.DataSource.adjacentStationsList.Find(p => p.Station1 == stationOneCode && p.Station2 == stationTwoCode);
@@ -444,16 +445,19 @@ namespace DL
             {
                 throw new AdjacentStationsDoesntExistException(stationOneCode, stationTwoCode, $"The adjacent stations with the codes:{stationOneCode} {stationTwoCode} can't be updated since it doesn't exist on the system");
             }
-        }
+        }**/
 
         public void DeleteAdjacentStations(int stationOneCode, int stationTwoCode)
         {
-            AdjacentStations adjStat = DS.DataSource.adjacentStationsList.Find(p => p.Station1 == stationOneCode && p.Station2 == stationTwoCode);
+            List<AdjacentStations> adjStat = DS.DataSource.adjacentStationsList.FindAll(p => p.Station1 == stationOneCode && p.Station2 == stationTwoCode&&p.InService==true);
             if (adjStat == null)
             {
                 throw new AdjacentStationsDoesntExistException(stationOneCode, stationTwoCode, $"The adjacent stations with the codes:{stationOneCode} {stationTwoCode} can't be updated since it doesn't exist on the system");
             }
-            adjStat.InService = false;
+            foreach(AdjacentStations adj in adjStat) 
+            { 
+                adj.InService = false; 
+            }
         }
         #endregion
         #region LineTrip

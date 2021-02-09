@@ -56,9 +56,11 @@ namespace BlApi
         #region AdjacentStations
         void AddAdjacentStations(int station1, int station2, float distance, TimeSpan waitingTime);
         bool AdjacentStationsExists(int station1, int station2);
+        void UpdateAdjacentStations(int station1, int station2,float newDistance, TimeSpan newTime);
+        void DeleteAdjacentStations(int station1, int station2);
         IEnumerable<BO.AdjacentStations> GetAllAdjacentStations();
         BO.AdjacentStations GetAdjacentStations(int codeOne,int codeTwo);
-        IEnumerable<BO.AdjacentStations> GetAllAdjacentsStationsInLine(Line line);
+        //IEnumerable<BO.AdjacentStations> GetAllAdjacentsStationsInLine(Line line);Maybe needed---------
         //IEnumerable<BO.AdjacentStations> GetAllAdjacentStationsOfLine(int )
         #endregion
         float GetRandomDistance();

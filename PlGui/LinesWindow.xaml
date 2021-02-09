@@ -18,12 +18,13 @@
                     <ColumnDefinition Width="70"/>
                     <ColumnDefinition Width="70"/>
                     <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="40*"/>
+                    <ColumnDefinition Width="40*"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="90"/>
                     <ColumnDefinition Width="30"/>
-                    <ColumnDefinition Width="70"/>
-                    <ColumnDefinition Width="40"/>
-                    <ColumnDefinition Width="70"/>
-                    <ColumnDefinition Width="40"/>
-                    <ColumnDefinition Width="70"/>
                 </Grid.ColumnDefinitions>
                 <Label Name="lbName" HorizontalAlignment="Left" VerticalAlignment="Center"  HorizontalContentAlignment="Center" Content="Name:" Grid.Column="0"  Grid.Row="0"/>
                 <TextBlock Name="tbName" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Path=Name}" Grid.Column="1"   Grid.Row="0"/>
@@ -32,9 +33,10 @@
                 <Label Name="lbLineStationIndex" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Index:" Grid.Column="4"  Grid.Row="0"/>
                 <TextBlock Name="tbLineStationIndex" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Path=LineStationIndex}" Grid.Column="5"   Grid.Row="0"/>
                 <Label HorizontalContentAlignment="Center" Name="lbTimeFromPrevious" HorizontalAlignment="Left"  VerticalAlignment="Center" Content="Time:" Grid.Column="6"  Grid.Row="0"/>
-                <TextBox FontSize="10" Name="tbTimeFromPrevious"  HorizontalAlignment="Left" VerticalAlignment="Center" TextChanged="TimeFromPrevChangedEvent"  Text="{Binding Path=TimeFromPreviousStation}" Grid.Column="7"   Grid.Row="0"/>
+                <TextBlock  Name="tbTimeFromPrevious"  HorizontalAlignment="Left" VerticalAlignment="Center"   Text="{Binding Path=TimeFromPreviousStation}" Grid.Column="7"   Grid.Row="0"/>
                 <Label Name="lbDistanceFromPrevious" HorizontalAlignment="Left" VerticalAlignment="Center"  Content="Distance:" Grid.Column="8"  Grid.Row="0"/>
-                <TextBox HorizontalContentAlignment="Center" FontSize="10" Name="tbDistanceFromPrevious" HorizontalAlignment="Left" VerticalAlignment="Center" TextChanged="DistanceFromPrevChangedEvent"   Text="{Binding Path=DistanceFromPreviousStation}" Grid.Column="9" Grid.Row="0"/>
+                <TextBlock Name="tbDistanceFromPrevious" HorizontalAlignment="Left" VerticalAlignment="Center"    Text="{Binding Path=DistanceFromPreviousStation}" Grid.Column="9" Grid.Row="0"/>
+                <Button Name="btUpdateTimeAndDistance" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="10" Grid.Row="0" Click="TimeAndDistanceFromPrevChangedEvent"></Button>
             </Grid>
         </DataTemplate>
     </Window.Resources>
@@ -63,9 +65,20 @@
                Text="{Binding Path=Area}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FF0DF9D9" FontSize="20" BorderBrush="Black" BorderThickness="1"></TextBox>
             <Label Content="Bus Line Number:" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Grid.Column="0" FontSize="20" FontFamily="Arial" BorderBrush="Black" BorderThickness="1" ></Label>
             <Label Content="Area:" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="2" FontSize="20" FontFamily="Arial" BorderBrush="Black" BorderThickness="1">
+           
             </Label>
         </Grid>
-        <ListBox Name="lbBusLineStations"  HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Grid.Column="0"  Height="392" Width="709" ItemsSource="{Binding}" Margin="0,48,81,120" PreviewMouseDoubleClick="lbBusLineStations_PreviewMouseDoubleClick" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="DarkBlue" BorderThickness="3" ItemTemplate="{StaticResource MyDataTemplate}"  Grid.ColumnSpan="2" />
+        <ListBox Name="lbBusLineStations"  HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Grid.Column="0"  Height="392" Width="790" ItemsSource="{Binding}" Margin="0,48,0,120" PreviewMouseDoubleClick="lbBusLineStations_PreviewMouseDoubleClick" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="DarkBlue" BorderThickness="3" ItemTemplate="{StaticResource MyDataTemplate}"  Grid.ColumnSpan="2" >
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="IsSelected" Value="True"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
         <Button Content="Add Line" HorizontalAlignment="Left" Margin="257,0,0,30" Grid.Row="1" VerticalAlignment="Bottom" Width="75" Click="AddLineEvent" Grid.Column="1"/>
         <Button Content="Edit line" VerticalAlignment="Bottom" Click="EditLineEvent" HorizontalAlignment="Left" Margin="144,0,0,30" Grid.Row="1"  Width="75" Grid.Column="1"/>
         <Button Content="Delete line" HorizontalAlignment="Left" Margin="38,0,0,30" Grid.Row="1" VerticalAlignment="Bottom" Width="75" Grid.Column="1" Click="Button_Click_1"/>
