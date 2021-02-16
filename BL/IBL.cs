@@ -40,6 +40,7 @@ namespace BlApi
         #region Station
         void AddStation(Station station);
         IEnumerable<Station> GetAllStations();
+        //void DeleteLineFromStation(int lineId, int stationCode);---------------
         //IEnumerable<Station> GetAllStationsBy(Predicate<Station> filter);
         Station GetStation(int code);
         //void RemoveLineFromStation(int lineId);

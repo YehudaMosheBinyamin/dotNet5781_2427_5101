@@ -1,19 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using BlApi;
 
 namespace PlGui
@@ -24,20 +13,17 @@ namespace PlGui
     public partial class LinesWindow : Window
     {
         IBL bl;
-        //public BO.Station selectedStation;
-        //private BO.Line currentDisplayBusLine;
-        //IEnumerable<BO.Line> linesCollection;
-        //public BO.LineStation selectedLineStation;
         private PO.Line currentDisplayBusLine;
         public ObservableCollection<PO.Line> linesCollection;
         public PO.LineStation selectedLineStation;
         public PO.Station selectedStation;
         public ObservableCollection<PO.LineStation> poLineStationsOfLine;
-        //public event PropertyChangedEventHandler PropertyChanged;
+        public ObservableCollection<PO.LineTrip> lineTripsOfLine;
         public LinesWindow(ObservableCollection<PO.Line> collectionOfLines)
         {
             InitializeComponent();
             bl = BlFactory.GetBl("1");
+            lineTripsOfLine = new ObservableCollection<PO.LineTrip>();
             poLineStationsOfLine = new ObservableCollection<PO.LineStation>();
             linesCollection = collectionOfLines;
             cbBusLines.ItemsSource = linesCollection;
@@ -66,7 +52,6 @@ namespace PlGui
         {
             if ((cbBusLines.SelectedValue as PO.Line) != null)
             {
-                //ShowBusLine((cbBusLines.SelectedValue as PO.Line));
                 ShowBusLine((cbBusLines.SelectedValue as PO.Line).Code);
             }
         }
@@ -171,6 +156,30 @@ namespace PlGui
             cbBusLines.DisplayMemberPath = "Code";
             cbBusLines.SelectedIndex = 0;
             MessageBox.Show("Line Deleted Successfully!");
+        }
+        /// <summary>
+        /// For click on timetable of line.Lets to see time table and edit it.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bTimeTable_Click(object sender, RoutedEventArgs e)
+        {
+            TimeTableWindow timeTableWindow = new TimeTableWindow(cbBusLines.SelectedValue as PO.Line);
+            PO.Line currentLine= cbBusLines.SelectedValue as PO.Line;
+            timeTableWindow.ShowDialog();
+            linesCollection.Clear();
+            ObservableCollection<PO.Line> temp = new ObservableCollection<PO.Line>();
+            temp = Utillities.Convert(from line in bl.GetAllLines() select Utillities.LineBoPoAdapter(line));
+            foreach (PO.Line line in temp)
+            {
+                linesCollection.Add(line);
+            }
+            cbBusLines.ItemsSource = linesCollection;
+            cbBusLines.DisplayMemberPath = "Code";
+            cbBusLines.SelectedIndex = 0;
+            MessageBox.Show("Line's timetable changed successfully!");
+
+
         }
     }
 }

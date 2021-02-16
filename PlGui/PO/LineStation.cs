@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace PO
 {
-
         public class LineStation
         {
             public int LineId { get; set; }

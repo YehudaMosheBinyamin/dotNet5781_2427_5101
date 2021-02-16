@@ -24,6 +24,7 @@ namespace DS
         static void InitializeAll()
         {
             random = new Random();
+           
             stationsList = new List<Station>
             {
         new Station{Code=38831, Name="בי''ס בר לב/בן יהודה", Longtitude=34.917806, Latitude=32.183921},
@@ -179,7 +180,8 @@ new Line
     FirstStation=38886,
     LastStation=38883,
     InService=true
-},new Line
+},
+new Line
 {
     Id=Configuration.LineId,
     Code=15,
@@ -325,7 +327,7 @@ new Line
             new LineStation{LineId=10,Station=38886, LineStationIndex=0, PrevStation=38886, NextStation=38885,InService=true},
             new LineStation{LineId=11,Station=38891, LineStationIndex=49, PrevStation=38831, NextStation=38891,InService=true},
             new LineStation{LineId=11,Station=38831, LineStationIndex=48, PrevStation=38832, NextStation=38891,InService=true},
-new LineStation{LineId=11,Station=38832, LineStationIndex=47, PrevStation=38833, NextStation=38831,InService=true},
+            new LineStation{LineId=11,Station=38832, LineStationIndex=47, PrevStation=38833, NextStation=38831,InService=true},
 new LineStation{LineId=11,Station=38833, LineStationIndex=46, PrevStation=38834, NextStation=38832,InService=true},
 new LineStation{LineId=11,Station=38834, LineStationIndex=45, PrevStation=38836, NextStation=38833,InService=true},
 new LineStation{LineId=11,Station=38836, LineStationIndex=44, PrevStation=38837, NextStation=38834,InService=true},
@@ -570,13 +572,13 @@ new LineStation{LineId=11,Station=38890, LineStationIndex=0, PrevStation=38890, 
     },
         new Bus
     {
-          LicenseNum="2468357",
+         LicenseNum="2468357",
          FromDate=new DateTime(2011,1,1),
          TotalTrip=150000,
          FuelRemain=11,
          Status=BusStatus.Ready,
-        InService=true,
-        IsDangerous =false,
+         InService=true,
+         IsDangerous =false,
          LastTreated=new DateTime(2020,1,7),
          KmSinceTreated=0
     },
@@ -617,7 +619,6 @@ new LineStation{LineId=11,Station=38890, LineStationIndex=0, PrevStation=38890, 
          KmSinceTreated=0
     }
 };
-
             adjacentStationsListTheSameStops = (from linestation in lineStationsList
                                                 from linestation2 in lineStationsList
                                                 where linestation.LineId == linestation2.LineId && linestation.LineStationIndex == linestation2.LineStationIndex
@@ -630,7 +631,7 @@ new LineStation{LineId=11,Station=38890, LineStationIndex=0, PrevStation=38890, 
                                                     InService = true
 
                                                 }).Distinct().ToList();
-
+            //adjacentStationsList = new List<AdjacentStations>();
             adjacentStationsList =
             (from lineStation in lineStationsList
              from linestation2 in lineStationsList
@@ -644,20 +645,46 @@ new LineStation{LineId=11,Station=38890, LineStationIndex=0, PrevStation=38890, 
                  Time = MinutesOfTravel(rdistance),
                  InService = true
              }).Distinct().ToList();
-
             adjacentStationsList.AddRange(adjacentStationsListTheSameStops);
-
+            //lineTripsList = new List<LineTrip>();
+            lineTripsList = (from line in linesList let id=Configuration.LineTripId
+                             select new LineTrip
+                             {
+                                 LineId = line.Id,
+                                 Id =id ,
+                                 InService = true,
+                                 StartAt = RandomExitTime()
+                             }).ToList();
 
         }
-
+        /// <summary>
+        /// For random distance
+        /// </summary>
+        /// <returns></returns>
         public static float RandomDistance()
         {
-            //Random random = new Random();
-            int randomDistance = random.Next(100, 10000);
+            int randomDistance = random.Next(100, 10000);//between 100 to 10000 meters
             //float distance = randomDistance / 1000 + 0.05f;
             //return distance;
             return randomDistance;
         }
+        /// <summary>
+        /// For random line exit time
+        /// </summary>
+        /// <param name="distance"></param>
+        /// <returns></returns>
+        public static TimeSpan RandomExitTime()
+        { int randomHours = random.Next(0, 23);
+          int randomMinutes = random.Next(0, 59);
+          int randomSeconds = random.Next(0, 59);
+          TimeSpan randomTime = new TimeSpan(randomHours, randomMinutes, randomSeconds);
+          return randomTime;
+        }
+        /// <summary>
+        /// For random time between stations
+        /// </summary>
+        /// <param name="distance"></param>
+        /// <returns></returns>
         public static TimeSpan MinutesOfTravel(float distance)
         {   //t[min] = 60 * s[km] / v[km / H]
             //float distanceKm = distance;

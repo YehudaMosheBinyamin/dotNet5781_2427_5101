@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace DO
 {
+    /// <summary>
+    /// Represents an exit of a line
+    /// </summary>
     public class LineTrip
     {
-        public int Id { get; }
-        public int LineId { get; }//Id in line
+        public int Id { get; set; }
+        public int LineId { get; set; }
         public TimeSpan StartAt { get; set; }
-        public TimeSpan Frequency { get; set; }
-        public TimeSpan FinishAt { get; set; }
-        public bool InService;
+        public bool InService { get; set; }
     }
 }

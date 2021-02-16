@@ -25,7 +25,7 @@ namespace DalAPI
         int GetNewLineId();
         #endregion
         #region Station
-        //int GetNewStationCode();
+        int GetNewStationCode();
         void AddStation(Station station);
         IEnumerable<Station> GetAllStations();
         Station GetStation(int code);
@@ -43,8 +43,8 @@ namespace DalAPI
         void AddLineTrip(LineTrip lineTrip);
         IEnumerable<LineTrip> GetAllLineTrips();
         LineTrip GetLineTrip(int id,int busCode);
+        int GetNewLineTripId();
         IEnumerable<LineTrip> GetLineTripsBy(Predicate<LineTrip> predicate);
-        void UpdateLineTrip(int id, int busCode, Action<LineTrip> update);
         void DeleteLineTrip(int id,int busCode);
         void DeleteLineTrips(int lineId);
         #endregion

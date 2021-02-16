@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace PO
 {
-        public class AdjacentStations
-        {
+ public class AdjacentStations
+  {
             public int Station1 { get; set; }
             public int Station2 { get; set; }
             public float Distance { get; set; }
@@ -17,5 +16,5 @@ namespace PO
             {
                 return String.Format($"Station1:{Station1} Station2:{Station2} Distance:{Distance} Time:{Time} InService{InService}");
             }
-        } 
+  } 
 }

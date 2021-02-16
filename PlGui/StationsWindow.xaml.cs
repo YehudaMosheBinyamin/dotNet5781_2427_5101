@@ -22,6 +22,7 @@ namespace PlGui
     /// </summary>
     public partial class StationsWindow : Window
     {
+        public ObservableCollection<PO.Line> allLines;
         //private IEnumerable<BO.Station> boStationList;
         //private IEnumerable<BO.AdjacentStations> boAdjStatList;
         public ObservableCollection<Station> poStationCollection;
@@ -29,7 +30,7 @@ namespace PlGui
         IBL bl;
         //public BO.Station selectedStation;
         public PO.Station selectedStation;
-        public StationsWindow()
+        public StationsWindow(ObservableCollection<PO.Line> lineCollection)
         {
             InitializeComponent();
             bl = BlFactory.GetBl("1");
@@ -40,11 +41,37 @@ namespace PlGui
             lbStations.SelectedIndex = 0;
             //boAdjStatList = bl.GetAllAdjacentStations();
             adjStatCollection = Utillities.Convert(from adjacentStation in bl.GetAllAdjacentStations() select Utillities.AdjacentStationsBoPoAdapter(adjacentStation));
-            //lbAdjacentStations.ItemsSource = boAdjStatList;
-            //lbAdjacentStations.ItemsSource = adjStatCollection;
-            //lbAdjacentStations.SelectedIndex = 0;
+            lbAdjacent.ItemsSource = adjStatCollection;
+            lbAdjacent.SelectedIndex = 0;
+            allLines = lineCollection;
         }
-       
+        private void TimeAndDistanceFromPrevChangedEvent(object sender,EventArgs e)
+        {
+            int index = lbAdjacent.SelectedIndex;
+            PO.AdjacentStations poAdjStat = lbAdjacent.SelectedValue as PO.AdjacentStations;
+            UpdateTimeDistance updateTimeDistance = new UpdateTimeDistance(poAdjStat);
+            updateTimeDistance.ShowDialog();
+            allLines.Clear();
+            ObservableCollection<PO.Line> temp = new ObservableCollection<PO.Line>();
+            temp = Utillities.Convert(from line in bl.GetAllLines() select Utillities.LineBoPoAdapter(line));
+            foreach (PO.Line line in temp)
+            {
+                allLines.Add(line);
+            }
+            //cbBusLines.ItemsSource = linesCollection;
+            //cbBusLines.DisplayMemberPath = "Code";
+            //cbBusLines.SelectedIndex = index;
+            poStationCollection = Utillities.Convert(from station in bl.GetAllStations() select Utillities.StationBoPoAdapter(station));
+            //lbStations.ItemsSource = boStationList;
+            lbStations.ItemsSource = poStationCollection;
+            lbStations.SelectedIndex = 0;
+            //boAdjStatList = bl.GetAllAdjacentStations();
+            adjStatCollection = Utillities.Convert(from adjacentStation in bl.GetAllAdjacentStations() select Utillities.AdjacentStationsBoPoAdapter(adjacentStation));
+            lbAdjacent.ItemsSource = adjStatCollection;
+            lbAdjacent.SelectedIndex = 0;
+           
+            MessageBox.Show("Time and distance between adjacent stations changed successfully");
+        }
         private void lbStations_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             //selectedStation = lbStations.SelectedValue as BO.Station;

@@ -6,12 +6,42 @@
         xmlns:local="clr-namespace:PlGui"
         mc:Ignorable="d"
         Title="StationsWindow" Height="450" Width="800">
-    <Grid>
-        <Grid HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" VerticalAlignment="Top" Width="772">
-            <Button Content="Add Station" Click="AddStationEvent" HorizontalAlignment="Left" Height="28" Margin="309,371,0,0" VerticalAlignment="Top" Width="92"/>
-        </Grid>
+    <Window.Resources>
+        <DataTemplate x:Key="MyDataTemplate" DataType="local.LineStation">
+            <Grid Name="editLineStation">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="30"/>
+                </Grid.ColumnDefinitions>
+                <Label Name="lStation1" HorizontalAlignment="Left" VerticalAlignment="Center"  HorizontalContentAlignment="Center" Content="Station1:" Grid.Column="0"  Grid.Row="0"/>
+                <TextBlock Name="tbStation1" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Path=Station1}" Grid.Column="1"   Grid.Row="0"/>
+                <Label Name="lStation2" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Station2:" Grid.Column="2"  Grid.Row="0"/>
+                <TextBlock Name="tbStation2" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Path=Station2}" Grid.Column="3"   Grid.Row="0"/>
+                <Label Name="lbDistance" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Distance:" Grid.Column="4"  Grid.Row="0"/>
+                <TextBlock Name="tbDistance" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Path=Distance}" Grid.Column="5"   Grid.Row="0"/>
+                <Label Name="lTime" HorizontalContentAlignment="Center"  HorizontalAlignment="Left"  VerticalAlignment="Center" Content="Time:" Grid.Column="6"  Grid.Row="0"/>
+                <TextBlock Name="tbTimeFromPrevious"  HorizontalAlignment="Left" VerticalAlignment="Center" TextAlignment="Left" Text="{Binding Path=Time}" Grid.Column="7"   Grid.Row="0"/>
+                <Button Name="btUpdateTimeAndDistance" Content="Update" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="8" Grid.Row="0" Click="TimeAndDistanceFromPrevChangedEvent"></Button>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
 
-        <ListBox Name="lbStations" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="343" Margin="176,33,0,0" VerticalAlignment="Top" PreviewMouseDoubleClick="lbStations_PreviewMouseDoubleClick" Width="363" RenderTransformOrigin="0.5,0.5" >
+    <Grid>
+        <Button Content="Add Station" Click="AddStationEvent" HorizontalAlignment="Left" Height="28" Margin="649,194,0,0" VerticalAlignment="Top" Width="92"/>
+
+
+        <ListBox Name="lbStations"  ItemsSource="{Binding}" HorizontalAlignment="Left" Height="148" Margin="53,33,0,0" VerticalAlignment="Top" PreviewMouseDoubleClick="lbStations_PreviewMouseDoubleClick" Width="593" RenderTransformOrigin="0.5,0.5" >
             <ListBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -21,7 +51,19 @@
                 </TransformGroup>
             </ListBox.RenderTransform>
         </ListBox>
-        <Label Content="Stations" HorizontalAlignment="Left" Margin="336,0,0,383" VerticalAlignment="Bottom" RenderTransformOrigin="0.47,1.104" Width="48"/>
+        <Label Content="Stations:" HorizontalAlignment="Left" Margin="354,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.47,1.104" Width="57"/>
+        <ListBox Name="lbAdjacent" ItemTemplate="{StaticResource MyDataTemplate}" HorizontalAlignment="Left" Height="182" Margin="45,227,0,0" VerticalAlignment="Top" Width="696">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="IsSelected" Value="True"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+        <Label Content="Adjacent Stations:" HorizontalAlignment="Left" Margin="354,201,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.467,0.983"/>
 
     </Grid>
 </Window>

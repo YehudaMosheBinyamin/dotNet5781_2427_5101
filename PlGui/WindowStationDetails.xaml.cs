@@ -52,14 +52,9 @@ namespace PlGui
             IBL bl = BlFactory.GetBl("1");
             lineSelected=lbLinesBy.SelectedValue as PO.Line;
             
+            
 
         }
-
-        private void bAdd_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void bEdit_Click(object sender, RoutedEventArgs e)
         {
 

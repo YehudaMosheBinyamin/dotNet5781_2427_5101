@@ -24,7 +24,7 @@ namespace DL
             Station tempStation= DataSource.stationsList.Find(p=>p.Code==code);
             if(tempStation==null )
             {
-             DataSource.stationsList.Add(station);
+             DataSource.stationsList.Add(station.Clone());
             
             }
             else if(tempStation.InService == false)
@@ -156,28 +156,25 @@ namespace DL
         { 
             int id = line.Id;
             Line tempLine = (from l in DataSource.linesList where l.Id == id select l).ToList().FirstOrDefault();
-            if (tempLine == null)
+            if (tempLine == null||tempLine.InService==false)
             {
+                //DataSource.linesList.Add(line.Clone());
                 DataSource.linesList.Add(line);
-            }
-
-            else if (tempLine.InService == false)
-            {
-                tempLine.InService = true;
-                tempLine.Area = line.Area;
-                tempLine.Code = line.Code;
-                tempLine.FirstStation = line.FirstStation;
-                tempLine.LastStation = line.LastStation;
             }
             else
             {
                 throw new LineAlreadyExistsException(id, $"This line with id: {id}  already exists-Bus with code{tempLine.Code} and is active so it can't be added");
             }
         }
+        /// <summary>
+        /// To get lines from database
+        /// </summary>
+        /// <returns></returns>
        public IEnumerable<Line> GetAllLines()
         {
-            return from line in DS.DataSource.linesList where line.InService==true select line.Clone();
 
+            // return from line in DS.DataSource.linesList where line.InService==true select line.Clone();
+            return from line in DS.DataSource.linesList where line.InService == true select line;
         }
         public IEnumerable<Line> GetAllLinesBy(Predicate<Line> predicate)
         {
@@ -187,8 +184,8 @@ namespace DL
         public Line GetLine(int lineId)
         {
            
-                Line tempLine= DataSource.linesList.Find(p =>p.Id==lineId);
-                if(tempLine!=null&&tempLine.InService==true)
+                Line tempLine= DataSource.linesList.Find(p =>p.Id==lineId&&p.InService==true);
+                if(tempLine!=null)
                 {
                     return tempLine.Clone();
                 }
@@ -201,6 +198,14 @@ namespace DL
         public int GetNewLineId()
         {
             return Configuration.LineId;
+        }
+        /// <summary>
+        /// Each new station gets a unique code from configuration 
+        /// </summary>
+        /// <returns></returns>
+        public int GetNewStationCode()
+        {
+            return Configuration.StationCode;
         }
         public void UpdateLine(int lineId,Action<Line> update)
         {
@@ -217,7 +222,7 @@ namespace DL
         }
         public void DeleteLine(int lineId)
         {
-            Line tempLine = DataSource.linesList.Find(p => p.Id == lineId);
+            Line tempLine = DataSource.linesList.Find(p => p.Id == lineId&&p.InService==true);
             if (tempLine != null)
             {
                 tempLine.InService = false;
@@ -247,19 +252,12 @@ namespace DL
         {
             int id = lineStation.LineId;
             int code = lineStation.Station;
-            LineStation tempLineStation = (from ls in DataSource.lineStationsList where ls.Station == code && ls.LineId == id select ls).ToList().FirstOrDefault();
+            LineStation tempLineStation = (from ls in DataSource.lineStationsList where ls.Station == code &&ls.InService==true && ls.LineId == id select ls).ToList().FirstOrDefault();
             if (tempLineStation == null||lineStation.LineStationIndex!=tempLineStation.LineStationIndex)
             {
-                DataSource.lineStationsList.Add(lineStation);
+                DataSource.lineStationsList.Add(lineStation.Clone());
             }
             
-            else if (tempLineStation.InService == false)
-            {
-                tempLineStation.InService = true;
-                tempLineStation.NextStation = lineStation.NextStation;
-                tempLineStation.PrevStation = lineStation.PrevStation;
-                tempLineStation.Station = lineStation.Station;
-            }
             else
             {
                 throw new LineStationAlreadyExistsException(id,code, $"This line station with id: {id} code{code} already exists and is active so it can't be added");
@@ -273,8 +271,8 @@ namespace DL
 
         public LineStation GetLineStation(int lineId, int stationCode)
         {
-            LineStation tempLineStation = DataSource.lineStationsList.FirstOrDefault(p => (p.LineId == lineId) && (p.Station == stationCode));
-            if (tempLineStation != null && tempLineStation.InService == true)
+            LineStation tempLineStation = DataSource.lineStationsList.FirstOrDefault(p => (p.LineId == lineId) && (p.Station == stationCode)&&(p.InService==true));
+            if (tempLineStation != null)
             {
                 return tempLineStation.Clone();
             }
@@ -286,7 +284,7 @@ namespace DL
         }
         public IEnumerable<LineStation> GetAllLineStationsByLine(int lineId)
         {
-             return from lineStation in DS.DataSource.lineStationsList where lineStation.LineId==lineId orderby lineStation.LineStationIndex select  lineStation  ;
+             return from lineStation in DS.DataSource.lineStationsList where lineStation.LineId==lineId && lineStation.InService==true orderby lineStation.LineStationIndex select  lineStation  ;
             //return from lineStation in DS.DataSource.lineStationsList  select lineStation;
         }
         public void UpdateLineStation(int lineId, int stationCode,int newStationCode, Action<LineStation,int> update)
@@ -304,8 +302,8 @@ namespace DL
         }
         public void DeleteLineStation(int lineId,int stationCode)
         {
-            LineStation tempLineStation = DataSource.lineStationsList.Find(p => p.LineId == lineId&&p.Station==stationCode);
-            if (tempLineStation != null && tempLineStation.InService == true)
+            LineStation tempLineStation = DataSource.lineStationsList.Find(p => p.LineId == lineId&&p.Station==stationCode&&p.InService==true);
+            if (tempLineStation != null)
             {
                 tempLineStation.InService = false;
             }
@@ -318,7 +316,7 @@ namespace DL
         {
             foreach (LineStation ls in DS.DataSource.lineStationsList)
             {
-                if (ls.LineId == lineId)
+                if (ls.LineId == lineId&&ls.InService==true)
                 {
                     ls.InService = false;
                 }
@@ -405,7 +403,10 @@ namespace DL
             }
             return true;
         }
-       
+       /// <summary>
+       /// To add adjacent stations to database
+       /// </summary>
+       /// <param name="adjacentStations"></param>
         public void AddAdjacentStations(AdjacentStations adjacentStations)
         {
             int station1 = adjacentStations.Station1;
@@ -413,7 +414,7 @@ namespace DL
             AdjacentStations tempAdjStat = DataSource.adjacentStationsList.Find(p => p.Station1==station1 &&p.Station2==station2);
             if (tempAdjStat == null || tempAdjStat.InService == false)
             {
-                DataSource.adjacentStationsList.Add(adjacentStations);
+                DataSource.adjacentStationsList.Add(adjacentStations.Clone());
             }
             else
             {
@@ -431,12 +432,16 @@ namespace DL
             return from adjstat in DS.DataSource.adjacentStationsList where predicate(adjstat) && adjstat.InService == true select adjstat;
         }
       
-
+        /// <summary>
+        /// To get adjacent station instance
+        /// </summary>
+        /// <param name="stationOneCode"></param>
+        /// <param name="stationTwoCode"></param>
+        /// <returns></returns>
         public AdjacentStations GetAdjacentStations(int stationOneCode, int stationTwoCode)
         {
             return DS.DataSource.adjacentStationsList.Find(p => p.Station1 == stationOneCode && p.Station2 == stationTwoCode&&p.InService==true);
         }
-
         /**
         public void UpdateAdjacentStations(int stationOneCode, int stationTwoCode, Action<AdjacentStations> update)
         {
@@ -461,14 +466,18 @@ namespace DL
         }
         #endregion
         #region LineTrip
+        public int GetNewLineTripId()
+        {
+            return Configuration.LineTripId;
+        }
         public void AddLineTrip(LineTrip lineTrip)
         {
             int id = lineTrip.Id;
             int lineId = lineTrip.LineId;
             LineTrip tempLineTrip = DataSource.lineTripsList.Find(p => p.LineId == lineId && p.Id == id && p.InService == true) ;
-            if (tempLineTrip != null)
+            if (tempLineTrip == null||tempLineTrip.InService==false)
             {
-                DataSource.lineTripsList.Add(tempLineTrip);
+                DataSource.lineTripsList.Add(lineTrip);
 
             }
             else
@@ -476,10 +485,13 @@ namespace DL
                 throw new LineTripAlreadyExistsException(id,lineId, $"The line trip of line with id:{lineTrip.Id} of line with id: {lineTrip.LineId} already exists and is active so it can't be added");
             }
         }
-
+        /// <summary>
+        /// To get all line trips
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<LineTrip> GetAllLineTrips()
         {
-            return from lineTrip in DS.DataSource.lineTripsList where lineTrip.InService==true select lineTrip.Clone();
+            return from lineTrip in DS.DataSource.lineTripsList where lineTrip.InService==true select lineTrip;
         }
 
         public LineTrip GetLineTrip(int id,int busId)
@@ -500,23 +512,39 @@ namespace DL
                 throw new NoLineTripExistsException(id, lineId, $"The line trip with lineId {id} and lineId {lineId} cannot be deleted since it does not exist in the system ");
             }
         }
-
+        /// <summary>
+        /// To delete line trip
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="lineId"></param>
         public void DeleteLineTrip(int id,int lineId)
         {
-            LineTrip lineTrip = DS.DataSource.lineTripsList.Find(p => p.Id == id && p.LineId == lineId);
+            LineTrip lineTrip = DS.DataSource.lineTripsList.Find(p => p.Id == id && p.LineId == lineId&&p.InService==true);
             if (lineTrip == null)
             {
                 throw new NoLineTripExistsException(id, lineId, $"The line trip with lineId {id} and lineId {lineId} cannot be deleted since it does not exist in the system ");
             }
             lineTrip.InService = false;
         }
+        /// <summary>
+        /// To delete line trips of line
+        /// </summary>
+        /// <param name="lineId"></param>
         public void DeleteLineTrips(int lineId)
         {
-            DS.DataSource.lineTripsList.All(x => { x.InService = false; return true; });
+            List<LineTrip> lineTripsOfLine = DS.DataSource.lineTripsList;
+            foreach(LineTrip lt in DS.DataSource.lineTripsList)
+            {
+                if (lt.LineId == lineId && lt.InService == true)
+                {
+                    lt.InService = false;
+                }
+            }
         }
+
         #endregion
     }
-    }
+}
 
 
 

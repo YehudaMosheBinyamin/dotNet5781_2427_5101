@@ -9,7 +9,7 @@ using System.Linq;
 namespace BL
 {
     class BlImplementation : IBL
-    {
+    {/**
         #region Bus
         DO.Bus busBoDoAdapter(BO.Bus busBo)
         {
@@ -125,7 +125,7 @@ namespace BL
                 throw new BO.NoBusFoundException("Bus doesn't exist in system so cannot be deleted", ex);
             }
         }
-        #endregion
+        #endregion**/
         #region Station
         public DO.Station StationBoDoAdapter(BO.Station boStation)
         { BO.Station bStation = boStation;
@@ -183,14 +183,121 @@ namespace BL
             boStation = StationDoBoAdapter(station);
             return boStation;
         }
-
+        /// <summary>
+        /// To get all stations in line
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<Station> GetAllStations()
         {
             IDL dl = DLFactory.GetDL();
             return from station in dl.GetAllStations() select StationDoBoAdapter(station);
        
         }
+        /**
+        /// <summary>
+        /// To remove a line from lines that go by station
+        /// </summary>
+        /// <param name="lineId"></param>
+        /// <param name="stationCode"></param>
+        public void DeleteLineFromStation(int lineId, int stationCode)
+        {
+            IDL dl = DLFactory.GetDL();
+            BO.Line boLine= LineDoBoAdapter(dl.GetLine(lineId));
+            List<int> indexesWhereStation = (from ls in boLine.stationsInLine where ls.Station == stationCode select ls.LineStationIndex).ToList();
+            int countStations = 0;
+           foreach(LineStation ls in boLine.stationsInLine)
+            {
+                countStations++;
+            }
+            List<LineStation> 
+            int countStation = 0;
+            int amountOfStationInLine = indexesWhereStation.Count;//amount of times station appears in line
+            //for each time the station appears in the line
+            int whereToChange;
+            while (countStation < amountOfStationInLine)
+            {
+                whereToChange = indexesWhereStation.ElementAt(0);
+                //if is not first or last station there's a need to change previous station's distance and time to be of next station
+                if (whereToChange > 0 && boLine.stationsInLine.ElementAt(whereToChange).LineStationIndex != countStations)
+                {
+                    float distanceFromPrevious = bl.GetRandomDistance();
+                    //update previous and next lineStations
+                    LineStation previousLineStation = new LineStation()
+                    {
+                        LineStationIndex = whereToChange - 1,
+                        NextStation = boLine.stationsInLine.ElementAt(whereToChange + 1).Station,
+                        PrevStation = boLine.stationsInLine.ElementAt(whereToChange - 2).Station,
+                        DistanceFromPreviousStation = boLine.stationsInLine.ElementAt(whereToChange - 1).DistanceFromPreviousStation,
+                        TimeFromPreviousStation = boLine.stationsInLine.ElementAt(whereToChange - 1).TimeFromPreviousStation,
+                        InService = true,
+                        Station = boLine.stationsInLine.ElementAt(whereToChange - 1).Station,
+                        LineId = boLine.Id,
+                        LastStationName = boLine.LastStationName,
+                        Name = boLine.stationsInLine.ElementAt(whereToChange - 1).Name
+                    };
+                    DeleteLineStation(boLine.Id, whereToChange);
+                    UpdateLineStation(lineId, whereToChange - 1, newLineStation);
+                    LineStation nextLineStation = new LineStation()
+                    {
+                        LineStationIndex = whereToChange + 1,
+                        NextStation = boLine.stationsInLine.ElementAt(whereToChange + 2).Station,
+                        PrevStation = previousLineStation.Station,
+                        DistanceFromPreviousStation = boLine.stationsInLine.ElementAt(whereToChange + 1).DistanceFromPreviousStation + boLine.stationsInLine.ElementAt(whereToChange).DistanceFromPreviousStation,//distance is distance between this station to the one getting deleted plus to the one before that.Same with time.
+                        TimeFromPreviousStation = boLine.stationsInLine.ElementAt(whereToChange + 1).TimeFromPreviousStation + boLine.stationsInLine.ElementAt(whereToChange).TimeFromPreviousStation,
+                        InService = true,
+                        Station = boLine.stationsInLine.ElementAt(whereToChange + 1).Station,
+                        LineId = boLine.Id,
+                        LastStationName = boLine.LastStationName,
+                        Name = boLine.stationsInLine.ElementAt(whereToChange + 1).Name
+                    };
+                    UpdateLineStation(lineId, whereToChange + 1, nextLineStation);
 
+                }
+                else if (whereToChange == 0)
+                {//in this case,the second line station will become the first line station
+                    LineStation newFirstLineStation = new LineStation()
+                    {
+                        LineStationIndex = whereToChange,
+                        NextStation = boLine.stationsInLine.ElementAt(whereToChange + 1).Station,
+                        PrevStation = boLine.stationsInLine.ElementAt(whereToChange - 1).Station,
+                        DistanceFromPreviousStation = 0f,
+                        TimeFromPreviousStation = new TimeSpan(0, 0, 0),
+                        InService = true,
+                        Station = boLine.stationsInLine.ElementAt(whereToChange + 1).Station,
+                        LineId = boLine.Id,
+                        LastStationName = boLine.LastStationName,
+                        Name = boLine.stationsInLine.ElementAt(whereToChange + 1).Name
+                    };
+
+                    DeleteLineStation(boLine.Id, whereToChange);
+                    UpdateLineStation(lineId,whereToChange+1,newFirstLineStation)
+
+                }
+                else if (whereToChange == countStations)//we're deleting the last station
+                {
+                 
+                    LineStation newSecondLastStation = new LineStation()
+                    {
+                        LineStationIndex = whereToChange-2,
+                        NextStation = boLine.stationsInLine.ElementAt(whereToChange - 1).Station,
+                        PrevStation = boLine.stationsInLine.ElementAt(whereToChange - 3).Station,
+                        DistanceFromPreviousStation = boLine.stationsInLine.ElementAt(whereToChange-2).DistanceFromPreviousStation,
+                        TimeFromPreviousStation = boLine.stationsInLine.ElementAt(whereToChange - 2).TimeFromPreviousStation,
+                        InService = true,
+                        Station = boLine.stationsInLine.ElementAt(whereToChange - 2).Station,
+                        LineId = boLine.Id,
+                        LastStationName = boLine.LastStationName,
+                        Name = boLine.stationsInLine.ElementAt(whereToChange - 2).Name
+                    };
+                    
+
+                }
+                indexesWhereStation.RemoveAt(0);
+            }
+           
+
+
+        }
         /** public void DeleteStation(int code)
          {
              IDL dl = DLFactory.GetDL();
@@ -215,11 +322,10 @@ namespace BL
             boLine.Area = (Areas)doLine.Area;
             IDL dl = DLFactory.GetDL();
             IEnumerable<BO.LineStation> lineStations = from lineStation in GetAllLineStationsByLine(doLine.Id) where lineStation.InService==true orderby lineStation.LineStationIndex  select lineStation;
-            //IEnumerable<BO.LineTrip> lineTrips = from lineTrip in dl.GetAllLineTrips() where lineTrip.LineId == doLine.Id select LineTripDoBoAdapter(lineTrip);
             boLine.stationsInLine = lineStations;
             boLine.InService = doLine.InService;
             boLine.LastStationName = dl.GetStation(((lineStations.ToList()).Last()).Station).Name;
-            //boLine.lineExits = lineTrips;
+            boLine.lineExits = GetAllLineTripsInLine(doLine.Id);
             return boLine;
         }
         DO.Line LineBoDoAdapter(BO.Line boLine)
@@ -255,6 +361,17 @@ namespace BL
                 throw new BO.LineAlreadyExistsException("Line already exists",ex);
             }
             AddAllLineStations(line);
+            //to make all elements of line trip with proper,new ids.
+            /**List<BO.LineTrip> lineTripsOfLine = (from lt in line.lineExits 
+                                                       select new BO.LineTrip 
+                                                       {
+                                                           LineId = line.Id,
+                                                           InService = true,
+                                                           StartAt = lt.StartAt,
+                                                           Id =dl.GetNewLineTripId()
+                                                       }).ToList();**/
+            //line.lineExits = lineTripsOfLine;
+            AddAllLineTrips(line);
             List<DO.AdjacentStations> adjacentStations = (from lineStation1 in line.stationsInLine
                                                           from lineStation2 in line.stationsInLine
                                                           where lineStation1.NextStation == lineStation2.Station&&dl.AdjacentStationsExists(lineStation1.Station,lineStation2.Station)==false
@@ -311,8 +428,9 @@ namespace BL
             try
             {
                 DeleteLineStations(lineId);
-                //dl.DeleteLineTrips(lineId);
+                dl.DeleteLineTrips(lineId);
                 dl.DeleteLine(lineId);
+               
             }
             catch (DO.NoLineFoundException ex)
             {
@@ -396,6 +514,7 @@ namespace BL
             DeleteAdjacentStations(station1, station2);
             AddAdjacentStations(station1, station2, newDistance, newTime);
         }
+        /**
         /// <summary>
         /// function for adding new linestation to line at chosen index
         /// </summary>
@@ -444,10 +563,10 @@ namespace BL
             updatedPrevStation = prevStation;
             updatedPrevStation.NextStation = line.Code;
             LineStation updatedNextStation = new LineStation();
-            updatedNextStation.PrevStation = line.Code;**/
+            updatedNextStation.PrevStation = line.Code;
             
 
-        }
+        }**/
         public DO.LineStation LineStationBoDoAdapter(BO.LineStation boLineStation)
         {
             DO.LineStation doLineStation = new DO.LineStation();
@@ -493,11 +612,8 @@ namespace BL
             }
 
         }
-        /// <summary>
-        /// changes the station immediately after the station added
-        /// </summary>
-        /// <param name="ls"></param>
-        /// <param name="stationBefore"></param>
+        /**
+        
         void ChangeOneAfter(DO.LineStation ls,int stationBefore)
         {
             ls.PrevStation = stationBefore;
@@ -562,7 +678,7 @@ namespace BL
             }
         }
       
-
+**/
  
         #endregion
         #region LineStation
@@ -604,17 +720,7 @@ namespace BL
             dl.DeleteLineStations(lineId);
             
         }
-        public BO.LineTrip LineTripDoBoAdapter(DO.LineTrip doLineTrip)
-        {
-            BO.LineTrip boLineTrip = new BO.LineTrip();
-            boLineTrip.StartAt = doLineTrip.StartAt;
-            boLineTrip.FinishAt = doLineTrip.FinishAt;
-            boLineTrip.Frequency = doLineTrip.Frequency;
-            boLineTrip.Id = doLineTrip.Id;
-            boLineTrip.LineId = doLineTrip.LineId;
-            boLineTrip.InService = doLineTrip.InService;
-            return boLineTrip;
-        }
+        
         #endregion
         #region AdjacentStations
         BO.AdjacentStations AdjacentStationsDoBoAdapter(DO.AdjacentStations doAdjacentStations)
@@ -657,7 +763,7 @@ namespace BL
         }
         public IEnumerable<BO.AdjacentStations> GetAllAdjacentStations()
         { IDL dl = DLFactory.GetDL();
-          return (from adjacentStation in dl.GetAllAdjacentStations() select AdjacentStationsDoBoAdapter(adjacentStation)).Distinct();
+          return (from adjacentStation in dl.GetAllAdjacentStations() orderby adjacentStation.Station1,adjacentStation.Station2 select AdjacentStationsDoBoAdapter(adjacentStation)).Distinct()  ;
         }
         /**
         /// <summary>
@@ -723,13 +829,70 @@ namespace BL
             
         }
         #endregion
+        #region LineTrip
+        public BO.LineTrip LineTripDoBoAdapter(DO.LineTrip doLineTrip)
+        {
+            BO.LineTrip boLineTrip = new BO.LineTrip();
+            boLineTrip.StartAt = doLineTrip.StartAt;
+            boLineTrip.Id = doLineTrip.Id;
+            boLineTrip.LineId = doLineTrip.LineId;
+            boLineTrip.InService = doLineTrip.InService;
+            return boLineTrip;
+        }
+
+
+        public DO.LineTrip LineTripBoDoAdapter(BO.LineTrip boLineTrip)
+        {
+            DO.LineTrip doLineTrip = new DO.LineTrip();
+            doLineTrip.Id = boLineTrip.Id;
+            doLineTrip.InService = boLineTrip.InService;
+            doLineTrip.LineId = boLineTrip.LineId;
+            doLineTrip.StartAt = boLineTrip.StartAt;
+            return doLineTrip;
+        }
+
+
+        /// <summary>
+        /// To get all line trips for line
+        /// </summary>
+        /// <param name="lineId"></param>
+        /// <returns></returns>
+        public IEnumerable<LineTrip> GetAllLineTripsInLine(int lineId)
+        {
+            IDL dl = DLFactory.GetDL();
+            IEnumerable<LineTrip> lineExitsInLine = from lineTrip in dl.GetAllLineTrips() where lineTrip.LineId == lineId &&lineTrip.InService==true select LineTripDoBoAdapter(lineTrip);
+            return lineExitsInLine;
+        }
+
+
+        /// <summary>
+        /// To add line trips of line to database
+        /// </summary>
+        /// <param name="line"></param>
+        public void AddAllLineTrips(BO.Line line)
+        {
+            IDL dl = DLFactory.GetDL();
+            foreach (LineTrip lt in line.lineExits)
+            {
+                lt.LineId = line.Id;
+                lt.Id = dl.GetNewLineTripId();
+                dl.AddLineTrip(LineTripBoDoAdapter(lt)); 
+            }
+        }
+
+
+        #endregion
         public float GetRandomDistance() 
         {
             return Functions.randomDistance();
         }
+
+
         public TimeSpan GetMinutesOfTravel(float distance) 
         {
             return Functions.MinutesOfTravel(distance);
         }
+
+
     }
 }

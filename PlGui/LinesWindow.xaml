@@ -65,7 +65,7 @@
                Text="{Binding Path=Area}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FF0DF9D9" FontSize="20" BorderBrush="Black" BorderThickness="1"></TextBox>
             <Label Content="Bus Line Number:" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Grid.Column="0" FontSize="20" FontFamily="Arial" BorderBrush="Black" BorderThickness="1" ></Label>
             <Label Content="Area:" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="2" FontSize="20" FontFamily="Arial" BorderBrush="Black" BorderThickness="1">
-           
+
             </Label>
         </Grid>
         <ListBox Name="lbBusLineStations"  HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Grid.Column="0"  Height="392" Width="790" ItemsSource="{Binding}" Margin="0,48,0,120" PreviewMouseDoubleClick="lbBusLineStations_PreviewMouseDoubleClick" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="DarkBlue" BorderThickness="3" ItemTemplate="{StaticResource MyDataTemplate}"  Grid.ColumnSpan="2" >
@@ -80,7 +80,8 @@
             </ListBox.ItemContainerStyle>
         </ListBox>
         <Button Content="Add Line" HorizontalAlignment="Left" Margin="257,0,0,30" Grid.Row="1" VerticalAlignment="Bottom" Width="75" Click="AddLineEvent" Grid.Column="1"/>
-        <Button Content="Edit line" VerticalAlignment="Bottom" Click="EditLineEvent" HorizontalAlignment="Left" Margin="144,0,0,30" Grid.Row="1"  Width="75" Grid.Column="1"/>
+        <Button Content="Edit Line" VerticalAlignment="Bottom" Click="EditLineEvent" HorizontalAlignment="Left" Margin="144,0,0,30" Grid.Row="1"  Width="75" Grid.Column="1"/>
         <Button Content="Delete line" HorizontalAlignment="Left" Margin="38,0,0,30" Grid.Row="1" VerticalAlignment="Bottom" Width="75" Grid.Column="1" Click="Button_Click_1"/>
+        <Button Name="bTimeTable" Content="Timetable" Grid.Row="1" HorizontalAlignment="Left" Margin="320,0,0,30"  VerticalAlignment="Bottom" Width="75" RenderTransformOrigin="1.258,0.368" Click="bTimeTable_Click"/>
     </Grid>
 </Window>

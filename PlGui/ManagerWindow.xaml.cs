@@ -35,7 +35,7 @@ namespace PlGui
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            StationsWindow stationsWindow = new StationsWindow();
+            StationsWindow stationsWindow = new StationsWindow(poLineCollection);
             stationsWindow.Show();
         }
     }

@@ -68,9 +68,13 @@
     <Compile Include="PO\AdjacentStations.cs" />
     <Compile Include="PO\Line.cs" />
     <Compile Include="PO\LineStation.cs" />
+    <Compile Include="PO\LineTrip.cs" />
     <Compile Include="PO\Station.cs" />
     <Compile Include="StationsWindow.xaml.cs">
       <DependentUpon>StationsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TimeTableWindow.xaml.cs">
+      <DependentUpon>TimeTableWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UpdateTimeDistance.xaml.cs">
       <DependentUpon>UpdateTimeDistance.xaml</DependentUpon>
@@ -114,6 +118,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="StationsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TimeTableWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
