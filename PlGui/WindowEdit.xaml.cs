@@ -61,6 +61,10 @@ namespace PlGui
             int indexOfDeletion = lbLineStations.SelectedIndex;
             PO.LineStation lineStationForDeletion = lbLineStations.SelectedValue as PO.LineStation;
             stationsInLine.Remove(lineStationForDeletion);
+            foreach(PO.LineStation ls in stationsInLine)
+            {
+                ls.LineStationIndex = stationsInLine.IndexOf(ls);
+            }
             newLine.stationsInLine = stationsInLine;
         }
         /// <summary>

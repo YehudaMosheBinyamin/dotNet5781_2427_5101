@@ -42,22 +42,28 @@ namespace PlGui
             //gridLines.DataContext = lineStationsByStation;
             //lbLinesBy.ItemsSource = lineStationsByStation;
             }
-        /// <summary>
+       /// <summary>
         /// For deletion of line from station
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void bDelLine_Click(object sender, RoutedEventArgs e)
         {
-            IBL bl = BlFactory.GetBl("1");
-            lineSelected=lbLinesBy.SelectedValue as PO.Line;
-            
-            
+            //IBL bl = BlFactory.GetBl("1");
+            //lineSelected=lbLinesBy.SelectedValue as PO.Line;
 
         }
+        /// <summary>
+        /// To edit line that goes by station
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            PO.Line line = lbLinesBy.SelectedValue as PO.Line;
+            WindowEdit windowEdit = new WindowEdit(line);
+            windowEdit.ShowDialog();
+            MessageBox.Show("Line edited successfully");
         }
     }
     }

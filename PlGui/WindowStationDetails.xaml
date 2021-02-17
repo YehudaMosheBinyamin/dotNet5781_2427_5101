@@ -16,7 +16,7 @@
                     <ColumnDefinition Width="90"/>
                     <ColumnDefinition Width="90"/>
                     <ColumnDefinition Width="90"/>
-                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="140"/>
                     <ColumnDefinition Width="90"/>
                     <ColumnDefinition Width="90"/>
                 </Grid.ColumnDefinitions>
@@ -49,7 +49,17 @@
         <Label Grid.Row="3" Grid.Column="0" Content="Latitude:" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
         <TextBlock Grid.Row="3" Grid.Column="1" Name="tbLatitude" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="{Binding Path=Latitude}" VerticalAlignment="Center"/>
         <Grid Name="gridLines"  HorizontalAlignment="Left" Height="289" Margin="0,41,0,-299" Grid.Row="3" VerticalAlignment="Top" Width="791" Grid.ColumnSpan="2">
-            <ListBox Name="lbLinesBy" ItemTemplate="{DynamicResource MyDataTemplate}" HorizontalAlignment="Left" Height="256" ItemsSource="{Binding}" Margin="29,10,0,0" VerticalAlignment="Top" Width="734"/>
+            <ListBox Name="lbLinesBy" ItemTemplate="{StaticResource MyDataTemplate}" HorizontalAlignment="Left" Height="256" ItemsSource="{Binding}" Margin="29,10,0,0" VerticalAlignment="Top" Width="734">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="IsSelected" Value="True"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
         </Grid>
 
 
