@@ -58,32 +58,50 @@ namespace PlGui
             {
                 allLines.Add(line);
             }
-            //cbBusLines.ItemsSource = linesCollection;
-            //cbBusLines.DisplayMemberPath = "Code";
-            //cbBusLines.SelectedIndex = index;
             poStationCollection = Utillities.Convert(from station in bl.GetAllStations() select Utillities.StationBoPoAdapter(station));
-            //lbStations.ItemsSource = boStationList;
             lbStations.ItemsSource = poStationCollection;
             lbStations.SelectedIndex = 0;
-            //boAdjStatList = bl.GetAllAdjacentStations();
             adjStatCollection = Utillities.Convert(from adjacentStation in bl.GetAllAdjacentStations() select Utillities.AdjacentStationsBoPoAdapter(adjacentStation));
             lbAdjacent.ItemsSource = adjStatCollection;
             lbAdjacent.SelectedIndex = 0;
            
             MessageBox.Show("Time and distance between adjacent stations changed successfully");
         }
+        /// <summary>
+        /// For more details about station
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lbStations_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            //selectedStation = lbStations.SelectedValue as BO.Station;
             selectedStation = lbStations.SelectedValue as PO.Station;
             WindowStationDetails wsd = new WindowStationDetails(selectedStation);
             wsd.Show();
         }
-
+        /// <summary>
+        /// To add station
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddStationEvent(object sender, RoutedEventArgs e)
         {
             AddStationWindow addStationWindow = new AddStationWindow(poStationCollection);
             addStationWindow.ShowDialog();
+            allLines.Clear();
+            ObservableCollection<PO.Line> temp = new ObservableCollection<PO.Line>();
+            temp = Utillities.Convert(from line in bl.GetAllLines() select Utillities.LineBoPoAdapter(line));
+            foreach (PO.Line line in temp)
+            {
+                allLines.Add(line);
+            }
+            poStationCollection = Utillities.Convert(from station in bl.GetAllStations() select Utillities.StationBoPoAdapter(station));
+            lbStations.ItemsSource = poStationCollection;
+            lbStations.SelectedIndex = 0;
+            adjStatCollection = Utillities.Convert(from adjacentStation in bl.GetAllAdjacentStations() select Utillities.AdjacentStationsBoPoAdapter(adjacentStation));
+            lbAdjacent.ItemsSource = adjStatCollection;
+            lbAdjacent.SelectedIndex = 0;
+
+            MessageBox.Show("Station added successfully");
         }
     }
 }

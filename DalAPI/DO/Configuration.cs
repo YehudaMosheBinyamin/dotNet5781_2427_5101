@@ -2,7 +2,7 @@ namespace DO
 {
     public static class Configuration
 {
-    static Configuration() { lineId = 0;stationCode = 5000;lineTripId = 1; }
+    static Configuration() { lineId = 0;stationCode = 7000;lineTripId = 1; }
     private static int lineId;
     public static int LineId { get { lineId = lineId + 1; return lineId; } }
     private static int stationCode;

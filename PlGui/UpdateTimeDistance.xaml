@@ -11,10 +11,9 @@
             <Button Content="Finish" HorizontalAlignment="Left" Margin="439,137,0,0" VerticalAlignment="Top" Width="75" Click="FinishUpdate"/>
             <Label Content="Time From Previous:" HorizontalAlignment="Left" Margin="79,0,0,0" VerticalAlignment="Top"/>
             <Label Content="Distance From Previous:" HorizontalAlignment="Left" Margin="280,0,0,0" VerticalAlignment="Top"/>
-            <TextBox Text="{Binding Path=DistanceFromPreviousStation}" Name="tbDistance" HorizontalAlignment="Left" Height="23" Margin="280,31,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="134"/>
-            <TextBox Text="{Binding Path=TimeFromPreviousStation}" Name="tbTime" HorizontalAlignment="Left" Height="23" Margin="67,31,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="142"/>
-            <TextBox Name="tbTimeAdj" HorizontalAlignment="Left" Height="23" Margin="67,31,0,0" TextWrapping="Wrap" Text="{Binding Path=TimeFromPreviousStation}" VerticalAlignment="Top" Width="142"/>
-            <TextBox Name="tbDistAdj" HorizontalAlignment="Left" Height="23" Margin="280,31,0,0" TextWrapping="Wrap" Text="{Binding Path=DistanceFromPreviousStation}" VerticalAlignment="Top" Width="134"/>
+            <!--<TextBox Text="{Binding Path=DistanceFromPreviousStation}" Name="tbDistance" HorizontalAlignment="Left" Height="23" Margin="280,31,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="134"/>
+            <TextBox Text="{Binding Path=TimeFromPreviousStation}" Name="tbTime" HorizontalAlignment="Left" Height="23" Margin="67,31,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="142"/>-->            <TextBox Name="tbTimeAdj" HorizontalAlignment="Left" Height="23" Margin="67,31,0,0"  TextWrapping="Wrap" Text="{Binding Path=Time}" VerticalAlignment="Top" Width="142"/>
+            <TextBox Name="tbDistAdj" HorizontalAlignment="Left" Height="23" Margin="280,31,0,0" TextWrapping="Wrap" Text="{Binding Path=Distance}" VerticalAlignment="Top" Width="134"/>
 
         </Grid>
 

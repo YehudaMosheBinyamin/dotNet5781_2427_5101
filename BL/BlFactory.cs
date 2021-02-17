@@ -12,9 +12,9 @@ namespace BlApi
             switch (str)
             {
                 case "1":
-                    return new BlImplementation();
+                    return  BlImplementation.Instance;
                 default:
-                    return new BlImplementation();
+                    return BlImplementation.Instance;
             }
         }
 

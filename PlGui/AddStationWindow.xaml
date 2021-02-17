@@ -19,8 +19,6 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Label Content="Code:" Grid.Row="0" Grid.Column="0" Name="lbCode"/>
-            <TextBox Grid.Row="0" Grid.Column="1" Name="tbCode"/>
             <Label Content="Name" Grid.Row="1" Grid.Column="0" Name="lbName"/>
             <TextBox Grid.Row="1" Grid.Column="1" Name="tbName"/>
             <Label Content="Latitude:" Grid.Row="2" Grid.Column="0" Name="lbLatitude"/>

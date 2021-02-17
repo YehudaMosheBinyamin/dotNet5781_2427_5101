@@ -25,7 +25,6 @@ namespace DL
             if(tempStation==null )
             {
              DataSource.stationsList.Add(station.Clone());
-            
             }
             else if(tempStation.InService == false)
             {
@@ -44,7 +43,7 @@ namespace DL
        //
         public void UpdateStation(Line line,Action<Line> action)
         {
-            throw new NotImplementedException();
+            return null;
         }
        public Station GetStation(int code)
         {

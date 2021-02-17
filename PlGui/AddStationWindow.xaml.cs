@@ -38,18 +38,12 @@ namespace PlGui
         private void AddLineStation(object sender, RoutedEventArgs e)
         { IBL bl = BlFactory.GetBl("1");
             PO.Line line = cbLines.SelectedItem as PO.Line;
-            int code;
-            bool codeConverted = int.TryParse(tbCode.Text, out code);
-            if (codeConverted == false)
-            {
-                MessageBox.Show("Fill the code field and try again");
-                return;
-            }
             if (tbName.Text=="")
             {
                 MessageBox.Show("Fill the name field and try again");
                 return;
             }  
+                int code = -1;
                 float distance = bl.GetRandomDistance();
                 TimeSpan timeFromPrevious = bl.GetMinutesOfTravel(distance);
                 PO.LineStation poLineStation = new PO.LineStation()
@@ -73,22 +67,15 @@ namespace PlGui
         {
             IBL bl = BlFactory.GetBl("1");
             PO.Station poStation = new PO.Station();
-            int code;
             float latitude;
             float longtitude;
-            bool codeConverted = int.TryParse(tbCode.Text, out code);
-            if (codeConverted == false)
-            {
-                MessageBox.Show("Fill the code field and try again");
-                return;
-            }
             bool latitudeConverted = float.TryParse(tbLatitude.Text, out latitude);
             if (latitudeConverted == false)
             {
                 MessageBox.Show("Fill the latitude field and try again");
                 return;
             }
-            poStation.Code = code;
+            poStation.Code = 0;
             bool longtitudeConverted = float.TryParse(tbLongtitude.Text, out longtitude);
             if (longtitudeConverted == false)
             {
@@ -99,9 +86,10 @@ namespace PlGui
             poStation.LineStationsOfStation = Utillities.Convert(lbLineStations.Items.Cast<PO.LineStation>().ToList());
             poStation.Longtitude = longtitude;
             poStation.Name = tbName.Text;
-            bl.AddStation(Utillities.StationPoBoAdapter(poStation));
+            poStation.Code = -1;
             stationCollection.Add(poStation);
-            bl.GetStation(code);
+            bl.AddStation(Utillities.StationPoBoAdapter(poStation));
+            Close();
         }
     }
     }

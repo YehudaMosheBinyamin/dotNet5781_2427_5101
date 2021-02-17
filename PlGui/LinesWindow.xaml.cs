@@ -64,8 +64,10 @@ namespace PlGui
         {
             int index = cbBusLines.SelectedIndex;
             PO.LineStation poLineStation = lbBusLineStations.SelectedValue as PO.LineStation;
-            UpdateTimeDistance updateTimeDistance = new UpdateTimeDistance(poLineStation);
-            updateTimeDistance.ShowDialog();
+            //UpdateTimeDistance updateTimeDistance = new UpdateTimeDistance(poLineStation);
+            //updateTimeDistance.ShowDialog();
+            LineStationUpdateWindow lineStationUpdateWindow = new LineStationUpdateWindow(poLineStation);
+            lineStationUpdateWindow.ShowDialog();
             linesCollection.Clear();
             ObservableCollection<PO.Line> temp = new ObservableCollection<PO.Line>();
             temp = Utillities.Convert(from line in bl.GetAllLines() select Utillities.LineBoPoAdapter(line));

@@ -8,8 +8,16 @@ using System.Linq;
 
 namespace BL
 {
-    class BlImplementation : IBL
-    {/**
+    public sealed class BlImplementation : IBL
+    {
+        #region Singleton
+        static readonly BlImplementation instance=new BlImplementation();    
+        static BlImplementation() { }
+        BlImplementation() { }
+        public static BlImplementation Instance { get { return instance; } }
+    
+        #endregion
+        /**
         #region Bus
         DO.Bus busBoDoAdapter(BO.Bus busBo)
         {
@@ -128,15 +136,49 @@ namespace BL
         #endregion**/
         #region Station
         public DO.Station StationBoDoAdapter(BO.Station boStation)
-        { BO.Station bStation = boStation;
+        {   BO.Station bStation = boStation;
             IDL dl = DLFactory.GetDL();
             DO.Station doStation = new DO.Station();
-            doStation.Code = bStation.Code;
+            doStation.Code = dl.GetNewStationCode();
             doStation.Latitude = bStation.Latitude;
             doStation.Longtitude = bStation.Longtitude;
             foreach(LineStation ls in boStation.LineStationsOfStation)
             {
+                if (ls.NextStation == -1)
+                {
+                    ls.NextStation = doStation.Code;
+                }
+                if (ls.PrevStation == -1)
+                {
+                    ls.PrevStation = doStation.Code;
+                }
+                if (ls.Station == -1)
+                {
+                    ls.Station=doStation.Code;
+                }
                 dl.AddLineStation(LineStationBoDoAdapter(ls));
+                Line line = GetLine(ls.LineId);
+                float distance = GetRandomDistance();
+                DO.AdjacentStations newDoAdjStat = new DO.AdjacentStations()
+                {
+                    Distance = distance,
+                    Time = GetMinutesOfTravel(distance),
+                    InService = true,
+                    Station1 = line.stationsInLine.ElementAt(ls.LineStationIndex - 1).Station,
+                    Station2 = ls.Station
+
+                };
+                distance = GetRandomDistance();
+                DO.AdjacentStations newLastAdjStat = new DO.AdjacentStations()
+                {
+                    Distance = distance,
+                    Time = GetMinutesOfTravel(distance),
+                    InService = true,
+                    Station1 = line.stationsInLine.ElementAt(ls.LineStationIndex).Station,
+                    Station2 = ls.Station
+                };
+                dl.AddAdjacentStations(newDoAdjStat);
+                dl.AddAdjacentStations(newLastAdjStat);
             }
             doStation.Name = bStation.Name;
             return doStation;
@@ -695,7 +737,6 @@ namespace BL
         }
         public BO.LineStation LineStationDoBoAdapter(DO.LineStation doLineStation)
         {
-         //IDL dl = DLFactory.GetDL();
          BO.LineStation boLineStation = new LineStation();
          boLineStation.LineId = doLineStation.LineId;
          boLineStation.Station = doLineStation.Station;

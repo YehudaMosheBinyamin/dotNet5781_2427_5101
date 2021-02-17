@@ -18,11 +18,10 @@
                     <ColumnDefinition Width="70"/>
                     <ColumnDefinition Width="40"/>
                     <ColumnDefinition Width="70"/>
-                    <ColumnDefinition Width="20"/>
-                    <ColumnDefinition Width="40"/>
-                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="45"/>
+                    <ColumnDefinition Width="100"/>
                     <ColumnDefinition Width="90"/>
-                    <ColumnDefinition Width="30"/>
                 </Grid.ColumnDefinitions>
                 <Label Name="lStation1" HorizontalAlignment="Left" VerticalAlignment="Center"  HorizontalContentAlignment="Center" Content="Station1:" Grid.Column="0"  Grid.Row="0"/>
                 <TextBlock Name="tbStation1" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Path=Station1}" Grid.Column="1"   Grid.Row="0"/>
@@ -31,7 +30,7 @@
                 <Label Name="lbDistance" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Distance:" Grid.Column="4"  Grid.Row="0"/>
                 <TextBlock Name="tbDistance" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Path=Distance}" Grid.Column="5"   Grid.Row="0"/>
                 <Label Name="lTime" HorizontalContentAlignment="Center"  HorizontalAlignment="Left"  VerticalAlignment="Center" Content="Time:" Grid.Column="6"  Grid.Row="0"/>
-                <TextBlock Name="tbTimeFromPrevious"  HorizontalAlignment="Left" VerticalAlignment="Center" TextAlignment="Left" Text="{Binding Path=Time}" Grid.Column="7"   Grid.Row="0"/>
+                <TextBlock Name="tbTimeFromPrevious"  HorizontalAlignment="Left" VerticalAlignment="Center"  Text="{Binding Path=Time}" Grid.Column="7"   Grid.Row="0"/>
                 <Button Name="btUpdateTimeAndDistance" Content="Update" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="8" Grid.Row="0" Click="TimeAndDistanceFromPrevChangedEvent"></Button>
             </Grid>
         </DataTemplate>
@@ -39,7 +38,6 @@
 
     <Grid>
         <Button Content="Add Station" Click="AddStationEvent" HorizontalAlignment="Left" Height="28" Margin="649,194,0,0" VerticalAlignment="Top" Width="92"/>
-
 
         <ListBox Name="lbStations"  ItemsSource="{Binding}" HorizontalAlignment="Left" Height="148" Margin="53,33,0,0" VerticalAlignment="Top" PreviewMouseDoubleClick="lbStations_PreviewMouseDoubleClick" Width="593" RenderTransformOrigin="0.5,0.5" >
             <ListBox.RenderTransform>

@@ -23,32 +23,38 @@ namespace PlGui
     {
         public PO.LineStation lineStationForEditing;
         public PO.AdjacentStations adjForUpdate;
-        bool isAdj;//we are editing adjacent stations from an instance of AdjacentStations
+        //bool isAdj;//we are editing adjacent stations from an instance of AdjacentStations
         public UpdateTimeDistance(PO.AdjacentStations adjForUpdate)
-        {
+        {   //isAdj = true;
             InitializeComponent();
-            isAdj = true;
             this.adjForUpdate = adjForUpdate;
             mainGrid.DataContext = this.adjForUpdate;
-            tbTime.IsEnabled = false;
-            tbDistance.IsEnabled = false;
+            //tbTime.IsEnabled = false;
+            //tbDistance.IsEnabled = false;
+            //tbDistAdj.IsEnabled = true;
+            //tbTimeAdj.IsEnabled = true;
         }
+
+        /**Moved to line station update window
         public UpdateTimeDistance(PO.LineStation lineStationForEdit)
         {
             InitializeComponent();
             lineStationForEditing = lineStationForEdit;
             mainGrid.DataContext = lineStationForEditing;
-            tbDistAdj.IsEnabled = false;
-            tbTimeAdj.IsEnabled = false;
+            //tbDistance.IsEnabled = true;
+            //tbTime.IsEnabled = true;
+            //tbDistAdj.IsEnabled = false;
+            //tbTimeAdj.IsEnabled = false;
+            
 
-        }
+        }**/
         /// <summary>
         /// An event when finishing to update time and distance between two stations
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void FinishUpdate(object sender, RoutedEventArgs e)
-        {
+        {/**
             if (isAdj == false)
             {
                 float newDistance;
@@ -73,9 +79,9 @@ namespace PlGui
                 }
                
                 Close();
-            }
-            else
-            {
+            }**/
+            //else
+            //{
                 float newDistance;
                 TimeSpan newTime;
                 bool conversionTime = TimeSpan.TryParse(tbTimeAdj.Text, out newTime);
@@ -94,7 +100,7 @@ namespace PlGui
                 IBL bl = BlFactory.GetBl("1");
                 bl.UpdateAdjacentStations(adjForUpdate.Station1, adjForUpdate.Station2, newDistance, newTime);
                 Close();
-            }
+            //}
         }
     }
 }
