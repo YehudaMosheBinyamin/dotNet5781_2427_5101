@@ -43,7 +43,6 @@ namespace DL
        //
         public void UpdateStation(Line line,Action<Line> action)
         {
-            return null;
         }
        public Station GetStation(int code)
         {

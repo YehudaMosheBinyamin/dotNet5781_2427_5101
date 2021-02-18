@@ -97,11 +97,14 @@ namespace PlGui
             //lbLineStations.ItemsSource = listOfStations;
             lbLineStations.Items.Refresh();
         }
-
+        /// <summary>
+        /// To complete addition of line
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddLineEvent(object sender, RoutedEventArgs e)
         {
             IBL bl = BlFactory.GetBl("1");
-            
             if (lineStationsOfLine.Count < 2)
             {
                 MessageBox.Show("You must add at least two stations", "Wrong Line Error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -113,6 +116,11 @@ namespace PlGui
                     string lastStationName = lineStationsOfLine.Last().Name;
                     int lineId = 0;
                     float randomDistance = bl.GetRandomDistance();
+                ObservableCollection<PO.LineTrip> poLineTrips = new ObservableCollection<PO.LineTrip>()
+                {
+                    new PO.LineTrip{Id=0,InService=true,LineId=0,StartAt=new TimeSpan(8,0,0) }
+                };
+
                     PO.Line newLine = new PO.Line
                     {
                         Area = area,
@@ -120,7 +128,8 @@ namespace PlGui
                         Id = lineId,
                         LastStationName = lastStationName,
                         stationsInLine = lineStationsOfLine,
-                        InService = true
+                        InService = true,
+                        lineExits=poLineTrips
 
                     };
                 bl.AddLine(Utillities.LinePoBoAdapter(newLine));

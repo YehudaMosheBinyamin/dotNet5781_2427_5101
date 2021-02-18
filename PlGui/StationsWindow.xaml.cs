@@ -23,28 +23,27 @@ namespace PlGui
     public partial class StationsWindow : Window
     {
         public ObservableCollection<PO.Line> allLines;
-        //private IEnumerable<BO.Station> boStationList;
-        //private IEnumerable<BO.AdjacentStations> boAdjStatList;
         public ObservableCollection<Station> poStationCollection;
         public ObservableCollection<AdjacentStations> adjStatCollection;
         IBL bl;
-        //public BO.Station selectedStation;
         public PO.Station selectedStation;
         public StationsWindow(ObservableCollection<PO.Line> lineCollection)
         {
             InitializeComponent();
             bl = BlFactory.GetBl("1");
-            //boStationList = bl.GetAllStations();
             poStationCollection = Utillities.Convert(from station in bl.GetAllStations() select Utillities.StationBoPoAdapter(station));
-            //lbStations.ItemsSource = boStationList;
             lbStations.ItemsSource = poStationCollection;
             lbStations.SelectedIndex = 0;
-            //boAdjStatList = bl.GetAllAdjacentStations();
             adjStatCollection = Utillities.Convert(from adjacentStation in bl.GetAllAdjacentStations() select Utillities.AdjacentStationsBoPoAdapter(adjacentStation));
             lbAdjacent.ItemsSource = adjStatCollection;
             lbAdjacent.SelectedIndex = 0;
             allLines = lineCollection;
         }
+        /// <summary>
+        /// To change time and distance between adjacent stations
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TimeAndDistanceFromPrevChangedEvent(object sender,EventArgs e)
         {
             int index = lbAdjacent.SelectedIndex;
@@ -64,7 +63,6 @@ namespace PlGui
             adjStatCollection = Utillities.Convert(from adjacentStation in bl.GetAllAdjacentStations() select Utillities.AdjacentStationsBoPoAdapter(adjacentStation));
             lbAdjacent.ItemsSource = adjStatCollection;
             lbAdjacent.SelectedIndex = 0;
-           
             MessageBox.Show("Time and distance between adjacent stations changed successfully");
         }
         /// <summary>
@@ -75,7 +73,8 @@ namespace PlGui
         private void lbStations_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             selectedStation = lbStations.SelectedValue as PO.Station;
-            WindowStationDetails wsd = new WindowStationDetails(selectedStation);
+            //WindowStationDetails wsd = new WindowStationDetails(selectedStation,allLines);
+            WindowStationDetails wsd = new WindowStationDetails(selectedStation, allLines);
             wsd.Show();
         }
         /// <summary>

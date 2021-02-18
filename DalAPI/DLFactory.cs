@@ -58,7 +58,7 @@ namespace DalAPI
                 //    is configured per the implementation here, otherwise we'd need to add class name in addition to package
                 //    name in the config.xml file - which is clearly a good option.
                 //    NB: the class may not be public - it will still be found... Our approach that the implemntation class
-                //        should hold "internal" access permission (which is actually the default access permission)
+                //    should hold "internal" access permission (which is actually the default access permission)
                 // 2nd element is the package name = assembly name (as above)
                 Type type;
                 try

@@ -6,15 +6,16 @@ namespace DalAPI
 {
     //CRUD Logic
     public interface IDL
-    {
+    {/**
         #region Bus
          void AddBus(Bus bus);
          IEnumerable<Bus> GetAllBuses();
-        IEnumerable<Bus> GetAllBusesBy(Predicate<Bus> predicate);
+         IEnumerable<Bus> GetAllBusesBy(Predicate<Bus> predicate);
          Bus GetBus(string licenseNum);
          void UpdateBus(string licenseNum,Action<Bus>update);
          void DeleteBus(string licenseNum);
         #endregion
+        **/
         #region Line
         void AddLine(Line line);
         IEnumerable<Line> GetAllLines();
@@ -32,13 +33,16 @@ namespace DalAPI
         //void UpdateStation(Line line, Action<Line> update);
         //void DeleteStation(int code);
         #endregion
-        #region User
-        void AddUser(User user);
-        IEnumerable<User> GetAllUsers();
+        
+        //#region User
+        //void AddUser(User user);
+        //IEnumerable<User> GetAllUsers();
         User GetUser(string usernName);
-        void UpdateUser(string userName, Action<User> update);
-        void DeleteUser(string userName);
-        #endregion
+        //void UpdateUser(string userName, Action<User> update);
+        //void DeleteUser(string userName);
+        // bool CheckUser(string userName, string password);
+        //#endregion
+      
         #region LineTrip
         void AddLineTrip(LineTrip lineTrip);
         IEnumerable<LineTrip> GetAllLineTrips();
@@ -63,13 +67,13 @@ namespace DalAPI
         IEnumerable<LineStation> GetAllLineStations();
         IEnumerable<LineStation> GetAllLineStationsByLine(int lineId);
         LineStation GetLineStation(int lineId,int stationCode);
-        void UpdateLineStation(int lineId,int stationCode,int newStationCode,Action<LineStation,int>update);
+        //void UpdateLineStation(int lineId,int stationCode,int newStationCode,Action<LineStation,int>update);
         void DeleteLineStation(int lineId,int stationCode);
         void DeleteLineStations(int lineId);
         bool InLineStations(int station1, int station2);
         #endregion
-        #region User
-        //bool CheckUser(string userName, string password);
-        #endregion
+        
+       
+        
     }
 }

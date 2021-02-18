@@ -5,18 +5,30 @@ using DalAPI;
 using BlApi;
 using BO;
 using System.Linq;
+using System.Diagnostics;
+using System.ComponentModel;
+using System.Threading;
 
 namespace BL
 {
     public sealed class BlImplementation : IBL
     {
+        Clock simulatorClock;
+         Stopwatch stopWatch;
+        BackgroundWorker backgroundWorker;
+        Action<TimeSpan> updateAction;
+        int rate;
         #region Singleton
         static readonly BlImplementation instance=new BlImplementation();    
         static BlImplementation() { }
-        BlImplementation() { }
+        BlImplementation() { backgroundWorker = new BackgroundWorker(); backgroundWorker.DoWork +=Worker_DoWork; backgroundWorker.WorkerSupportsCancellation = true;stopWatch = new Stopwatch(); simulatorClock = new Clock(new TimeSpan(0, 0, 0));simulatorClock.TimeChanged += TimeChangedEvent; }
+
+
+
         public static BlImplementation Instance { get { return instance; } }
-    
+
         #endregion
+
         /**
         #region Bus
         DO.Bus busBoDoAdapter(BO.Bus busBo)
@@ -933,6 +945,36 @@ namespace BL
         {
             return Functions.MinutesOfTravel(distance);
         }
+        #region Simulator
+        private void Worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            
+            while (simulatorClock.Cancel == false)
+            {
+                stopWatch.Restart();
+                TimeSpan startTime = (TimeSpan)e.Argument;
+                simulatorClock = new Clock(startTime + new TimeSpan(stopWatch.ElapsedTicks * rate));
+                Thread.Sleep(1000);
+            }
+        }
+        private void TimeChangedEvent(object sender,EventArgs e)
+        {
+            updateAction(simulatorClock.Time);
+        }
+        public void StartSimulator(TimeSpan simulationbeginTime, int speed, Action<TimeSpan> action)
+        {
+
+            rate = speed;
+            updateAction = action;
+
+            backgroundWorker.RunWorkerAsync(simulationbeginTime);
+        }
+        public void StopSimulator()
+        {
+            stopWatch.Reset();
+            simulatorClock.Cancel = true;
+        }
+        #endregion
 
 
     }

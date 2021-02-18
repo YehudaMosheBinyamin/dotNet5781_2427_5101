@@ -66,6 +66,10 @@ namespace BlApi
         #endregion
         float GetRandomDistance();
         TimeSpan GetMinutesOfTravel(float distance);
-       
+        #region Simulator
+        void StartSimulator(TimeSpan simulationbeginTime, int speed, Action<TimeSpan> action);
+        void StopSimulator();
+        #endregion
+
     }
 }

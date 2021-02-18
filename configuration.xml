@@ -4,7 +4,6 @@
   <dl-packages>
     <data namespace="DL" class="DLObject">DLObject</data>
     <xml namespace="DL" class="DalXml">DalXml</xml>
-    <!--<data namespace="DL" class="DalXml">DalXml</data>-->
     <oracle namespace="DL_O" class="DLDbOracle">DLOracle</oracle>
   </dl-packages>
 </config>

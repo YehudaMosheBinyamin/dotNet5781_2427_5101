@@ -113,7 +113,7 @@ namespace PlGui
             //selectedLineStation = lbBusLineStations.SelectedValue as BO.LineStation;
             selectedLineStation = lbBusLineStations.SelectedValue as PO.LineStation;
             selectedStation = Utillities.StationBoPoAdapter(bl.GetStation(selectedLineStation.Station));
-            WindowStationDetails wsd = new WindowStationDetails(selectedStation);
+            WindowStationDetails wsd = new WindowStationDetails(selectedStation,linesCollection);
             wsd.Show();
         }
         /// <summary>
