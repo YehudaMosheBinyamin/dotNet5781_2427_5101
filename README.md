@@ -1,4 +1,4 @@
-
+A program which displays information on bus line routes and schedules, and allows addition and .
 
 The bonuses:
 1. Deletion of  DO objects (Line, Station, LineStation,LineTrip,AdjacentStations ) by means of the field IsEnabled 
