@@ -26,6 +26,7 @@ namespace PlGui
             BO.Station boStation = new BO.Station();
             boStation.Code = poStation.Code;
             boStation.Latitude = poStation.Latitude;
+            
             boStation.LineStationsOfStation = Convert((from ls in poStation.LineStationsOfStation select LineStationPoBoAdapter(ls)).ToList());
             boStation.Longtitude = poStation.Longtitude;
             boStation.Name = poStation.Name;

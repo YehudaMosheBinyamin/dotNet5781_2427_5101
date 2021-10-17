@@ -11,7 +11,7 @@ namespace DL
     {
         static string linePath = @"..\bin\XmlFiles\Line.xml";
         static string stationsPath = @"..\bin\XmlFiles\Station.xml";
-        static string adjacentStationsPath = @"..\bin\XmlFiles\AdjacentStations.xml";
+        static string adjacentStationsPath = @"..\bin\XmlFiles\AdjacentStation.xml";
         static string lineStationsPath = @"..\bin\XmlFiles\LineStations.xml";
         static string lineTripsPath = @"..\bin\XmlFiles\LineTrips.xml";
         public static Random random;

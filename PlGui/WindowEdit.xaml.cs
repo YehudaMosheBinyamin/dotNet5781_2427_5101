@@ -1,18 +1,9 @@
 ﻿using BlApi;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
 
 namespace PlGui
 {
@@ -34,7 +25,17 @@ namespace PlGui
             cbStations.ItemsSource = listOfStations;
             stationsInLine = lineToBeEdited.stationsInLine;
             lbLineStations.ItemsSource = stationsInLine;
-            newLine = lineEdited;
+            newLine = new PO.Line()
+            {
+                Area = lineEdited.Area,
+                Code = lineEdited.Code,
+                Id = 0,
+                InService = true,
+                LastStationName = lineEdited.LastStationName,
+                stationsInLine = lineEdited.stationsInLine,
+                lineExits = lineEdited.lineExits
+            };
+           
             cbStations.SelectedIndex = 0;
             lbLineStations.SelectedIndex = 0;
 
@@ -65,6 +66,7 @@ namespace PlGui
             {
                 ls.LineStationIndex = stationsInLine.IndexOf(ls);
             }
+
             newLine.stationsInLine = stationsInLine;
         }
         /// <summary>
@@ -152,15 +154,6 @@ namespace PlGui
                 stationsInLine.Insert(indexOfChangedStation, newLineStation);
                 lbLineStations.Items.Refresh();
             }
-            newLine = new PO.Line()
-            {
-                Id =0,
-                stationsInLine = stationsInLine,
-                Area = lineToBeEdited.Area,
-                Code = lineToBeEdited.Code,
-                InService = true,
-                LastStationName = (stationsInLine.ElementAt(stationsInLine.Count - 1)).Name
-            };
   
         }
         /// <summary>

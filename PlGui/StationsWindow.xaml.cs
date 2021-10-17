@@ -73,7 +73,6 @@ namespace PlGui
         private void lbStations_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             selectedStation = lbStations.SelectedValue as PO.Station;
-            //WindowStationDetails wsd = new WindowStationDetails(selectedStation,allLines);
             WindowStationDetails wsd = new WindowStationDetails(selectedStation, allLines);
             wsd.Show();
         }

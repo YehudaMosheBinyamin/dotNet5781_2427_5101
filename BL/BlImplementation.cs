@@ -953,7 +953,8 @@ namespace BL
             {
                 stopWatch.Restart();
                 TimeSpan startTime = (TimeSpan)e.Argument;
-                simulatorClock = new Clock(startTime + new TimeSpan(stopWatch.ElapsedTicks * rate));
+                simulatorClock.Time = startTime + new TimeSpan(stopWatch.ElapsedTicks * rate);
+                //simulatorClock = new Clock(startTime + new TimeSpan(stopWatch.ElapsedTicks * rate));
                 Thread.Sleep(1000);
             }
         }
@@ -966,13 +967,20 @@ namespace BL
 
             rate = speed;
             updateAction = action;
-
+            simulatorClock.TimeChanged += TimeChangedEvent;
             backgroundWorker.RunWorkerAsync(simulationbeginTime);
+            Thread.Sleep(1000);
         }
         public void StopSimulator()
         {
             stopWatch.Reset();
             simulatorClock.Cancel = true;
+        }
+
+        public int getNewCode()
+        {
+            IDL dl = DLFactory.GetDL();
+            return dl.GetNewStationCode();
         }
         #endregion
 

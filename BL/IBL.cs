@@ -43,6 +43,7 @@ namespace BlApi
         //void DeleteLineFromStation(int lineId, int stationCode);---------------
         //IEnumerable<Station> GetAllStationsBy(Predicate<Station> filter);
         Station GetStation(int code);
+        int getNewCode();
         //void RemoveLineFromStation(int lineId);
         //void DeleteStation(int code);
         #endregion

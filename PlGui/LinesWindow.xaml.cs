@@ -50,6 +50,10 @@ namespace PlGui
         /// <param name="e"></param>
         private void cbBusLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (cbBusLines.SelectedIndex == -1)
+            {
+                cbBusLines.SelectedIndex = 0;
+            }
             if ((cbBusLines.SelectedValue as PO.Line) != null)
             {
                 ShowBusLine((cbBusLines.SelectedValue as PO.Line).Code);

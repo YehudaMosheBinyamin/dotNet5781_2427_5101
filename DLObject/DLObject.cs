@@ -58,7 +58,7 @@ namespace DL
                 }
 
         }
-        /**
+  
         public int GetNewStationCode()
         {
             return Configuration.StationCode;
@@ -197,14 +197,7 @@ namespace DL
         {
             return Configuration.LineId;
         }
-        /// <summary>
-        /// Each new station gets a unique code from configuration 
-        /// </summary>
-        /// <returns></returns>
-        public int GetNewStationCode()
-        {
-            return Configuration.StationCode;
-        }
+
         public void UpdateLine(int lineId,Action<Line> update)
         {
          Action<Line>action=update;

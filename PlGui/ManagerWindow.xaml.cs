@@ -31,21 +31,7 @@ namespace PlGui
 
 
         }
-        /// <summary>
-        /// Updates UI time based on running clock of simulation
-        /// </summary>
-        /// <param name="newTime"></param>
-        private void UpdateUITimeFunc(TimeSpan newTime)
-        {
-            tbHour.IsEnabled = true;
-            tbMinutes.IsEnabled = true;
-            tbSeconds.IsEnabled = true;
-            tbHour.Text = Convert.ToString(newTime.Hours);
-            tbMinutes.Text = Convert.ToString(newTime.Minutes);
-            tbSeconds.Text = Convert.ToString(newTime.Seconds);
-
-        }
-
+  
         /// <summary>
         /// To display lines window
         /// </summary>
@@ -62,41 +48,8 @@ namespace PlGui
             StationsWindow stationsWindow = new StationsWindow(poLineCollection);
             stationsWindow.Show();
         }
-        /// <summary>
-        /// On click of start button of simulation
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            if ((string)btStart.Content == "Start")
-            {
-                tbHour.IsEnabled = false;
-                tbMinutes.IsEnabled = false;
-                tbSeconds.IsEnabled = false;
-                tbSpeed.IsEnabled = false;
-                btStart.Content = "STOP";
-                int hours = Convert.ToInt32(tbHour.Text);
-                int minutes = Convert.ToInt32(tbMinutes.Text);
-                int seconds = Convert.ToInt32(tbSeconds.Text);
-                int speed = Convert.ToInt32(tbSpeed.Text);
-                TimeSpan startTime = new TimeSpan(hours, minutes, seconds);
-                Action<TimeSpan> updateUITimeFunction = UpdateUITimeFunc;
-                IBL bl = BlFactory.GetBl("1");
-                bl.StartSimulator(startTime, speed, updateUITimeFunction);
-                
-            }
-            else
-            {
-                IBL bl = BlFactory.GetBl("1");
-                bl.StopSimulator();
-                tbHour.IsEnabled = true;
-                tbMinutes.IsEnabled = true;
-                tbSeconds.IsEnabled = true;
-                tbSpeed.IsEnabled = true;
-                btStart.IsEnabled = true;
-                btStart.Content = "Start"; 
-            }
-        }
+       
+          
+       
     }
 }

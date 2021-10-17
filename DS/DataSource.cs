@@ -78,6 +78,7 @@ namespace DS
         new Station{Code=38889, Name="העצמאות/וייצמן", Longtitude=34.782252, Latitude=31.816751},
         new Station{Code=38890, Name="וייצמן/מרבד הקסמים", Longtitude=34.779753, Latitude=31.816579},
         new Station{Code=38891, Name="צאלה/אלמוג", Longtitude=34.787199, Latitude=31.801182}
+
 };
             busesList = new List<Bus>
             {

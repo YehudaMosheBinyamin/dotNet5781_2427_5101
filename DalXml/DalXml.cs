@@ -13,13 +13,13 @@ namespace DL
         static DalXml() { }
         DalXml()
         {
-            //InitAll.InitializeAll();
+            InitAll.InitializeAll();
         }        
         public static DalXml Instance { get { return instance; } }
         #endregion
         string linePath = @"..\bin\XmlFiles\Line.xml";
         string stationsPath = @"..\bin\XmlFiles\Station.xml";
-        string adjacentStationsPath = @"..\bin\XmlFiles\AdjacentStations.xml";
+        string adjacentStationsPath = @"..\bin\XmlFiles\AdjacentStation.xml";
         string lineStationsPath = @"..\bin\XmlFiles\LineStations.xml";
         string lineTripsPath = @"..\bin\XmlFiles\LineTrips.xml";
         XElement stationsRoot;

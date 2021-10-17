@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BO
+namespace BL
 {
     sealed class Clock
     {  

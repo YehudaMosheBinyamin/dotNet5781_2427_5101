@@ -17,7 +17,7 @@ namespace PO
             //public bool InService;
             public override string ToString()
             {
-                return $"{Name} {Code}";
+                return $"{Code} {Name} ";
             }
         }
 }

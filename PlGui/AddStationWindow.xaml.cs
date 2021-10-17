@@ -25,44 +25,11 @@ namespace PlGui
             InitializeComponent();
             stationCollection = stationsCollection;
             IBL bl = BlFactory.GetBl("1");
-            IEnumerable<PO.Line> linesList = from line in bl.GetAllLines() select Utillities.LineBoPoAdapter(line);
-            cbLines.ItemsSource= linesList;
-            cbLines.DisplayMemberPath = "Code";
-            cbLines.SelectedIndex = 0;
+            //IEnumerable<PO.Line> linesList = from line in bl.GetAllLines() select Utillities.LineBoPoAdapter(line);
+            //cbLines.ItemsSource= linesList;
+            //cbLines.DisplayMemberPath = "Code";
+            //cbLines.SelectedIndex = 0;
         }
-        /// <summary>
-        /// Event for adding lineStation to list
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void AddLineStation(object sender, RoutedEventArgs e)
-        { IBL bl = BlFactory.GetBl("1");
-            PO.Line line = cbLines.SelectedItem as PO.Line;
-            if (tbName.Text=="")
-            {
-                MessageBox.Show("Fill the name field and try again");
-                return;
-            }  
-                int code = -1;
-                float distance = bl.GetRandomDistance();
-                TimeSpan timeFromPrevious = bl.GetMinutesOfTravel(distance);
-                PO.LineStation poLineStation = new PO.LineStation()
-                {
-                    LineStationIndex = line.stationsInLine.Count,
-                    NextStation = code,
-                    PrevStation = line.stationsInLine.ElementAt(line.stationsInLine.Count - 1).Station,
-                    DistanceFromPreviousStation = distance,
-                    TimeFromPreviousStation = timeFromPrevious,
-                    InService = true,
-                    Station =code,
-                    LineId = line.Id,
-                    LastStationName = tbName.Text,
-                    Name = tbName.Text
-                };
-                lbLineStations.Items.Add(poLineStation);
-                bl.AddAdjacentStations(line.stationsInLine.ElementAt(line.stationsInLine.Count - 1).Station, code, distance, timeFromPrevious); 
-        }
-
         private void AddStation(object sender, RoutedEventArgs e)
         {
             IBL bl = BlFactory.GetBl("1");
@@ -75,7 +42,6 @@ namespace PlGui
                 MessageBox.Show("Fill the latitude field and try again");
                 return;
             }
-            poStation.Code = 0;
             bool longtitudeConverted = float.TryParse(tbLongtitude.Text, out longtitude);
             if (longtitudeConverted == false)
             {
@@ -83,7 +49,7 @@ namespace PlGui
                 return;
             }
             poStation.Latitude = latitude;
-            poStation.LineStationsOfStation = Utillities.Convert(lbLineStations.Items.Cast<PO.LineStation>().ToList());
+            poStation.LineStationsOfStation =new ObservableCollection<PO.LineStation>(); //Utillities.Convert(lbLineStations.Items.Cast<PO.LineStation>().ToList());
             poStation.Longtitude = longtitude;
             poStation.Name = tbName.Text;
             poStation.Code = -1;
