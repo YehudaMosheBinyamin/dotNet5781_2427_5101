@@ -1,5 +1,5 @@
-A program which displays information on bus line routes and schedules, and allows addition and .
-
+A program to maintain  bus line routes and schedules,and bus stops.
+Using C# and WPF in the Three-Tier-Architecture.
 The bonuses:
 1. Deletion of  DO objects (Line, Station, LineStation,LineTrip,AdjacentStations ) by means of the field IsEnabled 
 2. For listboxes-using dataTemplate
