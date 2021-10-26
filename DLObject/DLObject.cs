@@ -36,8 +36,10 @@ namespace DL
             }
 
         }
+       
         public IEnumerable<Station> GetAllStations()
         {
+           // return from station in DS.DataSource.stationsList where station.InService==true select station.Clone();
             return from station in DS.DataSource.stationsList select station.Clone();
         }
        //

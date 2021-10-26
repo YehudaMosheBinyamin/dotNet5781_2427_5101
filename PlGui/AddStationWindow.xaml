@@ -26,7 +26,7 @@
             <Label Content="Longtitude:" Grid.Row="3" Grid.Column="0" Name="lbLongtitude"/>
             <TextBox Grid.Row="3" Grid.Column="1" Name="tbLongtitude"/>
             <Button Content="Add" Grid.Column="1" HorizontalAlignment="Left" Height="50" Margin="252,280,0,-300" Grid.Row="3" Click="AddStation" VerticalAlignment="Top" Width="131"/>
-
+            <Button Content="Cancel" Grid.Column="1" HorizontalAlignment="Left" Height="50" Margin="95,249,0,0" Grid.Row="4" Click="CancelStation" VerticalAlignment="Top" Width="131"/>
         </Grid>
     </Grid>
 </Window>

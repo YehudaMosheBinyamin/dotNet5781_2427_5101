@@ -24,7 +24,8 @@ namespace PlGui
         public ObservableCollection<PO.Line> linesCollection;
         IBL bl;
         public MainWindow()
-        {InitializeComponent();
+        {
+         InitializeComponent();
          bl = BlFactory.GetBl("1");
          linesCollection = new ObservableCollection<PO.Line>();
          linesCollection= Utillities.Convert(from line in bl.GetAllLines() select Utillities.LineBoPoAdapter(line));

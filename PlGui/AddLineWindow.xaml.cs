@@ -39,7 +39,6 @@ namespace PlGui
             cbArea.ItemsSource = areasList;
             cbArea.SelectedIndex = 0;
             lineCollection = collectionLines;
-
             lbLineStations.ItemsSource = lineStationsOfLine;
             cbStations.ItemsSource = Utillities.Convert((from station in bl.GetAllStations() select Utillities.StationBoPoAdapter(station)).ToList());
             cbStations.SelectedIndex = 0;

@@ -83,6 +83,7 @@ namespace PlGui
         /// <param name="e"></param>
         private void AddStationEvent(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show(sender.ToString());//new
             AddStationWindow addStationWindow = new AddStationWindow(poStationCollection);
             addStationWindow.ShowDialog();
             allLines.Clear();

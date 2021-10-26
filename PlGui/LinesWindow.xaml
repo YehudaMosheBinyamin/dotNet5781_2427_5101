@@ -68,7 +68,7 @@
 
             </Label>
         </Grid>
-        <ListBox Name="lbBusLineStations"  HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Grid.Column="0"  Height="392" Width="790" ItemsSource="{Binding}" Margin="0,48,0,120" PreviewMouseDoubleClick="lbBusLineStations_PreviewMouseDoubleClick" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="DarkBlue" BorderThickness="3" ItemTemplate="{StaticResource MyDataTemplate}"  Grid.ColumnSpan="2" >
+        <ListBox Name="lbBusLineStations"  HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Grid.Column="0"  Height="392" Width="790" ItemsSource="{Binding}" Margin="0,48,0,120" PreviewMouseDoubleClick="DisplayStationDetails" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="DarkBlue" BorderThickness="3" ItemTemplate="{StaticResource MyDataTemplate}"  Grid.ColumnSpan="2" >
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Style.Triggers>

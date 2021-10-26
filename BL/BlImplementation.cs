@@ -154,7 +154,7 @@ namespace BL
             doStation.Code = dl.GetNewStationCode();
             doStation.Latitude = bStation.Latitude;
             doStation.Longtitude = bStation.Longtitude;
-            foreach(LineStation ls in boStation.LineStationsOfStation)
+            /**foreach(LineStation ls in boStation.LineStationsOfStation)
             {
                 if (ls.NextStation == -1)
                 {
@@ -188,14 +188,29 @@ namespace BL
                     InService = true,
                     Station1 = line.stationsInLine.ElementAt(ls.LineStationIndex).Station,
                     Station2 = ls.Station
-                };
-                dl.AddAdjacentStations(newDoAdjStat);
-                dl.AddAdjacentStations(newLastAdjStat);
-            }
+                };**/
+            DO.AdjacentStations newAdjStat = new DO.AdjacentStations()
+            {
+                Distance = 0,
+                Time = new TimeSpan(0,0,0),
+                InService = true,
+                Station1 = doStation.Code,
+                Station2 = doStation.Code
+            };
+            dl.AddAdjacentStations(newAdjStat);
+            //dl.AddAdjacentStations(newDoAdjStat);
+                //dl.AddAdjacentStations(newLastAdjStat);
+            //}
+            doStation.InService = true;
             doStation.Name = bStation.Name;
             return doStation;
 
         }
+        /// <summary>
+        /// Convert A DO Station instance to a BO station instance
+        /// </summary>
+        /// <param name="doStation"></param>
+        /// <returns></returns>
         public BO.Station StationDoBoAdapter(DO.Station doStation)
         { IDL dl = DLFactory.GetDL();
 
@@ -378,7 +393,7 @@ namespace BL
             IEnumerable<BO.LineStation> lineStations = from lineStation in GetAllLineStationsByLine(doLine.Id) where lineStation.InService==true orderby lineStation.LineStationIndex  select lineStation;
             boLine.stationsInLine = lineStations;
             boLine.InService = doLine.InService;
-            boLine.LastStationName = dl.GetStation(((lineStations.ToList()).Last()).Station).Name;
+            boLine.LastStationName = dl.GetStation(boLine.stationsInLine.Last().Station).Name;
             boLine.lineExits = GetAllLineTripsInLine(doLine.Id);
             return boLine;
         }
@@ -441,8 +456,8 @@ namespace BL
             float distance1 = Functions.randomDistance();
             float distance2 = Functions.randomDistance();
 
-            DO.AdjacentStations toFirst = new DO.AdjacentStations() { Station1 =00000,Station2=line.stationsInLine.First().Station, Distance = 0f, Time = new TimeSpan(0,0,0), InService = true };
-            adjacentStations.Add(toFirst);
+            //DO.AdjacentStations toFirst = new DO.AdjacentStations() { Station1 =00000,Station2=line.stationsInLine.First().Station, Distance = 0f, Time = new TimeSpan(0,0,0), InService = true };
+            //adjacentStations.Add(toFirst);
             foreach (DO.AdjacentStations adj in adjacentStations)
             { 
                 bool lineStationsExists = AdjacentStationsExists(adj.Station1, adj.Station2);
@@ -749,6 +764,7 @@ namespace BL
         }
         public BO.LineStation LineStationDoBoAdapter(DO.LineStation doLineStation)
         {
+         IDL dl = DLFactory.GetDL();
          BO.LineStation boLineStation = new LineStation();
          boLineStation.LineId = doLineStation.LineId;
          boLineStation.Station = doLineStation.Station;
@@ -757,14 +773,25 @@ namespace BL
          boLineStation.NextStation = doLineStation.NextStation; 
          boLineStation.InService = doLineStation.InService;
          boLineStation.TimeFromPreviousStation = GetAdjacentStations(doLineStation.PrevStation, doLineStation.Station).Time;//before was dl. 
-         boLineStation.DistanceFromPreviousStation=GetAdjacentStations(doLineStation.PrevStation, doLineStation.Station).Distance; //before was dl.
+         boLineStation.DistanceFromPreviousStation=GetAdjacentStations(doLineStation.PrevStation, doLineStation.Station).Distance;
+            //before was dl.
+            //int lastStationCode = (from line in dl.GetAllLines()
+                                //   where line.Id == boLineStation.LineId
+                                  // select line).FirstOrDefault().LastStation;
+
          boLineStation.Name = GetStation(doLineStation.Station).Name;//was dl.
+        // boLineStation.LastStationName=
+                                    //    dl.GetStation(lastStationCode).Name;
+
          return boLineStation;
         }
         public IEnumerable<LineStation> GetAllLineStationsByLine(int lineId)
         {
             IDL dl = DLFactory.GetDL();
-            IEnumerable<BO.LineStation> lineStationsInLine = (from lineStation in dl.GetAllLineStationsByLine(lineId) where(lineStation.LineStationIndex>=0) orderby lineStation.LineStationIndex select LineStationDoBoAdapter(lineStation)).Distinct();
+            IEnumerable<BO.LineStation> lineStationsInLine = (from lineStation in dl.GetAllLineStationsByLine(lineId) 
+                                                              where(lineStation.LineStationIndex>=0) orderby 
+                                                              lineStation.LineStationIndex 
+                                                              select LineStationDoBoAdapter(lineStation)).Distinct();
             return lineStationsInLine;
         }
         public void DeleteLineStations(int lineId)
@@ -816,7 +843,7 @@ namespace BL
         }
         public IEnumerable<BO.AdjacentStations> GetAllAdjacentStations()
         { IDL dl = DLFactory.GetDL();
-          return (from adjacentStation in dl.GetAllAdjacentStations() orderby adjacentStation.Station1,adjacentStation.Station2 select AdjacentStationsDoBoAdapter(adjacentStation)).Distinct()  ;
+          return (from adjacentStation in dl.GetAllAdjacentStations() orderby adjacentStation.Station1,adjacentStation.Station2 select AdjacentStationsDoBoAdapter(adjacentStation));
         }
         /**
         /// <summary>

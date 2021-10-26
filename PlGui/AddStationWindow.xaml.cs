@@ -57,6 +57,11 @@ namespace PlGui
             bl.AddStation(Utillities.StationPoBoAdapter(poStation));
             Close();
         }
+        //NEW
+        private void CancelStation(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
     }
 

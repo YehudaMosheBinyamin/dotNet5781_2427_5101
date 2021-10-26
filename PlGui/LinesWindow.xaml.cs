@@ -112,7 +112,7 @@ namespace PlGui
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void lbBusLineStations_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void DisplayStationDetails(object sender, MouseButtonEventArgs e)
         {
             //selectedLineStation = lbBusLineStations.SelectedValue as BO.LineStation;
             selectedLineStation = lbBusLineStations.SelectedValue as PO.LineStation;
