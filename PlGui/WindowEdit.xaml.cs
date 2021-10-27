@@ -53,33 +53,72 @@ namespace PlGui
 
         }
         /// <summary>
-        /// For deletion of station
+        /// For deletion of line station from list
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void bDeleteStation_Click(object sender, RoutedEventArgs e)
         {
+            IBL bl = BlFactory.GetBl("1");
             int indexOfDeletion = lbLineStations.SelectedIndex;
             PO.LineStation lineStationForDeletion = lbLineStations.SelectedValue as PO.LineStation;
+            bool adjacentStationsExist = true;
+            //The first station will be deleted
+            if (indexOfDeletion == 0)
+            {
+                PO.LineStation newFirstStation = stationsInLine.ElementAt(1);
+                newFirstStation.PrevStation = newFirstStation.Station;
+                newFirstStation.TimeFromPreviousStation = new TimeSpan(0, 0, 0);
+                newFirstStation.DistanceFromPreviousStation = 0f;
+            }
+            //If the last station is to be deleted
+            else if (indexOfDeletion == stationsInLine.Count - 1)
+            {
+                PO.LineStation newLastStop = stationsInLine.ElementAt(indexOfDeletion - 1);
+                newLastStop.NextStation = newLastStop.Station;
+                //Change all previous stations' last station to name of second last station
+                foreach (PO.LineStation ls in stationsInLine)
+                {
+                    ls.LastStationName = newLastStop.Name;
+                }
+            }
+            else
+            {
+                PO.LineStation stopBeforeDeletion = stationsInLine.ElementAt(indexOfDeletion - 1);
+                PO.LineStation stopAfterDeletion = stationsInLine.ElementAt(indexOfDeletion - 1);
+                stopBeforeDeletion.NextStation = stopAfterDeletion.Station;
+                adjacentStationsExist = bl.AdjacentStationsExists(stopAfterDeletion.Station, stopAfterDeletion.Station);
+                if (!adjacentStationsExist)
+                {
+                    float distance = bl.GetRandomDistance();
+                    TimeSpan waitingTime = bl.GetMinutesOfTravel(distance);
+                    stopAfterDeletion.DistanceFromPreviousStation = distance;
+                    stopAfterDeletion.TimeFromPreviousStation = waitingTime;
+                    bl.AddAdjacentStations(stopBeforeDeletion.Station, stopAfterDeletion.Station, distance, waitingTime);
+                }
+
+
+            }
             stationsInLine.Remove(lineStationForDeletion);
             foreach (PO.LineStation ls in stationsInLine)
             {
                 ls.LineStationIndex = stationsInLine.IndexOf(ls);
             }
-
             newLine.stationsInLine = stationsInLine;
+            lbLineStations.Items.Refresh();
         }
         /// <summary>
         /// An update of the station-we swap the station at a given index with another one as per the request of the user
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void bChangeStation_Click(object sender, RoutedEventArgs e)
+        private void SwapStation(object sender, RoutedEventArgs e)
         {
             int indexOfChangedStation = lbLineStations.SelectedIndex;
             PO.Station selectedStation = cbStations.SelectedItem as PO.Station;
             PO.LineStation lineStationForDeletion = lbLineStations.SelectedValue as PO.LineStation;
             IBL bl = BlFactory.GetBl("1");
+            //If the replacement is for a line station isn't for the first or last station
             if (indexOfChangedStation > 0 && indexOfChangedStation < stationsInLine.Count - 1)
             {
                 float distanceFromPrevious = bl.GetRandomDistance();
@@ -100,13 +139,14 @@ namespace PlGui
                 TimeSpan timeFromPrevious = bl.GetMinutesOfTravel(distanceFromPrevious);
                 //we'll update the time and distance of the next station because the previous station changed
                 //the newly added station is the next station of the previous station...
-                stationsInLine.ElementAt(indexOfChangedStation - 1).NextStation = selectedStation.Code;
-                stationsInLine.ElementAt(indexOfChangedStation + 1).DistanceFromPreviousStation = distanceFromPrevious;
+                stationsInLine.ElementAt(indexOfChangedStation - 1).NextStation = selectedStation.Code;//The next staion is the new station
+                stationsInLine.ElementAt(indexOfChangedStation + 1).DistanceFromPreviousStation = distanceFromPrevious;//The distance to station after replaced station is different than before
                 stationsInLine.ElementAt(indexOfChangedStation + 1).TimeFromPreviousStation = timeFromPrevious;
                 stationsInLine.Remove(lineStationForDeletion);
                 stationsInLine.Insert(indexOfChangedStation, newLineStation);
                 lbLineStations.Items.Refresh();
             }
+
             else if (indexOfChangedStation == 0)
             {
                 PO.LineStation newLineStation = new PO.LineStation()

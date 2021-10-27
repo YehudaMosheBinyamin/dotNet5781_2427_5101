@@ -21,7 +21,7 @@
                 <TextBlock Name="tbCode" HorizontalAlignment="Left" Text="{Binding Path=Station}" Grid.Column="0"  Grid.Row="0"/>
                 <TextBlock Name="tbName" HorizontalAlignment="Right" Text="{Binding Path=Name}" Grid.Column="1"   Grid.Row="0"/>
                 <Button Name="bDeleteStation" DataContext="{Binding}"  Grid.Column="2" Grid.Row="0"  Content="Delete" HorizontalAlignment="Center" Height="39"  VerticalAlignment="Bottom" Width="90" Click="bDeleteStation_Click"/>
-                <Button Name="bChangeStation" DataContext="{Binding}" Grid.Column="3" Grid.Row="0" Content="Change" HorizontalAlignment="Right" Height="39" VerticalAlignment="Bottom" Width="90" Click="bChangeStation_Click"/>
+                <Button Name="bChangeStation" DataContext="{Binding}" Grid.Column="3" Grid.Row="0" Content="Change" HorizontalAlignment="Right" Height="39" VerticalAlignment="Bottom" Width="90" Click="SwapStation"/>
             </Grid>
         </DataTemplate>
     </Window.Resources>
