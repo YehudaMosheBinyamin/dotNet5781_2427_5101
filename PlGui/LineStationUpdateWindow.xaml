@@ -7,14 +7,28 @@
         mc:Ignorable="d"
         Title="LineStationUpdateWindow" Height="250" Width="700">
     <Grid Name="mainGrid">
-            <Grid HorizontalAlignment="Left" Height="187" Margin="61,22,0,0" VerticalAlignment="Top" Width="576">
-                <Button Content="Finish" HorizontalAlignment="Left" Margin="439,137,0,0" VerticalAlignment="Top" Width="75" Click="FinishUpdate"/>
-                <Label Content="Time From Previous:" HorizontalAlignment="Left" Margin="79,0,0,0" VerticalAlignment="Top"/>
-                <Label Content="Distance From Previous:" HorizontalAlignment="Left" Margin="280,0,0,0" VerticalAlignment="Top"/>
-                <TextBox Text="{Binding Path=DistanceFromPreviousStation}" Name="tbDistance" HorizontalAlignment="Left" Height="23" Margin="280,31,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="134"/>
-            <TextBox Text="{Binding Path=TimeFromPreviousStation}" Name="tbTime" HorizontalAlignment="Left" Height="23" Margin="67,31,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="142"/>
-        </Grid>
-
-
-        </Grid>
-    </Window>
+        <!--OpacityMask="White">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="White" Offset="0"/>
+                <GradientStop Color="#FF18C346" Offset="1"/>
+                <GradientStop Color="#FF177430" Offset="0.574"/>
+            </LinearGradientBrush>
+        </Grid.Background>-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="30*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="30*"/>
+        </Grid.ColumnDefinitions>
+        <Button Content="Finish" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right"  VerticalAlignment="Bottom" Width="75" Click="FinishUpdate"/>
+        <Label Content="Time From Previous:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center"  VerticalAlignment="Bottom"/>
+        <Label Content="Distance From Previous:" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Bottom" />
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=DistanceFromPreviousStation}" Name="tbDistance" HorizontalAlignment="Center" Height="23"  TextWrapping="Wrap"  VerticalAlignment="Top" Width="134"/>
+        <TextBox Text="{Binding Path=TimeFromPreviousStation}" Name="tbTime" HorizontalAlignment="Center" Height="23"  TextWrapping="Wrap"  VerticalAlignment="Top" Width="142"  Grid.Row="1"/>
+    </Grid>
+</Window>

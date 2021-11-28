@@ -16,6 +16,7 @@ namespace PlGui
         public PO.Line newLine;//the line after editing
         ObservableCollection<PO.Station> listOfStations;
         ObservableCollection<PO.LineStation> stationsInLine;
+        public bool Updated { get; set; }
         public WindowEdit(PO.Line lineEdited)
         {
             InitializeComponent();
@@ -49,8 +50,8 @@ namespace PlGui
         {
             IBL bl = BlFactory.GetBl("1");
             bl.UpdateLine(lineToBeEdited.Id, Utillities.LinePoBoAdapter(newLine));
+            Updated = true;
             Close();
-
         }
         /// <summary>
         /// For deletion of line station from list

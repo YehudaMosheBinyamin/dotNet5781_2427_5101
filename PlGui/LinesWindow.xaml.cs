@@ -117,7 +117,7 @@ namespace PlGui
             //selectedLineStation = lbBusLineStations.SelectedValue as BO.LineStation;
             selectedLineStation = lbBusLineStations.SelectedValue as PO.LineStation;
             selectedStation = Utillities.StationBoPoAdapter(bl.GetStation(selectedLineStation.Station));
-            WindowStationDetails wsd = new WindowStationDetails(selectedStation,linesCollection);
+            WindowStationDetails wsd = new WindowStationDetails(selectedStation, linesCollection);
             wsd.Show();
         }
         /// <summary>
@@ -154,7 +154,7 @@ namespace PlGui
             linesCollection.Clear();
             ObservableCollection<PO.Line> temp = new ObservableCollection<PO.Line>();
             temp = Utillities.Convert(from line in bl.GetAllLines() select Utillities.LineBoPoAdapter(line));
-            foreach(PO.Line line in temp) 
+            foreach (PO.Line line in temp)
             {
                 linesCollection.Add(line);
             }
@@ -171,7 +171,7 @@ namespace PlGui
         private void bTimeTable_Click(object sender, RoutedEventArgs e)
         {
             TimeTableWindow timeTableWindow = new TimeTableWindow(cbBusLines.SelectedValue as PO.Line);
-            PO.Line currentLine= cbBusLines.SelectedValue as PO.Line;
+            PO.Line currentLine = cbBusLines.SelectedValue as PO.Line;
             timeTableWindow.ShowDialog();
             linesCollection.Clear();
             ObservableCollection<PO.Line> temp = new ObservableCollection<PO.Line>();

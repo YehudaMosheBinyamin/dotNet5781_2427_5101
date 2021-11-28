@@ -7,11 +7,14 @@
         mc:Ignorable="d"
         Title="ManagerWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Lines" HorizontalAlignment="Left" Height="41" Margin="548,316,0,0" VerticalAlignment="Top" Width="139" Click="Button_Click"/>
-        <Button Content="Stations" HorizontalAlignment="Left" Margin="335,316,0,0" VerticalAlignment="Top" Width="132" Height="41" Click="Button_Click_1"/>
+        <Button Name="btLines" Content="Lines" HorizontalAlignment="Left" Height="41" Margin="548,316,0,0" VerticalAlignment="Top" Width="139" Click="Button_Click"/>
+        <Button Name="btStations" Content="Stations" HorizontalAlignment="Left" Margin="335,316,0,0" VerticalAlignment="Top" Width="132" Height="41" Click="Button_Click_1"/>
         <Button Content="Button" HorizontalAlignment="Left" Height="21" Margin="466,336,0,0" VerticalAlignment="Top" Width="1"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="668,146,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="0"/>
-
-
+        <TextBox Name="tbHours" HorizontalAlignment="Left" Height="23" Margin="164,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="58"/>
+        <TextBox Name="tbMinutes" HorizontalAlignment="Left" Height="23" Margin="241,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="58"/>
+        <TextBox Name="tbSeconds" HorizontalAlignment="Left" Height="23" Margin="323,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="58"/>
+        <Button Name="btStopwatch" Content="Go" HorizontalAlignment="Left" Margin="400,230,0,0" VerticalAlignment="Top" Width="58" Click="StartStopStopwatch"/>
+        <TextBox Name="tbSpeed" HorizontalAlignment="Left" Height="23" Margin="400,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="58"/>
     </Grid>
 </Window>

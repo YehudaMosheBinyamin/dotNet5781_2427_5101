@@ -7,17 +7,42 @@
         mc:Ignorable="d"
         Title="WindowStationDetails" Height="450" Width="800">
     <Window.Resources>
+        <DataTemplate x:Key="LineTimingTemplate" DataType="local.LineTiming">
+            <Grid  Name="gridArrivals">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Line:" Grid.Row="0" Grid.Column="0" HorizontalContentAlignment="Left" VerticalAlignment="Center"/>
+                <TextBlock Name="tbCode" Text="{Binding Path=LineCode}" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"/>
+                <Label Content="Left at:" VerticalAlignment="Center" HorizontalContentAlignment="Center" Grid.Row="0" Grid.Column="2"/>
+                <TextBlock Name="tbLeftAt" Text="{Binding Path=StartTime}" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center"/>
+                <Label Content="Last Station:" VerticalAlignment="Center" HorizontalContentAlignment="Center" Grid.Row="0" Grid.Column="4"/>
+                <TextBlock Name="lastStation" Text="{Binding Path=LastStationName}" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="5" VerticalAlignment="Center"/>
+                <Label Content="Waiting Time:" VerticalAlignment="Center" HorizontalContentAlignment="Center" Grid.Row="0" Grid.Column="6"/>
+                <TextBlock Name="tbArrival" Text="{Binding Path=WaitingTime}" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="7" VerticalAlignment="Center"/>
+            </Grid>
+        </DataTemplate>
         <DataTemplate x:Key="MyDataTemplate" DataType="local.Line">
             <Grid  Name="linesByStation">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="90"/>
-                    <ColumnDefinition Width="90"/>
-                    <ColumnDefinition Width="90"/>
-                    <ColumnDefinition Width="140"/>
-                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="140*"/>
+                    <ColumnDefinition Width="90*"/>
                 </Grid.ColumnDefinitions>
                 <Label Content="Code" Grid.Row="0" Grid.Column="0" HorizontalContentAlignment="Left" VerticalAlignment="Center"/>
                 <TextBlock Name="tbCode" Text="{Binding Path=Code}" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"/>
@@ -26,41 +51,84 @@
                 <Button Content="Edit" Name="bEdit" DataContext="{Binding}" Grid.Row="0" HorizontalContentAlignment="Center" VerticalAlignment="Center" Grid.Column="4" Click="bEdit_Click" ></Button>
             </Grid>
         </DataTemplate>
+        <DataTemplate x:Key="LineTimingTemplate2" DataType="local.LineTiming">
+            <Grid  x:Name="gridArrivals">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Line:" Grid.Row="0" Grid.Column="0" HorizontalContentAlignment="Left" VerticalAlignment="Center"/>
+                <TextBlock x:Name="tbCode" Text="{Binding LineCode}" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"/>
+                <Label Content="Left at:" VerticalAlignment="Center" HorizontalContentAlignment="Center" Grid.Row="0" Grid.Column="2"/>
+                <TextBlock x:Name="tbLeftAt" Text="{Binding StartTime}" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center"/>
+                <Label Content="Last Station:" VerticalAlignment="Center" HorizontalContentAlignment="Center" Grid.Row="0" Grid.Column="4"/>
+                <TextBlock x:Name="lastStation" Text="{Binding LastStationName}" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="5" VerticalAlignment="Center"/>
+                <Label Content="Waiting Time:" VerticalAlignment="Center" HorizontalContentAlignment="Center" Grid.Row="0" Grid.Column="6"/>
+                <TextBlock x:Name="tbArrival" Text="{Binding WaitingTime}" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="7" VerticalAlignment="Center"/>
+            </Grid>
+        </DataTemplate>
     </Window.Resources>
-    <Grid Name="myGrid" RenderTransformOrigin="0.529,0.575" Margin="0,0,0,287" >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Label Grid.Row="0" Grid.Column="0" Content="Code:" HorizontalAlignment="Left"  VerticalAlignment="Center" />
-        <TextBlock Grid.Row="0" Grid.Column="1" Name="tbCode" Text="{Binding Path=Code}" HorizontalAlignment="Left" Height="38"  TextWrapping="Wrap" VerticalAlignment="Center" Width="95"/>
-        <Label Grid.Row="1" Grid.Column="0" Content="Name"  HorizontalAlignment="Left"   VerticalAlignment="Center"  />
-        <TextBlock Grid.Row="1" Grid.Column="1" Name="tbName" Text="{Binding Path=Name}" HorizontalAlignment="Left"  TextWrapping="Wrap"  VerticalAlignment="Center" />
-        <Label Grid.Row="2" Grid.Column="0" Content="Longtitude" HorizontalAlignment="Left"  VerticalAlignment="Center"  />
-        <TextBlock Grid.Row="2" Grid.Column="1" Name="tbLongtitude" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="{Binding Path=Longtitude}" VerticalAlignment="Center" />
-        <Label Grid.Row="3" Grid.Column="0" Content="Latitude:" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="3" Grid.Column="1" Name="tbLatitude" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="{Binding Path=Latitude}" VerticalAlignment="Center"/>
-        <Grid Name="gridLines"  HorizontalAlignment="Left" Height="289" Margin="0,41,0,-299" Grid.Row="3" VerticalAlignment="Top" Width="791" Grid.ColumnSpan="2">
-            <ListBox Name="lbLinesBy" ItemTemplate="{StaticResource MyDataTemplate}" HorizontalAlignment="Left" Height="256" ItemsSource="{Binding}" Margin="29,10,0,0" VerticalAlignment="Top" Width="734">
-                <ListBox.ItemContainerStyle>
-                    <Style TargetType="ListBoxItem">
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="IsSelected" Value="True"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </ListBox.ItemContainerStyle>
-            </ListBox>
+    <Grid Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="450"  Grid.RowSpan="4" VerticalAlignment="Center" Width="796" Margin="0,-28,-4,-3">
+        <Grid Name="myGrid" Margin="10,40,10,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Content="Code:" HorizontalAlignment="Left"  VerticalAlignment="Center" />
+            <TextBlock Grid.Row="0" Grid.Column="1" Name="tbCode" Text="{Binding Path=Code}" HorizontalAlignment="Left" Height="34"  TextWrapping="Wrap" VerticalAlignment="Center" Width="95" Margin="0,0,0,28" Grid.RowSpan="2"/>
+            <Label Grid.Row="1" Grid.Column="0" Content="Name:"  HorizontalAlignment="Left"   VerticalAlignment="Center"  />
+            <TextBlock Grid.Row="1" Grid.Column="1" Name="tbName" Text="{Binding Path=Name}" HorizontalAlignment="Left"  TextWrapping="Wrap"  VerticalAlignment="Center" />
+            <Label Grid.Row="2" Grid.Column="0" Content="Longtitude:" HorizontalAlignment="Left"  VerticalAlignment="Center"  />
+            <TextBlock Grid.Row="2" Grid.Column="1" Name="tbLongtitude" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="{Binding Path=Longtitude, StringFormat=N2}" VerticalAlignment="Center" />
+            <Label Grid.Row="3" Grid.Column="0" Content="Latitude:" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="3" Grid.Column="1" Name="tbLatitude" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="{Binding Path=Latitude, StringFormat=N2}" VerticalAlignment="Center"/>
+            <Grid Name="gridLines"  HorizontalAlignment="Left" Height="137" Margin="0,41,0,-147" Grid.Row="3" VerticalAlignment="Top" Width="791" Grid.ColumnSpan="2">
+                <Grid.Background>
+                    <ImageBrush/>
+                </Grid.Background>
+                <ListBox Name="lbLinesBy" ItemTemplate="{StaticResource MyDataTemplate}" HorizontalAlignment="Left" Height="117" ItemsSource="{Binding}" Margin="29,10,0,0" VerticalAlignment="Top" Width="734">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="IsSelected" Value="True"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
+            </Grid>
+            <Grid Name="gridDynamicDisplay" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="138" Margin="21,178,-7,-285" Grid.Row="3" VerticalAlignment="Top" Width="778">
+                <ListBox x:Name="lbLastThere"  ItemsSource="{Binding}" ItemTemplate="{StaticResource LineTimingTemplate2}" HorizontalAlignment="Left" Height="26" Margin="10,0,0,0" VerticalAlignment="Top" Width="734"/>
+                <ListBox x:Name="lbArrivals" ItemTemplate="{StaticResource LineTimingTemplate}" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="67" Margin="10,38,0,0" VerticalAlignment="Top" Width="734" >
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListBoxItem}">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="IsSelected" Value="True"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
+                <Button x:Name="btTrack" Content="Track" HorizontalAlignment="Left" Height="24" Margin="678,110,0,0" VerticalAlignment="Top" Width="66" Click="startTrackStation"/>
+            </Grid>
+
         </Grid>
-
-
     </Grid>
-
 </Window>

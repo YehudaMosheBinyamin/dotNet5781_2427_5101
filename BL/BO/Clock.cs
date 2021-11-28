@@ -1,17 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace BL
 {
-    sealed class Clock
-    {  
-        public TimeSpan Time{ get; set; }
+    sealed internal class Clock
+    {
+        public TimeSpan Time { get; set; }
+        public int Rate { get; set; }
         internal volatile bool Cancel;
-        public event EventHandler TimeChanged;
+        private event Action<TimeSpan> timeChangeEvent;
+        public event Action<TimeSpan> TimeChangeEvent
+            {
+            add
+            {
+                timeChangeEvent = value;
+            }
+            remove
+            {
+                timeChangeEvent -= value;
+            }
+            }
+
+        public void DoTimeChangeEvent()
+        {
+            timeChangeEvent?.Invoke(Time);
+        }
         public Clock(TimeSpan time)
         {
-            Time = time;
+            Time= time;
         }
     }
 }

@@ -13,22 +13,16 @@ namespace BL
 {
     public sealed class BlImplementation : IBL
     {
-        Clock simulatorClock;
-         Stopwatch stopWatch;
-        BackgroundWorker backgroundWorker;
-        Action<TimeSpan> updateAction;
-        int rate;
         #region Singleton
-        static readonly BlImplementation instance=new BlImplementation();    
+        static readonly BlImplementation instance = new BlImplementation();
         static BlImplementation() { }
-        BlImplementation() { backgroundWorker = new BackgroundWorker(); backgroundWorker.DoWork +=Worker_DoWork; backgroundWorker.WorkerSupportsCancellation = true;stopWatch = new Stopwatch(); simulatorClock = new Clock(new TimeSpan(0, 0, 0));simulatorClock.TimeChanged += TimeChangedEvent; }
+        BlImplementation() { stopwatch = new Stopwatch(); simulatorClock = new Clock(new TimeSpan(0, 0, 0)); }
 
 
 
         public static BlImplementation Instance { get { return instance; } }
 
         #endregion
-
         /**
         #region Bus
         DO.Bus busBoDoAdapter(BO.Bus busBo)
@@ -148,7 +142,8 @@ namespace BL
         #endregion**/
         #region Station
         public DO.Station StationBoDoAdapter(BO.Station boStation)
-        {   BO.Station bStation = boStation;
+        {
+            BO.Station bStation = boStation;
             IDL dl = DLFactory.GetDL();
             DO.Station doStation = new DO.Station();
             doStation.Code = dl.GetNewStationCode();
@@ -192,14 +187,14 @@ namespace BL
             DO.AdjacentStations newAdjStat = new DO.AdjacentStations()
             {
                 Distance = 0,
-                Time = new TimeSpan(0,0,0),
+                Time = new TimeSpan(0, 0, 0),
                 InService = true,
                 Station1 = doStation.Code,
                 Station2 = doStation.Code
             };
             dl.AddAdjacentStations(newAdjStat);
             //dl.AddAdjacentStations(newDoAdjStat);
-                //dl.AddAdjacentStations(newLastAdjStat);
+            //dl.AddAdjacentStations(newLastAdjStat);
             //}
             doStation.InService = true;
             doStation.Name = bStation.Name;
@@ -212,7 +207,8 @@ namespace BL
         /// <param name="doStation"></param>
         /// <returns></returns>
         public BO.Station StationDoBoAdapter(DO.Station doStation)
-        { IDL dl = DLFactory.GetDL();
+        {
+            IDL dl = DLFactory.GetDL();
 
             BO.Station boStation = new BO.Station();
             DO.Station dStation = doStation;
@@ -260,7 +256,7 @@ namespace BL
         {
             IDL dl = DLFactory.GetDL();
             return from station in dl.GetAllStations() select StationDoBoAdapter(station);
-       
+
         }
         /**
         /// <summary>
@@ -390,7 +386,10 @@ namespace BL
             boLine.Id = doLine.Id;
             boLine.Area = (Areas)doLine.Area;
             IDL dl = DLFactory.GetDL();
-            IEnumerable<BO.LineStation> lineStations = from lineStation in GetAllLineStationsByLine(doLine.Id) where lineStation.InService==true orderby lineStation.LineStationIndex  select lineStation;
+            IEnumerable<BO.LineStation> lineStations = from lineStation in GetAllLineStationsByLine(doLine.Id)
+                                                       where lineStation.InService == true
+                                                       orderby lineStation.LineStationIndex
+                                                       select lineStation;
             boLine.stationsInLine = lineStations;
             boLine.InService = doLine.InService;
             boLine.LastStationName = dl.GetStation(boLine.stationsInLine.Last().Station).Name;
@@ -409,7 +408,8 @@ namespace BL
             return doLine;
         }
         public BO.Line GetLine(int lineId)
-        {   IDL dl = DLFactory.GetDL();
+        {
+            IDL dl = DLFactory.GetDL();
             BO.Line line = LineDoBoAdapter(dl.GetLine(lineId));
             return line;
         }
@@ -425,9 +425,9 @@ namespace BL
             {
                 dl.AddLine(LineBoDoAdapter(line));
             }
-            catch(DO.LineAlreadyExistsException ex)
+            catch (DO.LineAlreadyExistsException ex)
             {
-                throw new BO.LineAlreadyExistsException("Line already exists",ex);
+                throw new BO.LineAlreadyExistsException("Line already exists", ex);
             }
             AddAllLineStations(line);
             //to make all elements of line trip with proper,new ids.
@@ -443,7 +443,7 @@ namespace BL
             AddAllLineTrips(line);
             List<DO.AdjacentStations> adjacentStations = (from lineStation1 in line.stationsInLine
                                                           from lineStation2 in line.stationsInLine
-                                                          where lineStation1.NextStation == lineStation2.Station&&dl.AdjacentStationsExists(lineStation1.Station,lineStation2.Station)==false
+                                                          where lineStation1.NextStation == lineStation2.Station && dl.AdjacentStationsExists(lineStation1.Station, lineStation2.Station) == false
                                                           let rDistance = Functions.randomDistance()
                                                           select new DO.AdjacentStations
                                                           {   //LineId= lineStation1.LineId,
@@ -459,19 +459,19 @@ namespace BL
             //DO.AdjacentStations toFirst = new DO.AdjacentStations() { Station1 =00000,Station2=line.stationsInLine.First().Station, Distance = 0f, Time = new TimeSpan(0,0,0), InService = true };
             //adjacentStations.Add(toFirst);
             foreach (DO.AdjacentStations adj in adjacentStations)
-            { 
+            {
                 bool lineStationsExists = AdjacentStationsExists(adj.Station1, adj.Station2);
-             if (lineStationsExists == false)
-              {
-                try
+                if (lineStationsExists == false)
                 {
-                    dl.AddAdjacentStations(adj);
+                    try
+                    {
+                        dl.AddAdjacentStations(adj);
+                    }
+                    catch (DO.AdjacentStationsAlreadyExistsException ex)
+                    {
+                        throw new BO.AdjacentStationsAlreadyExistsException("The line station already exists and cannot be added", ex);
+                    }
                 }
-                catch (DO.AdjacentStationsAlreadyExistsException ex)
-                {
-                    throw new BO.AdjacentStationsAlreadyExistsException("The line station already exists and cannot be added", ex);
-                }
-              }
             }
         }
 
@@ -480,10 +480,10 @@ namespace BL
         /// </summary>
         /// <param name="oldLineId"></param>
         /// <param name="newLine"></param>
-        public void UpdateLine(int oldLineId,Line newLine)
+        public void UpdateLine(int oldLineId, Line newLine)
         {
-                DeleteLine(oldLineId);
-                AddLine(newLine);    
+            DeleteLine(oldLineId);
+            AddLine(newLine);
         }
 
         /// <summary>
@@ -499,18 +499,18 @@ namespace BL
                 DeleteLineStations(lineId);
                 dl.DeleteLineTrips(lineId);
                 dl.DeleteLine(lineId);
-               
+
             }
             catch (DO.NoLineFoundException ex)
             {
                 throw new BO.NoLineFoundException("It's impossible to delete line because it doesn't exist on the system", ex);
             }
         }
-    
+
         public IEnumerable<BO.Line> GetAllLines()
         {
             IDL dl = DLFactory.GetDL();
-            return from line in dl.GetAllLines() orderby line.Code select  LineDoBoAdapter(line)   ;
+            return from line in dl.GetAllLines() orderby line.Code select LineDoBoAdapter(line);
         }
         /// <summary>
         /// Get all lines that go by station,for Station Window
@@ -519,16 +519,16 @@ namespace BL
         /// <returns></returns>
         public IEnumerable<BO.Line> GetAllLinesByStation(int stationCode)
         {
-             IDL dl = DLFactory.GetDL();
-             IEnumerable<LineStation> allLineStationsOfStation=from ls in dl.GetAllLineStations() where ls.Station == stationCode select LineStationDoBoAdapter(ls);
-             IEnumerable<Line> allLines =
-             from linestation in allLineStationsOfStation
-             //let id = linestation.LineId
-             from line in dl.GetAllLines() where line.Id== linestation.LineId
-             orderby line.Code
-             select LineDoBoAdapter(line);
-             return allLines;
-            
+            IDL dl = DLFactory.GetDL();
+            IEnumerable<LineStation> allLineStationsOfStation = from ls in dl.GetAllLineStations() where ls.Station == stationCode select LineStationDoBoAdapter(ls);
+            IEnumerable<Line> allLines =
+            from linestation in allLineStationsOfStation
+                //let id = linestation.LineId
+            from line in dl.GetAllLines()
+            where line.Id == linestation.LineId
+            orderby line.Code
+            select LineDoBoAdapter(line);
+            return allLines;
         }
         /// <summary>
         /// To add new adjacent stations into the system
@@ -548,7 +548,7 @@ namespace BL
                 InService = true,
                 Time = waitingTime
             };
-                dl.AddAdjacentStations(AdjacentStationsBoDoAdapter(newAdjStat));
+            dl.AddAdjacentStations(AdjacentStationsBoDoAdapter(newAdjStat));
         }
         /// <summary>
         /// To check if adjacent stations already in system so that the distance and time between them is already known
@@ -556,15 +556,15 @@ namespace BL
         /// <param name="station1"></param>
         /// <param name="station2"></param>
         /// <returns></returns>
-        public bool AdjacentStationsExists(int station1,int station2)
+        public bool AdjacentStationsExists(int station1, int station2)
         {
             IDL dl = DLFactory.GetDL();
             return dl.AdjacentStationsExists(station1, station2);
         }/// <summary>
-        /// For deletion of Adjacent Stations(in case of updated time and/or distance
-        /// </summary>
-        /// <param name="station1"></param>
-        /// <param name="station2"></param>
+         /// For deletion of Adjacent Stations(in case of updated time and/or distance
+         /// </summary>
+         /// <param name="station1"></param>
+         /// <param name="station2"></param>
         public void DeleteAdjacentStations(int station1, int station2)
         {
             IDL dl = DLFactory.GetDL();
@@ -628,14 +628,14 @@ namespace BL
                                                                   InService = linestation.InService
 
                                                               }).ToList();**/
-           /** LineStation updatedPrevStation = new LineStation();
-            updatedPrevStation = prevStation;
-            updatedPrevStation.NextStation = line.Code;
-            LineStation updatedNextStation = new LineStation();
-            updatedNextStation.PrevStation = line.Code;
-            
+        /** LineStation updatedPrevStation = new LineStation();
+         updatedPrevStation = prevStation;
+         updatedPrevStation.NextStation = line.Code;
+         LineStation updatedNextStation = new LineStation();
+         updatedNextStation.PrevStation = line.Code;
+         
 
-        }**/
+     }**/
         public DO.LineStation LineStationBoDoAdapter(BO.LineStation boLineStation)
         {
             DO.LineStation doLineStation = new DO.LineStation();
@@ -650,13 +650,13 @@ namespace BL
         public void DeleteAllLineStationsInLine(Line line)
         {
             IDL dl = DLFactory.GetDL();
-            foreach(LineStation ls in line.stationsInLine)
+            foreach (LineStation ls in line.stationsInLine)
             {
                 try
                 {
                     dl.DeleteLineStation(line.Id, line.Code);
                 }
-                catch(DO.NoLineStationFoundException ex)
+                catch (DO.NoLineStationFoundException ex)
                 {
                     throw new BO.LineStationNotFoundException("No line station exists so it cannot be deleted", ex);
                 }
@@ -664,14 +664,14 @@ namespace BL
         }
         void AddAllLineStations(BO.Line line)
         {
-            
+
             IDL dl = DLFactory.GetDL();
             foreach (LineStation ls in line.stationsInLine)
             {
                 ls.LineId = line.Id;
                 try
                 {
-                    
+
                     dl.AddLineStation(LineStationBoDoAdapter(ls));
                 }
                 catch (DO.LineStationAlreadyExistsException ex)
@@ -748,10 +748,10 @@ namespace BL
         }
       
 **/
- 
+
         #endregion
         #region LineStation
-        bool InLine(DO.LineStation ls,int lineId)
+        bool InLine(DO.LineStation ls, int lineId)
         {
             if (ls.LineId == lineId)
             {
@@ -764,33 +764,34 @@ namespace BL
         }
         public BO.LineStation LineStationDoBoAdapter(DO.LineStation doLineStation)
         {
-         IDL dl = DLFactory.GetDL();
-         BO.LineStation boLineStation = new LineStation();
-         boLineStation.LineId = doLineStation.LineId;
-         boLineStation.Station = doLineStation.Station;
-         boLineStation.LineStationIndex = doLineStation.LineStationIndex;
-         boLineStation.PrevStation = doLineStation.PrevStation;
-         boLineStation.NextStation = doLineStation.NextStation; 
-         boLineStation.InService = doLineStation.InService;
-         boLineStation.TimeFromPreviousStation = GetAdjacentStations(doLineStation.PrevStation, doLineStation.Station).Time;//before was dl. 
-         boLineStation.DistanceFromPreviousStation=GetAdjacentStations(doLineStation.PrevStation, doLineStation.Station).Distance;
+            IDL dl = DLFactory.GetDL();
+            BO.LineStation boLineStation = new LineStation();
+            boLineStation.LineId = doLineStation.LineId;
+            boLineStation.Station = doLineStation.Station;
+            boLineStation.LineStationIndex = doLineStation.LineStationIndex;
+            boLineStation.PrevStation = doLineStation.PrevStation;
+            boLineStation.NextStation = doLineStation.NextStation;
+            boLineStation.InService = doLineStation.InService;
+            boLineStation.TimeFromPreviousStation = GetAdjacentStations(doLineStation.PrevStation, doLineStation.Station).Time;//before was dl. 
+            boLineStation.DistanceFromPreviousStation = GetAdjacentStations(doLineStation.PrevStation, doLineStation.Station).Distance;
             //before was dl.
             //int lastStationCode = (from line in dl.GetAllLines()
-                                //   where line.Id == boLineStation.LineId
-                                  // select line).FirstOrDefault().LastStation;
+            //   where line.Id == boLineStation.LineId
+            // select line).FirstOrDefault().LastStation;
 
-         boLineStation.Name = GetStation(doLineStation.Station).Name;//was dl.
-        // boLineStation.LastStationName=
-                                    //    dl.GetStation(lastStationCode).Name;
+            boLineStation.Name = GetStation(doLineStation.Station).Name;//was dl.
+                                                                        // boLineStation.LastStationName=
+                                                                        //    dl.GetStation(lastStationCode).Name;
 
-         return boLineStation;
+            return boLineStation;
         }
         public IEnumerable<LineStation> GetAllLineStationsByLine(int lineId)
         {
+            string ls = $"{lineId}";
             IDL dl = DLFactory.GetDL();
-            IEnumerable<BO.LineStation> lineStationsInLine = (from lineStation in dl.GetAllLineStationsByLine(lineId) 
-                                                              where(lineStation.LineStationIndex>=0) orderby 
-                                                              lineStation.LineStationIndex 
+            IEnumerable<BO.LineStation> lineStationsInLine = (from lineStation in dl.GetAllLineStationsByLine(lineId)
+                                                              where lineStation.LineStationIndex >= 0
+                                                              orderby lineStation.LineStationIndex
                                                               select LineStationDoBoAdapter(lineStation)).Distinct();
             return lineStationsInLine;
         }
@@ -798,9 +799,9 @@ namespace BL
         {
             IDL dl = DLFactory.GetDL();
             dl.DeleteLineStations(lineId);
-            
+
         }
-        
+
         #endregion
         #region AdjacentStations
         BO.AdjacentStations AdjacentStationsDoBoAdapter(DO.AdjacentStations doAdjacentStations)
@@ -842,8 +843,9 @@ namespace BL
             }
         }
         public IEnumerable<BO.AdjacentStations> GetAllAdjacentStations()
-        { IDL dl = DLFactory.GetDL();
-          return (from adjacentStation in dl.GetAllAdjacentStations() orderby adjacentStation.Station1,adjacentStation.Station2 select AdjacentStationsDoBoAdapter(adjacentStation));
+        {
+            IDL dl = DLFactory.GetDL();
+            return (from adjacentStation in dl.GetAllAdjacentStations() orderby adjacentStation.Station1, adjacentStation.Station2 select AdjacentStationsDoBoAdapter(adjacentStation));
         }
         /**
         /// <summary>
@@ -871,42 +873,42 @@ namespace BL
             BO.User boUser = new BO.User();
             boUser.UserName = doUser.UserName;
             boUser.Password = doUser.Password;
-            boUser.Admin = doUser.Admin; 
-            boUser.InService=doUser.InService;
+            boUser.Admin = doUser.Admin;
+            boUser.InService = doUser.InService;
             return boUser;
-       }
+        }
         /// <summary>
         /// Checks user details to see 1)if user exists and  2)if password entered is correct 3)if field requires admin permissions this is checked as well
         /// </summary>
         /// <param name="user">User</param>
         /// <param name="needsAdmin">Whether user needs admin permissions</param>
         /// <returns></returns>
-        public bool CheckUserPassword(User user,bool needsAdmin=false)
+        public bool CheckUserPassword(User user, bool needsAdmin = false)
         {
             IDL dl = DLFactory.GetDL();
             BO.User boUser = new BO.User();
             try
             {
-                boUser=UserDoBoAdapter(dl.GetUser(user.UserName));
+                boUser = UserDoBoAdapter(dl.GetUser(user.UserName));
                 if (boUser.Password == user.Password)
                 {
                     return true;
                 }
                 if (needsAdmin == true)
                 {
-                    if(boUser.Admin == needsAdmin)
+                    if (boUser.Admin == needsAdmin)
                     {
                         return true;
                     }
                 }
-                
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new BO.NoUserFoundException("There is no user with this username", ex);
             }
             return false;
-            
+
         }
         #endregion
         #region LineTrip
@@ -940,7 +942,7 @@ namespace BL
         public IEnumerable<LineTrip> GetAllLineTripsInLine(int lineId)
         {
             IDL dl = DLFactory.GetDL();
-            IEnumerable<LineTrip> lineExitsInLine = from lineTrip in dl.GetAllLineTrips() where lineTrip.LineId == lineId &&lineTrip.InService==true select LineTripDoBoAdapter(lineTrip);
+            IEnumerable<LineTrip> lineExitsInLine = from lineTrip in dl.GetAllLineTrips() where lineTrip.LineId == lineId && lineTrip.InService == true select LineTripDoBoAdapter(lineTrip);
             return lineExitsInLine;
         }
 
@@ -956,61 +958,225 @@ namespace BL
             {
                 lt.LineId = line.Id;
                 lt.Id = dl.GetNewLineTripId();
-                dl.AddLineTrip(LineTripBoDoAdapter(lt)); 
+                dl.AddLineTrip(LineTripBoDoAdapter(lt));
             }
         }
 
 
         #endregion
-        public float GetRandomDistance() 
+        #region Functions
+        /// <summary>
+        /// Function to get random distance
+        /// </summary>
+        /// <returns></returns>
+        public float GetRandomDistance()
         {
             return Functions.randomDistance();
         }
-
-
-        public TimeSpan GetMinutesOfTravel(float distance) 
-        {
-            return Functions.MinutesOfTravel(distance);
-        }
-        #region Simulator
-        private void Worker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            
-            while (simulatorClock.Cancel == false)
-            {
-                stopWatch.Restart();
-                TimeSpan startTime = (TimeSpan)e.Argument;
-                simulatorClock.Time = startTime + new TimeSpan(stopWatch.ElapsedTicks * rate);
-                //simulatorClock = new Clock(startTime + new TimeSpan(stopWatch.ElapsedTicks * rate));
-                Thread.Sleep(1000);
-            }
-        }
-        private void TimeChangedEvent(object sender,EventArgs e)
-        {
-            updateAction(simulatorClock.Time);
-        }
-        public void StartSimulator(TimeSpan simulationbeginTime, int speed, Action<TimeSpan> action)
-        {
-
-            rate = speed;
-            updateAction = action;
-            simulatorClock.TimeChanged += TimeChangedEvent;
-            backgroundWorker.RunWorkerAsync(simulationbeginTime);
-            Thread.Sleep(1000);
-        }
-        public void StopSimulator()
-        {
-            stopWatch.Reset();
-            simulatorClock.Cancel = true;
-        }
-
+        /// <summary>
+        /// Function to return new station code from DL
+        /// </summary>
+        /// <returns></returns>
         public int getNewCode()
         {
             IDL dl = DLFactory.GetDL();
             return dl.GetNewStationCode();
         }
+        /// <summary>
+        /// Function to return amount of minutes it takes to drive a bus line at a random speed between 30 to 100 km/h
+        /// </summary>
+        /// <param name="distance"></param>
+        /// <returns></returns>
+        public TimeSpan GetMinutesOfTravel(float distance)
+        {
+            return Functions.MinutesOfTravel(distance);
+        }
         #endregion
+        #region Simulators
+        Clock simulatorClock;
+        Stopwatch stopwatch;
+        /// <summary>
+        /// Function to change time of the simulator clock
+        /// </summary>
+        /// <param name="simulatorStartTime"></param>
+        /// <param name="speed"></param>
+        /// <param name="action"></param>
+        public void StartSimulator(TimeSpan simulatorStartTime, int speed, Action<TimeSpan> action)
+        {
+            simulatorClock = new Clock(simulatorStartTime + new TimeSpan(stopwatch.ElapsedTicks * speed));
+            simulatorClock.Rate = speed;
+            stopwatch.Restart();
+            while (simulatorClock.Cancel == false)
+            {
+                simulatorClock = new Clock(simulatorStartTime + new TimeSpan(stopwatch.ElapsedTicks * speed));
+                simulatorClock.Rate = speed;
+                simulatorClock.TimeChangeEvent += action;
+                simulatorClock.DoTimeChangeEvent();
+                Thread.Sleep(1000);
+            }
+        }
 
+        /// <summary>
+        /// Function to stop the simulator clock
+        /// </summary>
+        public void StopSimulator()
+        {
+            simulatorClock.Cancel = true;
+        }
 
+        /// <summary>
+        /// A function to dispatch lines on routes
+        /// </summary>
+        /// <param name="station">A code for a station</param>
+        /// <param name="updateBus">A PL Action for updating display of approaching buses</param>
+        public void SetStationPanel(int station, Action<LineTiming, int> updateBus)
+        {
+            IDL dl = DLFactory.GetDL();
+            IEnumerable<Line> lines = from line in dl.GetAllLines() select LineDoBoAdapter(line);
+            Operator op = Operator.Instance;
+            op.LineApproachingStationEvent += updateBus;
+            //Select lines which go past station(any of their stations' codes is equal to current station)
+            IEnumerable<Line> linesPastStation = from line in lines where line.stationsInLine.Select(l => l.Station).Any(p => p == station) select line;
+            List<LineTrip> lineTripCollection = new List<LineTrip>();
+            foreach (Line line in linesPastStation)
+            {
+                foreach (LineTrip lt in line.lineExits)
+                {
+                    lineTripCollection.Add(lt);
+                }
+            }
+            //Sort line trips by order of exit time
+            lineTripCollection = lineTripCollection.OrderBy(lt => lt.StartAt).ToList();
+            List<bool> sentYet = new List<bool>();
+            for (int i = 0; i < lineTripCollection.Count; ++i)
+            {
+                sentYet.Add(false);
+            }
+            //While simulator is running send lines
+            while (simulatorClock.Cancel == false)
+            {
+                foreach (LineTrip lt in lineTripCollection)
+                {
+
+                    BackgroundWorker backgroundWorker = new BackgroundWorker();
+                    backgroundWorker.DoWork += BackgroundWorker_DoWork;
+                    backgroundWorker.WorkerSupportsCancellation = true;
+                    //If it is now time to start line
+                    if (lt.StartAt <= simulatorClock.Time)
+                    {
+                        //Get index of line trip about to be sent
+                        int indexLineTrip = lineTripCollection.IndexOf(lt);
+
+                        if (sentYet[indexLineTrip] == false)
+                        {
+                            backgroundWorker.RunWorkerAsync(new List<object> { lt, station });
+                            sentYet[indexLineTrip] = true;
+                            Thread.Sleep(1000);
+                        }
+                    }
+                }
+            }
+
+        }
+        /// <summary>
+        /// To send new line trip
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Operator op = Operator.Instance;
+            LineTiming lineTiming = new LineTiming();
+            List<object> args = e.Argument as List<object>;
+            LineTrip lineTrip = (LineTrip)args.ElementAt(0);
+            int station = (int)args.ElementAt(1);
+            IDL dl = DLFactory.GetDL();
+            Line line = LineDoBoAdapter(dl.GetLine(lineTrip.LineId));
+            //TimeSpan beginTime = lineTrip.StartAt;//Est. begin time
+            TimeSpan beginTime = simulatorClock.Time;
+            lineTiming.LineId = line.Id;
+            lineTiming.LineCode = line.Code;
+            lineTiming.StartTime = beginTime;
+            lineTiming.LastStationName = line.LastStationName;
+            op.Station = station;
+            List<TimeSpan> timeFromPrev = new List<TimeSpan>();//List of times of arrival from previous stations
+            foreach (LineStation ls in line.stationsInLine)
+            {
+                timeFromPrev.Add(ls.TimeFromPreviousStation);
+            }
+            List<TimeSpan> waitingTimeStation = new List<TimeSpan>();//List of waiting time for each station from beginning of the line
+            //Initialize wait times to be minimum 0 hours,minutes and seconds
+            for (int i = 0; i < timeFromPrev.Count; ++i)
+            {
+                waitingTimeStation.Add(new TimeSpan(0, 0, 0));
+            }
+            int sIndex = 0;
+            //Find all average waiting times of stations from beginning of the route by adding up all waiting times from the beginning of the route until the current station
+            foreach (LineStation ls in line.stationsInLine)
+            {
+                waitingTimeStation.ElementAt(sIndex).Add(timeFromPrev.ElementAt(sIndex));
+                for (int index = 0; index < sIndex; ++index)
+                {
+                    waitingTimeStation.ElementAt(sIndex).Add(timeFromPrev.ElementAt(index));
+                }
+                sIndex++;
+            }
+
+            //foreach (LineStation ls in line.stationsInLine)
+            for(int stationIndex=0;stationIndex<line.stationsInLine.Count();++stationIndex)
+            {
+                
+                LineStation ls = line.stationsInLine.ElementAt(stationIndex);
+                //Sleep the amount of time in miliseconds the bus will take to get to current station from previous station
+                //It is times 1000 to convert from seconds to milliseconds and times 1/rate to wait less time if the simulation clock is running at a different rate than 1
+                int waitingTime = 1000 * ((int)Math.Ceiling((double)(Functions.DelayOrEarlyArrival(ls.TimeFromPreviousStation) * (1 / (double)simulatorClock.Rate))));
+                if(line.stationsInLine.ElementAt(stationIndex).Station==60010)
+                {
+                    string pilpel="BLAP";
+                }
+                Thread.Sleep(waitingTime);
+                if (simulatorClock.Cancel == false)
+                {
+                    waitingTimeStation[stationIndex] = TimeSpan.Zero;//Time to wait for station is zero
+                    //If we have reached the station we're tracking
+                    if (ls.Station == station)
+                    {
+                        op.UpdateLineArrive = lineTiming;
+                        if (simulatorClock.Cancel == false)
+                        {
+                            lineTiming.EstWaitingTime = waitingTimeStation[stationIndex];
+                            op.DoUpdateArrivalTime();
+                        }
+                        else
+                        {
+                            op.Station = -1;
+                            op.DoUpdateArrivalTime();
+                        }
+                    }
+                    //Calculate time for next stations
+                    for (int statIndex = stationIndex + 1; statIndex < line.stationsInLine.Count(); ++statIndex)
+                    {
+                        //Time for current station is equal to time to previous station plus time from there to current
+                        waitingTimeStation[statIndex] = waitingTimeStation[statIndex - 1] + timeFromPrev.ElementAt(statIndex);
+                        if ((line.stationsInLine.ElementAt(statIndex).Station == station) && (simulatorClock.Cancel == false))
+                        {
+                            lineTiming.EstWaitingTime = waitingTimeStation[statIndex];
+                            op.UpdateLineArrive = lineTiming;
+                            op.DoUpdateArrivalTime();
+                        }
+                        else if ((line.stationsInLine.ElementAt(statIndex).Station == station) && (simulatorClock.Cancel == true))
+                        {
+                            op.UpdateLineArrive = lineTiming;
+                            op.Station = -1;
+                            op.DoUpdateArrivalTime();
+                        }
+                    }
+
+                }
+            }
+        }
     }
+    #endregion
 }
+
+

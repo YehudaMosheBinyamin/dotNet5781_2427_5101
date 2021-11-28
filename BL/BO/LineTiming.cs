@@ -4,12 +4,16 @@ using System.Text;
 
 namespace BO
 {
-    class LineTiming
+    public class LineTiming
     {
-        int LineId { get; set; }
-        int LineCode { get; set; }
-        TimeSpan TimeFromStart { get; set; }
-        string LastStationName { get; set; }
-        TimeSpan ActualArrivalTime { get; set; }
+        public int LineId { get; set; }
+        public int LineCode { get; set; }
+        public TimeSpan StartTime { get; set; }
+        public string LastStationName { get; set; }
+        public TimeSpan EstWaitingTime { get; set; }
+        public override string ToString()
+        {
+            return $"Code: {LineCode} Time From Start: {StartTime} LastStationName: {LastStationName} Arrival Time: {EstWaitingTime}";
+        }
     }
 }

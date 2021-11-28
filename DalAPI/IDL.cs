@@ -21,7 +21,7 @@ namespace DalAPI
         IEnumerable<Line> GetAllLines();
         IEnumerable<Line> GetAllLinesBy(Predicate<Line> predicate);
         Line GetLine(int lineId);
-        void UpdateLine(int lineId,Action<Line>update);
+        //void UpdateLine(int lineId,Action<Line>update);
         void DeleteLine(int lineId);
         int GetNewLineId();
         #endregion

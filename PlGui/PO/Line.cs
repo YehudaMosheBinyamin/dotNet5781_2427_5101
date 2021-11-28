@@ -16,6 +16,6 @@ namespace PO
             public Areas Area { get; set; }
             public bool InService;
             public string LastStationName { get; set; }
-        }
+    }
         public enum Areas { General, North, South, Center, Jerusalem };
 }

@@ -20,15 +20,12 @@ namespace PlGui
     /// </summary>
     public partial class AddStationWindow : Window
     { ObservableCollection<PO.Station> stationCollection;
+        public bool Updated { get; set; }
         public AddStationWindow(ObservableCollection<PO.Station> stationsCollection)
         {
             InitializeComponent();
             stationCollection = stationsCollection;
             IBL bl = BlFactory.GetBl("1");
-            //IEnumerable<PO.Line> linesList = from line in bl.GetAllLines() select Utillities.LineBoPoAdapter(line);
-            //cbLines.ItemsSource= linesList;
-            //cbLines.DisplayMemberPath = "Code";
-            //cbLines.SelectedIndex = 0;
         }
         private void AddStation(object sender, RoutedEventArgs e)
         {
@@ -49,15 +46,17 @@ namespace PlGui
                 return;
             }
             poStation.Latitude = latitude;
-            poStation.LineStationsOfStation =new ObservableCollection<PO.LineStation>(); //Utillities.Convert(lbLineStations.Items.Cast<PO.LineStation>().ToList());
+            poStation.LineStationsOfStation =new ObservableCollection<PO.LineStation>();
             poStation.Longtitude = longtitude;
             poStation.Name = tbName.Text;
             poStation.Code = -1;
             stationCollection.Add(poStation);
             bl.AddStation(Utillities.StationPoBoAdapter(poStation));
+            Updated = true;
             Close();
         }
-        //NEW
+
+
         private void CancelStation(object sender, RoutedEventArgs e)
         {
             Close();

@@ -11,7 +11,7 @@ namespace dotNet5781_02_2427_5101
         public static void Main(string[] str)
         {
             int numOfBuses = 10;
-            int numOfStations = 40;
+            //int numOfStations = 40;
             List<BusStop> busStops = new List<BusStop>();
             BusLineCollection busLineCollection = new BusLineCollection();
             //---------------------                                                                                                                                           

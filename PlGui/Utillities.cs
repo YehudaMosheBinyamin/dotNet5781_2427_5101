@@ -45,7 +45,7 @@ namespace PlGui
         }
         #endregion
         #region LineStation
-        public static  PO.LineStation LineStationBoPoAdapter(BO.LineStation boLineStation)
+        public static PO.LineStation LineStationBoPoAdapter(BO.LineStation boLineStation)
         {
             PO.LineStation poLineStation = new PO.LineStation();
             poLineStation.DistanceFromPreviousStation = boLineStation.DistanceFromPreviousStation;
@@ -78,17 +78,41 @@ namespace PlGui
 
         }
         #endregion
+        #region ConvertIEnumerableToOC
         public static ObservableCollection<T> Convert<T>(IEnumerable<T> original)
         {
             return new ObservableCollection<T>(original);
         }
+        #endregion
+        #region LineTiming
+        public static PO.LineTiming LineTimingBoPoAdapter(BO.LineTiming boLineTiming)
+        {
+            PO.LineTiming poLineTiming = new PO.LineTiming();
+            poLineTiming.LastStationName = boLineTiming.LastStationName;
+            poLineTiming.LineCode = boLineTiming.LineCode;
+            poLineTiming.LineId = boLineTiming.LineId;
+            poLineTiming.StartTime = boLineTiming.StartTime;
+            poLineTiming.WaitingTime = boLineTiming.EstWaitingTime;
+            return poLineTiming;
+        }
+        public static BO.LineTiming LineTimingPoBoAdapter(PO.LineTiming poLineTiming)
+        {
+            BO.LineTiming boLineTiming = new BO.LineTiming();
+            boLineTiming.LastStationName = poLineTiming.LastStationName;
+            boLineTiming.LineCode = poLineTiming.LineCode;
+            boLineTiming.LineId = poLineTiming.LineId;
+            boLineTiming.StartTime = poLineTiming.StartTime;
+            boLineTiming.EstWaitingTime = poLineTiming.WaitingTime;
+            return boLineTiming;
+        }
+        #endregion
         #region Line
         public static PO.Line LineBoPoAdapter(BO.Line boLine)
         {
             PO.Line poLine = new PO.Line();
             poLine.Area = (PO.Areas)boLine.Area;
-            poLine.Code = boLine.Code;
             poLine.Id = boLine.Id;
+            poLine.Code = boLine.Code;
             poLine.InService = boLine.InService;
             poLine.LastStationName = boLine.LastStationName;
             poLine.stationsInLine = Convert(from ls in boLine.stationsInLine select LineStationBoPoAdapter(ls));

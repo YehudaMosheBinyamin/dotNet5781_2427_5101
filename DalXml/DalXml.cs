@@ -3,6 +3,7 @@ using DO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Xml.Linq;
 namespace DL
 {
@@ -27,7 +28,7 @@ namespace DL
         string adjacentStationsPath = @"..\bin\xml\AdjacentStation.xml";
         string lineStationsPath = @"..\bin\xml\LineStations.xml";
         string lineTripsPath = @"..\bin\xml\LineTrips.xml";
-        XElement stationRoot;
+        //XElement stationRoot;
         #region Station
         public void AddStation(Station station)
         {
@@ -186,18 +187,22 @@ namespace DL
         #region Line
         public void AddLine(Line line)
         {
-            List<Line> allLinesList = XmlInputOutput.LoadListFromXml<Line>(linePath);
-            Line tempLine = allLinesList.Find(p => p.InService == true && p.Id == line.Id);
-            if (tempLine == null || tempLine.InService == false)
-            {
-                allLinesList.Add(line);
-                XmlInputOutput.SaveListToXml(allLinesList, linePath);
+            //Added threading
+            //Thread ioThread = new Thread(() => {
+                List<Line> allLinesList = XmlInputOutput.LoadListFromXml<Line>(linePath);
+                Line tempLine = allLinesList.Find(p => p.InService == true && p.Id == line.Id);
+                if (tempLine == null || tempLine.InService == false)
+                {
+                    allLinesList.Add(line);
+                    XmlInputOutput.SaveListToXml(allLinesList, linePath);
 
-            }
-            else
-            {
-                throw new LineAlreadyExistsException(line.Id, $"This line with id: {line.Id}  already exists-Bus with code{line.Code} and is active so it can't be added");
-            }
+                }
+                else
+                {
+                    throw new LineAlreadyExistsException(line.Id, $"This line with id: {line.Id}  already exists-Bus with code{line.Code} and is active so it can't be added");
+                }
+           // });
+              //  ioThread.Start();
         }
         /// <summary>
         /// To get lines from database
@@ -205,9 +210,8 @@ namespace DL
         /// <returns></returns>
         public IEnumerable<Line> GetAllLines()
         {
-
             List<Line> allLinesList = XmlInputOutput.LoadListFromXml<Line>(linePath);
-            var v = from line in allLinesList where line.InService == true select line;//b4 without distinct
+            var v = from line in allLinesList where line.InService == true select line;
             return v;
         }
         public IEnumerable<Line> GetAllLinesBy(Predicate<Line> predicate)
@@ -216,7 +220,6 @@ namespace DL
         }
         public Line GetLine(int lineId)
         {
-
             List<Line> linesList = XmlInputOutput.LoadListFromXml<Line>(linePath);
             Line tempLine = linesList.Find(p => p.Id == lineId && p.InService == true);
             if (tempLine != null)
@@ -227,9 +230,6 @@ namespace DL
             {
                 throw new NoLineFoundException(lineId, $"The line with id: {lineId} doesn't exist ");
             }
-
-
-
         }
         public int GetNewLineId()
         {
@@ -240,7 +240,6 @@ namespace DL
             newIdElement.Value = newIdValue.ToString();
             doc.Save(configPath);
             return currentId;
-            //return Configuration.LineId;
         }
         /// <summary>
         /// Each new station gets a unique code from configuration 
@@ -256,10 +255,6 @@ namespace DL
             doc.Save(configPath);
             return currentCode;
             //return Configuration.StationCode;
-        }
-        //not needed
-        public void UpdateLine(int lineId, Action<Line> update)
-        {
         }
         public void DeleteLine(int lineId)
         {
@@ -279,8 +274,7 @@ namespace DL
         #endregion
         #region LineStation
         public bool InLineStations(int lineId, int stationCode)
-        {
-            List<LineStation> lineStationList = XmlInputOutput.LoadListFromXml<LineStation>(lineStationsPath);
+        { List<LineStation> lineStationList = XmlInputOutput.LoadListFromXml<LineStation>(lineStationsPath);
             int id = lineId;
             int code = stationCode;
             LineStation tempLineStation = lineStationList.Find(p => p.LineId == id && p.Station == code && p.InService == true);
@@ -313,12 +307,26 @@ namespace DL
         public IEnumerable<LineStation> GetAllLineStations()
         {
             List<LineStation> allLineStationsList = XmlInputOutput.LoadListFromXml<LineStation>(lineStationsPath);
-            var v = from lineStation in allLineStationsList where lineStation.InService==true select lineStation;
-            return v;
+              var v = from lineStation in allLineStationsList where lineStation.InService==true select lineStation;
+              return v;
         }
 
         public LineStation GetLineStation(int lineId, int stationCode)
         {
+           /** List<LineStation> lineStationsList = new List<LineStation>();
+            Thread readThread=new Thread(()=> { lineStationsList=(from lineStation in XmlInputOutput.LoadListFromXml<LineStation>(lineStationsPath) select lineStation).ToList();});
+            readThread.Start();
+            readThread.Join();
+            LineStation tempLineStation = lineStationsList.FirstOrDefault(p => (p.LineId == lineId) && (p.Station == stationCode) && (p.InService == true));
+            if (tempLineStation != null)
+            {
+                return tempLineStation;
+            }
+            else
+            {
+                throw new NoLineStationFoundException(lineId, stationCode, $"The lineStation with id: {lineId} doesn't exist ");
+            }**/
+            
             List<LineStation> lineStationsList = (from lineStation in XmlInputOutput.LoadListFromXml<LineStation>(lineStationsPath) select lineStation).ToList();
             LineStation tempLineStation = lineStationsList.FirstOrDefault(p => (p.LineId == lineId) && (p.Station == stationCode) && (p.InService == true));
             if (tempLineStation != null)
@@ -329,15 +337,29 @@ namespace DL
             {
                 throw new NoLineStationFoundException(lineId, stationCode, $"The lineStation with id: {lineId} doesn't exist ");
             }
+            
 
         }
 
         
         public IEnumerable<LineStation> GetAllLineStationsByLine(int lineId)
         {
+            /**IEnumerable<LineStation> lineStationsOfLine=null;
+            Thread readThread = new Thread(() =>
+              {
+                  lineStationsOfLine=from lineStation
+                  in XmlInputOutput.LoadListFromXml<LineStation>(lineStationsPath)
+                  where
+                  lineStation.InService == true && lineStation.LineId == lineId
+                  select lineStation;
+              });
+            readThread.Start();
+            readThread.Join();
+            return lineStationsOfLine;**/
             IEnumerable<LineStation> lineStationsOfLine = from lineStation 
                                                           in XmlInputOutput.LoadListFromXml<LineStation>(lineStationsPath)
-                                                          where lineStation.InService==true && lineStation.LineId==lineId
+                                                          where 
+                                                          lineStation.InService==true && lineStation.LineId==lineId
                                                           select lineStation ;
             return lineStationsOfLine;
 
@@ -371,7 +393,7 @@ namespace DL
             XmlInputOutput.SaveListToXml<LineStation>(allLineStations, lineStationsPath);
         }
         #endregion
-        public User GetUser(string userName)
+         public User GetUser(string userName)
         {
 
             return null;
@@ -379,7 +401,8 @@ namespace DL
         }
         /**
             #endregion
-            #region User
+        #region User
+       
             public void AddUser(User user)
             {
                 User tempUser = DataSource.usersList.Find(p => p.UserName == user.UserName);
@@ -487,6 +510,16 @@ namespace DL
         /// <returns></returns>
         public AdjacentStations GetAdjacentStations(int stationOneCode, int stationTwoCode)
         {
+            /**List<AdjacentStations> allAdjacentStations = new List<AdjacentStations>();
+            Thread readThread = new Thread(() => { allAdjacentStations = XmlInputOutput.LoadListFromXml<AdjacentStations>(adjacentStationsPath); });
+            readThread.Start();
+            readThread.Join();
+           AdjacentStations adjStat = allAdjacentStations.Find(p => p.Station1 == stationOneCode && p.Station2 == stationTwoCode && p.InService == true);
+           if (adjStat == null)
+           {
+               throw new AdjacentStationsDoesntExistException(stationOneCode, stationTwoCode, $"There is no two adjacent stations codes{stationOneCode} {stationTwoCode}");
+           }
+           return adjStat;**/
             List<AdjacentStations> allAdjacentStations = XmlInputOutput.LoadListFromXml<AdjacentStations>(adjacentStationsPath);
             AdjacentStations adjStat = allAdjacentStations.Find(p => p.Station1 == stationOneCode && p.Station2 == stationTwoCode && p.InService == true);
             if (adjStat == null)
@@ -532,7 +565,7 @@ namespace DL
         }
         public void AddLineTrip(LineTrip lineTrip)
         {
-            int id = lineTrip.Id;
+           int id = lineTrip.Id;
             int lineId = lineTrip.LineId;
             List<LineTrip> allLineTrips = XmlInputOutput.LoadListFromXml<LineTrip>(lineTripsPath);
             LineTrip tempLineTrip = allLineTrips.Find(p => p.LineId == lineId && p.Id == id && p.InService == true);

@@ -71,6 +71,7 @@
     <Compile Include="PO\AdjacentStations.cs" />
     <Compile Include="PO\Line.cs" />
     <Compile Include="PO\LineStation.cs" />
+    <Compile Include="PO\LineTiming.cs" />
     <Compile Include="PO\LineTrip.cs" />
     <Compile Include="PO\Station.cs" />
     <Compile Include="StationsWindow.xaml.cs">

@@ -8,7 +8,8 @@ namespace PlGui
     /// Interaction logic for TimeTableWindow.xaml
     /// </summary>
     public partial class TimeTableWindow : Window
-    {   private PO.Line previousLine;//line before edit
+    {   public bool Updated { get; set; }
+        private PO.Line previousLine;//line before edit
         ObservableCollection<PO.LineTrip> lineExits;
         private PO.Line updatedLine;//line after edit
         public TimeTableWindow(PO.Line currentLine)
@@ -73,9 +74,10 @@ namespace PlGui
         private void TimeTableFinishEvent(object sender, RoutedEventArgs e)
         {
             IBL bl = BlFactory.GetBl("1");
-            updatedLine.lineExits = lineExits;
-            bl.UpdateLine(previousLine.Id, Utillities.LinePoBoAdapter(updatedLine));
-            this.Close();
+                updatedLine.lineExits = lineExits;
+                bl.UpdateLine(previousLine.Id, Utillities.LinePoBoAdapter(updatedLine));
+                Updated = true;
+            Close();
         }
         /// <summary>
         /// To add a time before all other times

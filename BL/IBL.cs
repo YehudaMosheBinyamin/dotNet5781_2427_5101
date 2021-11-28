@@ -7,6 +7,10 @@ namespace BlApi
 {
     public interface IBL
     {
+        #region Simulator
+        void StartSimulator(TimeSpan startTime, int Rate, Action<TimeSpan> updateTime);
+        void StopSimulator();
+        #endregion
         #region Bus
         //void AddBus(Bus bus);
         //IEnumerable<BO.Bus> GetAllBuses();
@@ -16,13 +20,12 @@ namespace BlApi
         //void DeleteBus(string licenseNum);
         #endregion
         #region Line
-         void AddLine(Line line);
+        void AddLine(Line line);
         IEnumerable<Line> GetAllLines();
         IEnumerable<Line> GetAllLinesByStation(int stationCode);
         Line GetLine(int id);
         void DeleteLine(int lineId);
         void UpdateLine(int oldLineId, Line newLine);
-        //void DeleteLine(int id);
         #endregion
         #region LineStation
         //void AddLineStation(LineStation lineStation,int lineId);
@@ -65,12 +68,10 @@ namespace BlApi
         //IEnumerable<BO.AdjacentStations> GetAllAdjacentsStationsInLine(Line line);Maybe needed---------
         //IEnumerable<BO.AdjacentStations> GetAllAdjacentStationsOfLine(int )
         #endregion
+        #region Simulator
         float GetRandomDistance();
         TimeSpan GetMinutesOfTravel(float distance);
-        #region Simulator
-        void StartSimulator(TimeSpan simulationbeginTime, int speed, Action<TimeSpan> action);
-        void StopSimulator();
+        void SetStationPanel(int station, Action<LineTiming,int> updateBus);
         #endregion
-
     }
 }

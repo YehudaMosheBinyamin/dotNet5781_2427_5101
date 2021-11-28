@@ -14,13 +14,13 @@ namespace dotNet5781_01_2427_5101
         Status state;
         public Status State { get { return state; } set { state= value; } }
         private readonly string  licenseNumber; // מספר רישוי
-        private  bool  isDangerous; // האם מסוכן
+        //private  bool  isDangerous; // האם מסוכן
         private DateTime start; // תאריך תחילת שרות
         private DateTime lastTreated; // תאריך טיפול אחרון
         private int allKmTrav; // קילומטרז
         private int kmSinceTreated; // קמ מאז טיפול אחרון
         private int kmPossible; // כמה קמ אפשר לנסוע כעת כתלות במצב הדלק
-        static DateTime currentDate; // משתנה זה מצין את היום הנוכחי
+        //static DateTime currentDate; // משתנה זה מצין את היום הנוכחי
         //------------------------------------------- 
         // set/get for  all...
         public string LicenseNumber
