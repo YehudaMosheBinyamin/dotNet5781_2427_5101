@@ -145,6 +145,7 @@ namespace PlGui
                 cbBusLines.DisplayMemberPath = "Code";
                 cbBusLines.SelectedIndex = 0;
                 MessageBox.Show("Line edited successfully");
+                int h = 4;
             }
         }
         /// <summary>
