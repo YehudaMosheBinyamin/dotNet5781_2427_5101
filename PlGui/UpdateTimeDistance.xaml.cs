@@ -55,11 +55,8 @@ namespace PlGui
                 }
                 newDistance = (float)Math.Round(newDistance, 2);
                 IBL bl = BlFactory.GetBl("1");
-            if (!((newDistance == adjForUpdate.Distance) && (newTime == adjForUpdate.Time)))
-            {
                 Updated = true;
                 bl.UpdateAdjacentStations(adjForUpdate.Station1, adjForUpdate.Station2, newDistance, newTime); 
-            }
                 Close();
             
         }

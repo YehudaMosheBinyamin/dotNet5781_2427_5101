@@ -65,13 +65,12 @@ namespace BlApi
         void DeleteAdjacentStations(int station1, int station2);
         IEnumerable<BO.AdjacentStations> GetAllAdjacentStations();
         BO.AdjacentStations GetAdjacentStations(int codeOne,int codeTwo);
-        //IEnumerable<BO.AdjacentStations> GetAllAdjacentsStationsInLine(Line line);Maybe needed---------
-        //IEnumerable<BO.AdjacentStations> GetAllAdjacentStationsOfLine(int )
         #endregion
         #region Simulator
         float GetRandomDistance();
         TimeSpan GetMinutesOfTravel(float distance);
         void SetStationPanel(int station, Action<LineTiming,int> updateBus);
+        bool IsClockOn();
         #endregion
     }
 }

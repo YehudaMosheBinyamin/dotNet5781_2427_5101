@@ -35,10 +35,10 @@ namespace PlGui
         /// To show details of line chosen in combobox
         /// </summary>
         /// <param name="lineNumber"></param>
-        public void ShowBusLine(int lineNumber)
+        public void ShowBusLine(int lineId)
         {
             // currentDisplayBusLine = boLine;
-            currentDisplayBusLine = linesCollection.FirstOrDefault(p => p.Code == lineNumber);
+            currentDisplayBusLine = linesCollection.FirstOrDefault(p => p.Id == lineId);
             UpGrid.DataContext = currentDisplayBusLine;
             poLineStationsOfLine = Utillities.Convert((from ls in bl.GetAllLineStationsByLine(currentDisplayBusLine.Id) select Utillities.LineStationBoPoAdapter(ls)).ToList());
             lbBusLineStations.DataContext = poLineStationsOfLine;
@@ -56,7 +56,7 @@ namespace PlGui
             }
             if ((cbBusLines.SelectedValue as PO.Line) != null)
             {
-                ShowBusLine((cbBusLines.SelectedValue as PO.Line).Code);
+                ShowBusLine((cbBusLines.SelectedValue as PO.Line).Id);
             }
         }
         /// <summary>
@@ -68,21 +68,23 @@ namespace PlGui
         {
             int index = cbBusLines.SelectedIndex;
             PO.LineStation poLineStation = lbBusLineStations.SelectedValue as PO.LineStation;
-            //UpdateTimeDistance updateTimeDistance = new UpdateTimeDistance(poLineStation);
-            //updateTimeDistance.ShowDialog();
             LineStationUpdateWindow lineStationUpdateWindow = new LineStationUpdateWindow(poLineStation);
-            lineStationUpdateWindow.ShowDialog();
-            linesCollection.Clear();
-            ObservableCollection<PO.Line> temp = new ObservableCollection<PO.Line>();
-            temp = Utillities.Convert(from line in bl.GetAllLines() select Utillities.LineBoPoAdapter(line));
-            foreach (PO.Line line in temp)
+            
+                lineStationUpdateWindow.ShowDialog();
+            if (lineStationUpdateWindow.Updated == true)
             {
-                linesCollection.Add(line);
+                linesCollection.Clear();
+                ObservableCollection<PO.Line> temp = new ObservableCollection<PO.Line>();
+                temp = Utillities.Convert(from line in bl.GetAllLines() select Utillities.LineBoPoAdapter(line));
+                foreach (PO.Line line in temp)
+                {
+                    linesCollection.Add(line);
+                }
+                cbBusLines.ItemsSource = linesCollection;
+                cbBusLines.DisplayMemberPath = "Code";
+                cbBusLines.SelectedIndex = index;
+                MessageBox.Show("Time and distance between stations changed successfully");
             }
-            cbBusLines.ItemsSource = linesCollection;
-            cbBusLines.DisplayMemberPath = "Code";
-            cbBusLines.SelectedIndex = index;
-            MessageBox.Show("Time and distance between stations changed successfully");
         }
 
         /// <summary>
@@ -94,18 +96,20 @@ namespace PlGui
         {
             AddLineWindow addLineWindow = new AddLineWindow(linesCollection);
             addLineWindow.ShowDialog();
-            //linesCollection = Utillities.Convert(from line in bl.GetAllLines() select Utillities.LineBoPoAdapter(line));
-            linesCollection.Clear();
-            ObservableCollection<PO.Line> temp = new ObservableCollection<PO.Line>();
-            temp = Utillities.Convert(from line in bl.GetAllLines() select Utillities.LineBoPoAdapter(line));
-            foreach (PO.Line line in temp)
+            if (addLineWindow.Updated == true)
             {
-                linesCollection.Add(line);
+                linesCollection.Clear();
+                ObservableCollection<PO.Line> temp = new ObservableCollection<PO.Line>();
+                temp = Utillities.Convert(from line in bl.GetAllLines() select Utillities.LineBoPoAdapter(line));
+                foreach (PO.Line line in temp)
+                {
+                    linesCollection.Add(line);
+                }
+                cbBusLines.ItemsSource = linesCollection;
+                cbBusLines.DisplayMemberPath = "Code";
+                cbBusLines.SelectedIndex = 0;
+                MessageBox.Show("Line added successfully");
             }
-            cbBusLines.ItemsSource = linesCollection;
-            cbBusLines.DisplayMemberPath = "Code";
-            cbBusLines.SelectedIndex = 0;
-            MessageBox.Show("Line added successfully");
         }
         /// <summary>
         /// For details about station
@@ -114,7 +118,6 @@ namespace PlGui
         /// <param name="e"></param>
         private void DisplayStationDetails(object sender, MouseButtonEventArgs e)
         {
-            //selectedLineStation = lbBusLineStations.SelectedValue as BO.LineStation;
             selectedLineStation = lbBusLineStations.SelectedValue as PO.LineStation;
             selectedStation = Utillities.StationBoPoAdapter(bl.GetStation(selectedLineStation.Station));
             WindowStationDetails wsd = new WindowStationDetails(selectedStation, linesCollection);
@@ -129,39 +132,45 @@ namespace PlGui
         {
             WindowEdit windowEdit = new WindowEdit(cbBusLines.SelectedValue as PO.Line);
             windowEdit.ShowDialog();
-            linesCollection.Clear();
-            ObservableCollection<PO.Line> temp = new ObservableCollection<PO.Line>();
-            temp = Utillities.Convert(from line in bl.GetAllLines() select Utillities.LineBoPoAdapter(line));
-            foreach (PO.Line line in temp)
+            if (windowEdit.Updated == true)
             {
-                linesCollection.Add(line);
+                linesCollection.Clear();
+                ObservableCollection<PO.Line> temp = new ObservableCollection<PO.Line>();
+                temp = Utillities.Convert(from line in bl.GetAllLines() select Utillities.LineBoPoAdapter(line));
+                foreach (PO.Line line in temp)
+                {
+                    linesCollection.Add(line);
+                }
+                cbBusLines.ItemsSource = linesCollection;
+                cbBusLines.DisplayMemberPath = "Code";
+                cbBusLines.SelectedIndex = 0;
+                MessageBox.Show("Line edited successfully");
             }
-            cbBusLines.ItemsSource = linesCollection;
-            cbBusLines.DisplayMemberPath = "Code";
-            cbBusLines.SelectedIndex = 0;
-            MessageBox.Show("Line edited successfully");
         }
         /// <summary>
         /// For deletion of line
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void DeleteLine(object sender, RoutedEventArgs e)
         {
             PO.Line lineForDeletion = cbBusLines.SelectedValue as PO.Line;
-            //linesCollection.Remove(lineForDeletion);
-            bl.DeleteLine(lineForDeletion.Id);
-            linesCollection.Clear();
-            ObservableCollection<PO.Line> temp = new ObservableCollection<PO.Line>();
-            temp = Utillities.Convert(from line in bl.GetAllLines() select Utillities.LineBoPoAdapter(line));
-            foreach (PO.Line line in temp)
+            var dialogResult = MessageBox.Show($"Are you sure you want to delete line {lineForDeletion.Code}?", "Warning:Deletion with no option to undo", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (dialogResult == MessageBoxResult.Yes)
             {
-                linesCollection.Add(line);
+                bl.DeleteLine(lineForDeletion.Id);
+                linesCollection.Clear();
+                ObservableCollection<PO.Line> temp = new ObservableCollection<PO.Line>();
+                temp = Utillities.Convert(from line in bl.GetAllLines() select Utillities.LineBoPoAdapter(line));
+                foreach (PO.Line line in temp)
+                {
+                    linesCollection.Add(line);
+                }
+                cbBusLines.ItemsSource = linesCollection;
+                cbBusLines.DisplayMemberPath = "Code";
+                cbBusLines.SelectedIndex = 0;
+                MessageBox.Show("Line Deleted Successfully!");
             }
-            cbBusLines.ItemsSource = linesCollection;
-            cbBusLines.DisplayMemberPath = "Code";
-            cbBusLines.SelectedIndex = 0;
-            MessageBox.Show("Line Deleted Successfully!");
         }
         /// <summary>
         /// For click on timetable of line.Lets to see time table and edit it.
@@ -173,19 +182,20 @@ namespace PlGui
             TimeTableWindow timeTableWindow = new TimeTableWindow(cbBusLines.SelectedValue as PO.Line);
             PO.Line currentLine = cbBusLines.SelectedValue as PO.Line;
             timeTableWindow.ShowDialog();
-            linesCollection.Clear();
-            ObservableCollection<PO.Line> temp = new ObservableCollection<PO.Line>();
-            temp = Utillities.Convert(from line in bl.GetAllLines() select Utillities.LineBoPoAdapter(line));
-            foreach (PO.Line line in temp)
+            if (timeTableWindow.Updated == true)
             {
-                linesCollection.Add(line);
+                linesCollection.Clear();
+                ObservableCollection<PO.Line> temp = new ObservableCollection<PO.Line>();
+                temp = Utillities.Convert(from line in bl.GetAllLines() select Utillities.LineBoPoAdapter(line));
+                foreach (PO.Line line in temp)
+                {
+                    linesCollection.Add(line);
+                }
+                cbBusLines.ItemsSource = linesCollection;
+                cbBusLines.DisplayMemberPath = "Code";
+                cbBusLines.SelectedIndex = 0;
+                MessageBox.Show("Line's timetable changed successfully!");
             }
-            cbBusLines.ItemsSource = linesCollection;
-            cbBusLines.DisplayMemberPath = "Code";
-            cbBusLines.SelectedIndex = 0;
-            MessageBox.Show("Line's timetable changed successfully!");
-
-
         }
     }
 }

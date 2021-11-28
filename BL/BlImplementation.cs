@@ -1023,7 +1023,14 @@ namespace BL
         {
             simulatorClock.Cancel = true;
         }
-
+        /// <summary>
+        /// Return whether the clock is running or not
+        /// </summary>
+        /// <returns></returns>
+        public bool IsClockOn()
+        {
+            return !simulatorClock.Cancel;
+        }
         /// <summary>
         /// A function to dispatch lines on routes
         /// </summary>
@@ -1130,10 +1137,6 @@ namespace BL
                 //Sleep the amount of time in miliseconds the bus will take to get to current station from previous station
                 //It is times 1000 to convert from seconds to milliseconds and times 1/rate to wait less time if the simulation clock is running at a different rate than 1
                 int waitingTime = 1000 * ((int)Math.Ceiling((double)(Functions.DelayOrEarlyArrival(ls.TimeFromPreviousStation) * (1 / (double)simulatorClock.Rate))));
-                if(line.stationsInLine.ElementAt(stationIndex).Station==60010)
-                {
-                    string pilpel="BLAP";
-                }
                 Thread.Sleep(waitingTime);
                 if (simulatorClock.Cancel == false)
                 {

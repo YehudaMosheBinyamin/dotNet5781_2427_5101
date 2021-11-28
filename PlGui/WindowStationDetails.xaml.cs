@@ -71,8 +71,8 @@ namespace PlGui
                 allLines.Add(l);
             }
             if (windowEdit.Updated == true)
-            { 
-                MessageBox.Show("Line edited successfully"); 
+            {
+                MessageBox.Show("Line edited successfully");
             }
         }
         /// <summary>
@@ -88,9 +88,9 @@ namespace PlGui
             {
                 Dispatcher.Invoke(() =>
               {
-                  PO.LineTiming currentLineApproaching=arrivalCollection.FirstOrDefault(p => p.LineId == lineTiming.LineId);
+                  PO.LineTiming currentLineApproaching = arrivalCollection.FirstOrDefault(p => p.LineId == lineTiming.LineId);
                   //The line doesn't appear yet in approaching lines
-                  if (currentLineApproaching==null)
+                  if (currentLineApproaching == null)
                   {
                       arrivalCollection.Add(Utillities.LineTimingBoPoAdapter(lineTiming));
                   }
@@ -100,7 +100,7 @@ namespace PlGui
                       arrivalCollection[indexCurrentInCollection].WaitingTime = lineTiming.EstWaitingTime;//update waiting time for line.
                   }
                   //Credit: https://stackoverflow.com/questions/19112922/sort-observablecollectionstring-through-c-sharp
-                   arrivalCollection = new ObservableCollection<PO.LineTiming>(arrivalCollection.OrderBy(arrival => arrival.WaitingTime));
+                  arrivalCollection = new ObservableCollection<PO.LineTiming>(arrivalCollection.OrderBy(arrival => arrival.WaitingTime));
                   closestToStation = arrivalCollection.ElementAt(0);
                   //If a line has arrived, or is predicted to be already at the station remove the line from the arrivalCollection and display it in lbLastThere
                   if (closestToStation.WaitingTime == TimeSpan.Zero)
@@ -123,17 +123,34 @@ namespace PlGui
         /// <param name="e"></param>
         private void startTrackStation(object sender, RoutedEventArgs e)
         {
-            if (btTrack.Content.ToString()=="Track")
+            if (btTrack.Content.ToString() == "Track")
             {
+                IBL bl = BlFactory.GetBl("1");
+                bool isClockOn = bl.IsClockOn();
+                if (!isClockOn)
+                {
+                    MessageBox.Show("Run clock in ManagerWindow, and try again");
+                    return;
+                }
                 backgroundWorker.RunWorkerAsync();
                 btTrack.Content = "Stop Track";
-                lbLastThere.Items.Clear();
+              
             }
             else
             {
-                btTrack.Content ="Track";
+                IBL bl = BlFactory.GetBl("1");
+                bl.StopSimulator();  
+                if (arrivalCollection != null)
+                { 
+                    arrivalCollection.Clear(); 
+                }
+                if (arrivedCollection != null)
+                { 
+                    arrivedCollection.Clear(); 
+                }
+                btTrack.Content = "Track";
             }
-            
+
         }
     }
 }

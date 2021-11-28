@@ -43,11 +43,8 @@ namespace PlGui
             IBL bl = BlFactory.GetBl("1");
             if (lineStationForEditing != null)
             {
-                if (!((lineStationForEditing.DistanceFromPreviousStation == newDistance) && (lineStationForEditing.TimeFromPreviousStation == newTime)))
-                {
                     bl.UpdateAdjacentStations(lineStationForEditing.PrevStation, lineStationForEditing.Station, newDistance, newTime);
                     Updated = true;
-                }
             }
 
             Close();
