@@ -26,18 +26,18 @@ namespace BL
             return minutesTravel;
         }
         /// <summary>
-        /// Calculates a random amount of time in seconds between slightly bigger than 0.9*originalWaitingTime(earlier by about 10%)  
-        /// to just  2*originalWaitingTime (late and will take twice the amount of time to reach station)
+        /// Calculates a random amount of time in seconds between  0.9*originalWaitingTime(earlier by about 10%)  
+        /// to just under 2*originalWaitingTime (late and will take twice the amount of time to reach station)
         /// </summary>
         /// <param name="originalWaitingTime">Time from previous station to current station</param>
         /// 
-        public static int DelayOrEarlyArrival(TimeSpan originalWaitingTime)
+        public static double DelayOrEarlyArrival(TimeSpan originalWaitingTime)
         {
             int hours = originalWaitingTime.Hours;
             int minutes = originalWaitingTime.Minutes;
             int seconds = originalWaitingTime.Seconds;
             int totalSeconds = (hours * 3600) + (minutes * 60) + seconds;
-            int newSecondsTotal= (int)Math.Ceiling(totalSeconds*(random.NextDouble() * (2.0 - 0.9) + 0.9));//New time expressed in seconds
+            double newSecondsTotal= totalSeconds*(random.NextDouble() * (2.0 - 0.9) + 0.9);//New time expressed in seconds
             return newSecondsTotal;
         }
     }

@@ -123,17 +123,25 @@ namespace PlGui
         /// <param name="e"></param>
         private void startTrackStation(object sender, RoutedEventArgs e)
         {
+            
             if (btTrack.Content.ToString() == "Track")
-            {
-                IBL bl = BlFactory.GetBl("1");
-                bool isClockOn = bl.IsClockOn();
-                if (!isClockOn)
+            {try
                 {
-                    MessageBox.Show("Run clock in ManagerWindow, and try again");
+                    IBL bl = BlFactory.GetBl("1");
+                    bool isClockOn = bl.IsClockOn();
+                    if (!isClockOn)
+                    {
+                        MessageBox.Show("Run clock in ManagerWindow, and try again");
+                        return;
+                    }
+                    backgroundWorker.RunWorkerAsync();
+                    btTrack.Content = "Stop Track";
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Busy shutting down display. Please try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
-                backgroundWorker.RunWorkerAsync();
-                btTrack.Content = "Stop Track";
               
             }
             else

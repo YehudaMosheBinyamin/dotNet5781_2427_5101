@@ -1130,9 +1130,9 @@ namespace BL
             }
 
             //foreach (LineStation ls in line.stationsInLine)
-            for(int stationIndex=0;stationIndex<line.stationsInLine.Count();++stationIndex)
+            for (int stationIndex = 0; stationIndex < line.stationsInLine.Count(); ++stationIndex)
             {
-                
+
                 LineStation ls = line.stationsInLine.ElementAt(stationIndex);
                 //Sleep the amount of time in miliseconds the bus will take to get to current station from previous station
                 //It is times 1000 to convert from seconds to milliseconds and times 1/rate to wait less time if the simulation clock is running at a different rate than 1
