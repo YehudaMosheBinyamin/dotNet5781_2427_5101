@@ -9,5 +9,4 @@ namespace DO
     private static int lineTripId;
     public static int LineTripId { get { lineTripId = lineTripId + 1;return lineTripId; } }
     public static int StationCode { get{ stationCode = stationCode + 1;return stationCode; } }
-    //private static int tripId;//for stagetwo
 } }
