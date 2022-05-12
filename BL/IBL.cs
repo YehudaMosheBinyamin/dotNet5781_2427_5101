@@ -28,9 +28,6 @@ namespace BlApi
         Station GetStation(int code);
         int getNewCode();
         #endregion
-        #region User
-        bool CheckUserPassword(User user,bool needsAdmin=false);
-        #endregion
         #region AdjacentStations
         void AddAdjacentStations(int station1, int station2, float distance, TimeSpan waitingTime);
         bool AdjacentStationsExists(int station1, int station2);
