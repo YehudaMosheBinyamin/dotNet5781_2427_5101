@@ -14,7 +14,6 @@ namespace PO
             public double Longtitude { get; set; }
             public double Latitude { get; set; }
             public ObservableCollection<LineStation> LineStationsOfStation { get; set; }
-            //public bool InService;
             public override string ToString()
             {
                 return $"{Code} {Name} ";
