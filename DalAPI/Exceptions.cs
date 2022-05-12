@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -99,56 +99,6 @@ namespace DO
         }
     }
     #endregion
-    #region Bus
-    [Serializable]
-    public class NoBusFoundException : Exception
-    {
-        public string LicenseNum;
-        public NoBusFoundException(string licenseNum) : base()
-        {
-            LicenseNum = licenseNum;
-        }
-
-        public NoBusFoundException(string licenseNum, string message) : base(message)
-        {
-            LicenseNum = licenseNum;
-
-        }
-        public NoBusFoundException(string licenseNum, string message, Exception innerException) : base(message, innerException)
-        {
-            LicenseNum = licenseNum;
-        }
-
-        public override string ToString()
-        {
-            return base.ToString() + $"There is no bus with the license number:{LicenseNum}";
-        }
-    }
-    [Serializable]
-    public class BusAlreadyExistsException : Exception
-    {
-        public string LicenseNum;
-        public BusAlreadyExistsException(string licenseNum) : base()
-        {
-            LicenseNum = licenseNum;
-        }
-
-        public BusAlreadyExistsException(string licenseNum, string message) : base(message)
-        {
-            LicenseNum = licenseNum;
-
-        }
-        public BusAlreadyExistsException(string licenseNum, string message, Exception innerException) : base(message, innerException)
-        {
-            LicenseNum = licenseNum;
-        }
-
-        public override string ToString()
-        {
-            return base.ToString() + $"There is already a bus with the license number:{LicenseNum}";
-        }
-    }
-    #endregion
     #region Line
     [Serializable]
     public class LineAlreadyExistsException : Exception
@@ -196,45 +146,6 @@ namespace DO
         public override string ToString()
         {
             return base.ToString() + $"There is no line with the Id:{LineId}";
-        }
-    }
-    #endregion
-    #region User
-    [Serializable]
-    public class NoUserFoundException : Exception
-    {
-        public string UserName;
-        public NoUserFoundException(string userName) : base(userName)
-        {
-            UserName = userName;
-
-        }
-        public NoUserFoundException(string userName,string message, Exception innerException) : base(userName, innerException)
-        {
-            UserName = userName;
-        }
-
-        public override string ToString()
-        {
-            return base.ToString() + $"There is no user on the system with the name: {UserName}";
-        }
-    }
-    public class UserAlreadyExistsException : Exception
-    {
-        public string UserName;
-        public UserAlreadyExistsException(string userName) : base(userName)
-        {
-            UserName = userName;
-
-        }
-        public UserAlreadyExistsException(string userName, string message, Exception innerException) : base(userName, innerException)
-        {
-            UserName = userName;
-        }
-
-        public override string ToString()
-        {
-            return base.ToString() + $"There is no user on the system with the name: {UserName}";
         }
     }
     #endregion
@@ -310,6 +221,3 @@ namespace DO
     }
     #endregion
 }
-
-
-
