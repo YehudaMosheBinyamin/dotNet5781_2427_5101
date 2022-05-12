@@ -5,6 +5,8 @@ using System.Text;
 using System.Linq;
 namespace DS
 {
+    //Class to initialize data for application when data is chosen in tag: <dl> in configuration.xml file of solution files. This option initializes all info for current use-
+    //the information doesn't get saved in a file for the next usage.
     public static class DataSource
     {
         public static Random random;
@@ -80,24 +82,6 @@ namespace DS
         new Station{Code=38891, Name="צאלה/אלמוג", Longtitude=34.787199, Latitude=31.801182}
 
 };
-            busesList = new List<Bus>
-            {
-            new Bus
-            {
-                LicenseNum="12301101",
-                FromDate=DateTime.Parse("23.12.20"),
-                TotalTrip=100,
-                FuelRemain=1000.9,
-                Status=BusStatus.Ready
-            },
-         new Bus
-            {
-                LicenseNum="8820050",
-                FromDate=DateTime.Parse("3.10.9"),
-                TotalTrip=10000,
-                 FuelRemain=1000,
-                 Status=BusStatus.Ready
-            }};
             linesList = new List<Line>
 {new Line
 {
@@ -194,8 +178,6 @@ new Line
 };
             lineStationsList = new List<LineStation>
             {
-            //new LineStation{LineId=1,Station=00000,LineStationIndex=-1,PrevStation=00000,NextStation=38831},
-            //new LineStation { LineId = 1, Station = 38831, LineStationIndex = -1, PrevStation = 38831, NextStation = 38831,InService=true},
             new LineStation { LineId = 1, Station = 38831, LineStationIndex = 0, PrevStation = 38831, NextStation = 38832,InService=true},
             new LineStation { LineId = 1, Station = 38832, LineStationIndex = 1, PrevStation = 38831, NextStation = 38833,InService=true},
             new LineStation { LineId = 1, Station = 38833, LineStationIndex = 2, PrevStation = 38832, NextStation = 38834,InService=true},
@@ -206,7 +188,6 @@ new Line
             new LineStation { LineId = 1, Station = 38839, LineStationIndex = 7, PrevStation = 38838, NextStation = 38840,InService=true},
             new LineStation { LineId = 1, Station = 38840, LineStationIndex = 8, PrevStation = 38839, NextStation = 38841,InService=true},
             new LineStation { LineId = 1, Station = 38841, LineStationIndex = 9, PrevStation = 38840, NextStation = 38841,InService=true},
-           // new LineStation{LineId=1,Station=00000,LineStationIndex=10,PrevStation=38842,NextStation=00000},
             new LineStation{LineId=2,Station=38842,LineStationIndex=-1,PrevStation=38842,NextStation=38842,InService=true},
             new LineStation { LineId = 2, Station = 38842, LineStationIndex = 0, PrevStation = 38842, NextStation = 38844,InService=true},
             new LineStation { LineId = 2, Station = 38844, LineStationIndex = 1, PrevStation = 38842, NextStation = 38845,InService=true},
@@ -219,8 +200,6 @@ new Line
             new LineStation { LineId = 2, Station = 38854, LineStationIndex = 8, PrevStation = 38852, NextStation = 38855,InService=true},
 
             new LineStation { LineId = 2, Station = 38855, LineStationIndex = 9, PrevStation = 38854, NextStation = 38855,InService=true},
-           // new LineStation{LineId=2,Station=00000,LineStationIndex=10,PrevStation=38855,NextStation=00000},
-           // new LineStation{LineId=3,Station=00000,LineStationIndex=-1,PrevStation=00000,NextStation=38856},
             new LineStation { LineId = 3, Station = 38856, LineStationIndex = 0, PrevStation = 38856, NextStation = 38859,InService=true},
             new LineStation { LineId = 3, Station = 38859, LineStationIndex = 1, PrevStation = 38856, NextStation = 38860,InService=true},
             new LineStation { LineId = 3, Station = 38860, LineStationIndex = 2, PrevStation = 38859, NextStation = 38861,InService=true},
@@ -245,8 +224,6 @@ new Line
             new LineStation{LineId=4,Station=38842, LineStationIndex=2, PrevStation=38844, NextStation=38841,InService=true},
             new LineStation{LineId=4,Station=38844, LineStationIndex=1, PrevStation=38845, NextStation=38842,InService=true},
             new LineStation{LineId=4,Station=38845, LineStationIndex=0, PrevStation=38845, NextStation=38844,InService=true},
-            //new LineStation{LineId=4,Station=00000,LineStationIndex=12,PrevStation=38833,NextStation=00000},
-            // new LineStation{LineId=5,Station=00000,LineStationIndex=-1,PrevStation=00000,NextStation=38860},
             new LineStation{LineId=5,Station=38846, LineStationIndex=9, PrevStation=38847, NextStation=38846,InService=true},
             new LineStation{LineId=5,Station=38847, LineStationIndex=8, PrevStation=38848, NextStation=38846,InService=true},
             new LineStation{LineId=5,Station=38848, LineStationIndex=7, PrevStation=38849, NextStation=38847,InService=true},
@@ -257,8 +234,6 @@ new Line
             new LineStation{LineId=5,Station=38856, LineStationIndex=2, PrevStation=38859, NextStation=38855,InService=true},
             new LineStation{LineId=5,Station=38859, LineStationIndex=1, PrevStation=38860, NextStation=38856,InService=true},
             new LineStation{LineId=5,Station=38860, LineStationIndex=0, PrevStation=38860, NextStation=38859,InService=true},
-           // new LineStation{LineId=5,Station=00000,LineStationIndex=10,PrevStation=38847,NextStation=00000},
-            //new LineStation{LineId=6,Station=00000,LineStationIndex=-1,PrevStation=00000,NextStation=38890},
             new LineStation{LineId=6,Station=38877, LineStationIndex=11, PrevStation=38878, NextStation=38877,InService=true},
             new LineStation{LineId=6,Station=38878, LineStationIndex=10, PrevStation=38879, NextStation=38877,InService=true},
             new LineStation{LineId=6,Station=38879, LineStationIndex=9, PrevStation=38880, NextStation=38878,InService=true},
@@ -271,7 +246,6 @@ new Line
             new LineStation{LineId=6,Station=38887, LineStationIndex=2, PrevStation=38888, NextStation=38886,InService=true},
             new LineStation{LineId=6,Station=38888, LineStationIndex=1, PrevStation=38889, NextStation=38887,InService=true},
             new LineStation{LineId=6,Station=38889, LineStationIndex=0, PrevStation=38889, NextStation=38888,InService=true},
-             //new LineStation{LineId=6,Station=00000,LineStationIndex=12,PrevStation=38877,NextStation=00000},
             new LineStation{LineId=7,Station=38849, LineStationIndex=15, PrevStation=38852, NextStation=38849,InService=true},
             new LineStation{LineId=7,Station=38852, LineStationIndex=14, PrevStation=38854, NextStation=38849,InService=true},
             new LineStation{LineId=7,Station=38854, LineStationIndex=13, PrevStation=38855, NextStation=38852,InService=true},
@@ -313,7 +287,6 @@ new Line
             new LineStation{LineId=9,Station=38884, LineStationIndex=2, PrevStation=38885, NextStation=38883,InService=true},
             new LineStation{LineId=9,Station=38885, LineStationIndex=1, PrevStation=38886, NextStation=38884,InService=true},
             new LineStation{LineId=9,Station=38886, LineStationIndex=0, PrevStation=38886, NextStation=38885,InService=true},
-            //////////////
             new LineStation{LineId=10,Station=38883, LineStationIndex=11, PrevStation=38875, NextStation=38883,InService=true},
             new LineStation{LineId=10,Station=38875, LineStationIndex=10, PrevStation=38876, NextStation=38873,InService=true},
             new LineStation{LineId=10,Station=38876, LineStationIndex=9, PrevStation=38877, NextStation=38875,InService=true},
@@ -377,249 +350,6 @@ new LineStation{LineId=11,Station=38888, LineStationIndex=2, PrevStation=38889, 
 new LineStation{LineId=11,Station=38889, LineStationIndex=1, PrevStation=38890, NextStation=38888,InService=true},
 new LineStation{LineId=11,Station=38890, LineStationIndex=0, PrevStation=38890, NextStation=38889,InService=true}
 };
-
-            busesList = new List<Bus>()
-{
-    new Bus
-    {
-          LicenseNum="12345678",
-         FromDate=new DateTime(2018,1,1),
-         TotalTrip=1500,
-         FuelRemain=11,
-         Status=BusStatus.Ready,
-        InService=true,
-        IsDangerous =false,
-         LastTreated=new DateTime(2020,1,7),
-         KmSinceTreated=0
-    },
-      new Bus
-    {
-          LicenseNum="5675544",
-         FromDate=new DateTime(2011,1,1),
-         TotalTrip=150000,
-         FuelRemain=11,
-         Status=BusStatus.Ready,
-        InService=true,
-        IsDangerous =false,
-         LastTreated=new DateTime(2020,1,7),
-         KmSinceTreated=0
-    },
-        new Bus
-    {
-          LicenseNum="11111111",
-         FromDate=new DateTime(2020,1,1),
-         TotalTrip=0,
-         FuelRemain=1200,
-         Status=BusStatus.Ready,
-        InService=true,
-        IsDangerous =false,
-         LastTreated=new DateTime(2020,1,1),
-         KmSinceTreated=0
-    },
-          new Bus
-    {
-          LicenseNum="3267893",
-         FromDate=new DateTime(2000,12,15),
-         TotalTrip=1500000,
-         FuelRemain=1200,
-         Status=BusStatus.Ready,
-        InService=true,
-        IsDangerous =false,
-         LastTreated=new DateTime(2020,1,7),
-         KmSinceTreated=1000
-    },
-            new Bus
-    {
-          LicenseNum="10101011",
-         FromDate=new DateTime(2018,1,1),
-         TotalTrip=1500,
-         FuelRemain=11,
-         Status=BusStatus.Ready,
-        InService=true,
-        IsDangerous =false,
-         LastTreated=new DateTime(2020,1,7),
-         KmSinceTreated=0
-    },
-    new Bus{
-          LicenseNum="44444444",
-         FromDate=new DateTime(2018,1,1),
-         TotalTrip=1500,
-         FuelRemain=11,
-         Status=BusStatus.Ready,
-         InService=true,
-         IsDangerous =false,
-         LastTreated=new DateTime(2020,1,7),
-         KmSinceTreated=0
-    },
-       new Bus
-    {
-          LicenseNum="2345343",
-         FromDate=new DateTime(2011,1,1),
-         TotalTrip=150000,
-         FuelRemain=11,
-         Status=BusStatus.Ready,
-        InService=true,
-        IsDangerous =false,
-         LastTreated=new DateTime(2020,1,7),
-         KmSinceTreated=0
-    },
-          new Bus
-    {
-          LicenseNum="2348343",
-         FromDate=new DateTime(2011,1,1),
-         TotalTrip=150000,
-         FuelRemain=11,
-         Status=BusStatus.Ready,
-        InService=true,
-        IsDangerous =false,
-         LastTreated=new DateTime(2020,1,7),
-         KmSinceTreated=0
-    },
-           new Bus
-    {
-          LicenseNum="2348343",
-         FromDate=new DateTime(2011,1,1),
-         TotalTrip=150000,
-         FuelRemain=11,
-         Status=BusStatus.Ready,
-        InService=true,
-        IsDangerous =false,
-         LastTreated=new DateTime(2020,1,7),
-         KmSinceTreated=0
-    },
-                 new Bus
-    {
-          LicenseNum="9348343",
-         FromDate=new DateTime(2011,1,1),
-         TotalTrip=150000,
-         FuelRemain=11,
-         Status=BusStatus.Ready,
-        InService=true,
-        IsDangerous =false,
-         LastTreated=new DateTime(2020,1,7),
-         KmSinceTreated=0
-    },
-                          new Bus
-    {
-          LicenseNum="9348349",
-         FromDate=new DateTime(2011,1,1),
-         TotalTrip=150000,
-         FuelRemain=11,
-         Status=BusStatus.Ready,
-        InService=true,
-        IsDangerous =false,
-         LastTreated=new DateTime(2020,1,7),
-         KmSinceTreated=0
-    },
-                         new Bus
-    {
-          LicenseNum="3333333",
-         FromDate=new DateTime(2011,1,1),
-         TotalTrip=150000,
-         FuelRemain=11,
-         Status=BusStatus.Ready,
-        InService=true,
-        IsDangerous =false,
-         LastTreated=new DateTime(2020,1,7),
-         KmSinceTreated=0
-    },
-    new Bus
-    {
-          LicenseNum="3333111",
-         FromDate=new DateTime(2011,1,1),
-         TotalTrip=150000,
-         FuelRemain=11,
-         Status=BusStatus.Ready,
-        InService=true,
-        IsDangerous =false,
-         LastTreated=new DateTime(2020,1,7),
-         KmSinceTreated=0
-    },
-    new Bus
-    {
-          LicenseNum="9999999",
-         FromDate=new DateTime(2011,1,1),
-         TotalTrip=150000,
-         FuelRemain=11,
-         Status=BusStatus.Ready,
-        InService=true,
-        IsDangerous =false,
-         LastTreated=new DateTime(2020,1,7),
-         KmSinceTreated=0
-    },
-     new Bus
-    {
-          LicenseNum="98765432",
-         FromDate=new DateTime(2011,1,1),
-         TotalTrip=150000,
-         FuelRemain=11,
-         Status=BusStatus.Ready,
-        InService=true,
-        IsDangerous =false,
-         LastTreated=new DateTime(2020,1,7),
-         KmSinceTreated=0
-    },
-      new Bus
-    {
-          LicenseNum="23456789",
-         FromDate=new DateTime(2011,1,1),
-         TotalTrip=150000,
-         FuelRemain=11,
-         Status=BusStatus.Ready,
-        InService=true,
-        IsDangerous =false,
-         LastTreated=new DateTime(2020,1,7),
-         KmSinceTreated=0
-    },
-        new Bus
-    {
-         LicenseNum="2468357",
-         FromDate=new DateTime(2011,1,1),
-         TotalTrip=150000,
-         FuelRemain=11,
-         Status=BusStatus.Ready,
-         InService=true,
-         IsDangerous =false,
-         LastTreated=new DateTime(2020,1,7),
-         KmSinceTreated=0
-    },
-           new Bus
-    {
-          LicenseNum="7777777",
-         FromDate=new DateTime(2011,1,1),
-         TotalTrip=150000,
-         FuelRemain=11,
-         Status=BusStatus.Ready,
-        InService=true,
-        IsDangerous =false,
-         LastTreated=new DateTime(2020,1,7),
-         KmSinceTreated=0
-    },
-                  new Bus
-    {
-          LicenseNum="7777778",
-         FromDate=new DateTime(2011,1,1),
-         TotalTrip=150000,
-         FuelRemain=11,
-         Status=BusStatus.Ready,
-         InService=true,
-         IsDangerous =false,
-         LastTreated=new DateTime(2020,1,7),
-         KmSinceTreated=0
-    },
-    new Bus
-    {
-         LicenseNum="7717778",
-         FromDate=new DateTime(2011,1,1),
-         TotalTrip=150000,
-         FuelRemain=11,
-         Status=BusStatus.Ready,
-         InService=true,
-         IsDangerous =false,
-         LastTreated=new DateTime(2020,1,7),
-         KmSinceTreated=0
-    }
-};
             adjacentStationsListTheSameStops = (from linestation in lineStationsList
                                                 from linestation2 in lineStationsList
                                                 where linestation.LineId == linestation2.LineId && linestation.LineStationIndex == linestation2.LineStationIndex
@@ -639,7 +369,7 @@ new LineStation{LineId=11,Station=38890, LineStationIndex=0, PrevStation=38890, 
              where lineStation.LineId == linestation2.LineId && linestation2.LineStationIndex == lineStation.LineStationIndex + 1 && lineStation.InService
              let rdistance = RandomDistance()
              select new AdjacentStations
-             {//LineId=lineStation.LineId,
+             {
                  Station1 = lineStation.Station,
                  Station2 = linestation2.Station,
                  Distance = rdistance,
@@ -647,7 +377,6 @@ new LineStation{LineId=11,Station=38890, LineStationIndex=0, PrevStation=38890, 
                  InService = true
              }).Distinct().ToList();
             adjacentStationsList.AddRange(adjacentStationsListTheSameStops);
-            //lineTripsList = new List<LineTrip>();
             lineTripsList = (from line in linesList let id=Configuration.LineTripId
                              select new LineTrip
                              {
@@ -656,7 +385,6 @@ new LineStation{LineId=11,Station=38890, LineStationIndex=0, PrevStation=38890, 
                                  InService = true,
                                  StartAt = RandomExitTime()
                              }).ToList();
-
         }
         /// <summary>
         /// For random distance
