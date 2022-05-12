@@ -1,4 +1,4 @@
-﻿<Window x:Class="PlGui.WindowStationDetails"
+<Window x:Class="PlGui.WindowStationDetails"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -128,7 +128,6 @@
                 </ListBox>
                 <Button x:Name="btTrack" Content="Track" HorizontalAlignment="Left" Height="24" Margin="678,110,0,0" VerticalAlignment="Top" Width="66" Click="startTrackStation"/>
             </Grid>
-
         </Grid>
     </Grid>
 </Window>
