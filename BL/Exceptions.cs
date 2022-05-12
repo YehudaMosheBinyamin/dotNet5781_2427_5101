@@ -1,37 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace BO
 {
-    #region Bus
-    public class NoBusFoundException : Exception
-    { string licenseNumber;
-        public NoBusFoundException(string str, Exception exp) : base(str)
-        {
-            licenseNumber = ((DO.NoBusFoundException)exp).LicenseNum;
-        }
-
-    }
-    public class BusAlreadyExistsException : Exception
-    {
-        string licenseNumber;
-        public BusAlreadyExistsException(string str, Exception exp) : base(str)
-        {
-            licenseNumber = ((DO.NoBusFoundException)exp).LicenseNum;
-        }
-
-    }
-    public class BusIsDangerousException : Exception
-    {
-        string licenseNumber;
-        public BusIsDangerousException(string licenseNumber, string str) : base(str)
-        {
-            this.licenseNumber = licenseNumber;
-        }
-
-    }
-    #endregion
     #region Station
     public class StationAlreadyExistsException : Exception
     {
@@ -124,15 +96,4 @@ namespace BO
         }
     }
     #endregion
-    #region User
-  class NoUserFoundException : Exception
-    {
-        public string userName;
-        public NoUserFoundException(string msg,Exception ex) : base(msg)
-        {
-            userName = ((DO.NoUserFoundException)ex).UserName;
-        }
-    }
-    #endregion
-
 }
