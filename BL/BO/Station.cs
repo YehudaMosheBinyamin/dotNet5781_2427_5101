@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace BO
 {
+    /*A class to represent a physical bus station*/
     public class Station
     {
         public int Code { get; set; }
