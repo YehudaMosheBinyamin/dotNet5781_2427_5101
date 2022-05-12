@@ -39,12 +39,7 @@ namespace DL
        
         public IEnumerable<Station> GetAllStations()
         {
-           // return from station in DS.DataSource.stationsList where station.InService==true select station.Clone();
             return from station in DS.DataSource.stationsList select station.Clone();
-        }
-       //
-        public void UpdateStation(Line line,Action<Line> action)
-        {
         }
        public Station GetStation(int code)
         {
@@ -64,91 +59,6 @@ namespace DL
         public int GetNewStationCode()
         {
             return Configuration.StationCode;
-        }
-        /**public void UpdateStation(int code,string newName,Action<Station,string> update)
-        {
-         Action<Station,string>action=update;
-         Station tempStation=DataSource.stationsList.Find(p =>p.Code==code);
-         if(tempStation!=null&&tempStation.InService==true)
-         {
-                action(tempStation,newName);
-            }
-        }
-        public void DeleteStation(int code)
-        {
-            Station tempStation= DataSource.stationsList.Find(p =>p.Code==code);
-            if(tempStation!=null&&tempStation.InService==true)
-            {
-                tempStation.InService=false;
-            }
-            else
-            {
-                throw new NoStationFoundException(code,$"This station with code {code} doesn't exist and can't be deleted");
-            }
-        
-        }**/
-        #endregion
-        #region Bus
-        public void AddBus(Bus bus)
-        {string LicenseNum=bus.LicenseNum;
-         Bus tempBus= DataSource.busesList.Find(p=>p.LicenseNum==LicenseNum);
-            if(tempBus==null)
-            {
-             DataSource.busesList.Add(bus);
-            
-            }
-            else if(tempBus.InService == false)
-            {
-                tempBus.InService = true;
-            }
-             else
-            {
-                throw new BusAlreadyExistsException(LicenseNum,$"The bus with the license num: {LicenseNum} exists and is active already and cannot be added twice");
-            }
-            
-        }
-        public IEnumerable<Bus>GetAllBuses()
-        {
-            return from bus in DS.DataSource.busesList select bus.Clone();
-        }
-        public IEnumerable<Bus> GetAllBusesBy(Predicate<Bus> predicate)
-        {
-            return DS.DataSource.busesList.FindAll(predicate);
-        }
-        public Bus GetBus(string licenseNum)
-        {
-                Bus tempBus= DataSource.busesList.Find(p =>p.LicenseNum==licenseNum);
-                if(tempBus!=null&&tempBus.InService==true)
-                {
-                    return tempBus.Clone();
-                }
-                else
-                {
-                throw new NoBusFoundException(licenseNum,$"The bus with licenseNum: {licenseNum} doesn't exist on the system so it can't be received");
-                }
-        }
-        public void UpdateBus(string licenseNum, Action<Bus> update)
-        {
-            Action<Bus> action = update;
-            Bus tempBus = DataSource.busesList.Find(p => p.LicenseNum == licenseNum);
-            if (tempBus != null && tempBus.InService == true)
-            { action(tempBus); }
-            else
-            {
-                throw new NoBusFoundException(licenseNum, $"No bus with the License Number: {licenseNum}  exists on the system so it cannot be deleted");
-            }
-        }
-        public void DeleteBus(string licenseNum)
-        {
-            Bus tempBus= DataSource.busesList.Find(p =>p.LicenseNum==licenseNum);
-            if(tempBus!=null&&tempBus.InService==true)
-            {
-                tempBus.InService=false;
-            }
-            else
-            {
-                throw new NoBusFoundException(licenseNum,$"No bus with the License Number: {licenseNum}  exists on the system so it cannot be deleted");
-            }
         }
         #endregion
         #region Line
@@ -172,13 +82,10 @@ namespace DL
         /// <returns></returns>
        public IEnumerable<Line> GetAllLines()
         {
-
-            // return from line in DS.DataSource.linesList where line.InService==true select line.Clone();
             return from line in DS.DataSource.linesList where line.InService == true select line;
         }
         public IEnumerable<Line> GetAllLinesBy(Predicate<Line> predicate)
         {
-           
             return from line in DS.DataSource.linesList where predicate(line)==true &&line.InService==true select line;
         }
         public Line GetLine(int lineId)
@@ -278,7 +185,6 @@ namespace DL
         public IEnumerable<LineStation> GetAllLineStationsByLine(int lineId)
         {
              return from lineStation in DS.DataSource.lineStationsList where lineStation.LineId==lineId && lineStation.InService==true orderby lineStation.LineStationIndex select  lineStation  ;
-            //return from lineStation in DS.DataSource.lineStationsList  select lineStation;
         }
         public void UpdateLineStation(int lineId, int stationCode,int newStationCode, Action<LineStation,int> update)
         {
@@ -318,68 +224,6 @@ namespace DL
 
 
         #endregion
-        #region User
-        public void AddUser(User user)
-        {
-            User tempUser = DataSource.usersList.Find(p => p.UserName == user.UserName);
-            if (tempUser != null && tempUser.InService == false)
-            {
-                //var md5 = new MD5CryptoServiceProvider();
-                //var md5data = md5.ComputeHash(user.Password);
-                DataSource.usersList.Add(tempUser);
-
-            }
-            else
-            {
-                throw new UserAlreadyExistsException(user.UserName);
-            }
-        }
-        public IEnumerable<User> GetAllUsers()
-        {
-            return from user in DS.DataSource.usersList where user.InService==true select user.Clone();
-        }
-        public User GetUser(string userName)
-        {
-
-            User tempUser = DataSource.usersList.Find(p => p.UserName == userName);
-            if (tempUser != null && tempUser.InService == true)
-            {
-                return tempUser.Clone();
-            }
-            else
-            {
-                throw new NoUserFoundException(userName);
-            }
-
-        }
-        public void UpdateUser(string userName, Action<User> update)
-        {
-            Action<User> action = update;
-            User tempUser = DataSource.usersList.Find((p) => p.UserName == userName);
-            if (tempUser != null && tempUser.InService == true)
-            {
-                action(tempUser);
-            }
-            else
-            {
-                throw new NoUserFoundException(userName);
-            }
-        }
-   
-        public void DeleteUser(string userName)
-        {
-            User tempUser = DataSource.usersList.Find(p => p.UserName == userName);
-            if (tempUser != null && tempUser.InService == true)
-            {
-                tempUser.InService = false;
-            }
-            else
-            {
-                throw new NoUserFoundException(userName);
-
-            }
-        }
-        #endregion User
         #region AdjacentStations
         /// <summary>
         /// To check if adjacent stations exist in system
@@ -435,15 +279,6 @@ namespace DL
         {
             return DS.DataSource.adjacentStationsList.Find(p => p.Station1 == stationOneCode && p.Station2 == stationTwoCode&&p.InService==true);
         }
-        /**
-        public void UpdateAdjacentStations(int stationOneCode, int stationTwoCode, Action<AdjacentStations> update)
-        {
-            AdjacentStations adjStationsToUpdate= DS.DataSource.adjacentStationsList.Find(p => p.Station1 == stationOneCode && p.Station2 == stationTwoCode);
-            if (adjStationsToUpdate == null||adjStationsToUpdate.InService==false)
-            {
-                throw new AdjacentStationsDoesntExistException(stationOneCode, stationTwoCode, $"The adjacent stations with the codes:{stationOneCode} {stationTwoCode} can't be updated since it doesn't exist on the system");
-            }
-        }**/
 
         public void DeleteAdjacentStations(int stationOneCode, int stationTwoCode)
         {
@@ -534,7 +369,6 @@ namespace DL
                 }
             }
         }
-
         #endregion
     }
 }
