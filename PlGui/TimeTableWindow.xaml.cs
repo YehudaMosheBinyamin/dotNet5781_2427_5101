@@ -1,4 +1,4 @@
-﻿using BlApi;
+using BlApi;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -107,3 +107,4 @@ namespace PlGui
     }
   
 }
+
