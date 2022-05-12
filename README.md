@@ -11,7 +11,7 @@ The bonuses:
 
 To run the main program: Make sure that Net Framework 4.8 is installed.
 Open the project with Visual Studio.
-Double click on "dotNet_5781_2427_5101".
+Right click on solution name and change it to solution view of "dotNet_5781_2427_5101".
 Change to view solution view.
 Set startup project to PlGUI
 Simulation info:
