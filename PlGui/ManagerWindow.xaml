@@ -16,6 +16,10 @@
         <TextBox Name="tbSeconds" HorizontalAlignment="Left" Height="23" Margin="323,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="58"/>
         <Button Name="btStopwatch" Content="Go" HorizontalAlignment="Left" Margin="400,230,0,0" VerticalAlignment="Top" Width="58" Click="StartStopStopwatch"/>
         <TextBox Name="tbSpeed" HorizontalAlignment="Left" Height="23" Margin="400,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="58"/>
+         <TextBlock HorizontalAlignment="Left" Margin="164,156,0,0" TextWrapping="Wrap" Text="Hour" VerticalAlignment="Top" Height="26" Width="58"/>
+        <TextBlock HorizontalAlignment="Left" Margin="241,156,0,0" TextWrapping="Wrap" Text="Minute" VerticalAlignment="Top" Height="26" Width="58"/>
+        <TextBlock HorizontalAlignment="Left" Margin="323,156,0,0" TextWrapping="Wrap" Text="Second" VerticalAlignment="Top" Height="26" Width="58"/>
+        <TextBlock HorizontalAlignment="Left" Margin="400,156,0,0" TextWrapping="Wrap" Text="Speed" VerticalAlignment="Top" Height="26" Width="58"/>
     </Grid>
 </Window>
 
