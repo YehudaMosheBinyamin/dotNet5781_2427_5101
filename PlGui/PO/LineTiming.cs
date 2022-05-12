@@ -2,8 +2,10 @@
 using System.ComponentModel;
 namespace PO
 {
+    /*Represents the time a bus line will arrive at a station*/
     public class LineTiming : INotifyPropertyChanged
     {
+    
         private int lineId;
         public int LineId
         {
