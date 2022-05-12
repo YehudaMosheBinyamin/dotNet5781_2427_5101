@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 namespace BL
 {
     public static class Functions
@@ -42,3 +42,4 @@ namespace BL
         }
     }
 }
+
