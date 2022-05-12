@@ -40,5 +40,7 @@
         <Button Content="Finish" HorizontalAlignment="Left" Margin="625,389,0,0" VerticalAlignment="Top" Width="75" Click="UpdateLineEvent"/>
         <ComboBox Name="cbStations" HorizontalAlignment="Left" Margin="522,105,0,0" VerticalAlignment="Top" Width="153"/>
         <Button Content="Add" HorizontalAlignment="Left" Margin="534,387,0,0" VerticalAlignment="Top" Width="75" Click="bAddStation_Click" Height="22"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="Stations in line" VerticalAlignment="Top" Grid.Column="1" Height="21" Width="91"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="311,70,0,0" TextWrapping="Wrap" Text="Add a station:" VerticalAlignment="Top" Width="126"/>
     </Grid>
 </Window>
