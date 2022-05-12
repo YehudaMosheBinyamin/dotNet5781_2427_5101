@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace BO
 {
+    /*A class to alert a bus station about an upcoming bus*/
     sealed internal class Operator
     {
         private static Operator instance;
@@ -24,6 +25,7 @@ namespace BO
                 lineApproachingStationEvent -= value;
             }
         }
+        /*To update how long a bus line will take until it will approach station*/
         public void DoUpdateArrivalTime()
         {
             lineApproachingStationEvent?.Invoke(UpdateLineArrive,Station);
