@@ -1,0 +1,2278 @@
+<?xml version="1.0"?>
+<ArrayOfAdjacentStations xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <AdjacentStations>
+    <Station1>38831</Station1>
+    <Station2>38832</Station2>
+    <Distance>161</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38832</Station1>
+    <Station2>38833</Station2>
+    <Distance>9270</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38833</Station1>
+    <Station2>38834</Station2>
+    <Distance>4058</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38834</Station1>
+    <Station2>38836</Station2>
+    <Distance>4982</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38836</Station1>
+    <Station2>38837</Station2>
+    <Distance>6704</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38837</Station1>
+    <Station2>38838</Station2>
+    <Distance>4111</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38838</Station1>
+    <Station2>38839</Station2>
+    <Distance>6345</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38839</Station1>
+    <Station2>38840</Station2>
+    <Distance>247</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38840</Station1>
+    <Station2>38841</Station2>
+    <Distance>4920</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38842</Station1>
+    <Station2>38842</Station2>
+    <Distance>918</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38842</Station1>
+    <Station2>38844</Station2>
+    <Distance>6094</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38844</Station1>
+    <Station2>38845</Station2>
+    <Distance>3884</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38845</Station1>
+    <Station2>38846</Station2>
+    <Distance>3656</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38846</Station1>
+    <Station2>38847</Station2>
+    <Distance>5648</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38847</Station1>
+    <Station2>38848</Station2>
+    <Distance>5626</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38848</Station1>
+    <Station2>38849</Station2>
+    <Distance>5196</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38849</Station1>
+    <Station2>38852</Station2>
+    <Distance>1111</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38852</Station1>
+    <Station2>38854</Station2>
+    <Distance>8121</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38854</Station1>
+    <Station2>38855</Station2>
+    <Distance>5208</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38856</Station1>
+    <Station2>38859</Station2>
+    <Distance>9229</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38859</Station1>
+    <Station2>38860</Station2>
+    <Distance>2385</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38860</Station1>
+    <Station2>38861</Station2>
+    <Distance>3386</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38861</Station1>
+    <Station2>38862</Station2>
+    <Distance>6624</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38862</Station1>
+    <Station2>38863</Station2>
+    <Distance>1857</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38863</Station1>
+    <Station2>38864</Station2>
+    <Distance>6146</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38864</Station1>
+    <Station2>38865</Station2>
+    <Distance>3822</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38865</Station1>
+    <Station2>38866</Station2>
+    <Distance>5217</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38866</Station1>
+    <Station2>38867</Station2>
+    <Distance>6947</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38833</Station1>
+    <Station2>38832</Station2>
+    <Distance>470</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38834</Station1>
+    <Station2>38833</Station2>
+    <Distance>1428</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38836</Station1>
+    <Station2>38834</Station2>
+    <Distance>6681</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38837</Station1>
+    <Station2>38836</Station2>
+    <Distance>4153</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38838</Station1>
+    <Station2>38837</Station2>
+    <Distance>8490</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38839</Station1>
+    <Station2>38838</Station2>
+    <Distance>2383</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38840</Station1>
+    <Station2>38839</Station2>
+    <Distance>3640</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38841</Station1>
+    <Station2>38840</Station2>
+    <Distance>7595</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38842</Station1>
+    <Station2>38841</Station2>
+    <Distance>6397</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38844</Station1>
+    <Station2>38842</Station2>
+    <Distance>2337</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38845</Station1>
+    <Station2>38844</Station2>
+    <Distance>5465</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38847</Station1>
+    <Station2>38846</Station2>
+    <Distance>5295</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38848</Station1>
+    <Station2>38847</Station2>
+    <Distance>8649</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38849</Station1>
+    <Station2>38848</Station2>
+    <Distance>9857</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38852</Station1>
+    <Station2>38849</Station2>
+    <Distance>3463</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38854</Station1>
+    <Station2>38852</Station2>
+    <Distance>9733</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38855</Station1>
+    <Station2>38854</Station2>
+    <Distance>9000</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38856</Station1>
+    <Station2>38855</Station2>
+    <Distance>3934</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38859</Station1>
+    <Station2>38856</Station2>
+    <Distance>7564</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38860</Station1>
+    <Station2>38859</Station2>
+    <Distance>7575</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38878</Station1>
+    <Station2>38877</Station2>
+    <Distance>5948</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38879</Station1>
+    <Station2>38878</Station2>
+    <Distance>9314</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38880</Station1>
+    <Station2>38879</Station2>
+    <Distance>2879</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38881</Station1>
+    <Station2>38880</Station2>
+    <Distance>536</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38883</Station1>
+    <Station2>38881</Station2>
+    <Distance>7507</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38884</Station1>
+    <Station2>38883</Station2>
+    <Distance>6432</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38885</Station1>
+    <Station2>38884</Station2>
+    <Distance>5614</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38886</Station1>
+    <Station2>38885</Station2>
+    <Distance>5942</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38887</Station1>
+    <Station2>38886</Station2>
+    <Distance>2254</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38888</Station1>
+    <Station2>38887</Station2>
+    <Distance>5002</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38889</Station1>
+    <Station2>38888</Station2>
+    <Distance>9121</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38852</Station1>
+    <Station2>38849</Station2>
+    <Distance>6154</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38854</Station1>
+    <Station2>38852</Station2>
+    <Distance>9427</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38855</Station1>
+    <Station2>38854</Station2>
+    <Distance>1496</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38856</Station1>
+    <Station2>38855</Station2>
+    <Distance>2108</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38859</Station1>
+    <Station2>38856</Station2>
+    <Distance>8463</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38860</Station1>
+    <Station2>38859</Station2>
+    <Distance>9086</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38861</Station1>
+    <Station2>38860</Station2>
+    <Distance>243</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38862</Station1>
+    <Station2>38861</Station2>
+    <Distance>6764</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38863</Station1>
+    <Station2>38862</Station2>
+    <Distance>5713</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38864</Station1>
+    <Station2>38863</Station2>
+    <Distance>1234</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38865</Station1>
+    <Station2>38864</Station2>
+    <Distance>3116</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38866</Station1>
+    <Station2>38865</Station2>
+    <Distance>6033</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38867</Station1>
+    <Station2>38866</Station2>
+    <Distance>7645</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38869</Station1>
+    <Station2>38867</Station2>
+    <Distance>970</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38870</Station1>
+    <Station2>38869</Station2>
+    <Distance>5603</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38872</Station1>
+    <Station2>38870</Station2>
+    <Distance>775</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38873</Station1>
+    <Station2>38872</Station2>
+    <Distance>4285</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38875</Station1>
+    <Station2>38873</Station2>
+    <Distance>7713</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38876</Station1>
+    <Station2>38875</Station2>
+    <Distance>8036</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38877</Station1>
+    <Station2>38876</Station2>
+    <Distance>9963</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38878</Station1>
+    <Station2>38877</Station2>
+    <Distance>8194</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38879</Station1>
+    <Station2>38878</Station2>
+    <Distance>9330</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38880</Station1>
+    <Station2>38879</Station2>
+    <Distance>9468</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38881</Station1>
+    <Station2>38880</Station2>
+    <Distance>810</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38883</Station1>
+    <Station2>38881</Station2>
+    <Distance>7626</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38884</Station1>
+    <Station2>38883</Station2>
+    <Distance>7221</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38885</Station1>
+    <Station2>38884</Station2>
+    <Distance>3976</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38886</Station1>
+    <Station2>38885</Station2>
+    <Distance>612</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38876</Station1>
+    <Station2>38875</Station2>
+    <Distance>190</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38877</Station1>
+    <Station2>38876</Station2>
+    <Distance>1577</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38878</Station1>
+    <Station2>38877</Station2>
+    <Distance>5957</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38879</Station1>
+    <Station2>38878</Station2>
+    <Distance>4334</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38880</Station1>
+    <Station2>38879</Station2>
+    <Distance>144</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38881</Station1>
+    <Station2>38880</Station2>
+    <Distance>4745</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38883</Station1>
+    <Station2>38881</Station2>
+    <Distance>3983</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38884</Station1>
+    <Station2>38883</Station2>
+    <Distance>9795</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38885</Station1>
+    <Station2>38884</Station2>
+    <Distance>7325</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38886</Station1>
+    <Station2>38885</Station2>
+    <Distance>1559</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38875</Station1>
+    <Station2>38883</Station2>
+    <Distance>6338</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38876</Station1>
+    <Station2>38875</Station2>
+    <Distance>1809</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38877</Station1>
+    <Station2>38876</Station2>
+    <Distance>7436</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38878</Station1>
+    <Station2>38877</Station2>
+    <Distance>2016</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38879</Station1>
+    <Station2>38878</Station2>
+    <Distance>7507</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38880</Station1>
+    <Station2>38879</Station2>
+    <Distance>8587</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38881</Station1>
+    <Station2>38880</Station2>
+    <Distance>1906</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38883</Station1>
+    <Station2>38881</Station2>
+    <Distance>3200</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38884</Station1>
+    <Station2>38883</Station2>
+    <Distance>2278</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38885</Station1>
+    <Station2>38884</Station2>
+    <Distance>7752</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38886</Station1>
+    <Station2>38885</Station2>
+    <Distance>3435</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38831</Station1>
+    <Station2>38891</Station2>
+    <Distance>5668</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38832</Station1>
+    <Station2>38831</Station2>
+    <Distance>2038</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38833</Station1>
+    <Station2>38832</Station2>
+    <Distance>461</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38834</Station1>
+    <Station2>38833</Station2>
+    <Distance>4627</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38836</Station1>
+    <Station2>38834</Station2>
+    <Distance>486</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38837</Station1>
+    <Station2>38836</Station2>
+    <Distance>8007</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38838</Station1>
+    <Station2>38837</Station2>
+    <Distance>4246</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38839</Station1>
+    <Station2>38838</Station2>
+    <Distance>6539</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38840</Station1>
+    <Station2>38839</Station2>
+    <Distance>5913</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38841</Station1>
+    <Station2>38840</Station2>
+    <Distance>649</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38842</Station1>
+    <Station2>38841</Station2>
+    <Distance>6326</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38844</Station1>
+    <Station2>38842</Station2>
+    <Distance>8034</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38845</Station1>
+    <Station2>38844</Station2>
+    <Distance>6018</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38846</Station1>
+    <Station2>38845</Station2>
+    <Distance>473</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38847</Station1>
+    <Station2>38846</Station2>
+    <Distance>9779</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38848</Station1>
+    <Station2>38847</Station2>
+    <Distance>9772</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38849</Station1>
+    <Station2>38848</Station2>
+    <Distance>2111</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38852</Station1>
+    <Station2>38849</Station2>
+    <Distance>4753</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38854</Station1>
+    <Station2>38852</Station2>
+    <Distance>9023</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38855</Station1>
+    <Station2>38854</Station2>
+    <Distance>6263</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38856</Station1>
+    <Station2>38855</Station2>
+    <Distance>6653</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38859</Station1>
+    <Station2>38856</Station2>
+    <Distance>2676</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38860</Station1>
+    <Station2>38859</Station2>
+    <Distance>6811</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38861</Station1>
+    <Station2>38860</Station2>
+    <Distance>3082</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38862</Station1>
+    <Station2>38861</Station2>
+    <Distance>3348</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38863</Station1>
+    <Station2>38862</Station2>
+    <Distance>901</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38864</Station1>
+    <Station2>38863</Station2>
+    <Distance>5179</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38865</Station1>
+    <Station2>38864</Station2>
+    <Distance>9269</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38866</Station1>
+    <Station2>38865</Station2>
+    <Distance>4912</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38867</Station1>
+    <Station2>38866</Station2>
+    <Distance>6967</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38869</Station1>
+    <Station2>38867</Station2>
+    <Distance>3779</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38870</Station1>
+    <Station2>38869</Station2>
+    <Distance>5484</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38872</Station1>
+    <Station2>38870</Station2>
+    <Distance>6678</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38873</Station1>
+    <Station2>38872</Station2>
+    <Distance>3155</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38875</Station1>
+    <Station2>38873</Station2>
+    <Distance>5116</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38876</Station1>
+    <Station2>38875</Station2>
+    <Distance>1592</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38877</Station1>
+    <Station2>38876</Station2>
+    <Distance>3169</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38878</Station1>
+    <Station2>38877</Station2>
+    <Distance>6500</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38879</Station1>
+    <Station2>38878</Station2>
+    <Distance>4504</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38880</Station1>
+    <Station2>38879</Station2>
+    <Distance>3215</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38881</Station1>
+    <Station2>38880</Station2>
+    <Distance>3771</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38883</Station1>
+    <Station2>38881</Station2>
+    <Distance>6758</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38884</Station1>
+    <Station2>38883</Station2>
+    <Distance>9810</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38885</Station1>
+    <Station2>38884</Station2>
+    <Distance>751</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38886</Station1>
+    <Station2>38885</Station2>
+    <Distance>1573</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38887</Station1>
+    <Station2>38886</Station2>
+    <Distance>4050</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38888</Station1>
+    <Station2>38887</Station2>
+    <Distance>7582</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38889</Station1>
+    <Station2>38888</Station2>
+    <Distance>4184</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38890</Station1>
+    <Station2>38889</Station2>
+    <Distance>6858</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38831</Station1>
+    <Station2>38831</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38832</Station1>
+    <Station2>38832</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38833</Station1>
+    <Station2>38833</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38834</Station1>
+    <Station2>38834</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38836</Station1>
+    <Station2>38836</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38837</Station1>
+    <Station2>38837</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38838</Station1>
+    <Station2>38838</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38839</Station1>
+    <Station2>38839</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38840</Station1>
+    <Station2>38840</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38841</Station1>
+    <Station2>38841</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38842</Station1>
+    <Station2>38842</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38842</Station1>
+    <Station2>38842</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38844</Station1>
+    <Station2>38844</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38845</Station1>
+    <Station2>38845</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38846</Station1>
+    <Station2>38846</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38847</Station1>
+    <Station2>38847</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38848</Station1>
+    <Station2>38848</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38849</Station1>
+    <Station2>38849</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38852</Station1>
+    <Station2>38852</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38854</Station1>
+    <Station2>38854</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38855</Station1>
+    <Station2>38855</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38856</Station1>
+    <Station2>38856</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38859</Station1>
+    <Station2>38859</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38860</Station1>
+    <Station2>38860</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38861</Station1>
+    <Station2>38861</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38862</Station1>
+    <Station2>38862</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38863</Station1>
+    <Station2>38863</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38864</Station1>
+    <Station2>38864</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38865</Station1>
+    <Station2>38865</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38866</Station1>
+    <Station2>38866</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38867</Station1>
+    <Station2>38867</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38832</Station1>
+    <Station2>38832</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38833</Station1>
+    <Station2>38833</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38834</Station1>
+    <Station2>38834</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38836</Station1>
+    <Station2>38836</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38837</Station1>
+    <Station2>38837</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38838</Station1>
+    <Station2>38838</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38839</Station1>
+    <Station2>38839</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38840</Station1>
+    <Station2>38840</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38841</Station1>
+    <Station2>38841</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38842</Station1>
+    <Station2>38842</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38844</Station1>
+    <Station2>38844</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38845</Station1>
+    <Station2>38845</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38846</Station1>
+    <Station2>38846</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38847</Station1>
+    <Station2>38847</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38848</Station1>
+    <Station2>38848</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38849</Station1>
+    <Station2>38849</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38852</Station1>
+    <Station2>38852</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38854</Station1>
+    <Station2>38854</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38855</Station1>
+    <Station2>38855</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38856</Station1>
+    <Station2>38856</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38859</Station1>
+    <Station2>38859</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38860</Station1>
+    <Station2>38860</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38877</Station1>
+    <Station2>38877</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38878</Station1>
+    <Station2>38878</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38879</Station1>
+    <Station2>38879</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38880</Station1>
+    <Station2>38880</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38881</Station1>
+    <Station2>38881</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38883</Station1>
+    <Station2>38883</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38884</Station1>
+    <Station2>38884</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38885</Station1>
+    <Station2>38885</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38886</Station1>
+    <Station2>38886</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38887</Station1>
+    <Station2>38887</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38888</Station1>
+    <Station2>38888</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38889</Station1>
+    <Station2>38889</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38849</Station1>
+    <Station2>38849</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38852</Station1>
+    <Station2>38852</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38854</Station1>
+    <Station2>38854</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38855</Station1>
+    <Station2>38855</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38856</Station1>
+    <Station2>38856</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38859</Station1>
+    <Station2>38859</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38860</Station1>
+    <Station2>38860</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38861</Station1>
+    <Station2>38861</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38862</Station1>
+    <Station2>38862</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38863</Station1>
+    <Station2>38863</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38864</Station1>
+    <Station2>38864</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38865</Station1>
+    <Station2>38865</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38866</Station1>
+    <Station2>38866</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38867</Station1>
+    <Station2>38867</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38869</Station1>
+    <Station2>38869</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38870</Station1>
+    <Station2>38870</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38870</Station1>
+    <Station2>38870</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38872</Station1>
+    <Station2>38872</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38873</Station1>
+    <Station2>38873</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38875</Station1>
+    <Station2>38875</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38876</Station1>
+    <Station2>38876</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38877</Station1>
+    <Station2>38877</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38878</Station1>
+    <Station2>38878</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38879</Station1>
+    <Station2>38879</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38880</Station1>
+    <Station2>38880</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38881</Station1>
+    <Station2>38881</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38883</Station1>
+    <Station2>38883</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38884</Station1>
+    <Station2>38884</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38885</Station1>
+    <Station2>38885</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38886</Station1>
+    <Station2>38886</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38875</Station1>
+    <Station2>38875</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38876</Station1>
+    <Station2>38876</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38877</Station1>
+    <Station2>38877</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38878</Station1>
+    <Station2>38878</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38879</Station1>
+    <Station2>38879</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38880</Station1>
+    <Station2>38880</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38881</Station1>
+    <Station2>38881</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38883</Station1>
+    <Station2>38883</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38884</Station1>
+    <Station2>38884</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38885</Station1>
+    <Station2>38885</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38886</Station1>
+    <Station2>38886</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38883</Station1>
+    <Station2>38883</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38875</Station1>
+    <Station2>38875</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38876</Station1>
+    <Station2>38876</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38877</Station1>
+    <Station2>38877</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38878</Station1>
+    <Station2>38878</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38879</Station1>
+    <Station2>38879</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38880</Station1>
+    <Station2>38880</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38881</Station1>
+    <Station2>38881</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38883</Station1>
+    <Station2>38883</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38884</Station1>
+    <Station2>38884</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38885</Station1>
+    <Station2>38885</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38886</Station1>
+    <Station2>38886</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38891</Station1>
+    <Station2>38891</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38831</Station1>
+    <Station2>38831</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38832</Station1>
+    <Station2>38832</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38833</Station1>
+    <Station2>38833</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38834</Station1>
+    <Station2>38834</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38836</Station1>
+    <Station2>38836</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38837</Station1>
+    <Station2>38837</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38838</Station1>
+    <Station2>38838</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38839</Station1>
+    <Station2>38839</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38840</Station1>
+    <Station2>38840</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38841</Station1>
+    <Station2>38841</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38842</Station1>
+    <Station2>38842</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38844</Station1>
+    <Station2>38844</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38845</Station1>
+    <Station2>38845</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38846</Station1>
+    <Station2>38846</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38847</Station1>
+    <Station2>38847</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38848</Station1>
+    <Station2>38848</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38849</Station1>
+    <Station2>38849</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38852</Station1>
+    <Station2>38852</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38854</Station1>
+    <Station2>38854</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38855</Station1>
+    <Station2>38855</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38856</Station1>
+    <Station2>38856</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38859</Station1>
+    <Station2>38859</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38860</Station1>
+    <Station2>38860</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38861</Station1>
+    <Station2>38861</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38862</Station1>
+    <Station2>38862</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38863</Station1>
+    <Station2>38863</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38864</Station1>
+    <Station2>38864</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38865</Station1>
+    <Station2>38865</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38866</Station1>
+    <Station2>38866</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38867</Station1>
+    <Station2>38867</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38869</Station1>
+    <Station2>38869</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38870</Station1>
+    <Station2>38870</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38872</Station1>
+    <Station2>38872</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38873</Station1>
+    <Station2>38873</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38875</Station1>
+    <Station2>38875</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38876</Station1>
+    <Station2>38876</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38877</Station1>
+    <Station2>38877</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38878</Station1>
+    <Station2>38878</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38879</Station1>
+    <Station2>38879</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38880</Station1>
+    <Station2>38880</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38881</Station1>
+    <Station2>38881</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38883</Station1>
+    <Station2>38883</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38884</Station1>
+    <Station2>38884</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38885</Station1>
+    <Station2>38885</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38886</Station1>
+    <Station2>38886</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38887</Station1>
+    <Station2>38887</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38888</Station1>
+    <Station2>38888</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38889</Station1>
+    <Station2>38889</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+  <AdjacentStations>
+    <Station1>38890</Station1>
+    <Station2>38890</Station2>
+    <Distance>0</Distance>
+    <Time />
+    <InService>true</InService>
+  </AdjacentStations>
+</ArrayOfAdjacentStations>

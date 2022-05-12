@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<ArrayOfBeep xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Beep>
+    <a>3</a>
+    <b>ALFA ROMEO</b>
+  </Beep>
+  <Beep>
+    <a>4</a>
+    <b>BMW ADG</b>
+  </Beep>
+</ArrayOfBeep><?xml version="1.0"?>
+<ArrayOfBeep xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Beep>
+    <a>3</a>
+    <b>ALFA ROMEO</b>
+  </Beep>
+  <Beep>
+    <a>4</a>
+    <b>BMW ADG</b>
+  </Beep>
+</ArrayOfBeep>
