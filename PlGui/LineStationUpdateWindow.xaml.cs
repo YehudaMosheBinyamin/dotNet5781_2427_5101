@@ -1,4 +1,4 @@
-﻿using BlApi;
+using BlApi;
 using System;
 using System.Windows;
 
