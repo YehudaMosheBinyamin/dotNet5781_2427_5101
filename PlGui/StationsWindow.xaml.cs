@@ -1,4 +1,4 @@
-﻿using BlApi;
+using BlApi;
 using PO;
 using System;
 using System.Collections.Generic;
