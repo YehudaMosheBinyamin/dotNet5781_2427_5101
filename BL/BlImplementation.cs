@@ -430,50 +430,6 @@ namespace BL
             return (from adjacentStation in dl.GetAllAdjacentStations() orderby adjacentStation.Station1, adjacentStation.Station2 select AdjacentStationsDoBoAdapter(adjacentStation));
         }
         #endregion
-        #region User
-        BO.User UserDoBoAdapter(DO.User doUser)
-        {
-            BO.User boUser = new BO.User();
-            boUser.UserName = doUser.UserName;
-            boUser.Password = doUser.Password;
-            boUser.Admin = doUser.Admin;
-            boUser.InService = doUser.InService;
-            return boUser;
-        }
-        /// <summary>
-        /// Checks user details to see 1)if user exists and  2)if password entered is correct 3)if field requires admin permissions this is checked as well
-        /// </summary>
-        /// <param name="user">User</param>
-        /// <param name="needsAdmin">Whether user needs admin permissions</param>
-        /// <returns></returns>
-        public bool CheckUserPassword(User user, bool needsAdmin = false)
-        {
-            IDL dl = DLFactory.GetDL();
-            BO.User boUser = new BO.User();
-            try
-            {
-                boUser = UserDoBoAdapter(dl.GetUser(user.UserName));
-                if (boUser.Password == user.Password)
-                {
-                    return true;
-                }
-                if (needsAdmin == true)
-                {
-                    if (boUser.Admin == needsAdmin)
-                    {
-                        return true;
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw new BO.NoUserFoundException("There is no user with this username", ex);
-            }
-            return false;
-
-        }
-        #endregion
         #region LineTrip
         public BO.LineTrip LineTripDoBoAdapter(DO.LineTrip doLineTrip)
         {
