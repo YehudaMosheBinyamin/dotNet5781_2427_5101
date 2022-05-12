@@ -1,13 +1,36 @@
+using System;
+using System.ComponentModel;
+using System.Xml;
+using System.Xml.Serialization;
+
 namespace DO
 {
-    public static class Configuration
-{
-    static Configuration() { lineId = 0;stationCode = 7000;lineTripId = 1; }
-    private static int lineId;
-    public static int LineId { get { lineId = lineId + 1; return lineId; } }
-    private static int stationCode;
-    private static int lineTripId;
-    public static int LineTripId { get { lineTripId = lineTripId + 1;return lineTripId; } }
-    public static int StationCode { get{ stationCode = stationCode + 1;return stationCode; } }
-    //private static int tripId;//for stagetwo
-} }
+    /// <summary>
+    /// Represents an exit of a line
+    /// </summary>
+    public class LineTrip
+    {
+        public int Id { get; set; }
+        public int LineId { get; set; } 
+        [XmlIgnore]
+        public TimeSpan StartAt { get; set; }
+        //Credit to Rory McLeod:https://stackoverflow.com/questions/637933/how-to-serialize-a-timespan-to-xml
+        // XmlSerializer does not support TimeSpan, so use this property for 
+        // serialization instead.
+        [Browsable(false)]
+        [XmlElement(DataType = "duration", ElementName = "StartsAt")]
+        public string StartsAtString
+        {
+            get
+            {
+                return XmlConvert.ToString(StartAt);
+            }
+            set
+            {
+                StartAt = string.IsNullOrEmpty(value) ?
+                    TimeSpan.Zero : XmlConvert.ToTimeSpan(value);
+            }
+        }
+        public bool InService { get; set; }
+    }
+}
