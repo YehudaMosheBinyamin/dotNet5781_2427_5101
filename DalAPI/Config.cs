@@ -1,4 +1,4 @@
-﻿
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -83,4 +83,5 @@ namespace DalAPI
         public DLConfigException(string message, Exception inner) : base(message, inner) { }
     }
 }
+
 
