@@ -88,7 +88,7 @@
     <Id>523</Id>
     <LineId>529</LineId>
     <StartsAt>PT8H</StartsAt>
-    <InService>true</InService>
+    <InService>false</InService>
   </LineTrip>
   <LineTrip>
     <Id>524</Id>
@@ -220,7 +220,7 @@
     <Id>545</Id>
     <LineId>551</LineId>
     <StartsAt>PT8H</StartsAt>
-    <InService>true</InService>
+    <InService>false</InService>
   </LineTrip>
   <LineTrip>
     <Id>546</Id>
@@ -520,7 +520,7 @@
     <Id>595</Id>
     <LineId>574</LineId>
     <StartsAt>PT8H</StartsAt>
-    <InService>true</InService>
+    <InService>false</InService>
   </LineTrip>
   <LineTrip>
     <Id>596</Id>
@@ -640,19 +640,19 @@
     <Id>615</Id>
     <LineId>584</LineId>
     <StartsAt>PT8H</StartsAt>
-    <InService>true</InService>
+    <InService>false</InService>
   </LineTrip>
   <LineTrip>
     <Id>616</Id>
     <LineId>584</LineId>
     <StartsAt>PT9H</StartsAt>
-    <InService>true</InService>
+    <InService>false</InService>
   </LineTrip>
   <LineTrip>
     <Id>617</Id>
     <LineId>584</LineId>
     <StartsAt>PT12H1M</StartsAt>
-    <InService>true</InService>
+    <InService>false</InService>
   </LineTrip>
   <LineTrip>
     <Id>618</Id>
@@ -735,6 +735,288 @@
   <LineTrip>
     <Id>631</Id>
     <LineId>591</LineId>
+    <StartsAt>PT8H</StartsAt>
+    <InService>true</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>632</Id>
+    <LineId>592</LineId>
+    <StartsAt>PT7H</StartsAt>
+    <InService>true</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>633</Id>
+    <LineId>592</LineId>
+    <StartsAt>PT8H</StartsAt>
+    <InService>true</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>634</Id>
+    <LineId>593</LineId>
+    <StartsAt>PT8H</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>635</Id>
+    <LineId>593</LineId>
+    <StartsAt>PT9H</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>636</Id>
+    <LineId>594</LineId>
+    <StartsAt>PT7H</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>637</Id>
+    <LineId>594</LineId>
+    <StartsAt>PT8H</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>638</Id>
+    <LineId>594</LineId>
+    <StartsAt>PT9H</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>639</Id>
+    <LineId>595</LineId>
+    <StartsAt>PT7H</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>640</Id>
+    <LineId>595</LineId>
+    <StartsAt>PT8H</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>641</Id>
+    <LineId>595</LineId>
+    <StartsAt>PT9H</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>642</Id>
+    <LineId>595</LineId>
+    <StartsAt>PT12H9M</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>643</Id>
+    <LineId>596</LineId>
+    <StartsAt>PT7H</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>644</Id>
+    <LineId>596</LineId>
+    <StartsAt>PT8H</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>645</Id>
+    <LineId>596</LineId>
+    <StartsAt>PT8H1M</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>646</Id>
+    <LineId>596</LineId>
+    <StartsAt>PT9H</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>647</Id>
+    <LineId>596</LineId>
+    <StartsAt>PT12H9M</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>648</Id>
+    <LineId>597</LineId>
+    <StartsAt>PT8H</StartsAt>
+    <InService>true</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>649</Id>
+    <LineId>598</LineId>
+    <StartsAt>PT7H</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>650</Id>
+    <LineId>598</LineId>
+    <StartsAt>PT8H</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>651</Id>
+    <LineId>598</LineId>
+    <StartsAt>PT8H1M</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>652</Id>
+    <LineId>598</LineId>
+    <StartsAt>PT9H</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>653</Id>
+    <LineId>598</LineId>
+    <StartsAt>PT12H9M</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>654</Id>
+    <LineId>599</LineId>
+    <StartsAt>PT7H</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>655</Id>
+    <LineId>599</LineId>
+    <StartsAt>PT8H</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>656</Id>
+    <LineId>599</LineId>
+    <StartsAt>PT8H1M</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>657</Id>
+    <LineId>599</LineId>
+    <StartsAt>PT9H</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>658</Id>
+    <LineId>599</LineId>
+    <StartsAt>PT12H9M</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>659</Id>
+    <LineId>600</LineId>
+    <StartsAt>PT7H</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>660</Id>
+    <LineId>600</LineId>
+    <StartsAt>PT8H</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>661</Id>
+    <LineId>600</LineId>
+    <StartsAt>PT8H1M</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>662</Id>
+    <LineId>600</LineId>
+    <StartsAt>PT9H</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>663</Id>
+    <LineId>600</LineId>
+    <StartsAt>PT12H9M</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>664</Id>
+    <LineId>601</LineId>
+    <StartsAt>PT7H</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>665</Id>
+    <LineId>601</LineId>
+    <StartsAt>PT8H</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>666</Id>
+    <LineId>601</LineId>
+    <StartsAt>PT8H1M</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>667</Id>
+    <LineId>601</LineId>
+    <StartsAt>PT8H4M</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>668</Id>
+    <LineId>601</LineId>
+    <StartsAt>PT8H10M</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>669</Id>
+    <LineId>601</LineId>
+    <StartsAt>PT9H</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>670</Id>
+    <LineId>601</LineId>
+    <StartsAt>PT12H9M</StartsAt>
+    <InService>false</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>671</Id>
+    <LineId>602</LineId>
+    <StartsAt>PT7H</StartsAt>
+    <InService>true</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>672</Id>
+    <LineId>602</LineId>
+    <StartsAt>PT8H</StartsAt>
+    <InService>true</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>673</Id>
+    <LineId>602</LineId>
+    <StartsAt>PT8H1M</StartsAt>
+    <InService>true</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>674</Id>
+    <LineId>602</LineId>
+    <StartsAt>PT8H4M</StartsAt>
+    <InService>true</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>675</Id>
+    <LineId>602</LineId>
+    <StartsAt>PT8H10M</StartsAt>
+    <InService>true</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>676</Id>
+    <LineId>602</LineId>
+    <StartsAt>PT9H</StartsAt>
+    <InService>true</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>677</Id>
+    <LineId>602</LineId>
+    <StartsAt>PT12H9M</StartsAt>
+    <InService>true</InService>
+  </LineTrip>
+  <LineTrip>
+    <Id>678</Id>
+    <LineId>603</LineId>
     <StartsAt>PT8H</StartsAt>
     <InService>true</InService>
   </LineTrip>

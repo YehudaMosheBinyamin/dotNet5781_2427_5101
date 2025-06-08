@@ -105,7 +105,7 @@
     <LastStation>38841</LastStation>
   </Line>
   <Line>
-    <InService>true</InService>
+    <InService>false</InService>
     <Id>529</Id>
     <Code>2</Code>
     <Area>North</Area>
@@ -281,7 +281,7 @@
     <LastStation>38873</LastStation>
   </Line>
   <Line>
-    <InService>true</InService>
+    <InService>false</InService>
     <Id>551</Id>
     <Code>3</Code>
     <Area>Jerusalem</Area>
@@ -465,7 +465,7 @@
     <LastStation>38831</LastStation>
   </Line>
   <Line>
-    <InService>true</InService>
+    <InService>false</InService>
     <Id>574</Id>
     <Code>417</Code>
     <Area>Center</Area>
@@ -545,7 +545,7 @@
     <LastStation>60014</LastStation>
   </Line>
   <Line>
-    <InService>true</InService>
+    <InService>false</InService>
     <Id>584</Id>
     <Code>1</Code>
     <Area>South</Area>
@@ -607,5 +607,101 @@
     <Area>Center</Area>
     <FirstStation>38846</FirstStation>
     <LastStation>38836</LastStation>
+  </Line>
+  <Line>
+    <InService>true</InService>
+    <Id>592</Id>
+    <Code>3</Code>
+    <Area>Jerusalem</Area>
+    <FirstStation>38856</FirstStation>
+    <LastStation>38833</LastStation>
+  </Line>
+  <Line>
+    <InService>false</InService>
+    <Id>593</Id>
+    <Code>1</Code>
+    <Area>South</Area>
+    <FirstStation>38836</FirstStation>
+    <LastStation>60014</LastStation>
+  </Line>
+  <Line>
+    <InService>false</InService>
+    <Id>594</Id>
+    <Code>1</Code>
+    <Area>South</Area>
+    <FirstStation>38836</FirstStation>
+    <LastStation>60014</LastStation>
+  </Line>
+  <Line>
+    <InService>false</InService>
+    <Id>595</Id>
+    <Code>1</Code>
+    <Area>South</Area>
+    <FirstStation>38836</FirstStation>
+    <LastStation>60014</LastStation>
+  </Line>
+  <Line>
+    <InService>false</InService>
+    <Id>596</Id>
+    <Code>1</Code>
+    <Area>South</Area>
+    <FirstStation>38836</FirstStation>
+    <LastStation>60014</LastStation>
+  </Line>
+  <Line>
+    <InService>true</InService>
+    <Id>597</Id>
+    <Code>417</Code>
+    <Area>Center</Area>
+    <FirstStation>38831</FirstStation>
+    <LastStation>38832</LastStation>
+  </Line>
+  <Line>
+    <InService>false</InService>
+    <Id>598</Id>
+    <Code>1</Code>
+    <Area>South</Area>
+    <FirstStation>38836</FirstStation>
+    <LastStation>60016</LastStation>
+  </Line>
+  <Line>
+    <InService>false</InService>
+    <Id>599</Id>
+    <Code>1</Code>
+    <Area>South</Area>
+    <FirstStation>60016</FirstStation>
+    <LastStation>38831</LastStation>
+  </Line>
+  <Line>
+    <InService>false</InService>
+    <Id>600</Id>
+    <Code>1</Code>
+    <Area>South</Area>
+    <FirstStation>60016</FirstStation>
+    <LastStation>38831</LastStation>
+  </Line>
+  <Line>
+    <InService>false</InService>
+    <Id>601</Id>
+    <Code>1</Code>
+    <Area>South</Area>
+    <FirstStation>60016</FirstStation>
+    <LastStation>38831</LastStation>
+  </Line>
+  <Line>
+    <InService>true</InService>
+    <Id>602</Id>
+    <Code>1</Code>
+    <Area>South</Area>
+    <FirstStation>60016</FirstStation>
+    <LastStation>38831</LastStation>
+  </Line>
+  <Line>
+    <InService>true</InService>
+    <Id>603</Id>
+    <Code>2</Code>
+    <Area>North</Area>
+    <FirstStation>38842</FirstStation>
+    <LastStation>38855</LastStation>
   </Line>
 </ArrayOfLine>

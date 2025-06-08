@@ -406,4 +406,11 @@
     <Latitude>30.123199462890625</Latitude>
     <InService>true</InService>
   </Station>
+  <Station>
+    <Code>60016</Code>
+    <Name>HaRekevet/HaAliya</Name>
+    <Longtitude>30.8700008392334</Longtitude>
+    <Latitude>30.940000534057617</Latitude>
+    <InService>true</InService>
+  </Station>
 </Stations>

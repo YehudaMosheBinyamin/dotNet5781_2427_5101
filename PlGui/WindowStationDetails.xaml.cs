@@ -38,6 +38,7 @@ namespace PlGui
             lbLinesBy.ItemsSource = linesByStation;
             backgroundWorker = new BackgroundWorker();
             backgroundWorker.DoWork += BackgroundWorker_DoWork;
+            //backgroundWorker.RunWorkerAsync();
         }
 
         /// <summary>
